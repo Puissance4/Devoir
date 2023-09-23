@@ -140,5 +140,64 @@
     <p>
         ...
     </p>
+    <h2>
+        Tâche 3</h2>
+    <p>
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> S’inscrire comme acheteur/ revendeur<br>
+            <span style="font-weight: bold;">But :</span> avoir un compte pour acheter ou vendre sur la plateforme Unishop<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop.<br>
+            <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1.  L’utilisateur ouvre la plateforme Unishop<br>
+            2.  L’utilisateur sélectionne l’option créer un compte<br>
+            3. L’utilisateur sélectionne l’option créer un compte acheteur<br>
+            4. L’utilisateur entre dans les cases indiquées son nom, prénom, pseudo, adresse courriel et téléphone<br>
+            5. L’utilisateur entre son adresse d’expedition<br>
+            6. Le client clique sur créer un profil<br>
+            7. Le système valide son profil<br><br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            3.a.1 L’utilisateur sélectionne l’option créer un compte revendeur<br>
+            3.a.2 L’utilisateur entre dans les cases indiquées son nom, adresse, adresse courriel et téléphone<br>
+            3.a.3 le scenario reprends à l’étape 6<br><br>
+            7.a.1 Si une des information entrée n’est pas valide le système ne valide pas le profil et envoie un message d’erreur à l’utilisateur<br>
+	        7.a.2 Le scenario reprends à l’étape 4<br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le profil et les informations qui lui sont liées sont enregistrées dans le système.<br>
+
+        </p>
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Passer commande<br>
+            <span style="font-weight: bold;">But :</span> acheter des items sur la plateforme Unishop<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte.<br>
+            <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal, le revendeur est acteur secondaire<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L’utilisateur ouvre la plateforme Unishop<br>
+            2. L’utilisateur se connecte<br>
+            3. L’utilisateur ouvre son panier<br>
+            4. L’utilisateur selectionne l'option commander<br>
+            5. L’utilisateur selectionne les informations déjà sauvegardées sur son profil pour son adresse et son numéro de téléphone<br>
+            6. L'utilisateur entre ses informations de payement et de livraison.<br>
+            7. Le client confirme la commande<br>
+            8. Le système valide la commande <br>
+            9. Le système crée un identifiant unique pour la commande qu'il communique à l'utilisateur.<br>
+            10. Le système mets à jour la quantité dans l'inventaire du revendeur.<br>
+            11. Le systeme crée une page de suivi de la commande <br><br>
+
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            4.a.1 Si le panier est vide le système envoie un message d'erreur au client<br><br>
+            5.a.1 L’utilisateur choisit de rentrer de nouvelles informations<br>
+            5.a.2 L'utilisateur entre son adresse de livraison <br>
+            5.a.3 Le scénario reprends à l'étape 4 <br><br>
+            8.a.1 Si les informations rentrées sont fausses le système envoie un message d'erreur à l'utilisateur<br>
+            8.a.2 Le scénario reprends à l'étape 5 <br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> La commande et les informations qui lui sont liées sont enregistrées dans le système.<br>
+
+        </p>
+        ...
+    </p>
 </body>
 </html>
