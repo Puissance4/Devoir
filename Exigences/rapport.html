@@ -207,12 +207,37 @@
             2. L'utlisateur va dans la barre de recherche<br>
             3. L'utilisateur entre les mot-clés ou un pseudo de revendeur souhaités dans la barre<br>
             4. L'utilisateur appuie sur la touche entrer ou sur l'icone pour lancer la recherche<br>
+            5. Le site affiche les résultats correspondant à la recherce de l'utilisateur<br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            5.a.1 Si le site ne trouve aucun arcticle ou revendeur correspondant à la recherche de l'utilisateur, il renvoie une  erreur<br>
+
+            5.b.1 Si l'utlisateur n'a rien saisie dans la barre de recherche le site ne retourne rien<br>
+
+            <span style="font-weight: bold;">Postconditions :</span> <br>
+
+        </p>
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Consulter / modifier état de commande<br>
+            <span style="font-weight: bold;">But :</span> consulter ou modifier l'état d'une commande sur la plateforme Unishop<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop, avoir un compte et avoir passé un commande<br>
+            <span style="font-weight: bold;">Acteurs :</span> L’utilisateur et le revendeur sont les acteurs principaux. Le revendeur, le système du site et la compagnie de livraison sont les acteurs secondaires.<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L’utilisateur ouvre la plateforme Unishop<br>
+            2. L'utlisateur va dans l'onglet "mes commandes"<br>
+            3. L'utilisateur clique sur la commande qu'il souhaite consulter<br>
+            4. L'utilisateur clique sur "consulter l'état"<br>
+            5. Le site affiche l'état de sa commande<br>
+            6. L'utilisateur clique sur "modifier l'état de la commande"
+            7. L'utilisateur sélectionne le statut actuel de la commande
 
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-            
+            6.a.1 Si l'acheteur a confirmer la reception de la commande, la modification n'est plus possible<br>
 
-            <span style="font-weight: bold;">Postconditions :</span> <br>
+            7.a.1 L'utlisateur ne peut pas mettre la commande dans un état qui a été validé précédemment <br>
+
+            <span style="font-weight: bold;">Postconditions :</span>Le système enregistre l'état de la commande une fois qu'il a été actualisé <br>
 
         </p>
         ...
