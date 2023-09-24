@@ -171,7 +171,7 @@
             <span style="font-weight: bold;">Cas d'utilisation :</span> Passer commande<br>
             <span style="font-weight: bold;">But :</span> acheter des items sur la plateforme Unishop<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte.<br>
-            <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal, le revendeur est acteur secondaire<br>
+            <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal, le revendeur est l'acteur secondaire<br>
             <span style="font-weight: bold;">Scénario principal :</span> <br>
             1. L’utilisateur ouvre la plateforme Unishop<br>
             2. L’utilisateur se connecte<br>
@@ -214,6 +214,34 @@
 
             <span style="font-weight: bold;">Postconditions :</span> <br>
 
+        </p>
+        <p>
+            <span style="font-weight: bold;">Cas d'utilisation :</span> Offrir / modifier un produit<br>
+            <span style="font-weight: bold;">But :</span> ajouter des produits sur la plateforme Unishop et pouvoir modifier leurs atributs après le mise en vente<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte revendeur<br>
+            <span style="font-weight: bold;">Acteurs :</span> Le revendeur est l'acteur principal<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+                1. L'utilisateur ouvre la plateforme Unishop <br>
+                2. L'utilisateur sélectionne l'option ajouter ou modifier un produit <br>
+                3. L'utilisateur spécifi un titre unique au produit qu'il souhaite ajouter <br>
+                4. L'utilisateur sélectionne une catégorie dans laquelle placer son produit <br>
+                5. L'utilisateur offre une descrition de son produit <br>
+                6. L'utilisateur ajoute le nom de la marque ainsi que celui du modèle <br>
+                7. L'utilisateur spécifie la quantité disponible ainsi que le prix du produit <br>
+                8. L'utilisateur choisi s'il veut promouvoir son produit à l'aide d'images ou de vidéos <br>
+                9. L'utilisateur sélectionner l'option ajouter une fichier image ou video <br>
+                10. L'utilisateur enregistre le fichier qu'il souhaite ajouter <br>
+                11. L'utilisateur confirme sont ajout ou ses modifications <br>
+                12. L'utilisateur quitte la page <br>
+            
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+                3.a.1 L'utilisateur spécifi un titre déjà utilisé, ce qui entraine un message d'erreur <br>
+                3.a.2 Le scénario reprend à l'étape 3 <br> <br>
+                8.a.1 L'utilisateur décide de ne pas ajouter d'image ou de vidéo <br>
+                8.a.2 Le scénario reprend à l'étape 11 <br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produits ajouté ou modifié <br>
         </p>
         ...
     </p>
