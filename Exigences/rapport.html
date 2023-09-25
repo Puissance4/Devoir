@@ -11,14 +11,16 @@
         th
         {
             border-bottom: double 2px black;
+            border-right: solid 2px black;
         }
         td
         { 
             border-bottom: solid 1px black;
+            border-right: solid 2px black;
         }
         .first_col
         {
-            border-right: double 2px black;
+            border-right: solid 2px black;
         }
     </style>
 </head>
@@ -34,52 +36,87 @@
         <a href="https://github.com/Puissance4/Devoir1">Lien vers dépôt GitHub</a><br>
         <!-- <a href="">Lien vers fichiers Visual Paradigm</a> -->
     </p>
-    <p>
-        <span style="font-weight: bold;">Nom: </span>Corélie Godefroid
-        <br />
-        <span style="font-weight: bold;">Matricule: </span>20205217
-        <br />
-        <span style="font-weight: bold;">Courriel: </span>corelie.godefroid@umontreal.ca
-        <br />
-        <span style="font-weight: bold;">temps mis: </span>... heures
-    </p>
-    <p>
-        <span style="font-weight: bold;">Nom: </span>Mathis Morra Fischer
-        <br />
-        <span style="font-weight: bold;">Matricule: </span>20207747
-        <br />
-        <span style="font-weight: bold;">Courriel: </span>mathis.morra--fischer@umontreal.ca
-        <br />
-        <span style="font-weight: bold;">temps mis: </span>... heures
-    </p>
-    <p>
-        <span style="font-weight: bold;">Nom: </span>Mahdi Tazerout
-        <br />
-        <span style="font-weight: bold;">Matricule: </span>20234802
-        <br />
-        <span style="font-weight: bold;">Courriel: </span>mahdi.tazerout@umontreal.ca
-        <br />
-        <span style="font-weight: bold;">temps mis: </span>... heures
-    </p>
-    <p>
-        <span style="font-weight: bold;">Nom: </span>Thanh Thien Tran
-        <br />
-        <span style="font-weight: bold;">Matricule: </span>20248587
-        <br />
-        <span style="font-weight: bold;">Courriel: </span>thanh.thien.tran@umontreal.ca
-        <br />
-        <span style="font-weight: bold;">temps mis: </span>... heures
-    </p>
+    <table cellpadding="10px">
+        <tbody>
+            <tr>
+                <td class="first_col">
+                    Nom:
+                </td>
+                <td>
+                    Corélie Godefroid
+                </td>
+                <td>
+                    Mathis Morra Fischer
+                </td>
+                <td>
+                    Mahdi Tazerout
+                </td>
+                <td>
+                    Thanh Thien Tran
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Matricule:
+                </td>
+                <td>
+                    20205217
+                </td>
+                <td>
+                    20207747
+                </td>
+                <td>
+                    20234802
+                </td>
+                <td>
+                    20248587
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Courriel:
+                </td>
+                <td>
+                    corelie.godefroid@umontreal.ca
+                </td>
+                <td>
+                    mathis.morra--fischer@umontreal.ca
+                </td>
+                <td>
+                    mahdi.tazerout@umontreal.ca
+                </td>
+                <td>
+                    thanh.thien.tran@umontreal.ca
+                </td>
+            </tr>
+            <tr>
+                <td class="first_col">
+                    Temps mis:
+                </td>
+                <td>
+                    ... heures
+                </td>
+                <td>
+                    ... heures
+                </td>
+                <td>
+                    ... heures
+                </td>
+                <td>
+                    ... heures
+                </td>
+        </tbody>
+    </table>
     <h2>
         Distribution des tâches</h2>
     <p>
         <span style="font-weight: bold;">Soumissionaire: </span>...
     </p>
-    <table cellpadding="7px">
+    <table cellpadding="10px">
         <thead>
             <tr>
                 <th class="first_col">
-                    Tâche
+                    
                 </th>
                 <th>
                     Corélie
@@ -97,25 +134,34 @@
         </thead>
         <tbody>
             <tr>
-                <td class="first_col">
-                    Diagramme de classe
+                <td class="first_col" rowspan="2">
+                    Tâche
                 </td>
                 <td>
-                    Classes, associations, attributs (50%)
+                    Diagramme de cas d'utilisation (25%)
                 </td>
                 <td>
-                    Methodes, contraintes (50%)
+                    Glossaire (10%)
+                </td>
+                <td>
+                    Cas d'utilisation
+                </td>
+                <td>
+                    ...
                 </td>
             </tr>
             <tr>
-                <td class="first_col">
-                    Implémentation
+                <td>
+                    Cas d'utilisation
                 </td>
                 <td>
-                    UI (30%)
+                    Cas d'utilisation
                 </td>
                 <td>
-                    Logique (70%)
+                    ...
+                </td>
+                <td>
+                    ...
                 </td>
             </tr>
         </tbody>
@@ -144,7 +190,7 @@
     </h2>
     <p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> S’inscrire comme acheteur/ revendeur<br>
+            <h3 span style="font-weight: bold;">A. Cas d'utilisation :</span> S’inscrire comme acheteur/ revendeur</h3>
             <span style="font-weight: bold;">But :</span> avoir un compte pour acheter ou vendre sur la plateforme Unishop<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop.<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal<br>
@@ -164,11 +210,11 @@
             7.a.1 Si une des information entrée n’est pas valide le système ne valide pas le profil et envoie un message d’erreur à l’utilisateur<br>
 	        7.a.2 Le scenario reprends à l’étape 4<br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le profil et les informations qui lui sont liées sont enregistrées dans le système.<br>
+            <span style="font-weight: bold;">Postconditions :</span> Le profil et les informations qui lui sont liées sont enregistrées dans le système.<br><br>
 
         </p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Passer commande<br>
+            <h3 span style="font-weight: bold;">B. Cas d'utilisation :</span> Passer commande</h3>
             <span style="font-weight: bold;">But :</span> acheter des items sur la plateforme Unishop<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte.<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal, le revendeur est l'acteur secondaire<br>
@@ -194,11 +240,11 @@
             8.a.1 Si les informations rentrées sont fausses le système envoie un message d'erreur à l'utilisateur<br>
             8.a.2 Le scénario reprends à l'étape 5 <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> La commande et les informations qui lui sont liées sont enregistrées dans le système.<br>
+            <span style="font-weight: bold;">Postconditions :</span> La commande et les informations qui lui sont liées sont enregistrées dans le système.<br><br>
 
         </p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Rechercher un produit / revendeur<br>
+            <h3 span style="font-weight: bold;">C. Cas d'utilisation :</span> Rechercher un produit / revendeur</h3>
             <span style="font-weight: bold;">But :</span> trouver des items ou un revendeur spécifique sur la plateforme Unishop<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop.<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal<br>
@@ -214,11 +260,11 @@
 
             5.b.1 Si l'utlisateur n'a rien saisie dans la barre de recherche le site ne retourne rien<br>
 
-            <span style="font-weight: bold;">Postconditions :</span> <br>
+            <span style="font-weight: bold;">Postconditions :</span> <br><br>
 
         </p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Consulter / modifier état de commande<br>
+            <h3 span style="font-weight: bold;">D. Cas d'utilisation :</span> Consulter / modifier état de commande</h3>
             <span style="font-weight: bold;">But :</span> consulter ou modifier l'état d'une commande sur la plateforme Unishop<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop, avoir un compte et avoir passé un commande<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur et le revendeur sont les acteurs principaux. Le revendeur, le système du site et la compagnie de livraison sont les acteurs secondaires.<br>
@@ -237,11 +283,11 @@
 
             7.a.1 L'utlisateur ne peut pas mettre la commande dans un état qui a été validé précédemment <br>
 
-            <span style="font-weight: bold;">Postconditions :</span>Le système enregistre l'état de la commande une fois qu'il a été actualisé <br>
+            <span style="font-weight: bold;">Postconditions :</span>Le système enregistre l'état de la commande une fois qu'il a été actualisé <br><br>
 
         </p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Modifier profil<br>
+            <h3 span style="font-weight: bold;">E. Cas d'utilisation :</span> Modifier profil</h3>
             <span style="font-weight: bold;">But :</span> modifier les informations que la plateforme a à propos de l'utilisateur<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte.<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal<br>
@@ -259,12 +305,12 @@
             7.a.1 Si une des information entrée n’est pas valide le système ne valide pas le profil et envoie un message d’erreur à l’utilisateur<br>
 	        7.a.2 Le scenario reprends à l’étape 5<br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Les nouvelles informations du profil remplacent les précédentes dans le système.<br>
+            <span style="font-weight: bold;">Postconditions :</span> Les nouvelles informations du profil remplacent les précédentes dans le système.<br><br>
 
         </p>
 
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Voir métriques<br>
+            <h3 span style="font-weight: bold;">F. Cas d'utilisation :</span> Voir métriques</h3>
             <span style="font-weight: bold;">But :</span> Pouvoir voir les chiffres de son activité ou de produits sur le site<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte.<br>
             <span style="font-weight: bold;">Acteurs :</span> L’utilisateur est l’acteur principal<br>
@@ -280,11 +326,11 @@
             3.a.2 L'utilisateur clique sur le produit dont il veut voir les metriques.<br>
             3.a.3 Les métriques du produit sont affichées et facilement visible.<br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système est dans le même état qu'avant d'afficher les métriques.<br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système est dans le même état qu'avant d'afficher les métriques.<br><br>
 
         </p>
         <p>
-            <span style="font-weight: bold;">Cas d'utilisation :</span> Offrir / modifier un produit<br>
+            <h3 span style="font-weight: bold;">G. Cas d'utilisation :</span> Offrir / modifier un produit</h3>
             <span style="font-weight: bold;">But :</span> ajouter des produits sur la plateforme Unishop et pouvoir modifier leurs atributs après le mise en vente<br>
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte revendeur<br>
             <span style="font-weight: bold;">Acteurs :</span> Le revendeur est l'acteur principal<br>
@@ -309,7 +355,7 @@
                 8.a.1 L'utilisateur décide de ne pas ajouter d'image ou de vidéo <br>
                 8.a.2 Le scénario reprend à l'étape 11 <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produits ajouté ou modifié <br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produits ajouté ou modifié <br><br>
         </p>
         ...
     </p>
