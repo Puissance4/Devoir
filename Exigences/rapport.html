@@ -274,14 +274,14 @@
             3. L'utilisateur clique sur la commande qu'il souhaite consulter<br>
             4. L'utilisateur clique sur "consulter l'état"<br>
             5. Le site affiche l'état de sa commande<br>
-            6. L'utilisateur clique sur "modifier l'état de la commande"
-            7. L'utilisateur sélectionne le statut actuel de la commande
+            6. L'utilisateur clique sur "modifier l'état de la commande" <br>
+            7. L'utilisateur sélectionne le statut actuel de la commande <br><br>
 
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-            6.a.1 Si l'acheteur a confirmer la reception de la commande, la modification n'est plus possible<br>
+            6.a.1 Si l'acheteur a confirmer la reception de la commande, la modification n'est plus possible<br><br>
 
-            7.a.1 L'utlisateur ne peut pas mettre la commande dans un état qui a été validé précédemment <br>
+            7.a.1 L'utlisateur ne peut pas mettre la commande dans un état qui a été validé précédemment <br><br>
 
             <span style="font-weight: bold;">Postconditions :</span>Le système enregistre l'état de la commande une fois qu'il a été actualisé <br><br>
 
@@ -301,7 +301,7 @@
             7. Le système valide son profil<br><br>
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-            5.a.1 L’utilisateur est un revendeur il peut donc modifier dans les cases indiquées son nom, adresse, adresse courriel et téléphone<br>
+            5.a.1 L’utilisateur est un revendeur il peut donc modifier dans les cases indiquées son nom, adresse, adresse courriel et téléphone<br><br>
             7.a.1 Si une des information entrée n’est pas valide le système ne valide pas le profil et envoie un message d’erreur à l’utilisateur<br>
 	        7.a.2 Le scenario reprends à l’étape 5<br><br>
 
@@ -335,29 +335,55 @@
             <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte revendeur<br>
             <span style="font-weight: bold;">Acteurs :</span> Le revendeur est l'acteur principal<br>
             <span style="font-weight: bold;">Scénario principal :</span> <br>
-                1. L'utilisateur ouvre la plateforme Unishop <br>
-                2. L'utilisateur sélectionne l'option ajouter ou modifier un produit <br>
-                3. L'utilisateur spécifi un titre unique au produit qu'il souhaite ajouter <br>
-                4. L'utilisateur sélectionne une catégorie dans laquelle placer son produit <br>
-                5. L'utilisateur offre une descrition de son produit <br>
-                6. L'utilisateur ajoute le nom de la marque ainsi que celui du modèle <br>
-                7. L'utilisateur spécifie la quantité disponible ainsi que le prix du produit <br>
-                8. L'utilisateur choisi s'il veut promouvoir son produit à l'aide d'images ou de vidéos <br>
-                9. L'utilisateur sélectionner l'option ajouter une fichier image ou video <br>
-                10. L'utilisateur enregistre le fichier qu'il souhaite ajouter <br>
-                11. L'utilisateur confirme sont ajout ou ses modifications <br>
-                12. L'utilisateur quitte la page <br>
+            1. L'utilisateur ouvre la plateforme Unishop <br>
+            2. L'utilisateur sélectionne l'option ajouter ou modifier un produit <br>
+            3. L'utilisateur spécifi un titre unique au produit qu'il souhaite ajouter <br>
+            4. L'utilisateur sélectionne une catégorie dans laquelle placer son produit <br>
+            5. L'utilisateur offre une descrition de son produit <br>
+            6. L'utilisateur ajoute le nom de la marque ainsi que celui du modèle <br>
+            7. L'utilisateur spécifie la quantité disponible ainsi que le prix du produit <br>
+            8. L'utilisateur choisi s'il veut promouvoir son produit à l'aide d'images ou de vidéos <br>
+            9. L'utilisateur sélectionner l'option ajouter une fichier image ou video <br>
+            10. L'utilisateur enregistre le fichier qu'il souhaite ajouter <br>
+            11. L'utilisateur confirme sont ajout ou ses modifications <br>
+            12. L'utilisateur quitte la page <br><br>
             
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-                3.a.1 L'utilisateur spécifi un titre déjà utilisé, ce qui entraine un message d'erreur <br>
-                3.a.2 Le scénario reprend à l'étape 3 <br> <br>
-                8.a.1 L'utilisateur décide de ne pas ajouter d'image ou de vidéo <br>
-                8.a.2 Le scénario reprend à l'étape 11 <br><br>
+            3.a.1 L'utilisateur spécifi un titre déjà utilisé, ce qui entraine un message d'erreur <br>
+            3.a.2 Le scénario reprend à l'étape 3 <br> <br>
+            8.a.1 L'utilisateur décide de ne pas ajouter d'image ou de vidéo <br>
+            8.a.2 Le scénario reprend à l'étape 11 <br><br>
 
             <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produits ajouté ou modifié <br><br>
         </p>
-        ...
+        <p>
+            <h3 span style="font-weight: bold;">H. Cas d'utilisation :</span> Ajouter au panier d'achat</h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur d'ajouter un produit qu'il souhaite acheter dans le panier d'achat ou en retirer un dans le cas où il y renonce<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop<br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L'utilisateur ouvre la plateforme Unishop <br>
+            2. L'utilisateur se rend sur la page du produit qu'il souahaite se procurer <br>
+            3. L'utilisateur sélectionne l'option "ajouter à mon panier" <br>
+            4. L'utilisateur spécifie la quantité de l'article qu'il veut ajouter <br>
+            5. L'utilisateur confirme sont ajout <br><br>
+
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            4.a.1 La quantité spécifiée par l'utilisateur éxcède celle disponible en stock <br>
+            4.a.2 Le système renvoie une erreur et l'ajout est annulé <br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur avec le nouvel article ainsi que la quantité demandée
+        </p>
+        <p>
+            <h3 span style="font-weight: bold;">H. Cas d'utilisation :</span> Retirer du panier d'achat</h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de supprimer un ou des produits de son panier d'achat<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop<br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+        </p>
+            ...
     </p>
     <h2>
         Tâche 4 : Riques
