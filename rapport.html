@@ -359,22 +359,22 @@
         </p>
         <p>
             <h3 span style="font-weight: bold;">H. Cas d'utilisation :</span> Ajouter au panier d'achat</h3>
-            <span style="font-weight: bold;">But :</span> permet à l'utilisateur d'ajouter un produit qu'il souhaite acheter dans le panier d'achat ou en retirer un dans le cas où il y renonce<br>
-            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop<br>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur d'ajouter un produit qu'il souhaite acheter dans le panier d'achat <br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir un compte d'acheteur<br>
             <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal<br>
             <span style="font-weight: bold;">Scénario principal :</span> <br>
             1. L'utilisateur ouvre la plateforme Unishop <br>
-            2. L'utilisateur se rend sur la page du produit qu'il souahaite se procurer <br>
+            2. L'utilisateur se rend sur la page du produit qu'il souhaite se procurer <br>
             3. L'utilisateur sélectionne l'option "ajouter à mon panier" <br>
             4. L'utilisateur spécifie la quantité de l'article qu'il veut ajouter <br>
-            5. L'utilisateur confirme sont ajout <br><br>
+            5. L'utilisateur confirme son ajout <br><br>
 
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
             4.a.1 La quantité spécifiée par l'utilisateur éxcède celle disponible en stock <br>
             4.a.2 Le système renvoie une erreur et l'ajout est annulé <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur avec le nouvel article ainsi que la quantité demandée
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur avec le nouvel article ainsi que la quantité demandée et le prix total.
         </p>
         <p>
             <h3 span style="font-weight: bold;">H. Cas d'utilisation :</span> Retirer du panier d'achat</h3>
@@ -386,27 +386,30 @@
             ...
     </p>
     <h2>
-        Tâche 4 : Riques
+        Tâche 4 : Risques
     </h2>
     <p>
   
-        <p> <b> 1. Risque politique : </b> certains revendeur peut être un fraudeur puisqu'on ne peut pas vérifier l'identification de la personne s'il faut en ligne.
-            Il se peut que ces gens là met un faux nom, faux d'address et un produit qu'il ne possède même pas. Après que l'utilisateur paie ,
-            le fraudeur part avec l'argent sans jamais livré le produit. Mais puisque l'utilisateur a acheté dans notre siteweb, c'est Unishop qui est responsable de remboursé l'argent
-            Alors non cela endommage la réputation du magasin, ce dernier perd beaucoup de l'argent pour rembourser. </p>
-        <p> <b> Solution : </b> on ajoute un système de vérification demandant qu'il prendre un photo une pièce identité gouvernemental qui contient sa photo et son address.
-        Donc s'il y a un problème , on peut retrouver le revendeur. 
+        <p> <b> 1. Risque politique : </b> Certains revendeurs peuvent être des fraudeurs, puisqu'on ne vérifie pas leur identité en ligne.
+            Il est possible qu'ils mettent un faux nom, une fausse adresse ou un produit qu'ils ne possèdent même pas et qu'ils puissent ainsi récupérer l'argent des acheteurs sans 
+            jamais livrer le produit. Cela endommage la réputation de la plateforme, qui est ensuite perçue comme frauduleuse, mais peut également engendrer des pertes financières
+            dans la cas où Unishop serait jugée responsable du remboursement. </p>
+        <p> <b> Solution : </b> On ajoute un système de vérification demandant qu'un revendeur prenne en photo une pièce d'identité gouvernementale permettant ainsi de dissuader les fraudeurs
+            ainsi que de les retrouver en cas de problème. On peut également ajouter une fonction pour que les acheteurs puissent plus facilement signaler des produits ou revendeurs qui leurs semblent 
+            suspects. Ces signalement seront par la suite vérifiés par l'équipe d'Unishop qui prendra les actions nécessaires.
         </p>  
     
-        <p> <b> 2. Risque techniques : </b>  si le revendeur a endommagé ou perdu le produit après qu'il a changé l'état de la commande à " livré", 
-            mais avant de mettre " en livraison " . Si il livre un produit endommagé , cela peut affecter la réputation du magasin et du vendeur lui-même. 
-            l'acheteur va aussi perdre du temps à aller à la poste , payer les frais pour la poste , etc.
-            <p> <b> Solution : </b> le revendeur doit avoir une autre option d'annuler la commande et rembourser le client </p> 
+        <p> <b> 2. Risque technique : </b>  Si le revendeur endommage, perds le produit ou se trouve pour une quelconque raison incapable de correctement envoyer le produit
+            une fois que l'état de la commande est "en production" il n'a pas l'option d'annuler une commande il ne peut que changer son état à " en livraison " . 
+            Or s'il livre un produit endommagé , cela peut affecter la réputation du magasin et du vendeur lui-même ainsi que d'affecter la satisfaction du client qui va devoir 
+            perdre du temps à effectuer un retour. 
+            <p> <b> Solution : </b> Le revendeur doit avoir une autre option de changement d'état de la commande, celle d'annuler la commande et de rembourser le client </p> 
         </p> 
 
-        <p> <b> 3. Risque techniques : </b>  le produit peut etre vole devant la porte de l'acheteur avant qu'il puisse le prendre. 
-            Ou encore l'acheteur a recu le produit , mais il fait semblant que c'est volé. Cela fait perdre de l'argent et du temps pour investiguer.
+        <p> <b> 3. Risque technique : </b>  Le produit peut être volé devant la porte de l'acheteur avant qu'il puisse le prendre ou l'acheteur pourrait ne jamais confirmer la livraison
+            et ainsi se faire rembourser pour un produit qu'il prétendrait ne pas avoir reçu.
             
+            <p> <b> Solution : </b> La compagnie de livraison pourrait elle-même confirmer la livraison plutôt que l'acheteur ou alors demander une signature ou une photo.  </p> 
         </p> 
         <p> <b> 4. Risque techniques : </b> Piratage du compte
             <p> <b> Solution : </b> </p> 
