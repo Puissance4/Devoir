@@ -394,6 +394,56 @@
 
             <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur en retirant les produits sélectionnés par l'utilisateur et recalcul le prix total du panier <br><br>
         </p>
+	-----------------------------------------------------------------------------------
+	        <p>
+            <h3 span style="font-weight: bold;">J. Cas d'utilisation :</span> laisser un commentaire au produit </h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de laisser en commentaire sa satisfaction sur le produit qu'il a acheté <br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et l'utilisateur doit avoir acheté le produit à partir de la plateforme <br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal, le système est l'acteur secondaire <br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L'utilisateur ouvre la plateforme Unishop <br>
+            2. L'utilisateur se connect dans son compte utilisateur <br>
+	    3. L'utilisateur recherche le produit avec les mots clés dans la barre de recherche. <br>
+            4. L'utilisateur choisit l'article qu'il voulait ajouter un commentaire <br>
+	    5. L'utilisateur clique sur le bouton " Ajouter un commentaire " <br>
+	    6. L'utilisateur écrire son commentaire et le nombre d'étoile. <br>
+	    7. L'utilisateur clique sur Finir. <br>
+        
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            2.a L'utilisateur va dans Commandes pour chercher le produit acheté pour commenter <br>
+	    2.b Retour à l'étape 3 <br>
+	    5.a Le système détecte que l'utilisateur n'a pas encore acheté/commander le produit mais il veut évaluer le produit <br>
+	    5.b Le système affiche le massage " Veuillez acheter avant de laisser une évaluation du produit " <br>
+	    6.a L'utilisateur clique sur " Annuler commentaire " <br>
+	    7.a L'utilisateur clique sur " Annuler commentaire " <br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour la liste des commentaires et calculer la moyenne des les étoiles <br><br>
+        </p>
+         -------------------------------------------------------------------------------------------
+	        <p>
+            <h3 span style="font-weight: bold;">K. Cas d'utilisation :</span> Faire un retour</h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de retourner un produit qu'il a acheté <br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir acheté le produit <br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal, le Système et le revendeur est l'acteur secondaire <br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L'utilisateur ouvre la plateforme Unishop <br>
+            2. L'utilisateur se connecte dans son compte <br>
+            3. L'utilisateur va dans la Commande <br>
+            4. L'utilisateur clique sur la commande ou le produit qu'il veut retourner <br>
+	    5. L'utilisateur clique sur l'option Retour <br>
+            6. L'utilisateur lit les instructions de retour <br>
+	    7. L'utilisateur clique sur confirmer.
+								
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            4.a L'utiliser ne trouve pas la Commande ou le produit <br> 
+	    6.a.1 Le système affiche que Le produit n'est pas éligible pour un retour. 
+	    6.b.1 L'utilisateur clique sur Annuler le retour 
+	    7.a L'utilisateur clique sur Annuler le retour 
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour de la commande en changeant l'état de la commande à " En retour " et envoie un massage de retour au revendeur <br>
+        </p>
+             -------------------------------------------------------------------------------------------
             ...
     </p>
     <h2>
