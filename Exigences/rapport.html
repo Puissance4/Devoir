@@ -134,20 +134,20 @@
         </thead>
         <tbody>
             <tr>
-                <td class="first_col" rowspan="2">
+                <td class="first_col" rowspan="3">
                     Tâche
                 </td>
                 <td>
-                    Diagramme de cas d'utilisation (25%)
+                    Diagramme de cas d'utilisation
                 </td>
                 <td>
-                    Glossaire (10%)
+                    Glossaire
                 </td>
                 <td>
                     Cas d'utilisation
                 </td>
                 <td>
-                    ...
+                    Risques
                 </td>
             </tr>
             <tr>
@@ -158,10 +158,24 @@
                     Cas d'utilisation
                 </td>
                 <td>
-                    ...
+                    Exigences non-fonctionnelles
                 </td>
                 <td>
-                    ...
+                    Bonus
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bonus
+                </td>
+                <td>
+
+                </td>
+                <td>
+
+                </td>
+                <td>
+                    Cas d'utilisation	
                 </td>
             </tr>
         </tbody>
@@ -255,7 +269,7 @@
             5. Le site affiche les résultats correspondant à la recherce de l'utilisateur<br><br>
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-            5.a.1 Si le site ne trouve aucun arcticle ou revendeur correspondant à la recherche de l'utilisateur, il renvoie une  erreur<br>
+            5.a.1 Si le site ne trouve aucun arcticle ou revendeur correspondant à la recherche de l'utilisateur, il renvoie une erreur<br>
 
             5.b.1 Si l'utlisateur n'a rien saisie dans la barre de recherche le site ne retourne rien<br>
 
@@ -353,7 +367,7 @@
             8.a.1 L'utilisateur décide de ne pas ajouter d'image ou de vidéo <br>
             8.a.2 Le scénario reprend à l'étape 11 <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produits ajouté ou modifié <br><br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre les données et met à jour la plateforme Unishop avec le produit ajouté ou modifié <br><br>
         </p>
         <p>
             <h3 span style="font-weight: bold;">H. Cas d'utilisation :</span> Ajouter au panier d'achat</h3>
@@ -372,7 +386,7 @@
             4.a.1 La quantité spécifiée par l'utilisateur éxcède celle disponible en stock <br>
             4.a.2 Le système renvoie une erreur et l'ajout est annulé <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur avec le nouvel article ainsi que la quantité demandée et calcul le prix de tous les articles présents <br><br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur avec le nouvel article ainsi que la quantité demandée et calcule le prix de tous les articles présents <br><br>
         </p>
         <p>
             <h3 span style="font-weight: bold;">I. Cas d'utilisation :</span> Retirer du panier d'achat</h3>
@@ -392,59 +406,91 @@
             4.a.1 L'utilisateur choisi de ne rien retirer de son panier<br>
             4.a.2 l'utilisateur annule l'action et retourne vers la page d'acceuil du Unishop <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur en retirant les produits sélectionnés par l'utilisateur et recalcul le prix total du panier <br><br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le panier de l'utilisateur en retirant les produits sélectionnés par l'utilisateur et recalcule le prix total du panier <br><br>
         </p>
-	-----------------------------------------------------------------------------------
-	        <p>
-            <h3 span style="font-weight: bold;">J. Cas d'utilisation :</span> laisser un commentaire au produit </h3>
-            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de laisser en commentaire sa satisfaction sur le produit qu'il a acheté <br>
-            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et l'utilisateur doit avoir acheté le produit à partir de la plateforme <br>
+        <p>
+            <h3 span style="font-weight: bold;">J. Cas d'utilisation :</span> Laisser un commentaire au produit </h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de donner son opinion sur un produit qu'il a acheté <br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop, un compte Unishop et avoir acheté le produit à partir de la plateforme <br>
             <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal, le système est l'acteur secondaire <br>
             <span style="font-weight: bold;">Scénario principal :</span> <br>
             1. L'utilisateur ouvre la plateforme Unishop <br>
-            2. L'utilisateur se connect dans son compte utilisateur <br>
-	    3. L'utilisateur recherche le produit avec les mots clés dans la barre de recherche. <br>
-            4. L'utilisateur choisit l'article qu'il voulait ajouter un commentaire <br>
-	    5. L'utilisateur clique sur le bouton " Ajouter un commentaire " <br>
-	    6. L'utilisateur écrire son commentaire et le nombre d'étoile. <br>
-	    7. L'utilisateur clique sur Finir. <br>
+            2. L'utilisateur se connecte dans son compte utilisateur <br>
+	        3. L'utilisateur recherche le produit avec les mots clés dans la barre de recherche. <br>
+            4. L'utilisateur choisit l'article auquel il souhaite laisser un commentaire <br>
+	        5. L'utilisateur clique sur le bouton " Ajouter un commentaire " <br>
+	        6. L'utilisateur écrit son commentaire et le nombre d'étoile. <br>
+	        7. L'utilisateur clique sur Valider. <br><br>
         
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
             2.a L'utilisateur va dans Commandes pour chercher le produit acheté pour commenter <br>
-	    2.b Retour à l'étape 3 <br>
-	    5.a Le système détecte que l'utilisateur n'a pas encore acheté/commander le produit mais il veut évaluer le produit <br>
-	    5.b Le système affiche le massage " Veuillez acheter avant de laisser une évaluation du produit " <br>
-	    6.a L'utilisateur clique sur " Annuler commentaire " <br>
-	    7.a L'utilisateur clique sur " Annuler commentaire " <br>
+	        2.b Retour à l'étape 3 <br><br>
+	        5.a Le système détecte que l'utilisateur n'a pas encore acheté/commander le produit mais il veut évaluer le produit <br>
+	        5.b Le système affiche le massage " Veuillez acheter avant de laisser une évaluation du produit " <br><br>
+	        6.a L'utilisateur clique sur " Annuler commentaire " <br><br>
+	        7.a L'utilisateur clique sur " Annuler commentaire " <br><br>
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour la liste des commentaires et calculer la moyenne des les étoiles <br><br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour la liste des commentaires et calcule la moyenne des étoiles <br><br>
         </p>
-         -------------------------------------------------------------------------------------------
-	        <p>
+        <p>
             <h3 span style="font-weight: bold;">K. Cas d'utilisation :</span> Faire un retour</h3>
             <span style="font-weight: bold;">But :</span> permet à l'utilisateur de retourner un produit qu'il a acheté <br>
-            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et avoir acheté le produit <br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop, un compte Unishop et avoir acheté le produit <br>
             <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal, le Système et le revendeur est l'acteur secondaire <br>
             <span style="font-weight: bold;">Scénario principal :</span> <br>
             1. L'utilisateur ouvre la plateforme Unishop <br>
-            2. L'utilisateur se connecte dans son compte <br>
-            3. L'utilisateur va dans la Commande <br>
+            2. L'utilisateur se connecte à son compte <br>
+            3. L'utilisateur va dans l'onglet Commande <br>
             4. L'utilisateur clique sur la commande ou le produit qu'il veut retourner <br>
-	    5. L'utilisateur clique sur l'option Retour <br>
+	        5. L'utilisateur clique sur l'option Retour <br>
             6. L'utilisateur lit les instructions de retour <br>
-	    7. L'utilisateur clique sur confirmer.
+	        7. L'utilisateur clique sur confirmer.<br><br>
 								
 
             <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
-            4.a L'utiliser ne trouve pas la Commande ou le produit <br> 
-	    6.a.1 Le système affiche que Le produit n'est pas éligible pour un retour. 
-	    6.b.1 L'utilisateur clique sur Annuler le retour 
-	    7.a L'utilisateur clique sur Annuler le retour 
+            4.a L'utilisateur ne trouve pas la commande ou le produit <br><br>
+	        6.a.1 Le système affiche que le produit n'est pas éligible pour un retour si la commande date d'il y a plus de 30 jours. 
+	        6.b.1 L'utilisateur clique sur Annuler le retour<br><br>
+	        7.a L'utilisateur clique sur Annuler le retour 
 
-            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour de la commande en changeant l'état de la commande à " En retour " et envoie un massage de retour au revendeur <br>
+            <span style="font-weight: bold;">Postconditions :</span> Le système met à jour le statut de la commande pour " En retour " et envoie un massage au revendeur <br>    
         </p>
-             -------------------------------------------------------------------------------------------
-            ...
+        <p>
+            <h3 span style="font-weight: bold;">L. Cas d'utilisation :</span> Signaler un problème</h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de signaler un souci avec une de ses commandes<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop, un compte Unishop et avoir effectué une commande sur la plateforme<br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal et le revendeur est l'acteur secondaire<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L'utilisateur ouvre la plateforme Unishop et se connecte à son compte<br>
+            2. L'utilisateur se rend dans l'onglet Commande <br>
+            3. L'utilisateur sélectionne la commande souhaité <br>
+            4. L'utilisateur clique sur Signaler un problème  <br>
+            5. L'utilisateur sélectionne le problème qui represente sa situation (commande non reçue, mauvais article reçu, produit défectueux, etc.) ou "Autre" <br>
+            6. L'utilisateur ajoute un commentaire texte de sa situation<br>
+            7. L'utilisateur clique sur Envoyer <br><br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br>
+            5.a L'utilisateur clique sur Annuler <br><br>
+            6.a L'utilisateur clique sur Annuler <br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système transmet le message au revendeur et enregistre qu'un problème a été signalé sur la commande <br><br>
+        </p>
+        <p>
+            <h3 span style="font-weight: bold;">M. Cas d'utilisation :</span> Liker un produit</h3>
+            <span style="font-weight: bold;">But :</span> permet à l'utilisateur de faire découvrir un produit aux autres acheteurs<br>
+            <span style="font-weight: bold;">Préconditions :</span> avoir accès à la plateforme Unishop et un compte Unishop<br>
+            <span style="font-weight: bold;">Acteurs :</span> L'utilisateur est l'acteur principal<br>
+            <span style="font-weight: bold;">Scénario principal :</span> <br>
+            1. L'utilisateur ouvre la plateforme Unishop <br>
+            2. L'utilisateur se rconnecte à son compte<br>
+            3. L'utilisateur cherche un prduit souhaité <br>
+            4. L'utilisateur clique sur le produit <br>
+            5. L'utilisateur clique sur le ♡ <br><br>
+
+            <span style="font-weight: bold;">Scénarios alternatifs :</span> <br><br>
+
+            <span style="font-weight: bold;">Postconditions :</span> Le système enregistre que l'utilisateur a liké le produit et met à jour les satistiques du produit <br><br>
+        </p>
     </p>
     <h2>
         Tâche 4 : Risques
@@ -494,30 +540,25 @@
 
                 <b> Solution : </b> Le revendeur doit avoir une autre option de changement d'état de la commande, celle d'annuler la commande et de rembourser le client
             </p> 
-        </p>     
-    </h2>
-    <p>
-        ...
-    </p>
+        </p><br>
+
     <h2>
         Tâche 5 : Exigences non-fonctionnelles
     </h2>
         <p>
-            <b>1.Sécurité :</b> Le logiciel doit garantir la confidentialité totale des informations personnelles de ses utilisateurs, <br> telles que les mots de passe, noms, adresses, etc. Aucune de ces données ne doit être accessible ou divulguée sans autorisation explicite sous peine de perdre la confiance des utilisateurs et d'encourir des risques de fraude ou piratage.
+            <b>1. Sécurité :</b> Le logiciel doit garantir la confidentialité totale des informations personnelles de ses utilisateurs, <br> telles que les mots de passe, noms, adresses, etc. Aucune de ces données ne doit être accessible ou divulguée sans autorisation explicite sous peine de perdre la confiance des utilisateurs et d'encourir des risques de fraude ou piratage.
         </p>
         <p>
-            <b>2.Maintenabilité :</b> Le logiciel doit être conçu de manière à permettre des mises à jour aisées tout en étant capable <br> d'intégrer de nouvelles fonctionnalités de manière transparente au fil du temps. Son architecture modulaire favorisera la maintenance et l'évolution.
+            <b>2. Maintenabilité :</b> Le logiciel doit être conçu de manière à permettre des mises à jour aisées tout en étant capable <br> d'intégrer de nouvelles fonctionnalités de manière transparente au fil du temps. Son architecture modulaire favorisera la maintenance et l'évolution.
         </p>
         <p>
-            <b>3.Internationnalisation :</b> Le logiciel doit être prêt à offrir ses services à un public international, en prenant en compte les besoins <br> linguistiques, culturels et réglementaires spécifiques à chaque région, tout en assurant une expérience utilisateur cohérente.
+            <b>3. Internationnalisation :</b> Le logiciel doit être prêt à offrir ses services à un public international, en prenant en compte les besoins <br> linguistiques, culturels et réglementaires spécifiques à chaque région, tout en assurant une expérience utilisateur cohérente.
         </p>
         <p>
-            <b>4.Communication :</b> Des assistants virtuels ou humains doivent être disponibles en permanence pour fournir <br> une aide immédiate et personnalisée aux utilisateurs en cas de besoin. Une assistance rapide et efficace doit être garantie à tout moment.
+            <b>4. Communication :</b> Des assistants virtuels ou humains doivent être disponibles en permanence pour fournir <br> une aide immédiate et personnalisée aux utilisateurs en cas de besoin. Une assistance rapide et efficace doit être garantie à tout moment.
         </p>
         <p>
-            <b>5.Intuitivité :</b> Le logiciel doit être intuitif et convivial, offrant une expérience fluide et facile à prendre en main, même pour <br> les utilisateurs novices. L'interface utilisateur doit être ergonomique et orientée vers l'utilisateur pour favoriser une utilisation sans effort.
+            <b>5. Intuitivité :</b> Le logiciel doit être intuitif et convivial, offrant une expérience fluide et facile à prendre en main, même pour <br> les utilisateurs novices. L'interface utilisateur doit être ergonomique et orientée vers l'utilisateur pour favoriser une utilisation sans effort.
         </p>
-        ...
-
 </body>
 </html>
