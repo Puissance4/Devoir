@@ -11,22 +11,33 @@ public class Produit {
     float prix;
 
     public Produit (){
-        try (Scanner prod = new Scanner(System.in)) {
-            System.out.println("Titre: ");
+        Scanner prod = Main.getScanner();
+         
+        System.out.println("Titre: ");
             titre= prod.nextLine();
             System.out.println("catégorie :");
-            categorie = prod.nextLine();
+           categorie = prod.nextLine();
             System.out.println("Description: ");
             description= prod.nextLine();
             System.out.println("Marque :");
             marque = prod.nextLine();
             System.out.println("Modèle :");
             modele= prod.nextLine();
-            //System.out.println("Quantité: ");
-           // quantite= demande.nextInt();
-           // System.out.println("Prix: ");
-           // prix= demande.nextFloat();
+            System.out.println("Quantité: ");
+           quantite= prod.nextInt();
+            System.out.println("Prix: ");
+            prix= prod.nextFloat();
+            prod.nextLine();
         }
-
+       
+    public void voirInfo(){
+        System.out.println("Titre: "+ titre
+            +"\ncatégorie: " + categorie 
+            +"\ndescription: " + description 
+            +"\nmarque: " + marque 
+            + "\nmodèle: " + modele
+            +"\nquantité: " + quantite 
+            +"\nprix: " + prix);
     }
-}
+    }
+

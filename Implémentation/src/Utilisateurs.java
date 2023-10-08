@@ -4,9 +4,17 @@ public class Utilisateurs {
     String nom ;
     String addresseCourriel;
     String telephone;
+    public Revendeur inscriptionRevendeur(){
+        
+            return new Revendeur();
+    }
+    public Acheteur inscriptionrAcheteur(){
+        
+            return new Acheteur();
+    }
 
     public void modifierProfil (int choix){
-        try (Scanner modif = new Scanner(System.in)) {
+         Scanner modif = Main.getScanner();
             if (choix==1){
                 System.out.println("Nom :");
                 nom = modif.nextLine();}
@@ -20,4 +28,4 @@ public class Utilisateurs {
 
 
     }
-}
+

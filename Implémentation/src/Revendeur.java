@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Revendeur extends Utilisateurs{
     String adresse;
+    ArrayList<Produit> produits = new ArrayList<Produit>(); // liste de tout les produits qu'il vend
+
     public Revendeur (){
-        try (Scanner demande = new Scanner(System.in)) {
+        Scanner demande = Main.getScanner();
             System.out.println("Nom :");
             super.nom = demande.nextLine();
             System.out.println("Adresse couriel :");
@@ -12,11 +15,12 @@ public class Revendeur extends Utilisateurs{
             super.telephone = demande.nextLine();
             System.out.println("Adresse: ");
             adresse= demande.nextLine();
-        }
+
+        
     }
 
     public void modifierProfil (){
-        try (Scanner demande = new Scanner(System.in)) {
+        Scanner demande = Main.getScanner();
             System.out.println("Que voulez-vous modifier ?\n"
             +" 1-Nom :" + nom 
             +"\n 3-Adresse :" + adresse 
@@ -34,8 +38,33 @@ public class Revendeur extends Utilisateurs{
             }
         }
 
+
+    public void ajouterProduit(){
+        produits.add(new Produit());
+        System.out.println(produits.get(0).titre);
     }
-    public Produit ajouterProduit(){
-       return new Produit();
+    public void voirProduits(){
+        for (int i = 0; i < produits.size(); i++) {
+            System.out.println(i+"- "+produits.get(i).titre);
+          }
+    }
+    public void supprimerProduit(){
+        voirProduits();
+        Scanner demande = Main.getScanner();
+        System.out.println("Quel est l'index du produit à supprimer ?");
+        int choix= demande.nextInt();
+        produits.remove(choix);
+        System.out.println("Voici la nouvelle liste des produits:");
+        voirProduits();
+        
+        
+    }
+    public void voirInfoDuProduit (){
+        voirProduits();
+        Scanner demande = Main.getScanner();
+        System.out.println("Quel est l'index du produit duquel vous voulez les informations ?");
+        int choix= demande.nextInt();
+        produits.get(choix).voirInfo();
+
     }
 }

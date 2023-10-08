@@ -7,7 +7,7 @@ public class Acheteur extends Utilisateurs{
     String addresseExpedition;
 
     public Acheteur (){
-        try (Scanner demande = new Scanner(System.in)) {
+        Scanner demande = Main.getScanner();
             System.out.println("Prénom: ");
             prenom= demande.nextLine();
             System.out.println("Nom :");
@@ -22,13 +22,10 @@ public class Acheteur extends Utilisateurs{
             addresseExpedition= demande.nextLine();
         }
 
-       // System.out.println(nom + " " + prenom + " " + pseudo + " " + addresseCourriel + " " + telephone + " " + addresseExpedition);
-
-
-    }
+       
 
     public void modifierProfil (){
-        try (Scanner demande = new Scanner(System.in)) {
+        Scanner demande = Main.getScanner();
             System.out.println("Que voulez-vous modifier ?\n"
             +"1-Nom :" + nom 
             +"\n 2-Prenom :" + prenom 
@@ -56,7 +53,7 @@ public class Acheteur extends Utilisateurs{
             }
         }
 
-    }
+    
 
     public void likeProduit (){
 
