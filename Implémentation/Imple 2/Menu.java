@@ -1,8 +1,15 @@
+import java.util.Scanner;
+
 public class Menu {
 	private Utilisateur utilisateurConnecte;
 	private int indexPage = 0;
 	public App app;
-	public Systeme syteme;
+	public SystemeCatalogue systemeCatalogue=new SystemeCatalogue();
+	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur();
+	public SystemeGeneral systemeGeneral=new SystemeGeneral();
+
+	private static Scanner scanner = new Scanner(System.in);
+
 
 	public void afficherMessage(String message) {
 		System.out.println(message);
@@ -23,6 +30,7 @@ public class Menu {
         System.out.println("9. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=2;
+		selectOption(prompt());
 	}
 
 	public void AfficherPageRevendeur() {
@@ -39,6 +47,7 @@ public class Menu {
         System.out.println("8. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=1;
+		selectOption(prompt());
 	}
 
 	public void afficherMenuPrincipal() {
@@ -48,13 +57,93 @@ public class Menu {
         System.out.println("3. Afficher le catalogue");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=0;
+		selectOption(prompt());
     }
 
 	public void selectOption(int option) {
-		
-	}
+		if (indexPage==0){
+		switch (option) {
+			case 1:
+				//inscription();
+				break;
+			case 2:
+				//connexion();
+				break;
+			case 3:
+				System.out.println(systemeCatalogue.getCatalogue());
+				break;
+			default:
+				System.out.println("Choix invalide, veuillez réessayer.");
+				break;
+	}}
+	if (indexPage==1){
+	switch (option) {
+		case 1:
+			//ajouterProduit();
+			break;
+		case 2:
+			//ajouterPromotion();
+			break;
+		case 3:
+			//gerer signalement;
+			break;
+		case 4:
+			//modifier profil;
+			break;
+		case 5:
+			//notifications;
+			break;
+		case 6:
+			//metriques	;
+			break;
+		case 7:
+			//confirmer retour;
+			break;
+		case 8:
+			//deconnexion;
+			break;
+		default:
+			System.out.println("Choix invalide, veuillez réessayer.");
+			break;}}
+	if (indexPage==2){
+	switch (option) {
+		case 1:
+			//consulter panier;
+			break;
+		case 2:
+			System.out.println(systemeCatalogue.getCatalogue());
+			break;
+		case 3:
+			//recherche produit;
+			break;
+		case 4:
+			//recherche revendeur;
+			break;
+		case 5:
+			//modifier profil;
+			break;
+		case 6:
+			//notifications;
+			break;
+		case 7:
+			//metriques;
+			break;
+		case 8:
+			//confirmer arrivee commande
+			break;
+		case 9:
+			//deconnexion;
+			break;
+		default:
+			System.out.println("Choix invalide, veuillez réessayer.");
+			break;}}}
 
-	public void prompt() {
+	public int prompt() {
+		int choix = scanner.nextInt();
+		scanner.nextLine();
+		return choix;
+
+
 		
 	}
 

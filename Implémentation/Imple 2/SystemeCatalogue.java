@@ -1,12 +1,12 @@
 public class SystemeCatalogue extends Systeme {
-	private Produit[] _catalogue;
+	private Produit[] catalogue;
 
 	public Produit[] getCatalogue() {
-		return this._catalogue;
+		return this.catalogue;
 	}
 
 	public void setCatalogue(Produit[] aCatalogue) {
-		this._catalogue = aCatalogue;
+		this.catalogue = aCatalogue;
 	}
 
 	public Produit[] recherche(String aMotcle, Filtre[] aFiltres) {
