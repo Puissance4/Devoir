@@ -1,16 +1,18 @@
+import java.util.Date;
+
 public class RetourEchange {
-	private date _dateDemande;
+	private Date _dateDemande;
 	private Produit[] _produits;
 	private String _raison;
 	private EtatsCommande _etat;
 	private int _prix;
 	public Commande _peut_avoir;
 
-	public date getDateDemande() {
+	public Date getDateDemande() {
 		return this._dateDemande;
 	}
 
-	public void setDateDemande(date aDateDemande) {
+	public void setDateDemande(Date aDateDemande) {
 		this._dateDemande = aDateDemande;
 	}
 
@@ -30,11 +32,11 @@ public class RetourEchange {
 		this._raison = aRaison;
 	}
 
-	public EtatCommande getEtat() {
+	public EtatsCommande getEtat() {
 		throw new UnsupportedOperationException();
 	}
 
-	public void setEtat(EtatCommande aEtat) {
+	public void setEtat(EtatsCommande aEtat) {
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Vector;
 
 public class Commande {
@@ -8,7 +9,7 @@ public class Commande {
 	private Carte _carte;
 	private String _id;
 	private EtatsCommande _etat;
-	private date _dateArrivee;
+	private Date _dateArrivee;
 	private String _infoLivraison;
 	private int _numSuivi;
 	private String _compagnieExp;
@@ -76,11 +77,11 @@ public class Commande {
 		this._compagnieExp = aCompagnieExp;
 	}
 
-	public date getDateArrivee() {
+	public Date getDateArrivee() {
 		return this._dateArrivee;
 	}
 
-	public void setDateArrivee(date aDateArrivee) {
+	public void setDateArrivee(Date aDateArrivee) {
 		this._dateArrivee = aDateArrivee;
 	}
 }

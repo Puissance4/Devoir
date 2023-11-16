@@ -1,7 +1,9 @@
+import java.util.Date;
+
 public class SystemeGeneral extends Systeme {
 	private Carte[] _cartes;
 
-	public boolean verifierCarte(date aExpDate, int aNumero, int aPin) {
+	public boolean verifierCarte(Date aExpDate, int aNumero, int aPin) {
 		throw new UnsupportedOperationException();
 	}
 

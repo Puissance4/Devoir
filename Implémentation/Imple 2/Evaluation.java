@@ -2,7 +2,7 @@ public class Evaluation {
 	private int _note;
 	private String _commentaire;
 	public Produit _unnamed_Produit_;
-	public Acheteur _laisse_évalutation;
+	public Acheteur _laisse_evalutation;
 
 	public int getNote() {
 		return this._note;

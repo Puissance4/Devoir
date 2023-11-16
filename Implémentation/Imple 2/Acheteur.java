@@ -1,6 +1,11 @@
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
+	public Acheteur(String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
+		super(nom, prenom, email, motDePasse, adresse, telephone);
+		//TODO Auto-generated constructor stub
+	}
+
 	private String prenom;
 	private String pseudo;
 	private int nombrePoints = 0;

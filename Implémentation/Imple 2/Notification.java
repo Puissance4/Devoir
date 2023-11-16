@@ -7,7 +7,7 @@ public class Notification {
 		return this._categorie;
 	}
 
-	public void setCategorie(categorieNotif aCategorie) {
+	public void setCategorie(CategorieNotif aCategorie) {
 		throw new UnsupportedOperationException();
 	}
 

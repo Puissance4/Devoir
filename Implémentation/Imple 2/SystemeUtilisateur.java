@@ -6,7 +6,7 @@ public class SystemeUtilisateur extends Systeme {
 		throw new UnsupportedOperationException();
 	}
 
-	public void mettreJourQuantitees(commande aCom) {
+	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();
 	}
 

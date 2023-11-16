@@ -1,6 +1,11 @@
 import java.util.Vector;
 
 public class Revendeur extends Utilisateur {
+	public Revendeur(String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
+		super(nom, prenom, email, motDePasse, adresse, telephone);
+		//TODO Auto-generated constructor stub
+	}
+
 	private Produit[] _produits;
 	private int _likes = 0;
 	public Vector<Acheteur> _suit = new Vector<Acheteur>();

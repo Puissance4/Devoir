@@ -1,10 +1,12 @@
+import java.util.Date;
+
 public class Carte {
-	private date _expDate;
+	private Date _expDate;
 	private int _numero;
 	private int _pin;
 	public Acheteur _unnamed_Acheteur_;
 
-	public date getExpDate() {
+	public Date getExpDate() {
 		return this._expDate;
 	}
 

@@ -1,9 +1,17 @@
+import java.util.Date;
+
 public class Promotion extends Produit {
+	public Promotion(String titre, String categorie, String description, String marque, String modele,
+			String identifiant, int quantite, double prix) {
+		super(titre, categorie, description, marque, modele, identifiant, quantite, prix);
+		//TODO Auto-generated constructor stub
+	}
+
 	private float _prix;
 	private int _nombrePointsRapporte;
-	private date _dateFin;
+	private Date _dateFin;
 
-	public float getPrix() {
+	public double getPrix() {
 		return this._prix;
 	}
 
@@ -19,11 +27,11 @@ public class Promotion extends Produit {
 		this._nombrePointsRapporte = aNombrePointsRapporte;
 	}
 
-	public date getDateFin() {
+	public Date getDateFin() {
 		return this._dateFin;
 	}
 
-	public void setDateFin(date aDateFin) {
+	public void setDateFin(Date aDateFin) {
 		this._dateFin = aDateFin;
 	}
 }
