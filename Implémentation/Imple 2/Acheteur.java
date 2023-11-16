@@ -1,9 +1,15 @@
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
-	public Acheteur(String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, prenom, email, motDePasse, adresse, telephone);
-		//TODO Auto-generated constructor stub
+	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
+		super(nom, email, motDePasse, adresse, telephone);
+		this.pseudo = pseudo;
+		this.prenom = prenom;
+		this.nombrePoints = 0;
+		this.revendeursLike = new Revendeur[0];
+		this.produitsLike = new Produit[0];
+		this.acheteurLike = new Acheteur[0];
+		this.notification = new String[0];
 	}
 
 	private String prenom;
@@ -28,32 +34,13 @@ public class Acheteur extends Utilisateur {
 	//	throw new UnsupportedOperationException();
 	//}
 
-	public int getNombrePoints() {
-		return this.nombrePoints;
-	}
-	public String getPrenom() {
-		return this.prenom;
-	}
-
-	public void setNombrePoints(int aNombrePoints) {
-		this.nombrePoints = aNombrePoints;
-	}
-
 	//public void modifRevendeursLike(Revendeur aRevendeur) {
 	//	throw new UnsupportedOperationException();
 	//}
 
-	public Produit[] getProduitsLike() {
-		return this.produitsLike;
-	}
-
 	//public void modifProduitsLike(Produit aProduitsLike) {
 	//	throw new UnsupportedOperationException();
 	//}
-
-	public Acheteur[] getAcheteurLike() {
-		return this.acheteurLike;
-	}
 
 	//public void modifAcheteurLike(Acheteur aAcheteurLike) {
 	//	throw new UnsupportedOperationException();
@@ -63,11 +50,32 @@ public class Acheteur extends Utilisateur {
 	//	throw new UnsupportedOperationException();
 	//}
 
-	public void setNotification(String[] aNotification) {
-		this.notification = aNotification;
-	}
-
 	public void modifierProfil() {
 		throw new UnsupportedOperationException();
+	}
+
+	//getters
+	public String getPseudo() {
+		return pseudo;
+	}
+	public int getNombrePoints() {
+		return this.nombrePoints;
+	}
+	public String getPrenom() {
+		return this.prenom;
+	}
+	public Produit[] getProduitsLike() {
+		return this.produitsLike;
+	}
+	public Acheteur[] getAcheteurLike() {
+		return this.acheteurLike;
+	}
+
+	//setters
+	public void setNombrePoints(int aNombrePoints) {
+		this.nombrePoints = aNombrePoints;
+	}
+	public void setNotification(String[] aNotification) {
+		this.notification = aNotification;
 	}
 }

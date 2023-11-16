@@ -1,8 +1,8 @@
 import java.util.Vector;
 
 public class Revendeur extends Utilisateur {
-	public Revendeur(String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, prenom, email, motDePasse, adresse, telephone);
+	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
+		super(nom, email, motDePasse, adresse, telephone);
 		//TODO Auto-generated constructor stub
 	}
 
@@ -42,4 +42,5 @@ public class Revendeur extends Utilisateur {
 	public void setProduits(Produit[] aProduits) {
 		this._produits = aProduits;
 	}
+
 }
