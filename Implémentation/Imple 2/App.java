@@ -1,7 +1,8 @@
 public class App {
-	public Menu menu1;
+	private static Menu menu1;
 
-	public void main() {
-		throw new UnsupportedOperationException();
+	public static void main(String[] args) {
+		menu1=new Menu();
+		menu1.afficherMenuPrincipal();
 	}
 }

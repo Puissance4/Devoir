@@ -18,6 +18,7 @@ public class Menu {
         System.out.println("4. Faire une recherche de revendeur");
         System.out.println("5. Modifier le profil");
 		System.out.println("6. Voir mes notifications");
+		System.out.println("7. Voir mes métriques");
 		System.out.println("8. Confirmer l'arrivée d'une commande");
         System.out.println("9. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
@@ -28,18 +29,16 @@ public class Menu {
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		String nom=util.getNom();
 		System.out.println("\nBienvenue sur votre page "+nom +" !\n");
-        System.out.println("1. Consulter le panier");
-        System.out.println("2. Afficher le catalogue");
-        System.out.println("3. Faire une recherche de produit ");
-        System.out.println("4. Faire une recherche de revendeur");
-        System.out.println("5. Modifier le profil");
-        System.out.println("6. Deconnexion");
+        System.out.println("1. Ajouter un nouveau produit");
+		System.out.println("2. Offrir une promotion ");
+        System.out.println("3. Gérer un signalement");
+        System.out.println("4. Modifier le profil");
+      	System.out.println("5. Voir mes notifications");
+		System.out.println("6. Voir mes métriques");
+		System.out.println("7. Confirmer l'arrivée d'un retour");
+        System.out.println("8. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
-		this.indexPage=2;
-	}
-
-	public void afficherPageLogin() {
-		throw new UnsupportedOperationException();
+		this.indexPage=1;
 	}
 
 	public void afficherMenuPrincipal() {
@@ -51,12 +50,12 @@ public class Menu {
 		this.indexPage=0;
     }
 
-	public void selectOption(int aOption) {
-		throw new UnsupportedOperationException();
+	public void selectOption(int option) {
+		
 	}
 
 	public void prompt() {
-		throw new UnsupportedOperationException();
+		
 	}
 
 	public void setUtilisateurConnecte(Utilisateur aNouveau) {
