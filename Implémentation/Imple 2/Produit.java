@@ -26,7 +26,7 @@ public class Produit {
 	public Vector<Commande> _comporter = new Vector<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
-	public Vector<Evaluation> evaluation = new Vector<Evaluation>();
+	public Vector<Evaluation> listeEvaluation = new Vector<Evaluation>();
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -50,5 +50,13 @@ public class Produit {
 
 	public String getIdentifiant() {
 		return this._identifiant;
+	}
+	public void setevaluation(Evaluation evaluation) {
+		if(listeEvaluation.size()>0 && listeEvaluation.contains(evaluation)){
+			listeEvaluation.remove(evaluation);
+		}
+		else{
+			listeEvaluation.add(evaluation);
+		}
 	}
 }

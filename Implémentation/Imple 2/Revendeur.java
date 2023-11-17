@@ -4,7 +4,8 @@ import java.util.Scanner;
 
 public class Revendeur extends Utilisateur {
 	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, email, motDePasse, adresse, telephone);
+		super(nom, email, telephone, adresse, motDePasse);
+
 		//TODO Auto-generated constructor stub
 	}
 	
