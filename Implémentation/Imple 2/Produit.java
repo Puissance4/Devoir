@@ -13,7 +13,7 @@ public class Produit {
 		this._lienImageOuVideo = lienImageOuVideo;
 	}
 
-	private String _titre;
+    private String _titre;
 	private Categorie _categorie;
 	private String _description;
 	private int _quantite;

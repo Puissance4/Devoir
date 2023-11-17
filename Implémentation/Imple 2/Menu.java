@@ -77,9 +77,10 @@ public class Menu {
 				break;
 	}}
 	if (indexPage==1){
+		Revendeur util=(Revendeur)utilisateurConnecte;
 	switch (option) {
 		case 1:
-			//ajouterProduit();
+			util.ajouterProduit();
 			break;
 		case 2:
 			//ajouterPromotion();
