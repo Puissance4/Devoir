@@ -1,9 +1,10 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SystemeUtilisateur extends Systeme {
 	private Scanner sc = new Scanner(System.in);
-	private Acheteur[] _listeAcheteurs;
-	private Revendeur[] _listeRevendeurs;
+	public ArrayList<Acheteur> listeAcheteurs;
+	public ArrayList<Revendeur> listeRevendeurs;
 
 	public void connexion() {
 		System.out.println("1. Connexion en tant qu'acheteur");
@@ -36,7 +37,7 @@ public class SystemeUtilisateur extends Systeme {
 		String pseudo = sc.nextLine();
 		System.out.println("Mot de passe : ");
 		String mdp = sc.nextLine();
-		for (Acheteur acheteur : _listeAcheteurs) {
+		for (Acheteur acheteur : listeAcheteurs) {
 			if (acheteur.getPseudo().equals(pseudo) && acheteur.getMotDePasse().equals(mdp)) {
 				return true;
 			} 
@@ -49,7 +50,7 @@ public class SystemeUtilisateur extends Systeme {
 		String email = sc.nextLine();
 		System.out.println("Mot de passe : ");
 		String mdp = sc.nextLine();
-		for (Revendeur revendeur : _listeRevendeurs) {
+		for (Revendeur revendeur : listeRevendeurs) {
 			if (revendeur.getNom().equals(email) && revendeur.getMotDePasse().equals(mdp)) {
 				return true;
 			} 
@@ -90,7 +91,9 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = sc.nextLine();
 		System.out.println("Telephone : ");
 		String telephone = sc.nextLine();
-		return new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
+		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
+		listeAcheteurs.add(acheteurnew);
+		return acheteurnew;
 
 	}
 
@@ -105,8 +108,9 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = sc.nextLine();
 		System.out.println("Telephone : ");
 		String telephone = sc.nextLine();
-		return new Revendeur(nom, email, mdp, adresse, telephone);
-	}
+		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
+		listeRevendeurs.add(revendeurnew);
+		return revendeurnew;}
 
 	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
 		throw new UnsupportedOperationException();

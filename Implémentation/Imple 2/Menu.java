@@ -64,10 +64,10 @@ public class Menu {
 		if (indexPage==0){
 		switch (option) {
 			case 1:
-				//inscription();
+				systemeUtilisateur.inscription();
 				break;
 			case 2:
-				//connexion();
+				systemeUtilisateur.connexion();
 				break;
 			case 3:
 				System.out.println(systemeCatalogue.getCatalogue());

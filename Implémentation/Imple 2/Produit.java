@@ -2,7 +2,7 @@ import java.util.Vector;
 
 public class Produit {
 
-	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo, int nombrePointsRapporte) {
+	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo) {
 		this._titre = titre;
 		this._categorie = categorie;
 		this._description = description;
@@ -11,7 +11,6 @@ public class Produit {
 		this._pointBonus = pointBonus;
 		this._identifiant = identifiant;
 		this._lienImageOuVideo = lienImageOuVideo;
-		this._nombrePointsRapporte = nombrePointsRapporte;
 	}
 
 	private String _titre;
@@ -23,7 +22,6 @@ public class Produit {
 	private String _identifiant;
 	private String _lienImageOuVideo;
 	private int _nombreLike = 0;
-	private int _nombrePointsRapporte;
 	public Vector<Panier> _contient = new Vector<Panier>();
 	public Vector<Commande> _comporter = new Vector<Commande>();
 	public Categorie _unnamed_Categorie_;
