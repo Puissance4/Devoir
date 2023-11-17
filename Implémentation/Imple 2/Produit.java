@@ -26,7 +26,7 @@ public class Produit {
 	public Vector<Commande> _comporter = new Vector<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
-	public Vector<Evaluation> _unnamed_Evaluation_ = new Vector<Evaluation>();
+	public Vector<Evaluation> evaluation = new Vector<Evaluation>();
 
 	public void modifier() {
 		throw new UnsupportedOperationException();

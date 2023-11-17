@@ -24,6 +24,7 @@ public class App {
 		Produit produit3=new Produit("souris", new MaterielInformatique(), "usb", 10, 10.99f, 10, "57","");
 		Produit produit4=new Produit("Calcul 1", new Livres(), "en bon etat", 1, 50f, 50, "58","");
 		Produit produit5=new Produit("Guide etude chimie 3", new Ressource(), "20 pages", 80, 9.99f, 9, "59","");
+		
 		acheteur1.setAcheteurLike(acheteur2);//acheteur 1 suit l'acheteur 2
  
 		List<Revendeur> liste =Arrays.asList(revendeur1,revendeur2,revendeur3,revendeur4,revendeur5);

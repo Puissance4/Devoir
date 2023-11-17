@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class SystemeUtilisateur extends Systeme {
 	private Scanner sc = new Scanner(System.in);
-	public ArrayList<Acheteur> listeAcheteurs;
-	public ArrayList<Revendeur> listeRevendeurs;
+	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
+	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
 
 	public void connexion() {
 		System.out.println("1. Connexion en tant qu'acheteur");
@@ -33,7 +33,7 @@ public class SystemeUtilisateur extends Systeme {
 	}
 
 	public boolean connexionAcheteur() {
-		System.out.println("Psuedo : ");
+		System.out.println("Pseudo : ");
 		String pseudo = sc.nextLine();
 		System.out.println("Mot de passe : ");
 		String mdp = sc.nextLine();
