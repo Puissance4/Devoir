@@ -1,6 +1,19 @@
 import java.util.Vector;
 
 public class Produit {
+
+	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo, int nombrePointsRapporte) {
+		this._titre = titre;
+		this._categorie = categorie;
+		this._description = description;
+		this._quantite = quantite;
+		this._prix = prix;
+		this._pointBonus = pointBonus;
+		this._identifiant = identifiant;
+		this._lienImageOuVideo = lienImageOuVideo;
+		this._nombrePointsRapporte = nombrePointsRapporte;
+	}
+
 	private String _titre;
 	private Categorie _categorie;
 	private String _description;
