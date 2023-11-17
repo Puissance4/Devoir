@@ -9,7 +9,7 @@ public class Revendeur extends Utilisateur {
 	}
 	
 	private Scanner sc = new Scanner(System.in);
-	private ArrayList<Produit> _produits;
+	private ArrayList<Produit> _produits = new ArrayList<Produit>();
 	private int _likes = 0;
 	public Vector<Acheteur> _suit = new Vector<Acheteur>();
 	public MetriquesRevendeurs _unnamed_MetriquesRevendeurs_;
