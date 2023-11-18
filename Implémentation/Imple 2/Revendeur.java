@@ -21,17 +21,11 @@ public class Revendeur extends Utilisateur {
 	public MetriquesRevendeurs _unnamed_MetriquesRevendeurs_;
 
 	public void ajouterProduit() {
-<<<<<<< Updated upstream
-		System.out.println("Titre du produit : ");
-		String titre = sc.nextLine();
-		System.out.println("Categorie du produit : ");
-=======
 		System.out.println("\n");
 		System.out.println("-----------------------------------------------");
 		System.out.println("\nTitre du produit : ");
 		String titre = sc.nextLine();
 		System.out.println("\nCategorie du produit : ");
->>>>>>> Stashed changes
 		System.out.println("1. Livres et manuels");
 		System.out.println("2. Ressources d'apprentissage");
 		System.out.println("3. Articles de papeterie");
@@ -209,15 +203,9 @@ public class Revendeur extends Utilisateur {
 			throw exception;
 
 		}
-<<<<<<< Updated upstream
-		System.out.println("Description du produit : ");
-		String description = sc.nextLine();
-		System.out.println("Quantite du produit : ");
-=======
 		System.out.println("\nDescription du produit : ");
 		String description = sc.nextLine();
 		System.out.println("\nQuantite du produit : ");
->>>>>>> Stashed changes
 		int quantite = sc.nextInt();
 		sc.nextLine();
 		System.out.println("\nPrix du produit : ");
@@ -226,11 +214,7 @@ public class Revendeur extends Utilisateur {
 		System.out.println("\nPoint bonus du produit : ");
 		int pointBonus = sc.nextInt();
 		sc.nextLine();
-<<<<<<< Updated upstream
-		System.out.println("Lien image ou video du produit : ");
-=======
 		System.out.println("\nLien image ou video du produit : ");
->>>>>>> Stashed changes
 		String lienImageOuVideo = sc.nextLine();
 		SystemeGeneral systemeGeneral = new SystemeGeneral();
 		String identifiant = systemeGeneral.creerID();

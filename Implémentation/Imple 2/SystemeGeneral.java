@@ -4,11 +4,7 @@ import java.util.Date;
 
 public class SystemeGeneral extends Systeme {
 	private Carte[] _cartes;
-<<<<<<< Updated upstream
-	private ArrayList<Integer> IDs= new ArrayList<Integer>();
-=======
 	private ArrayList<Integer> IDs = new ArrayList<Integer>();
->>>>>>> Stashed changes
 
 	public boolean verifierCarte(Date aExpDate, int aNumero, int aPin) {
 		throw new UnsupportedOperationException();
