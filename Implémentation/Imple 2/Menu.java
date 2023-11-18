@@ -49,6 +49,7 @@ public class Menu {
 		System.out.println("6. Voir mes métriques");
 		System.out.println("7. Confirmer l'arrivée d'un retour");
         System.out.println("8. Deconnexion");
+		System.out.println("9. Afficher le catalogue");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=1;
 		selectOption(prompt());
@@ -136,6 +137,37 @@ public class Menu {
 		case 8:
 			//deconnexion;
 			break;
+		case 9:
+		if(systemeCatalogue.getCatalogue().size()==0){
+				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
+			}
+			else{
+				System.out.println("--------------------------");
+				for(int i=0;i<systemeCatalogue.getCatalogue().size();i++){
+				Produit produit=systemeCatalogue.getCatalogue().get(i);
+				System.out.println(produit.get_titre()+"..... "+produit.get_prix()+"$        ["+i+"]");}
+			System.out.println("--------------------------");
+			System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");}
+
+			System.out.println("Entrez ["+(systemeCatalogue.getCatalogue().size()) + "] pour revenir au menu principal");
+			int choix;
+			choix = prompt();
+			if(choix==(systemeCatalogue.getCatalogue().size())){
+			afficherPageAcheteur();}
+			else if(choix<=systemeCatalogue.getCatalogue().size()){
+				Produit produitChoisi=systemeCatalogue.getCatalogue().get(choix);
+				systemeCatalogue.afficherProduit(produitChoisi);
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+					if(choix==1){
+						afficherPageRevendeur();}}
+				else if(choix==2){
+					afficherPageRevendeur();
+				}
+				
+			break;
+			
+
 		default:
 			System.out.println("Choix invalide, veuillez réessayer.");
 			break;}}
