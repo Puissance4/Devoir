@@ -7,8 +7,12 @@ public class SystemeUtilisateur extends Systeme {
 	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
 
 	public Utilisateur connexion() throws IllegalArgumentException {
+		System.out.println("\n");
+		System.out.println("-----------------------------------------------");
+		System.out.println("\n");
 		System.out.println("1. Connexion en tant qu'acheteur");
 		System.out.println("2. Connexion en tant que revendeur");
+		System.out.print("\nVeuillez choisir une option : ");
 		int choix = sc.nextInt();
 		sc.nextLine();
 		switch (choix) {
@@ -38,9 +42,9 @@ public class SystemeUtilisateur extends Systeme {
 	}
 
 	public Revendeur connexionRevendeur() throws IllegalArgumentException{
-		System.out.println("Nom : ");
+		System.out.println("\nNom : ");
 		String nom = sc.nextLine();
-		System.out.println("Mot de passe : ");
+		System.out.println("\nMot de passe : ");
 		String mdp = sc.nextLine();
 		for (Revendeur revendeur : listeRevendeurs) {
 			if (revendeur.getNom().equals(nom) && revendeur.getMotDePasse().equals(mdp)) {

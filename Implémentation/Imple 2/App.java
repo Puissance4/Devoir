@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -19,11 +20,11 @@ public class App {
 		Revendeur revendeur3=new Revendeur("Jackson","jackson.jackson@gmail.com", "ilovenyc","7eme avenue","72348945443");
 		Revendeur revendeur4=new Revendeur("Dujardin","jdujardin@gmail.com", "Fleur","boulevard Camelia","5643789292");
 		Revendeur revendeur5=new Revendeur("Poirier","perry.poirrier@gmail.com", "jeprefereslespommes","rue du verger","567894657");
-		Produit produit1=new Produit("ciseaux", new Papeterie(), "rouge", 4, 5.5f, 5, "55","");
-		Produit produit2=new Produit("chaise", new EquipementBureau(), "grande avec accoudoirs", 100, 100f, 100, "56","");
-		Produit produit3=new Produit("souris", new MaterielInformatique(), "usb", 10, 10.99f, 10, "57","");
-		Produit produit4=new Produit("Calcul 1", new Livres(), "en bon etat", 1, 50f, 50, "58","");
-		Produit produit5=new Produit("Guide etude chimie 3", new Ressource(), "20 pages", 80, 9.99f, 9, "59","");
+		Produit produit1=new Produit("ciseaux", new Papeterie("maped","kikoupefort",PapeterieCategorie.Autre), "rouge", 4, 5.5f, 5, "55","");
+		Produit produit2=new Produit("chaise", new EquipementBureau("Ikea","JKLÜSTROSCH",BureauCategorie.ChaiseDeBureau), "grande avec accoudoirs", 100, 100f, 100, "56","");
+		Produit produit3=new Produit("souris", new MaterielInformatique("Logitech","kisallume",LocalDate.of(2020,1,1),InfoCategorie.Souris), "usb", 10, 10.99f, 10, "57","");
+		Produit produit4=new Produit("Calcul 1", new Livres("9783140464079","Antoine de Saint-Exupéry","Lulu Press","Roman",LocalDate.of(1943, 4, 6),"2","3"), "en bon etat", 1, 50f, 50, "58","");
+		Produit produit5=new Produit("Guide etude chimie 3", new Ressource("53829103725415","Jean Chimiste","Chimiste pour la vie",TypeRessource.Electronique,"3"), "20 pages", 80, 9.99f, 9, "59","");
 		produit1.setevaluation(new Evaluation(5, "Coupe super bien!", produit1, acheteur5));
 		acheteur1.setAcheteurLike(acheteur2);//acheteur 1 suit l'acheteur 2
 

@@ -18,6 +18,8 @@ public class Menu {
 	public void afficherPageAcheteur() {
 		Acheteur util=(Acheteur)utilisateurConnecte;
 		String prenom=util.getPrenom();
+		System.out.println("\n");
+		System.out.println("\n---------------------------------------------");
 		System.out.println("\nBienvenue sur votre page "+prenom +" !\n");
         System.out.println("1. Consulter le panier");
         System.out.println("2. Afficher le catalogue");
@@ -36,6 +38,8 @@ public class Menu {
 	public void afficherPageRevendeur() {
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		String nom=util.getNom();
+		System.out.println("\n");
+		System.out.println("\n---------------------------------------------");
 		System.out.println("\nBienvenue sur votre page "+nom +" !\n");
         System.out.println("1. Ajouter un nouveau produit");
 		System.out.println("2. Offrir une promotion ");
@@ -51,6 +55,8 @@ public class Menu {
 	}
 
 	public void afficherMenuPrincipal() {
+		System.out.println("\n");
+		System.out.println("\n---------------------------------------------");
         System.out.println("\nBienvenue sur UniShop !\n");
         System.out.println("1. S'inscrire");
         System.out.println("2. Se connecter");
@@ -103,6 +109,11 @@ public class Menu {
 	switch (option) {
 		case 1:
 			util.ajouterProduit();
+			System.out.println("\n---------------------------------------------");
+			System.out.println("\nProduit ajouté avec succès !");
+			System.out.println("\nAppuyez sur une touche pour revenir au menu principal.");
+			scanner.nextLine();
+			afficherPageRevendeur();
 			break;
 		case 2:
 			//ajouterPromotion();
