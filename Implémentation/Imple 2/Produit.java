@@ -36,12 +36,38 @@ public class Produit {
 		return this._nombreLike;
 	}
 
+	public String get_titre() {
+		return this._titre;
+	}
+	public float get_prix() {
+		return this._prix;
+	}
+	public String getCategorieString(){
+		if (this._categorie instanceof Papeterie){
+			return "Papeterie";
+		}
+		if (this._categorie instanceof Livres){
+			return "Livres et manuels";
+		}
+		if (this._categorie instanceof Ressource){
+			return "Ressource d'apprentissage";
+		}
+		if (this._categorie instanceof MaterielInformatique){
+			return "Matériel Informatique";
+		}
+		if (this._categorie instanceof EquipementBureau){
+			return "Équipement de bureau";
+		}
+		else{
+			return "Pas de catégorie";
+		}
+	}
 	public void setNombreLike(int aNombreLike) {
 		this._nombreLike = aNombreLike;
 	}
 
-	public void ajouterAuPanier(Acheteur aAcheteur) {
-		throw new UnsupportedOperationException();
+	public void ajouterAuPanier(Acheteur acheteur) {
+		acheteur.getPanier().ajouter(this);
 	}
 
 	public Evaluation evaluer(int aNote, String aCommentaire) {
@@ -50,6 +76,18 @@ public class Produit {
 
 	public String getIdentifiant() {
 		return this._identifiant;
+	}
+	public String getDesc() {
+		return this._description;
+	}
+	public int getQuantite() {
+		return this._quantite;
+	}
+	public int getPointsBonus() {
+		return this._pointBonus;
+	}
+	public String getLien() {
+		return this._lienImageOuVideo;
 	}
 	public void setevaluation(Evaluation evaluation) {
 		if(listeEvaluation.size()>0 && listeEvaluation.contains(evaluation)){

@@ -14,9 +14,7 @@ public class SystemeUtilisateur extends Systeme {
 		switch (choix) {
 		case 1:
 				return connexionAcheteur();
-			//catch(IllegalArgumentException exception){
-				//System.out.println("Erreur ce compte n'existe pas");
-			//}
+		
 		case 2:
 				return connexionRevendeur();
 		default:

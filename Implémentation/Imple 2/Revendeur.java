@@ -17,7 +17,7 @@ public class Revendeur extends Utilisateur {
 
 	public void ajouterProduit() {
 		System.out.println("Titre du produit : ");
-		String titre = prompt();
+		String titre = sc.nextLine();
 		System.out.println("Categorie du produit : ");
 		System.out.println("1. Livres et manuels");
 		System.out.println("2. Ressources d'apprentissage");
@@ -41,7 +41,7 @@ public class Revendeur extends Utilisateur {
 			System.out.println("Choix invalide");
 		}
 		System.out.println("Description du produit : ");
-		String description = prompt();
+		String description = sc.nextLine();
 		System.out.println("Quantite du produit : ");
 		int quantite = sc.nextInt();
 		sc.nextLine();
@@ -52,7 +52,7 @@ public class Revendeur extends Utilisateur {
 		int pointBonus = sc.nextInt();
 		sc.nextLine();
 		System.out.println("Lien image ou video du produit : ");
-		String lienImageOuVideo = prompt();
+		String lienImageOuVideo = sc.nextLine();
 		SystemeGeneral systemeGeneral = new SystemeGeneral();
 		String identifiant = systemeGeneral.creerID();
 		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo);

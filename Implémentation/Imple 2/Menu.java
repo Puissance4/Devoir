@@ -78,9 +78,22 @@ public class Menu {
 			catch(IllegalArgumentException exception){
 				System.out.println(exception);
 			}
+			break;
 			case 3:
-				System.out.println(systemeCatalogue.getCatalogue());
-				break;
+			if(systemeCatalogue.getCatalogue().size()==0){
+				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
+			}
+			else{
+				for(int i=0;i<systemeCatalogue.getCatalogue().size();i++){
+				Produit produit=systemeCatalogue.getCatalogue().get(i);
+				System.out.println(produit.get_titre()+"..... "+produit.get_prix()+"$");}}
+
+			int choix = 0;	
+			while(choix!=1){
+			System.out.println("Entrez 1 pour revenir au menu principal");
+			choix = prompt();}
+			afficherMenuPrincipal();
+			break;
 			default:
 				System.out.println("Choix invalide, veuillez réessayer.");
 				break;
@@ -116,12 +129,77 @@ public class Menu {
 			System.out.println("Choix invalide, veuillez réessayer.");
 			break;}}
 	if (indexPage==2){
+		Acheteur util=(Acheteur)utilisateurConnecte;
 	switch (option) {
 		case 1:
-			//consulter panier;
+		Panier panier=util.getPanier();
+		System.out.println("--------------------------");
+		System.out.println("cout: "+ panier.getCout() + "$");
+		System.out.println("Nombre de points bonus: "+ panier.getNombrePoints() + "$");
+		System.out.println("Contenu:");
+		for(int i=0;i<panier.getProduits().size();i++){
+				Produit produit=panier.getProduits().get(i);
+				System.out.println(produit.get_titre()+"..... "+produit.get_prix()+"$        ["+i+"]");}
+		System.out.println("--------------------------");
+		System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations ou le supprimer");
+		System.out.println("Entrez ["+(panier.getProduits().size()) + "] pour commander");
+		System.out.println("Entrez ["+(panier.getProduits().size()+1) + "] pour revenir au menu principal");
+		int choix = prompt();
+			if(choix==(panier.getProduits().size()+1)){
+			afficherPageAcheteur();}
+			else if(choix==panier.getProduits().size()){
+				panier.commander();}
+			else if(choix<=panier.getProduits().size()){
+				Produit produitChoisi=panier.getProduits().get(choix);
+				systemeCatalogue.afficherProduit(produitChoisi);
+				System.out.println("Entrez [1] pour supprimer l'article de votre panier");
+				System.out.println("Entrez [2] pour revenir au menu principal");
+				choix=prompt();
+				if(choix==1){
+					panier.retirerDuPanier(produitChoisi);
+					System.out.println("l'article a été supprimé de votre panier!");
+					System.out.println("Entrez [1] pour revenir au menu principal");
+					choix=prompt();
+					if(choix==1){
+						afficherPageAcheteur();}}
+				else if(choix==2){
+					afficherPageAcheteur();
+				}}
 			break;
 		case 2:
-			System.out.println(systemeCatalogue.getCatalogue());
+			if(systemeCatalogue.getCatalogue().size()==0){
+				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
+			}
+			else{
+				System.out.println("--------------------------");
+				for(int i=0;i<systemeCatalogue.getCatalogue().size();i++){
+				Produit produit=systemeCatalogue.getCatalogue().get(i);
+				System.out.println(produit.get_titre()+"..... "+produit.get_prix()+"$        ["+i+"]");}
+			System.out.println("--------------------------");
+			System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");}
+
+			System.out.println("Entrez ["+(systemeCatalogue.getCatalogue().size()) + "] pour revenir au menu principal");
+			choix = prompt();
+			if(choix==(systemeCatalogue.getCatalogue().size())){
+			afficherPageAcheteur();}
+			else if(choix<=systemeCatalogue.getCatalogue().size()){
+				Produit produitChoisi=systemeCatalogue.getCatalogue().get(choix);
+				systemeCatalogue.afficherProduit(produitChoisi);
+				System.out.println("Entrez [1] pour ajouter l'article à votre panier");
+				System.out.println("Entrez [2] pour revenir au menu principal");
+				choix=prompt();
+				if(choix==1){
+					produitChoisi.ajouterAuPanier(util);
+					System.out.println("l'article a été ajouté à votre panier!");
+					System.out.println("Entrez [1] pour revenir au menu principal");
+					choix=prompt();
+					if(choix==1){
+						afficherPageAcheteur();}}
+				else if(choix==2){
+					afficherPageAcheteur();
+				}
+				
+			}
 			break;
 		case 3:
 			//recherche produit;

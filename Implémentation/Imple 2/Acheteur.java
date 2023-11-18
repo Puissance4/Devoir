@@ -3,14 +3,15 @@ import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
 	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, email, motDePasse, adresse, telephone);
+		super(nom, email, telephone, adresse, motDePasse);
 		this.pseudo = pseudo;
 		this.prenom = prenom;
 		this.nombrePoints = 0;
 		this.revendeursLike = new Revendeur[0];
 		this.produitsLike = new Produit[0];
-		//this.acheteurLike = new Acheteur[0];
+		this.acheteurLike = new ArrayList<Acheteur>();
 		this.notification = new String[0];
+		this.panier=new Panier();
 	}
 
 	private String prenom;
@@ -18,10 +19,10 @@ public class Acheteur extends Utilisateur {
 	private int nombrePoints = 0;
 	private Revendeur[] revendeursLike;
 	private Produit[] produitsLike;
-	private ArrayList<Acheteur> acheteurLike=new ArrayList<Acheteur>();
+	private ArrayList<Acheteur> acheteurLike;
 	private String[] notification;
-	//public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
-	//public Panier _unnamed_Panier_;
+	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
+	public Panier panier;
 	//public Vector<Commande> _unnamed_Commande_ = new Vector<Commande>();
 	//public Vector<Carte> _unnamed_Carte_ = new Vector<Carte>();
 	//public MetriquesAcheteur _unnamed_MetriquesAcheteur_;
@@ -31,9 +32,9 @@ public class Acheteur extends Utilisateur {
 	//	throw new UnsupportedOperationException();
 	//}
 
-	//public Panier getPanier() {
-	//	throw new UnsupportedOperationException();
-	//}
+	public Panier getPanier() {
+		return this.panier;
+	}
 
 	//public void modifRevendeursLike(Revendeur aRevendeur) {
 	//	throw new UnsupportedOperationException();
