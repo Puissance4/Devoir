@@ -1,7 +1,19 @@
 import java.util.Vector;
 
 public class Produit {
-	private String _titre;
+
+	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo) {
+		this._titre = titre;
+		this._categorie = categorie;
+		this._description = description;
+		this._quantite = quantite;
+		this._prix = prix;
+		this._pointBonus = pointBonus;
+		this._identifiant = identifiant;
+		this._lienImageOuVideo = lienImageOuVideo;
+	}
+
+    private String _titre;
 	private Categorie _categorie;
 	private String _description;
 	private int _quantite;
@@ -10,12 +22,11 @@ public class Produit {
 	private String _identifiant;
 	private String _lienImageOuVideo;
 	private int _nombreLike = 0;
-	private int _nombrePointsRapporte;
 	public Vector<Panier> _contient = new Vector<Panier>();
 	public Vector<Commande> _comporter = new Vector<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
-	public Vector<Evaluation> _unnamed_Evaluation_ = new Vector<Evaluation>();
+	public Vector<Evaluation> listeEvaluation = new Vector<Evaluation>();
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -39,5 +50,13 @@ public class Produit {
 
 	public String getIdentifiant() {
 		return this._identifiant;
+	}
+	public void setevaluation(Evaluation evaluation) {
+		if(listeEvaluation.size()>0 && listeEvaluation.contains(evaluation)){
+			listeEvaluation.remove(evaluation);
+		}
+		else{
+			listeEvaluation.add(evaluation);
+		}
 	}
 }

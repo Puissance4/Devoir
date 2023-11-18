@@ -1,60 +1,56 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SystemeUtilisateur extends Systeme {
 	private Scanner sc = new Scanner(System.in);
-	private Acheteur[] _listeAcheteurs;
-	private Revendeur[] _listeRevendeurs;
+	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
+	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
 
-	public void connexion() {
+	public Utilisateur connexion() throws IllegalArgumentException {
 		System.out.println("1. Connexion en tant qu'acheteur");
 		System.out.println("2. Connexion en tant que revendeur");
 		int choix = sc.nextInt();
 		sc.nextLine();
 		switch (choix) {
 		case 1:
-			if (connexionAcheteur()) {
-				System.out.println("Connexion reussie");
-			} else {
-				System.out.println("Connexion echouee");
-			}
-			break;
+				return connexionAcheteur();
+			//catch(IllegalArgumentException exception){
+				//System.out.println("Erreur ce compte n'existe pas");
+			//}
 		case 2:
-			if (connexionRevendeur()) {
-				System.out.println("Connexion reussie");
-			} else {
-				System.out.println("Connexion echouee");
-			}
-			break;
+				return connexionRevendeur();
 		default:
-			System.out.println("Choix invalide");
-			break;
+			IllegalArgumentException exception=new IllegalArgumentException("choix Invalide");
+		throw exception;
 		}
 	}
 
-	public boolean connexionAcheteur() {
-		System.out.println("Psuedo : ");
+	public Acheteur connexionAcheteur() throws IllegalArgumentException {
+		System.out.println("Pseudo : ");
 		String pseudo = sc.nextLine();
 		System.out.println("Mot de passe : ");
 		String mdp = sc.nextLine();
-		for (Acheteur acheteur : _listeAcheteurs) {
+		for (Acheteur acheteur : listeAcheteurs) {
 			if (acheteur.getPseudo().equals(pseudo) && acheteur.getMotDePasse().equals(mdp)) {
-				return true;
+				return acheteur;
 			} 
 		} 
-		return false;
+		IllegalArgumentException exception=new IllegalArgumentException("cet utilisateur n'existe pas");
+		throw exception;
 	}
 
-	public boolean connexionRevendeur() {
+	public Revendeur connexionRevendeur() throws IllegalArgumentException{
 		System.out.println("Nom : ");
-		String email = sc.nextLine();
+		String nom = sc.nextLine();
 		System.out.println("Mot de passe : ");
 		String mdp = sc.nextLine();
-		for (Revendeur revendeur : _listeRevendeurs) {
-			if (revendeur.getNom().equals(email) && revendeur.getMotDePasse().equals(mdp)) {
-				return true;
-			} 
+		for (Revendeur revendeur : listeRevendeurs) {
+			if (revendeur.getNom().equals(nom) && revendeur.getMotDePasse().equals(mdp)) {
+				return revendeur;
+			}
 		} 
-		return false;
+		IllegalArgumentException exception=new IllegalArgumentException("cet utilisateur n'existe pas");
+		throw exception;
 	}
 
 	public void inscription() {
@@ -90,7 +86,9 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = sc.nextLine();
 		System.out.println("Telephone : ");
 		String telephone = sc.nextLine();
-		return new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
+		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
+		listeAcheteurs.add(acheteurnew);
+		return acheteurnew;
 
 	}
 
@@ -105,8 +103,9 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = sc.nextLine();
 		System.out.println("Telephone : ");
 		String telephone = sc.nextLine();
-		return new Revendeur(nom, email, mdp, adresse, telephone);
-	}
+		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
+		listeRevendeurs.add(revendeurnew);
+		return revendeurnew;}
 
 	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
 		throw new UnsupportedOperationException();

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
@@ -8,7 +9,7 @@ public class Acheteur extends Utilisateur {
 		this.nombrePoints = 0;
 		this.revendeursLike = new Revendeur[0];
 		this.produitsLike = new Produit[0];
-		this.acheteurLike = new Acheteur[0];
+		//this.acheteurLike = new Acheteur[0];
 		this.notification = new String[0];
 	}
 
@@ -17,7 +18,7 @@ public class Acheteur extends Utilisateur {
 	private int nombrePoints = 0;
 	private Revendeur[] revendeursLike;
 	private Produit[] produitsLike;
-	private Acheteur[] acheteurLike;
+	private ArrayList<Acheteur> acheteurLike=new ArrayList<Acheteur>();
 	private String[] notification;
 	//public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
 	//public Panier _unnamed_Panier_;
@@ -67,8 +68,16 @@ public class Acheteur extends Utilisateur {
 	public Produit[] getProduitsLike() {
 		return this.produitsLike;
 	}
-	public Acheteur[] getAcheteurLike() {
+	public ArrayList<Acheteur> getAcheteurLike() {
 		return this.acheteurLike;
+	}
+	public void setAcheteurLike(Acheteur acheteur) {
+		if(acheteurLike.size()>0 && acheteurLike.contains(acheteur)){
+			acheteurLike.remove(acheteur);
+		}
+		else{
+			acheteurLike.add(acheteur);
+		}
 	}
 
 	//setters

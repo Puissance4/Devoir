@@ -1,10 +1,9 @@
 import java.util.Date;
 
 public class Promotion extends Produit {
-	public Promotion(String titre, String categorie, String description, String marque, String modele,
-			String identifiant, int quantite, double prix) {
-		super(titre, categorie, description, marque, modele, identifiant, quantite, prix);
-		//TODO Auto-generated constructor stub
+	public Promotion(String titre, Categorie categorie, String description, String marque, String modele,
+			String identifiant, int quantite, float prix, int pointsBonus, Date dateFin, String lienImageOuVideo) {
+		super(titre, categorie, description, quantite, prix, pointsBonus, identifiant, lienImageOuVideo);
 	}
 
 	private float _prix;

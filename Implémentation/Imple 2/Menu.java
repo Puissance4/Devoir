@@ -33,7 +33,7 @@ public class Menu {
 		selectOption(prompt());
 	}
 
-	public void AfficherPageRevendeur() {
+	public void afficherPageRevendeur() {
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		String nom=util.getNom();
 		System.out.println("\nBienvenue sur votre page "+nom +" !\n");
@@ -64,11 +64,20 @@ public class Menu {
 		if (indexPage==0){
 		switch (option) {
 			case 1:
-				//inscription();
+				systemeUtilisateur.inscription();
 				break;
 			case 2:
-				//connexion();
-				break;
+			try{
+				utilisateurConnecte=systemeUtilisateur.connexion();
+			if(utilisateurConnecte instanceof Revendeur){
+				afficherPageRevendeur();
+			}
+			else{
+				afficherPageAcheteur();
+			}}
+			catch(IllegalArgumentException exception){
+				System.out.println(exception);
+			}
 			case 3:
 				System.out.println(systemeCatalogue.getCatalogue());
 				break;
@@ -77,9 +86,10 @@ public class Menu {
 				break;
 	}}
 	if (indexPage==1){
+		Revendeur util=(Revendeur)utilisateurConnecte;
 	switch (option) {
 		case 1:
-			//ajouterProduit();
+			util.ajouterProduit();
 			break;
 		case 2:
 			//ajouterPromotion();

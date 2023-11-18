@@ -1,22 +1,66 @@
 import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Revendeur extends Utilisateur {
 	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, email, motDePasse, adresse, telephone);
+		super(nom, email, telephone, adresse, motDePasse);
+
 		//TODO Auto-generated constructor stub
 	}
-
-	private Produit[] _produits;
+	
+	private Scanner sc = new Scanner(System.in);
+	private ArrayList<Produit> _produits = new ArrayList<Produit>();
 	private int _likes = 0;
 	public Vector<Acheteur> _suit = new Vector<Acheteur>();
 	public MetriquesRevendeurs _unnamed_MetriquesRevendeurs_;
 
-	public Produit[] getProduits() {
-		return this._produits;
+	public void ajouterProduit() {
+		System.out.println("Titre du produit : ");
+		String titre = prompt();
+		System.out.println("Categorie du produit : ");
+		System.out.println("1. Livres et manuels");
+		System.out.println("2. Ressources d'apprentissage");
+		System.out.println("3. Articles de papeterie");
+		System.out.println("4. Matériel informatique");
+		System.out.println("5. Équipement de bureau");
+		Categorie categorie = new Categorie();
+		int choix = sc.nextInt();
+		sc.nextLine();
+		if (choix == 1) {
+			categorie = new Livres();
+		} else if (choix == 2) {
+			categorie = new Ressource();
+		} else if (choix == 3) {
+			categorie = new Papeterie();
+		} else if (choix == 4) {
+			categorie = new MaterielInformatique();
+		} else if (choix == 5) {
+			categorie = new EquipementBureau();
+		} else {
+			System.out.println("Choix invalide");
+		}
+		System.out.println("Description du produit : ");
+		String description = prompt();
+		System.out.println("Quantite du produit : ");
+		int quantite = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Prix du produit : ");
+		float prix = sc.nextFloat();
+		sc.nextLine();
+		System.out.println("Point bonus du produit : ");
+		int pointBonus = sc.nextInt();
+		sc.nextLine();
+		System.out.println("Lien image ou video du produit : ");
+		String lienImageOuVideo = prompt();
+		SystemeGeneral systemeGeneral = new SystemeGeneral();
+		String identifiant = systemeGeneral.creerID();
+		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo);
+		_produits.add(produit);
 	}
 
-	public Produit ajouterProduit() {
-		throw new UnsupportedOperationException();
+	private String prompt() {
+		return null;
 	}
 
 	public int getLikes() {
@@ -37,10 +81,6 @@ public class Revendeur extends Utilisateur {
 
 	public void ajouterPromotion(Produit aProduit) {
 		throw new UnsupportedOperationException();
-	}
-
-	public void setProduits(Produit[] aProduits) {
-		this._produits = aProduits;
 	}
 
 }

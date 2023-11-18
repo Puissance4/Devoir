@@ -1,22 +1,31 @@
 public class Evaluation {
-	private int _note;
-	private String _commentaire;
-	public Produit _unnamed_Produit_;
-	public Acheteur _laisse_evalutation;
+	private int note;
+	private String commentaire;
+	public Produit produit;
+	public Acheteur laisse_evalutation;
+
+	public Evaluation(int note,String commentaire,Produit produit,Acheteur laisse_evaluation) {
+		this.note = note;
+		this.commentaire = commentaire;
+		this.produit = produit;
+		this.laisse_evalutation= laisse_evaluation;
+		
+	}
+
 
 	public int getNote() {
-		return this._note;
+		return this.note;
 	}
 
 	public void setNote(int aNote) {
-		this._note = aNote;
+		this.note = aNote;
 	}
 
 	public String getCommentaire() {
-		return this._commentaire;
+		return this.commentaire;
 	}
 
 	public void setCommentaire(String aCommentaire) {
-		this._commentaire = aCommentaire;
+		this.commentaire = aCommentaire;
 	}
 }
