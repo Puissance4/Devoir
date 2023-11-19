@@ -88,9 +88,6 @@ public class Acheteur extends Utilisateur {
 	public ArrayList<Commande> getCommande(){
 		return this.commandes;
 	}
-	public ArrayList<Produit> getProduitsAchetes(){
-		return this.produitsAchetes;
-	}
 
 	//setters
 	public void setNombrePoints(int aNombrePoints) {
