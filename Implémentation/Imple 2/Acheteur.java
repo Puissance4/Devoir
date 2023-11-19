@@ -21,6 +21,7 @@ public class Acheteur extends Utilisateur {
 	private Produit[] produitsLike;
 	private ArrayList<Acheteur> acheteurLike;
 	private String[] notification;
+	private ArrayList<Produit>produitsAchetes= new ArrayList<>();
 	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
 	public Panier panier;
 	//public Vector<Commande> _unnamed_Commande_ = new Vector<Commande>();
@@ -73,12 +74,15 @@ public class Acheteur extends Utilisateur {
 		return this.acheteurLike;
 	}
 	public void setAcheteurLike(Acheteur acheteur) {
-		if(acheteurLike.size()>0 && acheteurLike.contains(acheteur)){
+		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur)){
 			acheteurLike.remove(acheteur);
 		}
 		else{
 			acheteurLike.add(acheteur);
 		}
+	}
+	public ArrayList<Produit> getProduitsAchetes(){
+		return this.produitsAchetes;
 	}
 
 	//setters
@@ -88,4 +92,5 @@ public class Acheteur extends Utilisateur {
 	public void setNotification(String[] aNotification) {
 		this.notification = aNotification;
 	}
+	public void addProduitsAchetes(Produit produit) {produitsAchetes.add(produit);}
 }
