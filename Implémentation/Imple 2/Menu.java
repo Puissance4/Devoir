@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -67,6 +68,16 @@ public class Menu {
 		selectOption(prompt());
     }
 
+	public void afficherNotification(Utilisateur u){
+		ArrayList<Notification> not = new ArrayList<>();
+
+		for (int i = 0; i < not.size(); i ++) {
+			System.out.println(i + ". " + not.get(i).getCategorie() + ":");
+			System.out.println("	" + not.get(i).getDesc());
+		}
+		System.out.println("Entrez [1] pour revenir au menu principal");
+	}
+
 	public void selectOption(int option) {
 		if (indexPage==0){
 		switch (option) {
@@ -87,7 +98,7 @@ public class Menu {
 			}
 			break;
 			case 3:
-			if(systemeCatalogue.getCatalogue().size()==0){
+			if(systemeCatalogue.getCatalogue().isEmpty()){
 				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
 			}
 			else{
@@ -107,6 +118,7 @@ public class Menu {
 	}}
 	if (indexPage==1){
 		Revendeur util=(Revendeur)utilisateurConnecte;
+		int choix = 0;
 	switch (option) {
 		case 1:
 			util.ajouterProduit();
@@ -126,7 +138,11 @@ public class Menu {
 			//modifier profil;
 			break;
 		case 5:
-			//notifications;
+			afficherNotification(util);
+
+			choix = prompt();
+			if (choix == 0) afficherPageRevendeur();
+			else System.out.println("option indisponible");
 			break;
 		case 6:
 			//metriques	;
@@ -138,7 +154,7 @@ public class Menu {
 			//deconnexion;
 			break;
 		case 9:
-		if(systemeCatalogue.getCatalogue().size()==0){
+		if(systemeCatalogue.getCatalogue().isEmpty()){
 				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
 			}
 			else{
@@ -150,7 +166,6 @@ public class Menu {
 			System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");}
 
 			System.out.println("Entrez ["+(systemeCatalogue.getCatalogue().size()) + "] pour revenir au menu principal");
-			int choix;
 			choix = prompt();
 			if(choix==(systemeCatalogue.getCatalogue().size())){
 			afficherPageAcheteur();}
@@ -173,6 +188,7 @@ public class Menu {
 			break;}}
 	if (indexPage==2){
 		Acheteur util=(Acheteur)utilisateurConnecte;
+		int choix = 0;
 	switch (option) {
 		case 1:
 		Panier panier=util.getPanier();
@@ -187,7 +203,7 @@ public class Menu {
 		System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations ou le supprimer");
 		System.out.println("Entrez ["+(panier.getProduits().size()) + "] pour commander");
 		System.out.println("Entrez ["+(panier.getProduits().size()+1) + "] pour revenir au menu principal");
-		int choix = prompt();
+		choix = prompt();
 			if(choix==(panier.getProduits().size()+1)){
 			afficherPageAcheteur();}
 			else if(choix==panier.getProduits().size()){
@@ -210,7 +226,7 @@ public class Menu {
 				}}
 			break;
 		case 2:
-			if(systemeCatalogue.getCatalogue().size()==0){
+			if(systemeCatalogue.getCatalogue().isEmpty()){
 				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
 			}
 			else{
@@ -254,7 +270,11 @@ public class Menu {
 			//modifier profil;
 			break;
 		case 6:
-			//notifications;
+			afficherNotification(util);
+
+			choix = prompt();
+			if(choix == 0) afficherPageAcheteur();
+			else System.out.println("option indisponible");
 			break;
 		case 7:
 			//metriques;

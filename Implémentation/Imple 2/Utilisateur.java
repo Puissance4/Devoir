@@ -1,4 +1,4 @@
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Utilisateur {
 
@@ -15,13 +15,16 @@ public class Utilisateur {
 	private String telephone;
 	private String adresse;
 	private String motDePasse;
-	public Vector<Notification> _unnamed_Notification_ = new Vector<Notification>();
+	public ArrayList<Notification> notifications = new ArrayList<>();
 
 	public String getNom() {
         return this.nom;
     }
-	 public String getMotDePasse() {
+	public String getMotDePasse() {
 		return this.motDePasse;
+	}
+	public ArrayList<Notification> getNotifications(){
+		return notifications;
 	}
 
 }
