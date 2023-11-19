@@ -87,6 +87,11 @@ public class Commande {
 	public String getID() {
 		return this.id;
 	}
+	public ArrayList<Produit> getProduits() {
+		return this.produits;
+	}
+	
+	
 
 	public void setCompagnieExp(String compagnieExp) {
 		this.compagnieExp = compagnieExp;

@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -28,7 +29,7 @@ public class Menu {
         System.out.println("5. Modifier le profil");
 		System.out.println("6. Voir mes notifications");
 		System.out.println("7. Voir mes métriques");
-		System.out.println("8. Confirmer l'arrivée d'une commande");
+		System.out.println("8. Voir mes commandes");
         System.out.println("9. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=2;
@@ -229,8 +230,7 @@ public class Menu {
 			break;
 			
 		case 2:
-			System.out.println("on entre");
-			System.out.println(option);
+		
 			if(systemeCatalogue.getCatalogue().size()==0){
 				System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
 				
@@ -287,7 +287,42 @@ public class Menu {
 			//metriques;
 			break;
 		case 8:
-			//confirmer arrivee commande
+			ArrayList<Commande> listeCommandes=util.getCommande();
+			if(listeCommandes.isEmpty()){
+				System.out.println("Vous n'avez pas encore passé de commandes");
+			}
+			else{
+			System.out.println("--------------------------");
+				for(int i=0;i<listeCommandes.size();i++){
+					Commande commande=listeCommandes.get(i);
+					System.out.println("Commande: "+ commande.getID() +"..... contenant "+commande.getProduits().size()+" articles ..... Etat:ajouter etat        ["+i+"]");}
+
+				System.out.println("--------------------------");
+				System.out.println("Entrez l'index d'une commande pour obtenir plus d'informations");
+				System.out.println("Entrez ["+(listeCommandes.size()) + "] pour revenir au menu principal");
+				choix = prompt();
+
+				if(choix==(listeCommandes.size())){
+					afficherPageAcheteur();
+					}
+				else if(choix<= listeCommandes.size()){
+					Commande commandeChoisie=listeCommandes.get(choix);
+					//systemeGeneral.afficherCommande(commandeChoisie);
+					System.out.println("Entrez [1] pour modifier l'etat de la commande");
+					System.out.println("Entrez [2] pour signaler la commande ou un produit de la commande");
+					System.out.println("Entrez [3] pour effectuer un retour ou un echange");
+					System.out.println("Entrez [4] pour revenir au menu principal");
+					choix=prompt();
+					if(choix==1){}
+						
+					else if(choix==4){
+						afficherPageAcheteur();
+						
+				}
+				
+			}}
+			
+			
 			break;
 		case 9:
 			//deconnexion;

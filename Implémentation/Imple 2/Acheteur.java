@@ -23,7 +23,7 @@ public class Acheteur extends Utilisateur {
 	private String[] notification;
 	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
 	public Panier panier;
-	//public Vector<Commande> _unnamed_Commande_ = new Vector<Commande>();
+	private ArrayList<Commande> commandes = new ArrayList<Commande>();
 	//public Vector<Carte> _unnamed_Carte_ = new Vector<Carte>();
 	//public MetriquesAcheteur _unnamed_MetriquesAcheteur_;
 	//public Vector<Evaluation> _est__laisse_par_acheteur = new Vector<Evaluation>();
@@ -55,6 +55,9 @@ public class Acheteur extends Utilisateur {
 	public void modifierProfil() {
 		throw new UnsupportedOperationException();
 	}
+	public void addCommande(Commande newCommande){
+		commandes.add(newCommande);
+	}
 
 	//getters
 	public String getPseudo() {
@@ -79,6 +82,9 @@ public class Acheteur extends Utilisateur {
 		else{
 			acheteurLike.add(acheteur);
 		}
+	}
+	public ArrayList<Commande> getCommande(){
+		return this.commandes;
 	}
 
 	//setters
