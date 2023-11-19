@@ -1,5 +1,6 @@
 import java.lang.reflect.Array;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +28,23 @@ public class App {
 		Produit produit5=new Produit("Guide etude chimie 3", new Ressource("53829103725415","Jean Chimiste","Chimiste pour la vie",TypeRessource.Electronique,"3"), "20 pages", 80, 9.99f, 9, "59","");
 		produit1.setevaluation(new Evaluation(5, "Coupe super bien!", produit1, acheteur5));
 		acheteur1.setAcheteurLike(acheteur2);//acheteur 1 suit l'acheteur 2
+		ArrayList<Produit> produits=new ArrayList<Produit>();
+		produits.add(produit1);
+		Carte carte1=new Carte("07/24","123456789","123",acheteur1);
+		Carte carte2=new Carte("12/26","123456789","123",acheteur2);
+		Carte carte3=new Carte("02/25","123456789","123",acheteur3);
+		Commande commande1=new Commande(produits, acheteur1,acheteur1.getAdresse(), acheteur1.getTelephone(), carte1, menu1.systemeGeneral.creerID(), "a gauche");
+		acheteur1.addCommande(commande1);
+		produits.add(produit2);
+		Commande commande2=new Commande(produits, acheteur2,acheteur2.getAdresse(), acheteur2.getTelephone(), carte2, menu1.systemeGeneral.creerID(), "non");
+		commande2.setEtatsCommande(EtatsCommande.EnLivraison);
+		commande2.setCompagnieExp("Fedex");
+		commande2.setNumSuivi("444444");
+		acheteur2.addCommande(commande2);
+		produits.add(produit3);
+		Commande commande3=new Commande(produits, acheteur3,acheteur3.getAdresse(), acheteur3.getTelephone(), carte3, menu1.systemeGeneral.creerID(), "4eme etage");
+		commande3.setEtatsCommande(EtatsCommande.Livre);
+		acheteur3.addCommande(commande3);
 
 		List<Produit> list =Arrays.asList(produit1,produit2,produit3,produit4,produit5);
 		menu1.systemeCatalogue.catalogue.addAll(list);

@@ -51,7 +51,7 @@ public class Panier {
 					if (verif==false){}
 					else{
 						String identifiant=systemeGeneral.creerID();
-						Commande commande= new Commande (cout, produits,acheteur,adresse,telephone, carte, identifiant,infoSupp);
+						Commande commande= new Commande (produits,acheteur,adresse,telephone, carte, identifiant,infoSupp);
 						if(systemeGeneral.verifierCommande(commande)==false){
 							throw new IllegalArgumentException("quantite insuffisante");
 						}

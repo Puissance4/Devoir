@@ -17,8 +17,12 @@ public class Commande {
 	public Acheteur acheteur;
 	public Vector<BilletSignalement> peut_avoir = new Vector<BilletSignalement>();
 
-	public Commande (float cout, ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
-		this.cout=cout;
+	public Commande (ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
+		float prix=0;
+		for(int i=0;i<produits.size();i++){
+			prix+=produits.get(i).get_prix();
+		}
+		this.cout=prix;
 		this.telephone=telephone;
 		this.adresse=adresse;
 		this.produits=produits;
@@ -108,6 +112,9 @@ public class Commande {
 	
 	public EtatsCommande getEtatsCommande() {
 		return this.etat;
+	}
+	public void setEtatsCommande(EtatsCommande etat) {
+		this.etat=etat;
 	}
 
 	public void setCompagnieExp(String compagnieExp) {
