@@ -1,4 +1,4 @@
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Produit {
 
@@ -22,11 +22,11 @@ public class Produit {
 	private String _identifiant;
 	private String _lienImageOuVideo;
 	private int _nombreLike = 0;
-	public Vector<Panier> _contient = new Vector<Panier>();
-	public Vector<Commande> _comporter = new Vector<Commande>();
+	public ArrayList<Panier> _contient = new ArrayList<>();
+	public ArrayList<Commande> _comporter = new ArrayList<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
-	public Vector<Evaluation> listeEvaluation = new Vector<Evaluation>();
+	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -70,8 +70,11 @@ public class Produit {
 		acheteur.getPanier().ajouter(this);
 	}
 
-	public Evaluation evaluer(int aNote, String aCommentaire) {
-		throw new UnsupportedOperationException();
+	public Evaluation evaluer(int note, String commentaire, Acheteur acheteur) {
+		Evaluation evaluation = new Evaluation(note, commentaire, this, acheteur);
+		// Ajouter l'evaluation a la liste
+		listeEvaluation.add(evaluation);
+		return evaluation;
 	}
 
 	public String getIdentifiant() {
@@ -83,6 +86,9 @@ public class Produit {
 	public int getQuantite() {
 		return this._quantite;
 	}
+	public void setQuantite(int q) {
+		 this._quantite=q;
+	}
 	public int getPointsBonus() {
 		return this._pointBonus;
 	}
@@ -90,7 +96,7 @@ public class Produit {
 		return this._lienImageOuVideo;
 	}
 	public void setevaluation(Evaluation evaluation) {
-		if(listeEvaluation.size()>0 && listeEvaluation.contains(evaluation)){
+		if(!listeEvaluation.isEmpty() && listeEvaluation.contains(evaluation)){
 			listeEvaluation.remove(evaluation);
 		}
 		else{

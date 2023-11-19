@@ -1,22 +1,37 @@
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Vector;
 
 public class Commande {
-	private float _cout;
-	private String _adresse;
-	private String _telephone;
-	private Produit[] _produits;
-	private Carte _carte;
-	private String _id;
-	private EtatsCommande _etat;
-	private Date _dateArrivee;
-	private String _infoLivraison;
-	private int _numSuivi;
-	private String _compagnieExp;
-	public Acheteur _unnamed_Acheteur_;
-	public Vector<BilletSignalement> _peut_avoir = new Vector<BilletSignalement>();
-	public Vector<Produit> _comporter = new Vector<Produit>();
+	private float cout;
+	private String adresse;
+	private String telephone;
+	private ArrayList<Produit> produits;
+	private Carte carte;
+	private String id;
+	private EtatsCommande etat;
+	private Date dateArrivee;
+	private String infoLivraison;
+	private String numSuivi;
+	private String compagnieExp;
+	public Acheteur acheteur;
+	public Vector<BilletSignalement> peut_avoir = new Vector<BilletSignalement>();
 
+	public Commande (ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
+		float prix=0;
+		for(int i=0;i<produits.size();i++){
+			prix+=produits.get(i).get_prix();
+		}
+		this.cout=prix;
+		this.telephone=telephone;
+		this.adresse=adresse;
+		this.produits=produits;
+		this.acheteur=acheteur;
+		this.carte=carte;
+		this.id=id;
+		this.infoLivraison=infoLivraison;
+		this.etat= EtatsCommande.EnProduction;
+	}
 	public Retour retour() {
 		throw new UnsupportedOperationException();
 	}
@@ -37,20 +52,20 @@ public class Commande {
 		throw new UnsupportedOperationException();
 	}
 
-	public void setAdresse(String aAdr) {
-		this._adresse = aAdr;
+	public void setAdresse(String adr) {
+		this.adresse = adr;
 	}
 
-	public void setTelephone(String aTel) {
-		this._telephone = aTel;
+	public void setTelephone(String tel) {
+		this.telephone = tel;
 	}
 
-	public void setCarte(Carte aCarte) {
-		this._carte = aCarte;
+	public void setCarte(Carte carte) {
+		this.carte = carte;
 	}
 
-	public void setInfoLivraison(String aInfo) {
-		this._infoLivraison = aInfo;
+	public void setInfoLivraison(String info) {
+		this.infoLivraison = info;
 	}
 
 	public void setID(String aId) {
@@ -61,27 +76,56 @@ public class Commande {
 		throw new UnsupportedOperationException();
 	}
 
-	public int getNumSuivi() {
-		return this._numSuivi;
+	public String getNumSuivi() {
+		return this.numSuivi;
 	}
 
-	public void setNumSuivi(int aNumSuivi) {
-		this._numSuivi = aNumSuivi;
+	public void setNumSuivi(String numSuivi) {
+		this.numSuivi = numSuivi;
 	}
 
 	public String getCompagnieExp() {
-		return this._compagnieExp;
+		return this.compagnieExp;
+	}
+	public String getAdresse() {
+		return this.adresse;
+	}
+	public String getTelephone() {
+		return this.telephone;
+	}
+	public Carte getCarte() {
+		return this.carte;
+	}
+	public String getID() {
+		return this.id;
+	}
+	public float getCout() {
+		return this.cout;
+	}
+	public ArrayList<Produit> getProduits() {
+		return this.produits;
+	}
+	
+	public String getInfoLivraison() {
+		return this.infoLivraison;
+	}
+	
+	public EtatsCommande getEtatsCommande() {
+		return this.etat;
+	}
+	public void setEtatsCommande(EtatsCommande etat) {
+		this.etat=etat;
 	}
 
-	public void setCompagnieExp(String aCompagnieExp) {
-		this._compagnieExp = aCompagnieExp;
+	public void setCompagnieExp(String compagnieExp) {
+		this.compagnieExp = compagnieExp;
 	}
 
 	public Date getDateArrivee() {
-		return this._dateArrivee;
+		return this.dateArrivee;
 	}
 
-	public void setDateArrivee(Date aDateArrivee) {
-		this._dateArrivee = aDateArrivee;
+	public void setDateArrivee(Date dateArrivee) {
+		this.dateArrivee = dateArrivee;
 	}
 }

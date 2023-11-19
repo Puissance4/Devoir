@@ -1,7 +1,7 @@
 public class MetriquesProduit extends Metriques {
 	private int _note;
 	private int _nombreEvaluation = 0;
-	public Produit _unnamed_Produit_;
+	public Produit unnamed_Produit;
 
 	public int getNote() {
 		return this._note;
