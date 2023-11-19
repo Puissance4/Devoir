@@ -23,5 +23,12 @@ public class Utilisateur {
 	 public String getMotDePasse() {
 		return this.motDePasse;
 	}
+	public String getAdresse() {
+        return this.adresse;
+    }
+	public String getTelephone() {
+        return this.telephone;
+    }
+
 
 }
