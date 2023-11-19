@@ -2,13 +2,13 @@ public class Evaluation {
 	private int note;
 	private String commentaire;
 	public Produit produit;
-	public Acheteur laisse_evalutation;
+	public Acheteur acheteur;
 
-	public Evaluation(int note,String commentaire,Produit produit,Acheteur laisse_evaluation) {
+	public Evaluation(int note, String commentaire, Produit produit, Acheteur acheteur) {
 		this.note = note;
 		this.commentaire = commentaire;
 		this.produit = produit;
-		this.laisse_evalutation= laisse_evaluation;
+		this.acheteur= acheteur;
 		
 	}
 
