@@ -12,11 +12,10 @@ public class Commande {
 	private EtatsCommande etat;
 	private Date dateArrivee;
 	private String infoLivraison;
-	private int numSuivi;
+	private String numSuivi;
 	private String compagnieExp;
 	public Acheteur acheteur;
 	public Vector<BilletSignalement> peut_avoir = new Vector<BilletSignalement>();
-	public Vector<Produit> comporter = new Vector<Produit>();
 
 	public Commande (float cout, ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
 		this.cout=cout;
@@ -27,7 +26,7 @@ public class Commande {
 		this.carte=carte;
 		this.id=id;
 		this.infoLivraison=infoLivraison;
-		//this.etat= a ajouter
+		this.etat= EtatsCommande.EnProduction;
 	}
 	public Retour retour() {
 		throw new UnsupportedOperationException();
@@ -73,25 +72,43 @@ public class Commande {
 		throw new UnsupportedOperationException();
 	}
 
-	public int getNumSuivi() {
+	public String getNumSuivi() {
 		return this.numSuivi;
 	}
 
-	public void setNumSuivi(int numSuivi) {
+	public void setNumSuivi(String numSuivi) {
 		this.numSuivi = numSuivi;
 	}
 
 	public String getCompagnieExp() {
 		return this.compagnieExp;
 	}
+	public String getAdresse() {
+		return this.adresse;
+	}
+	public String getTelephone() {
+		return this.telephone;
+	}
+	public Carte getCarte() {
+		return this.carte;
+	}
 	public String getID() {
 		return this.id;
+	}
+	public float getCout() {
+		return this.cout;
 	}
 	public ArrayList<Produit> getProduits() {
 		return this.produits;
 	}
 	
+	public String getInfoLivraison() {
+		return this.infoLivraison;
+	}
 	
+	public EtatsCommande getEtatsCommande() {
+		return this.etat;
+	}
 
 	public void setCompagnieExp(String compagnieExp) {
 		this.compagnieExp = compagnieExp;

@@ -251,28 +251,22 @@ public class Menu {
 				systemeCatalogue.afficherProduit(produitChoisi);
 
 				System.out.println("Entrez [1] pour ajouter l'article à votre panier");
-				System.out.println("Entrez [2] pour evaluer le produit");
-				System.out.println("Entrez [3] pour revenir au menu principal");
+				System.out.println("Entrez [2] pour revenir au menu principal");
 				choix=prompt();
 				if(choix==1){
 					produitChoisi.ajouterAuPanier(util);
 					System.out.println("l'article a été ajouté à votre panier!");
 					System.out.println("Entrez [1] pour revenir au menu principal");
 					choix=prompt();
-					if(choix==1){
-						produitChoisi.ajouterAuPanier(util);
-						System.out.println("l'article a été ajouté à votre panier!");
-						System.out.println("Entrez [1] pour revenir au menu principal");
-						choix=prompt();
-							if(choix==1){
-							afficherPageAcheteur();
-							}}
-					else if(choix==2){
-						afficherPageAcheteur();
+						if(choix==1){
+							afficherPageAcheteur();}
+						}
+				else if(choix==2){
+					afficherPageAcheteur();
 						
 				}
 				
-			}}
+			}
 			
 			break;
 		case 3:
@@ -299,7 +293,7 @@ public class Menu {
 			System.out.println("--------------------------");
 				for(int i=0;i<listeCommandes.size();i++){
 					Commande commande=listeCommandes.get(i);
-					System.out.println("Commande: "+ commande.getID() +"..... contenant "+commande.getProduits().size()+" articles ..... Etat:ajouter etat        ["+i+"]");}
+					System.out.println("Commande: "+ commande.getID() +"..... contenant "+commande.getProduits().size()+" articles ..... Etat:" +commande.getEtatsCommande()+"         ["+i+"]");}
 
 				System.out.println("--------------------------");
 				System.out.println("Entrez l'index d'une commande pour obtenir plus d'informations");
@@ -311,70 +305,69 @@ public class Menu {
 					}
 				else if(choix<= listeCommandes.size()){
 					Commande commandeChoisie=listeCommandes.get(choix);
-					//systemeGeneral.afficherCommande(commandeChoisie);
+					ArrayList<Produit> prodAcht = commandeChoisie.getProduits();
+					System.out.println("--------------------------");
+					System.out.println("     Commande    ");
+					System.out.println("Identifiant"+commandeChoisie.getID());
+					System.out.println("Prix: "+commandeChoisie.getCout());
+					System.out.println("Etat: "+commandeChoisie.getEtatsCommande());
+					System.out.println("");
+					System.out.println("Adresse de livraison: "+commandeChoisie.getAdresse());
+					System.out.println("Telephone: "+commandeChoisie.getTelephone());
+					System.out.println("Numero de carte ayant payé: "+commandeChoisie.getCarte().getNumero());
+					System.out.println("Information additionelles de livraison: "+commandeChoisie.getInfoLivraison());
+					if (commandeChoisie.getEtatsCommande()==EtatsCommande.EnLivraison){
+						System.out.println("Numero de suivi de la commande: "+commandeChoisie.getNumSuivi());
+						System.out.println("Compagnie d'expedition: "+commandeChoisie.getCompagnieExp());
+					}
+					System.out.println("");
+					System.out.println("     Produits:        ");
+					for(int i = 0; i < prodAcht.size(); i++){
+							System.out.println(prodAcht.get(i).get_titre());}
+					System.out.println("--------------------------");
+
 					System.out.println("Entrez [1] pour modifier l'etat de la commande");
 					System.out.println("Entrez [2] pour signaler la commande ou un produit de la commande");
 					System.out.println("Entrez [3] pour effectuer un retour ou un echange");
-					System.out.println("Entrez [4] pour revenir au menu principal");
+					System.out.println("Entrez [4] pour evaluer un produit de la commande");
+					System.out.println("Entrez [5] pour revenir au menu principal");
 					choix=prompt();
 					if(choix==1){}
+					else if(choix==2){}
+					else if(choix==3){
 						
+					}
 					else if(choix==4){
-						afficherPageAcheteur();
-						
-				}
-				
-			}}
-			
-			
-			break;
-		case 9:
-			// Generer un tableau pour les produits achetes
-			ArrayList<Produit> prodAcht = util.getProduitsAchetes();
+						System.out.println("--------------------------");
+						for(int i = 0; i < prodAcht.size(); i++){
+							System.out.println(i + ". " + prodAcht.get(i).get_titre()+"..... "+prodAcht.get(i).get_prix()+"$");}
+						System.out.println("--------------------------");
+						System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");
+						System.out.println("Entrez ["+ (prodAcht.size()) + "] pour revenir au menu principal");
+						choix = prompt();
+						// Revenir au menu
+						if(choix == prodAcht.size()) afficherPageAcheteur();
 
-			// Afficher les produits
-			for(int i = 0; i < prodAcht.size(); i++){
-				System.out.println(i + ". " + prodAcht.get(i).get_titre()+"..... "+prodAcht.get(i).get_prix()+"$");
-			}
-			System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");
-			System.out.println("Entrez ["+ (prodAcht.size()) + "] pour revenir au menu principal");
-
-			choix = prompt();
-			// Revernir au menu
-			if(choix == prodAcht.size()) afficherPageAcheteur();
-			// Afficher la page du produit
-			else if (choix < prodAcht.size()) {
-				Produit produit = prodAcht.get(choix);
-				systemeCatalogue.afficherProduit(produit);
-
-				System.out.println("Entrez [1] pour ajouter l'article à votre panier");
-				System.out.println("Entrez [2] pour evaluer le produit");
-				System.out.println("Entrez [3] pour revenir au menu principal");
-
-				choix = prompt();
-				// Ajouter le produit au panier
-				if (choix == 1){
-					produit.ajouterAuPanier(util);
-					System.out.println("l'article a été ajouté à votre panier!");
-					System.out.println("Entrez [1] pour revenir au menu principal");
-					choix=prompt();
-					if(choix == 1){
-						afficherPageAcheteur();}
-				}
-				// Evaluer le produit
-				else if (choix == 2) {
-					System.out.println("Entrez une note sur 5 au produit");
-					int note = prompt();
-					System.out.println("Voulez-vous ajouter un commentaire?");
-					System.out.println("1. Oui");
-					System.out.println("2. Non");
-					int ajouterCom = prompt();
-					// Ne pas ajouter de commentaire
-					if(ajouterCom == 2) produit.evaluer(note, "", util);
-					// Ajouter un commentaire
-					else if (ajouterCom == 1){
-						System.out.println("Veuillez ecrire votre commentaire ci-dessous");
-						produit.evaluer(note, promptS(), util);
+						// Afficher la page du produit
+						else if (choix < prodAcht.size()) {
+						Produit produit = prodAcht.get(choix);
+						systemeCatalogue.afficherProduit(produit);
+						System.out.println("Entrez [1] pour evaluer le produit");
+						System.out.println("Entrez [2] pour revenir au menu principal");
+						choix = prompt();
+							if (choix == 1) {
+							System.out.println("Entrez une note sur 5 au produit");
+							int note = prompt();
+							System.out.println("Voulez-vous ajouter un commentaire?");
+							System.out.println("1. Oui");
+							System.out.println("2. Non");
+							int ajouterCom = prompt();
+							// Ne pas ajouter de commentaire
+							if(ajouterCom == 2) produit.evaluer(note, "", util);
+							// Ajouter un commentaire
+							else if (ajouterCom == 1){
+								System.out.println("Veuillez ecrire votre commentaire ci-dessous");
+								produit.evaluer(note, promptS(), util);
 					}
 					else System.out.println("Option invalide!");
 					System.out.println("Votre evaluation a etee ajoutee!");
@@ -390,9 +383,19 @@ public class Menu {
 					afficherPageAcheteur();
 				}
 			}
-			//voir produits achetes
+
+
+					}
+					else if(choix==5){
+						afficherPageAcheteur();
+						
+				}
+				
+			}}
+			
+			
 			break;
-		case 10:
+		case 9:
 			System.out.println("Merci d'avoir magasine sur UniShop");
 			System.exit(0);
 			break;
