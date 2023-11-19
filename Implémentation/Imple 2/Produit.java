@@ -86,6 +86,9 @@ public class Produit {
 	public int getQuantite() {
 		return this._quantite;
 	}
+	public void setQuantite(int q) {
+		 this._quantite=q;
+	}
 	public int getPointsBonus() {
 		return this._pointBonus;
 	}
