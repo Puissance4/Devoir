@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f89bf25-cbeb-4592-bff3-00fe3af1b54c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" afterDir="false" />
-    </list>
+    <list default="true" id="5f89bf25-cbeb-4592-bff3-00fe3af1b54c" name="Changes" comment="Notifications" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +64,15 @@
       <option name="presentableId" value="Default" />
       <updated>1700348323670</updated>
     </task>
+    <task id="LOCAL-00001" summary="Notifications">
+      <option name="closed" value="true" />
+      <created>1700449735242</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700449735242</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -89,5 +94,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="Notifications" />
   </component>
 </project>
