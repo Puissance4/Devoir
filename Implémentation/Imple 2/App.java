@@ -55,6 +55,8 @@ public class App {
 		int testRetour[] = {0};
 		System.out.println(commande6.getProduits().get(0).get_titre());
 		Retour retour = new Retour(commande6,testRetour);
+		menu1.getListeRetour().put(retour.getCommande().getID(),retour);
+
 		acheteur1.getListRetourEchange().add(retour);
 
 
