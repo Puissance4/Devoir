@@ -1,9 +1,6 @@
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Vector;
 
 public class Panier {
-	private Scanner sc = new Scanner(System.in);
 	private float cout;
 	private int nombreDePoints;
 	private ArrayList<Produit> produits;
@@ -13,9 +10,9 @@ public class Panier {
 		this.produits=new ArrayList<Produit>();
 	}
 
-	public Commande commander(Acheteur acheteur, SystemeGeneral systemeGeneral) throws IllegalArgumentException {
+	public Commande commander(Acheteur acheteur,Menu menu) throws IllegalStateException {
 		if (produits.size()==0){
-			throw new IllegalArgumentException("il faut que le panier contienne au moins 1 produit pour commander");
+			throw new IllegalStateException("il faut que le panier contienne au moins 1 produit pour commander");
 		}
 		else{
 			String adresse= acheteur.getAdresse();
@@ -23,37 +20,37 @@ public class Panier {
 			System.out.println("Souhaitez vous commander avec cette adresse: "+ adresse);
 			System.out.println("Et ce numéro de téléphone: "+ telephone);
 			System.out.println("Entrez [1] si oui et [2] si non : ");
-			int choix = sc.nextInt();
+			int choix = menu.prompt();
 			if (choix==2){
 				System.out.println("Entrez l'adresse pour la commande: ");
-				adresse=sc.nextLine();
+				adresse=menu.promptS();
 				System.out.println("Entrez le numéro de téléphone pour la commande: ");
-				telephone=sc.nextLine();
+				telephone=menu.promptS();
 			}
 			if (choix==1 ||choix==2){
-				sc.nextLine();
+				menu.promptS();
 				System.out.println("Entrez le numéro de carte pour la commande: ");
-				String numCarte=sc.nextLine();
+				String numCarte=menu.promptS();
 				System.out.println("Entrez la date d'expiration de la carte: ");
-				String dateExp=sc.nextLine();
+				String dateExp=menu.promptS();
 				System.out.println("Entrez le numéro de confirmation de la carte: ");
-				String numConf=sc.nextLine();
+				String numConf=menu.promptS();
 				System.out.println("Avez vous des informations supplémentaires pour la livraison? (Entrez non si ce n'est pas le cas): ");
-				String infoSupp=sc.nextLine();
+				String infoSupp=menu.promptS();
 				Carte carte=new Carte(dateExp, numCarte, numConf, acheteur);
 				System.out.println("Entrez [1] pour confirmer la commande ou [2] pour annuler et revenir au panier");
-				choix=sc.nextInt();
+				choix=menu.prompt();
 				if (choix==2){
 					throw new IllegalArgumentException("retour au panier");
 				}
 				else if (choix==1){
-					Boolean verif=systemeGeneral.verifierCarte(carte);
+					Boolean verif=menu.systemeGeneral.verifierCarte(carte);
 					if (verif==false){}
 					else{
-						String identifiant=systemeGeneral.creerID();
+						String identifiant=menu.systemeGeneral.creerID();
 						Commande commande= new Commande (produits,acheteur,adresse,telephone, carte, identifiant,infoSupp);
-						if(systemeGeneral.verifierCommande(commande)==false){
-							throw new IllegalArgumentException("quantite insuffisante");
+						if(menu.systemeGeneral.verifierCommande(commande)==false){
+							throw new IllegalStateException("quantite insuffisante");
 						}
 						else{
 							acheteur.addCommande(commande);
