@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Produit {
@@ -22,11 +24,24 @@ public class Produit {
 	private String _identifiant;
 	private String _lienImageOuVideo;
 	private int _nombreLike = 0;
+	private int prixPromotionnel;
+	private int pointBonusPromotionnel;
+	private LocalDate dateFinPromotion;
 	public ArrayList<Panier> _contient = new ArrayList<>();
 	public ArrayList<Commande> _comporter = new ArrayList<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
+
+	public boolean isPromotionValide(Produit produit) {
+    	return produit.getFinPromotion().isAfter(LocalDate.now());
+	}
+
+
+	private LocalDate getFinPromotion() {
+		return this.dateFinPromotion;
+	}
+
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -39,8 +54,12 @@ public class Produit {
 	public String get_titre() {
 		return this._titre;
 	}
-	public float get_prix() {
-		return this._prix;
+	public float get_prix(Produit produit) {
+		if (produit.isPromotionValide()) {
+			return produit.getPrixPromotionnel();
+		} else {
+			return produit.getPrix();
+		}
 	}
 	public String getCategorieString(){
 		if (this._categorie instanceof Papeterie){
@@ -102,5 +121,29 @@ public class Produit {
 		else{
 			listeEvaluation.add(evaluation);
 		}
+	}
+
+    public Categorie get_categorie() {
+        return _categorie;
+    }
+
+    public String get_description() {
+        return _description;
+    }
+
+    public String get_lienImageOuVideo() {
+        return _lienImageOuVideo;
+    }
+
+	public void setFinPromotion(LocalDate dateFin) {
+		this.dateFinPromotion = dateFin;
+	}
+
+	public void setPrixPromotionnel(float prix) {
+		this.prixPromotionnel = (int) prix;
+	}
+
+	public void setPointBonusPromotionnel(int pointBonus) {
+		this.pointBonusPromotionnel = pointBonus;
 	}
 }

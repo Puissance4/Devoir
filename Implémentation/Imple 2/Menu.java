@@ -130,7 +130,7 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 2:
-			//ajouterPromotion();
+			util.menuPromotion();
 			break;
 		case 3:
 			//gerer signalement;

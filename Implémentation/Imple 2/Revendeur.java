@@ -37,14 +37,34 @@ public class Revendeur extends Utilisateur {
 	
 		int choix = menu.prompt();
 		if (choix == 1) {
+			Genre genre=null;
 			System.out.println("\nISBN du produit : ");
 			String isbn = menu.promptS();
 			System.out.println("\nAuteur :");
 			String auteur = menu.promptS();
 			System.out.println("\nMaison d'edition : ");
 			String maisonEdition = menu.promptS();
+			while (genre==null) {
 			System.out.println("\nGenre :");
-			String genre = menu.promptS();
+			System.out.println("1. Manuel");
+			System.out.println("2. Roman");
+			System.out.println("3. Bande dessinee");
+			System.out.println("4. Documentaire");
+			System.out.println("5. Autre");
+			int choix2 = menu.prompt();
+			if (choix2 == 1) {
+				genre = Genre.Manuel;
+			} else if (choix2 == 2) {
+				genre = Genre.Roman;
+			} else if (choix2 == 3) {
+				genre = Genre.BandeDessinee;
+			} else if (choix2 == 4) {
+				genre = Genre.Documentaire;
+			} else if (choix2 == 5) {
+				genre = Genre.Autre;
+			} else {
+				System.out.println("Choix invalide veuillez choisir une option entre 1 et 5");
+			}}
 			System.out.println("\nAnnee de parution (AAAA): ");
 			int anneeParution = menu.prompt();
 			System.out.println("\nMois de parution (numerique): ");
@@ -94,7 +114,8 @@ public class Revendeur extends Utilisateur {
 			if (numeroEdition.equals("non")) {
 				numeroEdition = null;
 			}
-			categorie = new Ressource(isbn, auteur, organisation, type, numeroEdition);
+			LocalDate dateParution = LocalDate.of(anneeParution, moisParution, jourParution);
+			categorie = new Ressource(isbn, auteur, organisation,dateParution, type, numeroEdition);
 			cat=true;
 		} else if (choix == 3) {
 			PapeterieCategorie sousCategorie=null;
@@ -234,8 +255,58 @@ public class Revendeur extends Utilisateur {
 		throw new UnsupportedOperationException();
 	}
 
-	public void ajouterPromotion(Produit aProduit) {
-		throw new UnsupportedOperationException();
+	public void ajouterPromotionPrix(Produit produit, float prix, int duree) {
+		produit.setPrixPromotionnel(prix);
+		produit.setFinPromotion(LocalDate.now().plusDays(duree));
 	}
 
+	public void ajouterPromotionPoints(Produit produit, int points, int duree) {
+		produit.setPointBonusPromotionnel(points);
+		produit.setFinPromotion(LocalDate.now().plusDays(duree));
+	}
+
+    public void menuPromotion(Menu menu) {
+		System.out.println("\n---------------------------------------------");
+		System.out.println("Sur quel produit voulez-vous ajouter une promotion?");
+		//afficher les produits du revendeur
+		for (int i = 1; i-1 < _produits.size(); i++) {
+			System.out.println(i + ". " + _produits.get(i-1).get_titre());
+    	}
+		System.out.print("\nVeuillez choisir une option : ");
+		int choix = menu.prompt();
+		if (choix > 0 && choix <= _produits.size()) {
+			boolean cat=false;
+			while (cat==false) {
+			System.out.println("\n---------------------------------------------");
+			System.out.println("\nQuel type de promotion voulez-vous appliquer ?");
+			System.out.println("1. Promotion sur le prix");
+			System.out.println("2. Promotion sur les points");
+			System.out.print("\nVeuillez choisir une option : ");
+			int choix2 = menu.prompt();
+			if (choix2 == 1) {
+				System.out.println("\nQuel sera le nouveau prix du produit?");
+				System.out.print("\nVeuillez entrer un prix : ");
+				float prix = menu.promptF();
+				System.out.println("\nCombien de temps voulez-vous que la promotion soit active?");
+				System.out.print("\nVeuillez entrer un nombre de jours : ");
+				int duree = menu.prompt();
+				ajouterPromotionPrix(_produits.get(choix-1), prix, duree);
+				cat=true;
+			} else if (choix2 == 2) {
+				System.out.println("\nCombien de points voulez-vous que le produit rapporte?");
+				System.out.print("\nVeuillez entrer un nombre de points : ");
+				int points = menu.prompt();
+				System.out.println("\nCombien de temps voulez-vous que la promotion soit active?");
+				System.out.print("\nVeuillez entrer un nombre de jours : ");
+				int duree = menu.prompt();
+				ajouterPromotionPoints(_produits.get(choix-1), points, duree);
+				cat=true;
+			} else {
+				System.out.println("Choix invalide veuillez choisir une option entre 1 et 2");
+			}
+		}
+		} else {
+			System.out.println("Choix invalide veuillez choisir une option entre 1 et " + _produits.size());
+		}	
+	}
 }
