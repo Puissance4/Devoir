@@ -1,5 +1,5 @@
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Produit {
 
@@ -13,6 +13,7 @@ public class Produit {
 		this._identifiant = identifiant;
 		this._lienImageOuVideo = lienImageOuVideo;
 	}
+	Revendeur revendeur;
 
     private String _titre;
 	private Categorie _categorie;
@@ -22,23 +23,13 @@ public class Produit {
 	private int _pointBonus;
 	private String _identifiant;
 	private String _lienImageOuVideo;
+
 	private int _nombreLike = 0;
-	private int prixPromotionnel;
-	private int pointBonusPromotionnel;
-	private LocalDate dateFinPromotion;
 	public ArrayList<Panier> _contient = new ArrayList<>();
 	public ArrayList<Commande> _comporter = new ArrayList<Commande>();
 	public Categorie _unnamed_Categorie_;
 	public MetriquesProduit _unnamed_MetriquesProduit_;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
-
-	public boolean isPromotionValide() {
-		if (this.dateFinPromotion == null) {
-			return false;
-		} else {
-			return LocalDate.now().isBefore(this.dateFinPromotion);
-		}
-	}
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -52,13 +43,8 @@ public class Produit {
 		return this._titre;
 	}
 	public float get_prix() {
-		if (this.isPromotionValide()) {
-			return this.prixPromotionnel;
-		} else {
-			return this._prix;
-		}
+		return this._prix;
 	}
-
 	public String getCategorieString(){
 		if (this._categorie instanceof Papeterie){
 			return "Papeterie";
@@ -107,11 +93,7 @@ public class Produit {
 		 this._quantite=q;
 	}
 	public int getPointsBonus() {
-		if (this.isPromotionValide()) {
-			return this.pointBonusPromotionnel;
-		} else {
-			return this._pointBonus;
-		}
+		return this._pointBonus;
 	}
 	public String getLien() {
 		return this._lienImageOuVideo;
@@ -125,27 +107,13 @@ public class Produit {
 		}
 	}
 
-    public Categorie get_categorie() {
-        return _categorie;
-    }
-
-    public String get_description() {
-        return _description;
-    }
-
-    public String get_lienImageOuVideo() {
-        return _lienImageOuVideo;
-    }
-
-	public void setFinPromotion(LocalDate dateFin) {
-		this.dateFinPromotion = dateFin;
+	public Revendeur getRevendeur() {
+		return revendeur;
 	}
 
-	public void setPrixPromotionnel(float prix) {
-		this.prixPromotionnel = (int) prix;
+	public void setRevendeur(Revendeur revendeur) {
+		this.revendeur = revendeur;
 	}
 
-	public void setPointBonusPromotionnel(int pointBonus) {
-		this.pointBonusPromotionnel = pointBonus;
-	}
+
 }
