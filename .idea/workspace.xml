@@ -1,65 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="5f89bf25-cbeb-4592-bff3-00fe3af1b54c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Devoir.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/UniShop.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Implémentation/Imple1/Imple1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Implémentation/Implémentation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyse/Diagramme d'activité principal.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Analyse/Diagramme d'activité principal.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyse/Evaluation produit diagramme sequence.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Analyse/Evaluation produit diagramme sequence.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyse/Evaluer produit diagramme activite.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Analyse/Evaluer produit diagramme activite.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyse/Offrir un produit diagramme d'activité.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Analyse/Offrir un produit diagramme d'activité.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Analyse/rapport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Analyse/rapport.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conception/Offrir un produit diagramme de séquence.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Conception/Offrir un produit diagramme de séquence.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exigences/glossaire.html" beforeDir="false" afterPath="$PROJECT_DIR$/Exigences/glossaire.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Exigences/rapport.html" beforeDir="false" afterPath="$PROJECT_DIR$/Exigences/rapport.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Acheteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Acheteur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/BilletSignalement.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/BilletSignalement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/BureauCategorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/BureauCategorie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Carte.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Carte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Categorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Categorie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/CategorieNotif.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/CategorieNotif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Commande.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Commande.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Echange.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Echange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/EquipementBureau.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/EquipementBureau.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/EtatsCommande.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/EtatsCommande.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Evaluation.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Evaluation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Filtre.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Filtre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/FiltreProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/FiltreProduit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/FiltreRevendeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/FiltreRevendeur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/FiltresRevendeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/FiltresRevendeur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Genre.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Genre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/InfoCategorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/InfoCategorie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Livres.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Livres.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/MaterielInformatique.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/MaterielInformatique.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Metriques.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Metriques.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesAcheteur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesAcheteur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesProduit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesProduit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesRevendeurs.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/MetriquesRevendeurs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Panier.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Panier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Papeterie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Papeterie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/PapeterieCategorie.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/PapeterieCategorie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Ressource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Ressource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Retour.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Retour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/RetourEchange.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/RetourEchange.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Systeme.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Systeme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeCatalogue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeCatalogue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeGeneral.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeGeneral.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeUtilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/SystemeUtilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/TypeRessource.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/TypeRessource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Utilisateur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple1/src/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple1/src/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +20,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mahdi267&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="fcf6d8b2-9f1d-478b-b940-3ed1229a1b90" />
+        <option name="url" value="https://github.com/Puissance4/Devoir.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -87,6 +53,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Rebasing notification",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",

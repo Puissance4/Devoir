@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Produit {
 
-	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo) {
+	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo, Revendeur revendeur) {
 		this._titre = titre;
 		this._categorie = categorie;
 		this._description = description;
@@ -11,6 +11,7 @@ public class Produit {
 		this._pointBonus = pointBonus;
 		this._identifiant = identifiant;
 		this._lienImageOuVideo = lienImageOuVideo;
+		this.revendeur = revendeur;
 	}
 
     private String _titre;
@@ -22,6 +23,7 @@ public class Produit {
 	private String _identifiant;
 	private String _lienImageOuVideo;
 	private int _nombreLike = 0;
+	private  Revendeur revendeur;
 	public ArrayList<Panier> _contient = new ArrayList<>();
 	public ArrayList<Commande> _comporter = new ArrayList<Commande>();
 	public Categorie _unnamed_Categorie_;
@@ -41,6 +43,9 @@ public class Produit {
 	}
 	public float get_prix() {
 		return this._prix;
+	}
+	public Revendeur getRevendeur(){
+		return this.revendeur;
 	}
 	public String getCategorieString(){
 		if (this._categorie instanceof Papeterie){

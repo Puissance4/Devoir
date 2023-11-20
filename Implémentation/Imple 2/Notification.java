@@ -1,21 +1,25 @@
 public class Notification {
-	private CategorieNotif _categorie;
-	private String _desc;
-	public Utilisateur _unnamed_Utilisateur_;
-
-	public CategorieNotif getCategorie() {
-		return this._categorie;
+	// Constructor
+	public Notification(CategorieNotif categorie, String description){
+		this.description = description;
+		this.categorie = categorie;
 	}
 
+	// Attributs
+	private CategorieNotif categorie;
+	private String description;
+
+	// Public methods
+	public CategorieNotif getCategorie() {
+		return this.categorie;
+	}
 	public void setCategorie(CategorieNotif aCategorie) {
 		throw new UnsupportedOperationException();
 	}
-
 	public String getDesc() {
-		return this._desc;
+		return this.description;
 	}
-
 	public void setDesc(String aDesc) {
-		this._desc = aDesc;
+		this.description = aDesc;
 	}
 }
