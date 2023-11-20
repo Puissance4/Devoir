@@ -218,7 +218,7 @@ public class Revendeur extends Utilisateur {
 		String lienImageOuVideo = sc.nextLine();
 		SystemeGeneral systemeGeneral = new SystemeGeneral();
 		String identifiant = systemeGeneral.creerID();
-		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo);
+		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo, this);
 		_produits.add(produit);
 	}
 

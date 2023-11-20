@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="5f89bf25-cbeb-4592-bff3-00fe3af1b54c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/CategorieNotif.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/CategorieNotif.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Notification.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Notification.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Produit.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Produit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Utilisateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Utilisateur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Promotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" beforeDir="false" afterPath="$PROJECT_DIR$/Implémentation/Imple 2/Revendeur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Rebasing notification",
+    "git-widget-placeholder": "notification",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",

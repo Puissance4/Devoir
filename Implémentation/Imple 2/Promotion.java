@@ -2,13 +2,14 @@ import java.util.Date;
 
 public class Promotion extends Produit {
 	public Promotion(String titre, Categorie categorie, String description, String marque, String modele,
-			String identifiant, int quantite, float prix, int pointsBonus, Date dateFin, String lienImageOuVideo) {
-		super(titre, categorie, description, quantite, prix, pointsBonus, identifiant, lienImageOuVideo);
+			String identifiant, int quantite, float prix, int pointsBonus, Date dateFin, String lienImageOuVideo, Revendeur revendeur) {
+		super(titre, categorie, description, quantite, prix, pointsBonus, identifiant, lienImageOuVideo, revendeur);
 	}
 
 	private float _prix;
 	private int _nombrePointsRapporte;
 	private Date _dateFin;
+	private Revendeur revendeur;
 
 	public double getPrix() {
 		return this._prix;
