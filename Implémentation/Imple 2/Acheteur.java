@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
@@ -14,7 +13,8 @@ public class Acheteur extends Utilisateur {
 		this.notification = new String[0];
 		this.panier=new Panier();
 	}
-	
+	private ArrayList<RetourEchange> listRetourEchange = new ArrayList<>();
+
 	private String prenom;
 	private String pseudo;
 	private int nombrePoints = 0;
@@ -54,23 +54,12 @@ public class Acheteur extends Utilisateur {
 	//	throw new UnsupportedOperationException();
 	//}
 
-	public void modifierProfil(Menu menu) {
-		super.modifierProfil(menu);
-	
-		System.out.println("Souhaitez vous conserver le prenom "+this.prenom);
-		String nouveau=modif("prenom",menu);
-		if(nouveau!=""){this.prenom=nouveau;}
-    
-		System.out.println("Souhaitez vous conserver le pseudo "+this.pseudo);
-		nouveau=modif("pseudo",menu);
-		if(nouveau!=""){this.pseudo=nouveau;}
-    
-        System.out.println("Profil mis à jour avec succès !");
+	public void modifierProfil() {
+		throw new UnsupportedOperationException();
 	}
 	public void addCommande(Commande newCommande){
 		commandes.add(newCommande);
 	}
-
 	//getters
 	public String getPseudo() {
 		return pseudo;
@@ -99,6 +88,8 @@ public class Acheteur extends Utilisateur {
 	public ArrayList<Commande> getCommande(){
 		return this.commandes;
 	}
+	public ArrayList<RetourEchange> getListRetourEchange() {return listRetourEchange;}
+
 
 	//setters
 	public void setNombrePoints(int aNombrePoints) {
@@ -108,4 +99,5 @@ public class Acheteur extends Utilisateur {
 		this.notification = aNotification;
 	}
 	public void addProduitsAchetes(Produit produit) {produitsAchetes.add(produit);}
+	public void setListRetourEchange(ArrayList<RetourEchange> listRetourEchange) {this.listRetourEchange = listRetourEchange;}
 }
