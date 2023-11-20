@@ -3,10 +3,12 @@ import javax.xml.transform.Source;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Menu {
     private Utilisateur utilisateurConnecte;
+    private HashMap <String,RetourEchange> listeRetour= new HashMap<>();
     private int indexPage = 0;
     public App app;
     public SystemeCatalogue systemeCatalogue = new SystemeCatalogue();
@@ -154,7 +156,9 @@ public class Menu {
                     //metriques	;
                     break;
                 case 7:
-                    //confirmer retour;
+
+                        ((Revendeur)utilisateurConnecte).confirmerReceptionRetour(saisirIDCommande());
+
                     break;
                 case 8:
                     afficherCatalogue();
@@ -453,7 +457,6 @@ public class Menu {
                 afficherRetourEchange(choix, commande);
         }
     }
-
     public int[] choisirProduitRetour(Commande commande) {
         System.out.println("     Produits:        ");
         for (int i = 0; i < commande.getProduits().size(); i++) {
@@ -539,13 +542,47 @@ public class Menu {
         System.out.println(" Choisir un produit pour le retour , pour le retour de plusieurs produits, mettre une espace entre chaque nombre");
         Retour retour = new Retour(commande, choisirProduitRetour(commande));
         retour.effectuerRetour();
+        listeRetour.put(retour.getCommande().getID(), retour);
         ((Acheteur) utilisateurConnecte).getListRetourEchange().add(retour);
     }
     public void echange(Commande commande){
         System.out.println(" Choisir un produit pour le echange, , pour l'echange de plusieurs produits, mettre une espace entre chaque nombre");
         Echange echange = new Echange(commande,choisirProduitRetour(commande ), choisirProduitEchange(commande));
         echange.effectuerEchange();
+        listeRetour.put(echange.getCommande().getID(), echange);
         ((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
+    }
+
+    public RetourEchange saisirIDCommande(){
+        System.out.println(" Veuillez saisir ID de la commande : ");
+        String ID = promptS();
+            try{
+                if ( listeRetour.get(ID) == null) {
+                    System.out.println("ID non valide ");S
+                    System.out.println("Entrez [1] pour reessayer ");
+                    System.out.println("Entrez [2] pour retourner au menu principal");
+                    int choix = prompt();
+                    switch(choix) {
+                        case 1:
+                            saisirIDCommande();
+                            break;
+                        case 2:
+                            afficherPageRevendeur();
+                            break;
+                        default:
+                            System.out.println("choix invalide , veuillez reesayer");
+                            break;
+                    }
+                    saisirIDCommande();
+                } else if (listeRetour.isEmpty()) {
+                    System.out.println(" il y a aucune retour ou echange");
+                }
+
+            }catch (Exception e) {
+                System.out.println(" Erreur input , veuillez reessayer" );
+            }
+
+        return listeRetour.get(ID);
     }
 
     public void setUtilisateurConnecte(Utilisateur aNouveau) {
@@ -554,5 +591,9 @@ public class Menu {
 
     public void entrerInfo(String aTexteEntre) {
         throw new UnsupportedOperationException();
+    }
+
+    public HashMap<String, RetourEchange> getListeRetour() {
+        return listeRetour;
     }
 }
