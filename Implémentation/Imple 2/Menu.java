@@ -156,7 +156,6 @@ public class Menu {
                     //metriques	;
                     break;
                 case 7:
-
                         ((Revendeur)utilisateurConnecte).confirmerReceptionRetour(saisirIDCommande());
 
                     break;
@@ -292,14 +291,11 @@ public class Menu {
                     break;
                 case 8:
                     ArrayList<Commande> listeCommandes = util.getCommande();
+
                     if (listeCommandes.isEmpty()) {
                         System.out.println("Vous n'avez pas encore passé de commandes");
                     } else {
-                        System.out.println("--------------------------");
-                        for (int i = 0; i < listeCommandes.size(); i++) {
-                            Commande commande = listeCommandes.get(i);
-                            System.out.println("Commande: " + commande.getID() + "..... contenant " + commande.getProduits().size() + " articles ..... Etat:" + commande.getEtatsCommande() + "         [" + i + "]");
-                        }
+                        afficherListCommande(listeCommandes);
 
                         System.out.println("--------------------------");
                         System.out.println("Entrez l'index d'une commande pour obtenir plus d'informations");
@@ -333,17 +329,28 @@ public class Menu {
                             }
                             System.out.println("--------------------------");
 
-                            System.out.println("Entrez [1] pour modifier l'etat de la commande");
+                            System.out.println("Entrez [1] pour confirmer la reception de la commande");
                             System.out.println("Entrez [2] pour signaler la commande ou un produit de la commande");
                             System.out.println("Entrez [3] pour effectuer un retour ou un echange");
                             System.out.println("Entrez [4] pour evaluer un produit de la commande");
                             System.out.println("Entrez [5] pour revenir au menu principal");
 
                             choix = prompt();
-                            if (choix == 1) {
-                            } else if (choix == 2) {
-                            } else if (choix == 3) {
+
+                            if (choix == 1) { // confirmer la reception de la commande
+                                util.confirmerReceptionCommande(commandeChoisie);
+                                System.out.println("la reception est confirme ");
+                                System.out.println("l'etat de la commande "+ commandeChoisie.getID()+ " est mis a livre ");
+
+                                retournerMenuPrincipalQuitter();
+
+                            } else if (choix == 2) {// Signaler une commande
+
+                            } else if (choix == 3) { // retour echange
+
                                 afficherRetourEchange(choix, commandeChoisie);
+                                retournerMenuPrincipalQuitter();
+
                             } else if (choix == 4) {
                                 System.out.println("--------------------------");
                                 for (int i = 0; i < prodAcht.size(); i++) {
@@ -430,11 +437,9 @@ public class Menu {
 
         return choix;
     }
-
     public String promptS() {
         return scanner.nextLine();
     }
-
     public void afficherRetourEchange(int choix, Commande commande) {
         System.out.println(" veuillez choisir les choix suivants: ");
         System.out.println("Entrez [1] pour faire un retour ");
@@ -552,13 +557,12 @@ public class Menu {
         listeRetour.put(echange.getCommande().getID(), echange);
         ((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
     }
-
     public RetourEchange saisirIDCommande(){
         System.out.println(" Veuillez saisir ID de la commande : ");
         String ID = promptS();
             try{
                 if ( listeRetour.get(ID) == null) {
-                    System.out.println("ID non valide ");S
+                    System.out.println("ID non valide ");
                     System.out.println("Entrez [1] pour reessayer ");
                     System.out.println("Entrez [2] pour retourner au menu principal");
                     int choix = prompt();
@@ -583,6 +587,33 @@ public class Menu {
             }
 
         return listeRetour.get(ID);
+    }
+
+    public void retournerMenuPrincipalQuitter(){
+        System.out.println(" voulez vous retourner au menu principal ou quitter ");
+        System.out.println("Entrez [1] pour retourner au menu principal ");
+        System.out.println("Entrez [2] pour quitter ");
+        int choix = prompt();
+        switch (choix) {
+            case 1:
+                afficherMenuPrincipal();
+                break;
+            case 2:
+                System.out.println("Merci d'avoir magasine sur UniShop");
+                System.exit(0);
+                break;
+            default:
+                System.out.println(" Veuillez saisir une nombre valide ");
+                retournerMenuPrincipalQuitter();
+                break;
+        }
+    }
+
+    public void afficherListCommande(ArrayList<Commande> listeCommandes){
+        for (int i = 0; i < listeCommandes.size(); i++) {
+            Commande commande = listeCommandes.get(i);
+            System.out.println("Commande: " + commande.getID() + "..... contenant " + commande.getProduits().size() + " articles ..... Etat:" + commande.getEtatsCommande() + "         [" + i + "]");
+        }
     }
 
     public void setUtilisateurConnecte(Utilisateur aNouveau) {

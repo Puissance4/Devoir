@@ -38,6 +38,7 @@ public class Acheteur extends Utilisateur {
 		return this.panier;
 	}
 
+
 	//public void modifRevendeursLike(Revendeur aRevendeur) {
 	//	throw new UnsupportedOperationException();
 	//}
@@ -89,6 +90,10 @@ public class Acheteur extends Utilisateur {
 		return this.commandes;
 	}
 	public ArrayList<RetourEchange> getListRetourEchange() {return listRetourEchange;}
+
+	public void confirmerReceptionCommande(Commande commande){
+		commande.setEtatsCommande(EtatsCommande.Livre);
+	}
 
 
 	//setters
