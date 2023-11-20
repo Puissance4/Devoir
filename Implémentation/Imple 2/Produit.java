@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Produit {
@@ -34,14 +33,12 @@ public class Produit {
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 
 	public boolean isPromotionValide() {
-    	return this.getFinPromotion().isAfter(LocalDate.now());
+		if (this.dateFinPromotion == null) {
+			return false;
+		} else {
+			return LocalDate.now().isBefore(this.dateFinPromotion);
+		}
 	}
-
-
-	private LocalDate getFinPromotion() {
-		return this.dateFinPromotion;
-	}
-
 
 	public void modifier() {
 		throw new UnsupportedOperationException();

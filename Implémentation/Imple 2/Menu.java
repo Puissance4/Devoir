@@ -163,7 +163,7 @@ public class Menu {
 			System.out.println("Entrez ["+(systemeCatalogue.getCatalogue().size()) + "] pour revenir au menu principal");
 			choix=prompt();
 			if(choix==(systemeCatalogue.getCatalogue().size())){
-				afficherPageAcheteur();
+				afficherPageRevendeur();
 			}
 			else if(choix<=systemeCatalogue.getCatalogue().size()){
 				Produit produitChoisi=systemeCatalogue.getCatalogue().get(choix);

@@ -240,6 +240,7 @@ public class Revendeur extends Utilisateur {
 		String identifiant = menu.systemeGeneral.creerID();
 		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo);
 		_produits.add(produit);
+		menu.systemeCatalogue.catalogue.add(produit);
 	}
 
 	public int getLikes() {
