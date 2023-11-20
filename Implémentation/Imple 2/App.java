@@ -12,7 +12,7 @@ public class App {
 		menu1=new Menu();
 		Acheteur acheteur1= new Acheteur("carlthecat","Cat", "Carl", "carl@cat.org", "poisson", "rue 14", "234564357");
 		Acheteur acheteur2= new Acheteur("lapinmalin","Champ", "George", "jadorelescarottes@gmail.com", "carotte", "boulevard Laitue", "121212121");
-		Acheteur acheteur3= new Acheteur("Lucie45","Desjardin", "Clara", "clara@outlook.fr", "carambar32", "rue des lauriers", "2387436467");//menu1.systemeUtilisateur.listeAcheteurs
+		Acheteur acheteur3= new Acheteur("Lucie45","Desjardin", "Clara", "clara@outlook.fr", "carambar32", "rue des lauriers", "2387436467");
 		Acheteur acheteur4= new Acheteur("cathlafofolle","Sainte", "Catherine", "caths@gmail.com", "qwerty", "rue sainte-Catherine", "45089736846");
 		Acheteur acheteur5= new Acheteur("Camillou32","Hibou", "Camille", "chibou@yahoo.ca", "coucouhibou", "impasse des arbres", "89026547458");
 		
