@@ -130,7 +130,12 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 2:
-			util.menuPromotion();
+			util.menuPromotion(this);
+			System.out.println("\n---------------------------------------------");
+			System.out.println("\nPromotion ajouté avec succès !");
+			System.out.println("\nAppuyez sur une touche pour revenir au menu principal.");
+			scanner.nextLine();
+			afficherPageRevendeur();
 			break;
 		case 3:
 			//gerer signalement;

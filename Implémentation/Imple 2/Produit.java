@@ -33,8 +33,8 @@ public class Produit {
 	public MetriquesProduit _unnamed_MetriquesProduit_;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 
-	public boolean isPromotionValide(Produit produit) {
-    	return produit.getFinPromotion().isAfter(LocalDate.now());
+	public boolean isPromotionValide() {
+    	return this.getFinPromotion().isAfter(LocalDate.now());
 	}
 
 
@@ -54,13 +54,14 @@ public class Produit {
 	public String get_titre() {
 		return this._titre;
 	}
-	public float get_prix(Produit produit) {
-		if (produit.isPromotionValide()) {
-			return produit.getPrixPromotionnel();
+	public float get_prix() {
+		if (this.isPromotionValide()) {
+			return this.prixPromotionnel;
 		} else {
-			return produit.getPrix();
+			return this._prix;
 		}
 	}
+
 	public String getCategorieString(){
 		if (this._categorie instanceof Papeterie){
 			return "Papeterie";
@@ -109,7 +110,11 @@ public class Produit {
 		 this._quantite=q;
 	}
 	public int getPointsBonus() {
-		return this._pointBonus;
+		if (this.isPromotionValide()) {
+			return this.pointBonusPromotionnel;
+		} else {
+			return this._pointBonus;
+		}
 	}
 	public String getLien() {
 		return this._lienImageOuVideo;
