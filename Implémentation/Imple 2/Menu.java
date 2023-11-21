@@ -157,6 +157,7 @@ public class Menu {
                     break;
                 case 7:
                         ((Revendeur)utilisateurConnecte).confirmerReceptionRetour(saisirIDCommande());
+                        retournerMenuRevendeur();
 
                     break;
                 case 8:
@@ -342,14 +343,14 @@ public class Menu {
                                 System.out.println("la reception est confirme ");
                                 System.out.println("l'etat de la commande "+ commandeChoisie.getID()+ " est mis a livre ");
 
-                                retournerMenuPrincipalQuitter();
+                                retournerMenuAcheteur();
 
                             } else if (choix == 2) {// Signaler une commande
 
                             } else if (choix == 3) { // retour echange
 
                                 afficherRetourEchange(choix, commandeChoisie);
-                                retournerMenuPrincipalQuitter();
+                                retournerMenuAcheteur();
 
                             } else if (choix == 4) {
                                 System.out.println("--------------------------");
@@ -412,6 +413,7 @@ public class Menu {
                     }
                     for (RetourEchange retourEchange: ((Acheteur) utilisateurConnecte).getListRetourEchange()) {
                         retourEchange.afficherEtat();
+                        retournerMenuAcheteur();
                     }
                     break;
                 case 10:
@@ -589,14 +591,14 @@ public class Menu {
         return listeRetour.get(ID);
     }
 
-    public void retournerMenuPrincipalQuitter(){
+    public void retournerMenuAcheteur(){
         System.out.println(" voulez vous retourner au menu principal ou quitter ");
         System.out.println("Entrez [1] pour retourner au menu principal ");
         System.out.println("Entrez [2] pour quitter ");
         int choix = prompt();
         switch (choix) {
             case 1:
-                afficherMenuPrincipal();
+                afficherPageRevendeur();
                 break;
             case 2:
                 System.out.println("Merci d'avoir magasine sur UniShop");
@@ -604,7 +606,27 @@ public class Menu {
                 break;
             default:
                 System.out.println(" Veuillez saisir une nombre valide ");
-                retournerMenuPrincipalQuitter();
+                retournerMenuAcheteur();
+                break;
+        }
+    }
+
+    public void retournerMenuRevendeur(){
+        System.out.println(" voulez vous retourner au menu principal ou quitter ");
+        System.out.println("Entrez [1] pour retourner au menu principal ");
+        System.out.println("Entrez [2] pour quitter ");
+        int choix = prompt();
+        switch (choix) {
+            case 1:
+                afficherPageRevendeur();
+                break;
+            case 2:
+                System.out.println("Merci d'avoir magasine sur UniShop");
+                System.exit(0);
+                break;
+            default:
+                System.out.println(" Veuillez saisir une nombre valide ");
+                retournerMenuAcheteur();
                 break;
         }
     }
