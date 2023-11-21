@@ -22,7 +22,7 @@ public class Acheteur extends Utilisateur {
 	private Produit[] produitsLike;
 	private ArrayList<Acheteur> acheteurLike;
 	private String[] notification;
-	private ArrayList<Produit>produitsAchetes= new ArrayList<>();
+	//private ArrayList<Produit>produitsAchetes= new ArrayList<>();
 	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
 	public Panier panier;
 	private ArrayList<Commande> commandes = new ArrayList<Commande>();
@@ -30,30 +30,26 @@ public class Acheteur extends Utilisateur {
 	//public MetriquesAcheteur _unnamed_MetriquesAcheteur_;
 	//public Vector<Evaluation> _est__laisse_par_acheteur = new Vector<Evaluation>();
 
-	//public void addCommande(Commande aCom) {
-	//	throw new UnsupportedOperationException();
-	//}
 
 	public Panier getPanier() {
 		return this.panier;
 	}
 
+	public void modifRevendeursLike(Revendeur aRevendeur) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public void modifRevendeursLike(Revendeur aRevendeur) {
-	//	throw new UnsupportedOperationException();
-	//}
+	public void modifProduitsLike(Produit aProduitsLike) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public void modifProduitsLike(Produit aProduitsLike) {
-	//	throw new UnsupportedOperationException();
-	//}
+	public void modifAcheteurLike(Acheteur aAcheteurLike) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public void modifAcheteurLike(Acheteur aAcheteurLike) {
-	//	throw new UnsupportedOperationException();
-	//}
-
-	//public Notification[] getNotification() {
-	//	throw new UnsupportedOperationException();
-	//}
+	public Notification[] getNotification() {
+		throw new UnsupportedOperationException();
+	}
 
 	public void modifierProfil() {
 		throw new UnsupportedOperationException();
