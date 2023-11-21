@@ -1,8 +1,8 @@
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Promotion extends Produit {
-	public Promotion(String titre, Categorie categorie, String description, String marque, String modele,
-			String identifiant, int quantite, float prix, int pointsBonus, Date dateFin, String lienImageOuVideo) {
+	public Promotion(String titre, Categorie categorie, String description, String identifiant, int quantite, float prix, int pointsBonus, LocalDate dateFin, String lienImageOuVideo) {
 		super(titre, categorie, description, quantite, prix, pointsBonus, identifiant, lienImageOuVideo);
 	}
 

@@ -130,7 +130,12 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 2:
-			//ajouterPromotion();
+			util.menuPromotion(this);
+			System.out.println("\n---------------------------------------------");
+			System.out.println("\nPromotion ajouté avec succès !");
+			System.out.println("\nAppuyez sur une touche pour revenir au menu principal.");
+			scanner.nextLine();
+			afficherPageRevendeur();
 			break;
 		case 3:
 			//gerer signalement;
@@ -158,7 +163,7 @@ public class Menu {
 			System.out.println("Entrez ["+(systemeCatalogue.getCatalogue().size()) + "] pour revenir au menu principal");
 			choix=prompt();
 			if(choix==(systemeCatalogue.getCatalogue().size())){
-				afficherPageAcheteur();
+				afficherPageRevendeur();
 			}
 			else if(choix<=systemeCatalogue.getCatalogue().size()){
 				Produit produitChoisi=systemeCatalogue.getCatalogue().get(choix);

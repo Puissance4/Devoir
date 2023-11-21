@@ -24,8 +24,8 @@ public class App {
 		Produit produit1=new Produit("ciseaux", new Papeterie("maped","kikoupefort",PapeterieCategorie.Autre), "rouge", 4, 5.5f, 5, "55","");
 		Produit produit2=new Produit("chaise", new EquipementBureau("Ikea","JKLÜSTROSCH",BureauCategorie.ChaiseDeBureau), "grande avec accoudoirs", 100, 100f, 100, "56","");
 		Produit produit3=new Produit("souris", new MaterielInformatique("Logitech","kisallume",LocalDate.of(2020,1,1),InfoCategorie.Souris), "usb", 10, 10.99f, 10, "57","");
-		Produit produit4=new Produit("Calcul 1", new Livres("9783140464079","Antoine de Saint-Exupéry","Lulu Press","Roman",LocalDate.of(1943, 4, 6),"2","3"), "en bon etat", 1, 50f, 50, "58","");
-		Produit produit5=new Produit("Guide etude chimie 3", new Ressource("53829103725415","Jean Chimiste","Chimiste pour la vie",TypeRessource.Electronique,"3"), "20 pages", 80, 9.99f, 9, "59","");
+		Produit produit4=new Produit("Calcul 1", new Livres("9783140464079","Antoine de Saint-Exupéry","Lulu Press",Genre.Roman,LocalDate.of(1943, 4, 6),"2","3"), "en bon etat", 1, 50f, 50, "58","");
+		Produit produit5=new Produit("Guide etude chimie 3", new Ressource("53829103725415","Jean Chimiste","Chimiste pour la vie",LocalDate.of(2003,12,15),TypeRessource.Electronique,"3"), "20 pages", 80, 9.99f, 9, "59","");
 		produit1.setevaluation(new Evaluation(5, "Coupe super bien!", produit1, acheteur5));
 		acheteur1.setAcheteurLike(acheteur2);//acheteur 1 suit l'acheteur 2
 		ArrayList<Produit> produits=new ArrayList<Produit>();
