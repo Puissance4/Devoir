@@ -224,6 +224,11 @@ public class Revendeur extends Utilisateur {
 		produit.setRevendeur(this);
 	}
 
+	public void confirmerReceptionRetour(RetourEchange retour ){
+		retour.setEtat(EtatsCommande.Livre);
+		System.out.println(" Etat de la commande "+ retour.getCommande().getID() + " est change a livre ");
+	}
+
 	public int getLikes() {
 		return this._likes;
 	}
