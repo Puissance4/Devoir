@@ -91,6 +91,14 @@ public class RetourEchange {
 
 	}
 
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void set_etat(EtatsCommande _etat) {
+		this._etat = _etat;
+	}
+
 	public int getPrix() {
 		return this._prix;
 	}
