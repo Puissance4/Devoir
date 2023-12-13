@@ -11,8 +11,6 @@ public class SystemeUtilisateur extends Systeme {
 	public String fichierRevendeurs="../Revendeurs.csv";
 	private BufferedReader readerAcheteur;
 	private BufferedReader readerRevendeur;
-	private BufferedWriter writerAcheteur;
-	private BufferedWriter writerRevendeur;
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
     
@@ -38,19 +36,7 @@ public class SystemeUtilisateur extends Systeme {
 				listeRevendeurs.add(new Revendeur(donnee));
 		}} catch (Exception e) {
 		
-			e.printStackTrace();
-		}
-		try {
-			this.writerAcheteur=new BufferedWriter(new FileWriter(fichierAcheteurs));
-		} catch (IOException e) {
-			
-			e.printStackTrace();
-		}
-		try {
-			this.writerRevendeur=new BufferedWriter(new FileWriter(fichierRevendeurs));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			e.printStackTrace();}
 	}
 
 	public void connexion(Menu menu) {
@@ -149,7 +135,11 @@ public class SystemeUtilisateur extends Systeme {
 		Acheteur acheteurnew=new Acheteur(pseudo,nom,prenom,email,mdp,adresse,telephone);
 		listeAcheteurs.add(acheteurnew);
 		try {
-			writerAcheteur.append(donnee);
+			BufferedWriter writerAcheteur=new BufferedWriter(new FileWriter(fichierAcheteurs,true));
+			writerAcheteur.newLine();
+			writerAcheteur.write(donnee);
+			writerAcheteur.close();
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -173,7 +163,10 @@ public class SystemeUtilisateur extends Systeme {
 		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
 		listeRevendeurs.add(revendeurnew);
 		try {
-			writerRevendeur.append(donnee);
+			BufferedWriter writerRevendeur=new BufferedWriter(new FileWriter(fichierRevendeurs,true));
+			writerRevendeur.newLine();
+			writerRevendeur.write(donnee);
+			writerRevendeur.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -185,6 +178,6 @@ public class SystemeUtilisateur extends Systeme {
 	}
 
 	public void mettreJourQuantitees(Commande aCom) {
-		throw new UnsupportedOperationException();
-	}
+		throw new UnsupportedOperationException();}
+	
 	}
