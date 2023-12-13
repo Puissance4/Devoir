@@ -1,8 +1,57 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
-	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
-	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
+	public String fichierAcheteurs="../Acheteurs.csv";
+	public String fichierRevendeurs="../Revendeurs.csv";
+	private BufferedReader readerAcheteur;
+	private BufferedReader readerRevendeur;
+	private BufferedWriter writerAcheteur;
+	private BufferedWriter writerRevendeur;
+	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
+	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
+    
+	public SystemeUtilisateur(){
+	
+		try {
+			this.readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
+			String line;
+			while ((line=readerAcheteur.readLine())!=null) {
+				String[] donnee=line.split(",");
+				listeAcheteurs.add(new Acheteur(donnee));
+				
+			}
+		} catch (Exception e) {
+	
+			e.printStackTrace();
+		}
+		try {
+			this.readerRevendeur=new BufferedReader(new FileReader(fichierRevendeurs));
+			String line;
+			while ((line=readerRevendeur.readLine())!=null) {
+				String[] donnee=line.split(",");
+				listeRevendeurs.add(new Revendeur(donnee));
+		}} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		try {
+			this.writerAcheteur=new BufferedWriter(new FileWriter(fichierAcheteurs));
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		try {
+			this.writerRevendeur=new BufferedWriter(new FileWriter(fichierRevendeurs));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public void connexion(Menu menu) {
 		System.out.println("\n");
@@ -96,8 +145,15 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = menu.promptS();
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
-		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
+		String donnee= pseudo+","+ nom+","+ prenom+","+ email+","+ mdp+","+adresse+","+ telephone ;
+		Acheteur acheteurnew=new Acheteur(pseudo,nom,prenom,email,mdp,adresse,telephone);
 		listeAcheteurs.add(acheteurnew);
+		try {
+			writerAcheteur.append(donnee);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return acheteurnew;
 
 	}
@@ -113,8 +169,15 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = menu.promptS();
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
+		String donnee= nom+","+email+","+mdp+","+adresse +","+ telephone ;
 		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
 		listeRevendeurs.add(revendeurnew);
+		try {
+			writerRevendeur.append(donnee);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return revendeurnew;}
 
 	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
@@ -124,4 +187,4 @@ public class SystemeUtilisateur extends Systeme {
 	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();
 	}
-}
+	}

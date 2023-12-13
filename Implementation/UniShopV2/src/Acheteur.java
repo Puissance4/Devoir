@@ -3,6 +3,19 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
+
+	public Acheteur(String[] donnee) {
+		super(donnee[1], donnee[3], donnee[6], donnee[5], donnee[4]);
+		this.pseudo = donnee[0];
+		this.prenom = donnee[2];
+		this.nombrePoints = 0;
+		this.revendeursLike = new Revendeur[0];
+		this.produitsLike = new Produit[0];
+		this.acheteurLike = new ArrayList<Acheteur>();
+		this.notification = new String[0];
+		this.panier=new Panier();
+	}
+	
 	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);
 		this.pseudo = pseudo;
@@ -14,6 +27,7 @@ public class Acheteur extends Utilisateur {
 		this.notification = new String[0];
 		this.panier=new Panier();
 	}
+
 	
 	private String prenom;
 	private String pseudo;

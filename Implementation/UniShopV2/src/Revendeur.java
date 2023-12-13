@@ -7,10 +7,15 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Revendeur extends Utilisateur {
-	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
-		super(nom, email, telephone, adresse, motDePasse);
+	
+	public Revendeur(String[]donnee) {
+		super(donnee[0], donnee[1], donnee[4], donnee[3], donnee[2]);
 
 	}
+	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
+		super(nom, email, telephone, adresse, motDePasse);}
+
+
 	
 	//private Scanner sc = new Scanner(System.in);
 	private ArrayList<Produit> _produits = new ArrayList<Produit>();

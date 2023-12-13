@@ -1,14 +1,20 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
 	private static Menu menu1;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
+		/* 
 		menu1=new Menu();
 		Acheteur acheteur1= new Acheteur("carlthecat","Cat", "Carl", "carl@cat.org", "poisson", "rue 14", "234564357");
 		Acheteur acheteur2= new Acheteur("lapinmalin","Champ", "George", "jadorelescarottes@gmail.com", "carotte", "boulevard Laitue", "121212121");
@@ -54,6 +60,24 @@ public class App {
 
 		List<Acheteur> liste2 =Arrays.asList(acheteur1,acheteur2,acheteur3,acheteur4,acheteur5);
 		menu1.systemeUtilisateur.listeAcheteurs.addAll(liste2);
-		menu1.afficherMenuPrincipal();
-	}
-}
+		menu1.afficherMenuPrincipal();*/
+
+		
+//parsing a CSV file into Scanner class constructor  
+ 
+try {
+			try (BufferedReader readerAcheteur = new BufferedReader(new FileReader("../Acheteurs.csv"))) {
+				String line;
+				while ((line=readerAcheteur.readLine())!=null) {
+					String[] donnee=line.split(",");
+					System.out.println(donnee[0]);
+					
+				}
+			}
+		} catch (Exception e) {
+	
+			e.printStackTrace();
+		}  
+}  
+}  
+	
