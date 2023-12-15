@@ -1,8 +1,43 @@
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
+<<<<<<< Updated upstream:Implémentation/Imple 2/SystemeUtilisateur.java
 	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
 	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
+=======
+	public String fichierAcheteurs="../Acheteurs.csv";
+	public String fichierRevendeurs="../Revendeurs.csv";
+	private BufferedReader readerAcheteur;
+	private BufferedReader readerRevendeur;
+	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
+	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
+    
+	public SystemeUtilisateur(ArrayList<Produit> catalogue){
+	
+		try {
+			this.readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
+			String line=readerAcheteur.readLine();//ignore la ligne des noms de colonnes
+			while ((line=readerAcheteur.readLine())!=null) {
+				String[] donnee=line.split(",");
+				listeAcheteurs.add(new Acheteur(donnee,catalogue));
+				
+				
+			}
+		} catch (Exception e) {
+	
+			e.printStackTrace();
+		}
+		try {
+			this.readerRevendeur=new BufferedReader(new FileReader(fichierRevendeurs));
+			String line =readerRevendeur.readLine();//ignore la ligne des noms de colonnes
+			while ((line=readerRevendeur.readLine())!=null) {
+				String[] donnee=line.split(",");
+				listeRevendeurs.add(new Revendeur(donnee));
+		}} catch (Exception e) {
+		
+			e.printStackTrace();}
+	}
+>>>>>>> Stashed changes:Implementation/UniShopV2/src/SystemeUtilisateur.java
 
 	public void connexion(Menu menu) {
 		System.out.println("\n");
