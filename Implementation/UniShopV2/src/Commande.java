@@ -1,6 +1,10 @@
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Vector;
+
+
 
 public class Commande {
 	private float cout;
@@ -31,6 +35,33 @@ public class Commande {
 		this.id=id;
 		this.infoLivraison=infoLivraison;
 		this.etat= EtatsCommande.EnProduction;
+	}
+
+	public Commande(String [] donnee,ArrayList<Produit> catalogue,Acheteur acheteur){
+		this.produits=new ArrayList<Produit>();
+		String[] prod=donnee[0].split(";");
+		for (Produit produit : catalogue) {
+			for (int i=0;i<prod.length;i++){
+				if (produit.getIdentifiant().equals(prod[i])) {
+					this.produits.add(produit);}
+				}
+			}
+		this.acheteur=acheteur;
+		this.adresse=donnee[2];
+		this.telephone=donnee[3];
+		//instancier la carte
+		
+		this.id=donnee[5];
+		this.infoLivraison=donnee[5];
+		if(donnee[6]=="EnProduction"){this.etat= EtatsCommande.EnProduction;}
+		else if(donnee[6]=="EnLivraison"){this.etat= EtatsCommande.EnLivraison;}
+		else if(donnee[6]=="Livre"){this.etat= EtatsCommande.Livre;}
+		String [] date= donnee[7].split(";");
+		this.dateArrivee= new GregorianCalendar(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])).getTime();
+		this.numSuivi=donnee[8];
+		this.compagnieExp=donnee[9];
+		//instancier les billets de signalement
+
 	}
 	public Retour retour() {
 		throw new UnsupportedOperationException();

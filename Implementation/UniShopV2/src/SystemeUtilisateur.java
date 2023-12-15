@@ -1,12 +1,10 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
+<<<<<<< Updated upstream:Implémentation/Imple 2/SystemeUtilisateur.java
+	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
+	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
+=======
 	public String fichierAcheteurs="../Acheteurs.csv";
 	public String fichierRevendeurs="../Revendeurs.csv";
 	private BufferedReader readerAcheteur;
@@ -14,14 +12,15 @@ public class SystemeUtilisateur extends Systeme {
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
     
-	public SystemeUtilisateur(){
+	public SystemeUtilisateur(ArrayList<Produit> catalogue){
 	
 		try {
 			this.readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
-			String line;
+			String line=readerAcheteur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerAcheteur.readLine())!=null) {
 				String[] donnee=line.split(",");
-				listeAcheteurs.add(new Acheteur(donnee));
+				listeAcheteurs.add(new Acheteur(donnee,catalogue));
+				
 				
 			}
 		} catch (Exception e) {
@@ -30,7 +29,7 @@ public class SystemeUtilisateur extends Systeme {
 		}
 		try {
 			this.readerRevendeur=new BufferedReader(new FileReader(fichierRevendeurs));
-			String line;
+			String line =readerRevendeur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerRevendeur.readLine())!=null) {
 				String[] donnee=line.split(",");
 				listeRevendeurs.add(new Revendeur(donnee));
@@ -38,6 +37,7 @@ public class SystemeUtilisateur extends Systeme {
 		
 			e.printStackTrace();}
 	}
+>>>>>>> Stashed changes:Implementation/UniShopV2/src/SystemeUtilisateur.java
 
 	public void connexion(Menu menu) {
 		System.out.println("\n");
@@ -131,19 +131,8 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = menu.promptS();
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
-		String donnee= pseudo+","+ nom+","+ prenom+","+ email+","+ mdp+","+adresse+","+ telephone ;
-		Acheteur acheteurnew=new Acheteur(pseudo,nom,prenom,email,mdp,adresse,telephone);
+		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
 		listeAcheteurs.add(acheteurnew);
-		try {
-			BufferedWriter writerAcheteur=new BufferedWriter(new FileWriter(fichierAcheteurs,true));
-			writerAcheteur.newLine();
-			writerAcheteur.write(donnee);
-			writerAcheteur.close();
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return acheteurnew;
 
 	}
@@ -159,18 +148,8 @@ public class SystemeUtilisateur extends Systeme {
 		String adresse = menu.promptS();
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
-		String donnee= nom+","+email+","+mdp+","+adresse +","+ telephone ;
 		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
 		listeRevendeurs.add(revendeurnew);
-		try {
-			BufferedWriter writerRevendeur=new BufferedWriter(new FileWriter(fichierRevendeurs,true));
-			writerRevendeur.newLine();
-			writerRevendeur.write(donnee);
-			writerRevendeur.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		return revendeurnew;}
 
 	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
@@ -178,6 +157,6 @@ public class SystemeUtilisateur extends Systeme {
 	}
 
 	public void mettreJourQuantitees(Commande aCom) {
-		throw new UnsupportedOperationException();}
-	
+		throw new UnsupportedOperationException();
 	}
+}

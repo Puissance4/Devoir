@@ -10,7 +10,7 @@ public class Menu {
 	private int indexPage = 0;
 	public App app;
 	public SystemeCatalogue systemeCatalogue=new SystemeCatalogue();
-	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur();
+	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur(systemeCatalogue.catalogue);
 	public SystemeGeneral systemeGeneral=new SystemeGeneral();
 
 	private static Scanner scanner = new Scanner(System.in);
