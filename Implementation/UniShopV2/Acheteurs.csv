@@ -1,11 +1,11 @@
-pseudo,nom,prenom,email,motDePasse,adresse,telephone
-carlthecat,Cat,Carl,carl@cat.org,poisson,rue 14,234564357
-lapinmalin,Champ,George,jadorelescarottes@gmail.com,carotte,boulevard Laitue,121212121
-Lucie45,Desjardin,Clara,clara@outlook.fr,carambar32,rue des lauriers,2387436467
-cathlafofolle,Sainte,Catherine,caths@gmail.com,qwerty,rue sainte-Catherine,45089736846
-Camillou32,Hibou,Camille,chibou@yahoo.ca,coucouhibou,impasse des arbres,89026547458
-StarBuyer23,Dubois,Sophie,sophie.dubois@email.com,SparklePass123,123 Rue de la Paix,0123456789
-EpicShopper99,Martin,Pierre,pierre.martin@email.com,ShoppingIsFun456,456 Avenue des Fleurs,9876543210
-QueenBuyer,Leroy,Isabelle,isabelle.leroy@email.com,BuyAllTheThings789,789 Boulevard du Commerce,6543210987
-SuperShopaholic,Moreau,Philippe,philippe.moreau@email.com,SecretCart123,234 Rue de la Liberté,8765432109
-HappyBuyer22,Lefevre,Marie,marie.lefevre@email.com,FunPassword4321,567 Avenue de la République,2109876543
+pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints
+carlthecat,Cat,Carl,carl@cat.org,poisson,rue 14,234564357,,,,,
+lapinmalin,Champ,George,jadorelescarottes@gmail.com,carotte,boulevard Laitue,121212121,,,,,
+Lucie45,Desjardin,Clara,clara@outlook.fr,carambar32,rue des lauriers,2387436467,,,,,
+cathlafofolle,Sainte,Catherine,caths@gmail.com,qwerty,rue sainte-Catherine,45089736846,,,,,
+Camillou32,Hibou,Camille,chibou@yahoo.ca,coucouhibou,impasse des arbres,89026547458,,,,,
+StarBuyer23,Dubois,Sophie,sophie.dubois@email.com,SparklePass123,123 Rue de la Paix,0123456789,,,,,
+EpicShopper99,Martin,Pierre,pierre.martin@email.com,ShoppingIsFun456,456 Avenue des Fleurs,9876543210,,,,,
+QueenBuyer,Leroy,Isabelle,isabelle.leroy@email.com,BuyAllTheThings789,789 Boulevard du Commerce,6543210987,,,,,
+SuperShopaholic,Moreau,Philippe,philippe.moreau@email.com,SecretCart123,234 Rue de la Liberté,8765432109,,,,,
+HappyBuyer22,Lefevre,Marie,marie.lefevre@email.com,FunPassword4321,567 Avenue de la République,2109876543,,,,,

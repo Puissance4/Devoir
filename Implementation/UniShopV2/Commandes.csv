@@ -1,2 +1,2 @@
-﻿produit,acheteur,adresse,tel,carte, id,  infoLivraison, suit, metrique
+﻿produit,acheteur,adresse,tel,carte, id,  infoLivraison, dateArrivee(annee,mois,jour), numSuivi,compagnieExp,billetSignalement
 
