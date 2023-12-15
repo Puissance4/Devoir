@@ -1,41 +1,25 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
-
-	public Acheteur(String[] donnee) {
-		super(donnee[1], donnee[3], donnee[6], donnee[5], donnee[4]);
-		this.pseudo = donnee[0];
-		this.prenom = donnee[2];
-		this.nombrePoints = 0;
-		this.revendeursLike = new Revendeur[0];
-		this.produitsLike = new Produit[0];
-		this.acheteurLike = new ArrayList<Acheteur>();
-		this.notification = new String[0];
-		this.panier=new Panier();
-	}
-	
 	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);
 		this.pseudo = pseudo;
 		this.prenom = prenom;
 		this.nombrePoints = 0;
-		this.revendeursLike = new Revendeur[0];
-		this.produitsLike = new Produit[0];
-		this.acheteurLike = new ArrayList<Acheteur>();
-		this.notification = new String[0];
 		this.panier=new Panier();
 	}
-
 	
 	private String prenom;
 	private String pseudo;
 	private int nombrePoints = 0;
-	private Revendeur[] revendeursLike;
-	private Produit[] produitsLike;
-	private ArrayList<Acheteur> acheteurLike;
-	private String[] notification;
+	private ArrayList <String> revendeursLike=new ArrayList<String>();
+	private ArrayList <Produit> produitsLike=new ArrayList<Produit>();
+	private ArrayList<String> acheteurLike=new ArrayList<String>();
+	private ArrayList <String> notifications=new ArrayList<String>();
 	private ArrayList<Produit>produitsAchetes= new ArrayList<>();
 	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
 	public Panier panier;
@@ -44,29 +28,26 @@ public class Acheteur extends Utilisateur {
 	//public MetriquesAcheteur _unnamed_MetriquesAcheteur_;
 	//public Vector<Evaluation> _est__laisse_par_acheteur = new Vector<Evaluation>();
 
-	//public void addCommande(Commande aCom) {
-	//	throw new UnsupportedOperationException();
-	//}
 
 	public Panier getPanier() {
 		return this.panier;
 	}
 
-	//public void modifRevendeursLike(Revendeur aRevendeur) {
-	//	throw new UnsupportedOperationException();
-	//}
+	public void modifRevendeursLike(Revendeur aRevendeur) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public void modifProduitsLike(Produit aProduitsLike) {
-	//	throw new UnsupportedOperationException();
-	//}
+	public void modifProduitsLike(Produit aProduitsLike) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public void modifAcheteurLike(Acheteur aAcheteurLike) {
-	//	throw new UnsupportedOperationException();
-	//}
+	public void modifAcheteurLike(Acheteur aAcheteurLike) {
+		throw new UnsupportedOperationException();
+	}
 
-	//public Notification[] getNotification() {
-	//	throw new UnsupportedOperationException();
-	//}
+	public Notification[] getNotification() {
+		throw new UnsupportedOperationException();
+	}
 
 	public void modifierProfil(Menu menu) {
 		super.modifierProfil(menu);
@@ -95,18 +76,18 @@ public class Acheteur extends Utilisateur {
 	public String getPrenom() {
 		return this.prenom;
 	}
-	public Produit[] getProduitsLike() {
+	public ArrayList<Produit> getProduitsLike() {
 		return this.produitsLike;
 	}
-	public ArrayList<Acheteur> getAcheteurLike() {
+	public ArrayList<String> getAcheteurLike() {
 		return this.acheteurLike;
 	}
 	public void setAcheteurLike(Acheteur acheteur) {
-		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur)){
-			acheteurLike.remove(acheteur);
+		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur.pseudo)){
+			acheteurLike.remove(acheteur.pseudo);
 		}
 		else{
-			acheteurLike.add(acheteur);
+			acheteurLike.add(acheteur.pseudo);
 		}
 	}
 
@@ -118,8 +99,8 @@ public class Acheteur extends Utilisateur {
 	public void setNombrePoints(int aNombrePoints) {
 		this.nombrePoints = aNombrePoints;
 	}
-	public void setNotification(String[] aNotification) {
-		this.notification = aNotification;
+	public void setNotification(ArrayList<String> aNotification) {
+		this.notifications = aNotification;
 	}
-	public void addProduitsAchetes(Produit produit) {produitsAchetes.add(produit);}
+	//public void addProduitsAchetes(Produit produit) {produitsAchetes.add(produit);}
 }

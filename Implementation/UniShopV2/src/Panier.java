@@ -9,6 +9,19 @@ public class Panier {
 		this.nombreDePoints=0;
 		this.produits=new ArrayList<Produit>();
 	}
+	public Panier(String [] donnee,ArrayList<Produit> catalogue){
+		this.produits=new ArrayList<Produit>();
+		String[] prod=donnee[1].split(";");
+		for (Produit produit : catalogue) {
+			for (int i=0;i<prod.length;i++){
+				if (produit.getIdentifiant().equals(prod[i])) {
+					this.produits.add(produit);}
+				}
+			}
+		this.nombreDePoints=Integer.parseInt(donnee[2]);
+		this.cout=Float.parseFloat(donnee[3]);		
+				
+		}
 
 	public Commande commander(Acheteur acheteur,Menu menu) throws IllegalStateException {
 		if (produits.size()==0){
