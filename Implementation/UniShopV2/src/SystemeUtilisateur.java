@@ -1,10 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
-<<<<<<< Updated upstream:Implémentation/Imple 2/SystemeUtilisateur.java
-	public ArrayList<Acheteur> listeAcheteurs=new ArrayList<Acheteur>();
-	public ArrayList<Revendeur> listeRevendeurs=new ArrayList<Revendeur>();
-=======
 	public String fichierAcheteurs="../Acheteurs.csv";
 	public String fichierRevendeurs="../Revendeurs.csv";
 	private BufferedReader readerAcheteur;
@@ -37,7 +35,6 @@ public class SystemeUtilisateur extends Systeme {
 		
 			e.printStackTrace();}
 	}
->>>>>>> Stashed changes:Implementation/UniShopV2/src/SystemeUtilisateur.java
 
 	public void connexion(Menu menu) {
 		System.out.println("\n");
