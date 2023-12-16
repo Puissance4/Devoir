@@ -30,11 +30,12 @@ public class Menu {
         System.out.println("2. Afficher le catalogue");
         System.out.println("3. Faire une recherche de produit ");
         System.out.println("4. Faire une recherche de revendeur");
-        System.out.println("5. Modifier le profil");
-		System.out.println("6. Voir mes notifications");
-		System.out.println("7. Voir mes métriques");
-		System.out.println("8. Voir mes commandes");
-        System.out.println("9. Deconnexion");
+		System.out.println("5. Faire une recherche d'acheteur");
+        System.out.println("6. Modifier le profil");
+		System.out.println("7. Voir mes notifications");
+		System.out.println("8. Voir mes métriques");
+		System.out.println("9. Voir mes commandes");
+        System.out.println("10. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=2;
 		selectOption(prompt());
@@ -284,6 +285,19 @@ public class Menu {
 			//recherche revendeur;
 			break;
 		case 5:
+			//recherche acheteur;
+			System.out.println("Entrez le pseudo a rechercher");
+			String pseudo=promptS();
+			try {
+				systemeUtilisateur.rechercherAcheteur(pseudo);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			retourAuMenu(1, "d'acheteur");
+			afficherPageAcheteur();
+			break;
+
+		case 6:
 			util.modifierProfil(this);
 			System.out.println("Votre profil a bien ete modifie!");
 			choix=0;
@@ -292,13 +306,13 @@ public class Menu {
 						choix=prompt();}
 			afficherPageAcheteur();
 			break;
-		case 6:
+		case 7:
 			//notifications;
 			break;
-		case 7:
+		case 8:
 			//metriques;
 			break;
-		case 8:
+		case 9:
 			ArrayList<Commande> listeCommandes=util.getCommande();
 			if(listeCommandes.isEmpty()){
 				System.out.println("Vous n'avez pas encore passé de commandes");
@@ -435,7 +449,7 @@ public class Menu {
 				else{System.out.println("Choix invalide veuillez reessayer");}}}
 			
 			break;
-		case 9:
+		case 10:
 			System.out.println("Merci d'avoir magasine sur UniShop");
 			System.exit(0);
 			break;
@@ -492,5 +506,16 @@ public class Menu {
 
 	public void entrerInfo(String aTexteEntre) {
 		throw new UnsupportedOperationException();
+	}
+	public void retourAuMenu(int index,String menu){
+		try{
+		System.out.println("Entrez ["+ index+"] pour revenir au menu "+ menu);
+		int choix=prompt();
+		if (choix!=index){throw new InputMismatchException();}}
+
+		catch(InputMismatchException e){
+			System.out.println("Choix invalide, veuillez réessayer.");
+			retourAuMenu(index, menu);
+		}
 	}
 }

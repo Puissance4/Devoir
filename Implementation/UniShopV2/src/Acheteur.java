@@ -12,17 +12,20 @@ public class Acheteur extends Utilisateur {
 		this.prenom = donnee[2];
 		this.nombrePoints = 0;
 		String [] liste=donnee[7].split(";");
+		if(liste[0]!="null"){
 		for (int i=0;i<liste.length;i++){
 			this.revendeursLike.add(liste[i]) ;
-		}
+		}}
 		String [] liste2=donnee[8].split(";");
+		if(liste2[0]!="null"){
 		for (int i=0;i<liste2.length;i++){
 			this.acheteurLike.add(liste2[i]) ;
-		}
+		}}
 		String [] liste3=donnee[9].split(";");
+		if(liste3[0]!="null"){
 		for (int i=0;i<liste3.length;i++){
 			this.notifications.add(liste3[i]) ;
-		}
+		}}
 		Boolean panierInit=false;
 		try {
 			BufferedReader readerPanier=new BufferedReader(new FileReader("../Paniers.csv"));
@@ -44,12 +47,13 @@ public class Acheteur extends Utilisateur {
 		if (panierInit==false){this.panier=new Panier();}
 
 		String[] prod=donnee[10].split(";");
+		if(prod[0]!="null"){
 		for (Produit produit : catalogue) {
 			for (int i=0;i<prod.length;i++){
 				if (produit.getIdentifiant().equals(prod[i])) {
 					this.produitsLike.add(produit);}
 				}
-			}
+			}}
 		this.nombrePoints=Integer.parseInt(donnee[11]);
 
 		try {
@@ -57,6 +61,7 @@ public class Acheteur extends Utilisateur {
 			String line=readerCommandes.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerCommandes.readLine())!=null) {
 				String[] commande=line.split(",");
+				System.out.println("commande"+commande[0]);
 				if (commande[1]==donnee[0]){
 					this.commandes.add(new Commande(commande,catalogue,this));
 				}
@@ -131,6 +136,28 @@ public class Acheteur extends Utilisateur {
 		commandes.add(newCommande);
 	}
 
+	public void afficherProfil(){
+		System.out.println("--------------------------");
+		System.out.println("Pseudo " + pseudo );
+		System.out.println("Prenom " + prenom);
+		System.out.println("Nom " + super.getNom());
+		System.out.println("Nombre de points " + nombrePoints);
+		System.out.println("------Articles Like---------- " );
+		for (int i=0;i<produitsLike.size();i++){
+			System.out.println(produitsLike.get(i).get_titre());
+		}
+		System.out.println("------Acheteurs Like---------- " );
+		for (int i=0;i<acheteurLike.size();i++){
+			System.out.println(acheteurLike.get(i));
+		}
+		System.out.println("------Revendeurs Like---------- " );
+		for (int i=0;i<revendeursLike.size();i++){
+			System.out.println(revendeursLike.get(i));
+		}
+		System.out.println("--------------------------");
+
+	}
+
 	//getters
 	public String getPseudo() {
 		return pseudo;
@@ -167,5 +194,6 @@ public class Acheteur extends Utilisateur {
 	public void setNotification(ArrayList<String> aNotification) {
 		this.notifications = aNotification;
 	}
-	//public void addProduitsAchetes(Produit produit) {produitsAchetes.add(produit);}
+
+
 }

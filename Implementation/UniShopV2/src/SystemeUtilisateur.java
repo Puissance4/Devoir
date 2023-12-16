@@ -5,33 +5,34 @@ import java.util.ArrayList;
 public class SystemeUtilisateur extends Systeme {
 	public String fichierAcheteurs="../Acheteurs.csv";
 	public String fichierRevendeurs="../Revendeurs.csv";
-	private BufferedReader readerAcheteur;
-	private BufferedReader readerRevendeur;
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
     
 	public SystemeUtilisateur(ArrayList<Produit> catalogue){
 	
 		try {
-			this.readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
+			BufferedReader readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
 			String line=readerAcheteur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerAcheteur.readLine())!=null) {
 				String[] donnee=line.split(",");
 				listeAcheteurs.add(new Acheteur(donnee,catalogue));
-				
+			
 				
 			}
+			readerAcheteur.close();
 		} catch (Exception e) {
 	
 			e.printStackTrace();
 		}
 		try {
-			this.readerRevendeur=new BufferedReader(new FileReader(fichierRevendeurs));
+			BufferedReader readerRevendeur=new BufferedReader(new FileReader(fichierRevendeurs));
 			String line =readerRevendeur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerRevendeur.readLine())!=null) {
 				String[] donnee=line.split(",");
 				listeRevendeurs.add(new Revendeur(donnee));
-		}} catch (Exception e) {
+		}readerRevendeur.close();
+	
+	} catch (Exception e) {
 		
 			e.printStackTrace();}
 	}
@@ -152,7 +153,16 @@ public class SystemeUtilisateur extends Systeme {
 	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
 		throw new UnsupportedOperationException();
 	}
+	public Acheteur rechercherAcheteur(String pseudo) throws Exception {
+		for (Acheteur acheteur : listeAcheteurs) {
+			if (acheteur.getPseudo().equals(pseudo)){
+				acheteur.afficherProfil();
 
+				return acheteur;
+			}
+	}
+	throw new Exception("Il n'existe pas d'acheteur avec le pseudo"+ pseudo);
+}
 	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();
 	}
