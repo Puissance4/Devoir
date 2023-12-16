@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
@@ -175,4 +178,60 @@ public class SystemeUtilisateur extends Systeme {
 	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();
 	}
+
+
+	public void deconnexion(){
+		try {
+			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("../Acheteurs.csv"));
+			writterAcheteurs.write("pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints");
+			for (Acheteur acheteur: listeAcheteurs){
+				writterAcheteurs.newLine();
+				String pseudo=acheteur.getPseudo();
+				String nom=acheteur.getNom();
+				String prenom=acheteur.getPrenom();
+				String email=acheteur.getCourriel();
+				String motDePasse=acheteur.getMotDePasse();
+				String adresse=acheteur.getAdresse();
+				String telephone=acheteur.getTelephone();
+				String Revendeurslike=acheteur.getRevendeurslikeBuff();
+				String Acheteurslike=acheteur.getAcheteurlikeBuff();
+				String Notifications=acheteur.getNotificationBuff();
+				String ProduitsLike=acheteur.getProduitsLikeBuff();
+				int NombreDepoints=acheteur.getNombrePoints();
+
+				writterAcheteurs.write(pseudo+","+nom+","+prenom+","+email+","+motDePasse+","+adresse+","+telephone+","+Revendeurslike+","+Acheteurslike+","+Notifications+","+ProduitsLike+","+NombreDepoints);
+			}
+			writterAcheteurs.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		try {
+			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("../Revendeurs.csv"));
+			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike");
+			for (Revendeur revendeur: listeRevendeurs){
+				writterRevendeurs.newLine();
+				String nom=revendeur.getNom();
+				String email=revendeur.getCourriel();
+				String motDePasse=revendeur.getMotDePasse();
+				String adresse=revendeur.getAdresse();
+				String telephone=revendeur.getTelephone();
+				int likes= revendeur.getLikes();
+				String ProduitsOfferts=revendeur.getProduitsBuff();
+				String Acheteurslike=revendeur.getacheteurSuiviBuff();
+
+				writterRevendeurs.write(nom+","+email+","+motDePasse+","+adresse+","+telephone+","+likes+","+ProduitsOfferts+","+Acheteurslike);
+			}
+			writterRevendeurs.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
+
 }

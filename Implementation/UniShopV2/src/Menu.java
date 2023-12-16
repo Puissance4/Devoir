@@ -460,7 +460,7 @@ public class Menu {
 			break;
 		case 10:
 			systemeCatalogue.deconnexion();
-			//systemeUtilisateur.deconnexion();
+			systemeUtilisateur.deconnexion();
 			System.out.println("Merci d'avoir magasine sur UniShop");
 			System.exit(0);
 			break;

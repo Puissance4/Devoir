@@ -107,9 +107,50 @@ public class Acheteur extends Utilisateur {
 		throw new UnsupportedOperationException();
 	}
 
-	public Notification[] getNotification() {
-		throw new UnsupportedOperationException();
+	public String getRevendeurslikeBuff(){
+		if (revendeursLike.size()==0){return "null";}
+		else{
+			String liste=revendeursLike.get(0);
+			for(int i=1;i<revendeursLike.size();i++){
+				liste=liste+";"+revendeursLike.get(i);
+			}
+			return liste;
+		}
 	}
+		
+	public String getAcheteurlikeBuff(){
+		if (acheteurLike.size()==0){return "null";}
+		else{
+			String liste=acheteurLike.get(0);
+			for(int i=1;i<acheteurLike.size();i++){
+				liste=liste+";"+acheteurLike.get(i);
+			}
+			return liste;
+		}
+	}
+
+	public String getNotificationBuff(){
+		if (notifications.size()==0){return "null";}
+		else{
+			String liste=notifications.get(0);
+			for(int i=1;i<notifications.size();i++){
+				liste=liste+";"+notifications.get(i);
+			}
+			return liste;
+		}
+	}
+	public String getProduitsLikeBuff(){
+		if (produitsLike.size()==0){return "null";}
+		else{
+			String liste=produitsLike.get(0).getIdentifiant();
+			for(int i=1;i<produitsLike.size();i++){
+				liste=liste+";"+produitsLike.get(i).getIdentifiant();
+			}
+			return liste;
+		}
+	}
+
+
 
 	public void modifierProfil(Menu menu) {
 		super.modifierProfil(menu);
