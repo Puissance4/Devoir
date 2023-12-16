@@ -1,6 +1,6 @@
-﻿titre,categorie,description,quantité,prix,pointBonus,identifiant,lienImageOuVideo
-ciseaux,Papeterie;maped;kikoupefort;PapeterieCategorie.Autre, rouge, 4, 5.5f, 5, "55",
-chaise, EquipementBureau;Ikea;JKLÜSTROSCH;BureauCategorie.ChaiseDeBureau, grande avec accoudoirs, 100, 100f, 100, 56,
-souris, MaterielInformatique;Logitech;kisallume;2020;1;1;InfoCategorie.Souris, usb, 10, 10.99, 10, 57,
-Calcul 1, Livres;9783140464079;Antoine de Saint-Exupéry;Lulu Press;Genre.Roman;1943;4;6;2;3, en bon etat, 1, 50f, 50, 58,
-Guide etude chimie 3, Ressource;53829103725415;Jean Chimiste;Chimiste pour la vie;2003;12;15;TypeRessource.Electronique;3, 20 pages, 80, 9.99, 9, 59,
+﻿titre,categorie,description,quantité,prix,pointBonus,identifiant,lienImageOuVideo,NombreDeLike,PrixPromotionnel,PointsBonusPromotion,dateFinPromotion
+ciseaux,Papeterie;maped;kikoupefort;Autre,rouge,4,5.5,5,55,null,0,null,null,null
+chaise,EquipementBureau;Ikea;JKLÜSTROSCH;ChaiseDeBureau,grande avec accoudoirs,100,100,100,56,null,0,null,null,null
+souris,MaterielInformatique;Logitech;kisallume;2020;1;1;Souris,usb,10,10.99,10,57,null,0,null,null,null
+Calcul 1,Livres;9783140464079;Antoine de Saint-Exupéry;Lulu Press;Roman;1943;4;6;2;3,en bon etat,1,50,50,58,null,0,null,null,null
+Guide etude chimie 3,Ressource;53829103725415;Jean Chimiste;Chimiste pour la vie;2003;12;15;Electronique;3,20 pages,80,9.99,9,59,null,0,null,null,null

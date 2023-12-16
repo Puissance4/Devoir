@@ -1,7 +1,28 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class SystemeCatalogue extends Systeme {
 	public ArrayList<Produit> catalogue=new ArrayList<Produit>();
+
+	public SystemeCatalogue (){
+		try {
+			BufferedReader readerProduits=new BufferedReader(new FileReader("../Produits.csv"));
+			String line=readerProduits.readLine();//ignore la ligne des noms de colonnes
+			while ((line=readerProduits.readLine())!=null) {
+				String[] donnee=line.split(",");
+				catalogue.add(new Produit(donnee));
+			
+				
+			}
+			readerProduits.close();
+		} catch (Exception e) {
+	
+			e.printStackTrace();
+		}
+
+
+	}
 
 	public ArrayList<Produit> getCatalogue() {
 		return this.catalogue;

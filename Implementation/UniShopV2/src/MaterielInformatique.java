@@ -8,6 +8,26 @@ public class MaterielInformatique extends Categorie {
 		this._dateLancement = dateLancement;
 		this._sousCategorie = sousCategorie;
     }
+
+	public MaterielInformatique(String marque, String modele, LocalDate dateLancement, String sousCategorie) {
+		this._marque = marque;
+		this._modele = modele;
+		this._dateLancement = dateLancement;
+
+		if (sousCategorie == "OrdinateurPortable") {
+			this._sousCategorie = InfoCategorie.OrdinateurPortable;
+		} else if (sousCategorie == "Souris") {
+			this._sousCategorie = InfoCategorie.Souris;
+		} else if (sousCategorie == "Clavier") {
+			this._sousCategorie = InfoCategorie.Clavier;
+		} else if (sousCategorie == "DisqueDurExterne") {
+			this._sousCategorie = InfoCategorie.DisqueDurExterne;
+		} else if (sousCategorie == "Ecouteurs") {
+			this._sousCategorie = InfoCategorie.Ecouteurs;
+		} else {
+			this._sousCategorie = InfoCategorie.Autre;}
+    }
+
     private String _marque;
 	private String _modele;
 	private LocalDate _dateLancement;
