@@ -8,9 +8,27 @@ import java.util.Date;
 
 public class Revendeur extends Utilisateur {
 	
-	public Revendeur(String[]donnee) {
+	public Revendeur(String[] donnee,ArrayList<Produit> catalogue) {
 		super(donnee[0], donnee[1], donnee[4], donnee[3], donnee[2]);
+		this._likes=Integer.parseInt(donnee[5]);
 
+		String[] produitsofferts=donnee[6].split(";");
+		if(not(produitsofferts[0].equals("null"))){
+		for (Produit produit : catalogue) {
+			for (int i=0;i<produitsofferts.length;i++){
+				if (produit.getIdentifiant().equals(produitsofferts[i])) {
+					this._produits.add(produit);}
+				}
+			}}
+		String [] acheteurs=donnee[7].split(";");
+			if(not(acheteurs[0].equals("null"))){
+			for (int i=0;i<acheteurs.length;i++){
+				this.acheteurSuivi.add(acheteurs[i]) ;
+			}}
+
+	}
+	private boolean not(boolean equals) {
+		return false;
 	}
 	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);}
@@ -20,8 +38,7 @@ public class Revendeur extends Utilisateur {
 	//private Scanner sc = new Scanner(System.in);
 	private ArrayList<Produit> _produits = new ArrayList<Produit>();
 	private int _likes = 0;
-	public Vector<Acheteur> _suit = new Vector<Acheteur>();
-	public MetriquesRevendeurs _unnamed_MetriquesRevendeurs_;
+	public ArrayList<String> acheteurSuivi = new ArrayList<String>();
 
 	public void ajouterProduit(Menu menu) {
 		System.out.println("\n");

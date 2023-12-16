@@ -29,7 +29,7 @@ public class SystemeUtilisateur extends Systeme {
 			String line =readerRevendeur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerRevendeur.readLine())!=null) {
 				String[] donnee=line.split(",");
-				listeRevendeurs.add(new Revendeur(donnee));
+				listeRevendeurs.add(new Revendeur(donnee,catalogue));
 		}readerRevendeur.close();
 	
 	} catch (Exception e) {
