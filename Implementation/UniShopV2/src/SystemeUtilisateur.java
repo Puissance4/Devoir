@@ -183,9 +183,12 @@ public class SystemeUtilisateur extends Systeme {
 	public void deconnexion(){
 		try {
 			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("../Acheteurs.csv"));
+			BufferedWriter writterPanier=new BufferedWriter(new FileWriter("../Paniers.csv"));
+			writterPanier.write("pseudo,produits,nbPoints,prix");
 			writterAcheteurs.write("pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints");
 			for (Acheteur acheteur: listeAcheteurs){
 				writterAcheteurs.newLine();
+				writterPanier.newLine();
 				String pseudo=acheteur.getPseudo();
 				String nom=acheteur.getNom();
 				String prenom=acheteur.getPrenom();
@@ -198,10 +201,13 @@ public class SystemeUtilisateur extends Systeme {
 				String Notifications=acheteur.getNotificationBuff();
 				String ProduitsLike=acheteur.getProduitsLikeBuff();
 				int NombreDepoints=acheteur.getNombrePoints();
+				String panier=acheteur.panier.getPanierBuff();
 
+				writterPanier.write(panier);
 				writterAcheteurs.write(pseudo+","+nom+","+prenom+","+email+","+motDePasse+","+adresse+","+telephone+","+Revendeurslike+","+Acheteurslike+","+Notifications+","+ProduitsLike+","+NombreDepoints);
 			}
 			writterAcheteurs.close();
+			writterPanier.close();
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

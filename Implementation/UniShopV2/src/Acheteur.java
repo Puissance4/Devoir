@@ -43,7 +43,7 @@ public class Acheteur extends Utilisateur {
 			e.printStackTrace();
 		}
 
-		if (panierInit==false){this.panier=new Panier();}
+		if (panierInit==false){this.panier=new Panier(donnee[0]);}
 
 		String[] prod=donnee[10].split(";");
 		if(not(prod[0].equals("null"))){
@@ -72,7 +72,7 @@ public class Acheteur extends Utilisateur {
 		this.pseudo = pseudo;
 		this.prenom = prenom;
 		this.nombrePoints = 0;
-		this.panier=new Panier();
+		this.panier=new Panier(pseudo);
 	}
 	
 	private String prenom;

@@ -30,7 +30,6 @@ public class Produit {
 
 		else if (cate[0].equals("Ressource")){
 			LocalDate dateressource= LocalDate.of(Integer.parseInt(cate[4]), Integer.parseInt(cate[5]), Integer.parseInt(cate[6]));
-			System.out.println(cate[4]+" "+cate[5]+" "+cate[6]);
 			TypeRessource type;
 			if (cate[7].equals("Imprime")) {
 				type = TypeRessource.Imprime;
