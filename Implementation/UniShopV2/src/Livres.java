@@ -21,13 +21,13 @@ public class Livres extends Categorie {
 				this._dateParution = dateParution;
 				this._numEdition = Integer.parseInt(numeroEdition);
 				this._numVolume = Integer.parseInt(numeroVolume);
-				if (genre == "Manuel") {
+				if (genre.equals("Manuel")) {
 					this._genre = Genre.Manuel;
-				} else if (genre == "Roman") {
+				} else if (genre.equals("Roman")) {
 					this._genre = Genre.Roman;
-				} else if (genre == "BandeDessinee") {
+				} else if (genre.equals("BandeDessinee")) {
 					this._genre = Genre.BandeDessinee;
-				} else if (genre == "Documentaire") {
+				} else if (genre.equals("Documentaire")) {
 					this._genre = Genre.Documentaire;
 				} else {
 					this._genre = Genre.Autre;}
@@ -60,6 +60,10 @@ public class Livres extends Categorie {
 	}
 	public LocalDate getDateParution() {
 		return _dateParution;
+	}
+	public String getDateParutionBuff(){
+		return _dateParution.getYear()+";"+_dateParution.getMonthValue()+";"+_dateParution.getDayOfMonth();
+
 	}
 	public int getNumEdition() {
 		return _numEdition;

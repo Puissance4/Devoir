@@ -50,7 +50,7 @@ public class Panier {
 				String numConf=menu.promptS();
 				System.out.println("Avez vous des informations supplémentaires pour la livraison? (Entrez non si ce n'est pas le cas): ");
 				String infoSupp=menu.promptS();
-				Carte carte=new Carte(dateExp, numCarte, numConf, acheteur);
+				Carte carte=new Carte(dateExp, numCarte, numConf, acheteur.getPseudo());
 				System.out.println("Entrez [1] pour confirmer la commande ou [2] pour annuler et revenir au panier");
 				choix=menu.prompt();
 				if (choix==2){

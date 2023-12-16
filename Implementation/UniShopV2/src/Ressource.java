@@ -29,6 +29,10 @@ public class Ressource extends Categorie {
 	public LocalDate getDateParution() {
 		return _dateParution;
 	}
+	public String getDateParutionBuff(){
+		return (_dateParution.getYear()+";"+ _dateParution.getMonthValue()+";"+ _dateParution.getDayOfMonth());
+
+	}
 	public TypeRessource getType() {
 		return _type;
 	}

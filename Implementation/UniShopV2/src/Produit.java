@@ -20,26 +20,27 @@ public class Produit {
 
 		// categorie
 		String[] cate=donnee[1].split(";");
-		if (cate[0]=="Papeterie"){this.categorie=new Papeterie(cate[1], cate[2], cate[3]);}
+		if (cate[0].equals("Papeterie")){this.categorie=new Papeterie(cate[1], cate[2], cate[3]);}
 		
-		else if (cate[0]=="Livres"){
+		else if (cate[0].equals("Livres")){
 			LocalDate dateParution= LocalDate.of(Integer.parseInt(cate[5]), Integer.parseInt(cate[6]), Integer.parseInt(cate[7]));
 			this.categorie=new Livres(cate[1], cate[2], cate[3],cate[4],dateParution,cate[8],cate[9]);}
 
-		else if (cate[0]=="EquipementBureau"){this.categorie=new EquipementBureau(cate[1], cate[2], cate[3]);}
+		else if (cate[0].equals("EquipementBureau")){this.categorie=new EquipementBureau(cate[1], cate[2], cate[3]);}
 
-		else if (cate[0]=="Ressource"){
+		else if (cate[0].equals("Ressource")){
 			LocalDate dateressource= LocalDate.of(Integer.parseInt(cate[4]), Integer.parseInt(cate[5]), Integer.parseInt(cate[6]));
+			System.out.println(cate[4]+" "+cate[5]+" "+cate[6]);
 			TypeRessource type;
-			if (cate[7] == "Imprime") {
+			if (cate[7].equals("Imprime")) {
 				type = TypeRessource.Imprime;
 			} else {
 				type = TypeRessource.Electronique;}
 			this.categorie=new Ressource(cate[1], cate[2], cate[3],dateressource,type,cate[8]);}
-		else if (cate[0]=="MaterielInformatique"){
+		else if (cate[0].equals("MaterielInformatique")){
 			LocalDate datelancement= LocalDate.of(Integer.parseInt(cate[3]), Integer.parseInt(cate[4]), Integer.parseInt(cate[5]));
 			this.categorie=new MaterielInformatique(cate[1], cate[2],datelancement, cate[6]);}
-
+		
 		
 
 		this.description =donnee[2];
@@ -76,7 +77,7 @@ public class Produit {
 
 
 	private String titre;
-	private Categorie categorie;
+	public Categorie categorie;
 	private String description;
 	private int quantite;
 	private float prix;
@@ -117,6 +118,34 @@ public class Produit {
 		}
 	}
 
+	public String getCategorieBuff() throws Exception{
+
+		if (this.categorie instanceof Papeterie){
+			Papeterie cat=(Papeterie) this.categorie;
+			return "Papeterie"+";"+cat.getMarque()+";"+cat.getModele()+";"+cat.getSousCategorieString();
+		}
+		if (this.categorie instanceof Livres){
+			Livres cat=(Livres) this.categorie;
+			return "Livres"+";"+cat.getIsbn()+";"+cat.getAuteur()+";"+cat.getMaisonEdition()+";"+cat.getGenreString()+";"+cat.getDateParutionBuff()+";"+cat.getNumEdition()+";"+cat.getNumVolume();
+		}
+
+		if (this.categorie instanceof Ressource){
+			Ressource cat=(Ressource) this.categorie;
+			return "Ressource"+";"+cat.getIsbn()+";"+cat.getAuteur()+";"+cat.getOrganisation()+";"+cat.getDateParutionBuff()+";"+cat.getTypeString()+";"+cat.getNumEdition();
+		}
+		if (this.categorie instanceof MaterielInformatique){
+			MaterielInformatique cat=(MaterielInformatique) this.categorie;
+			return "MaterielInformatique"+";"+cat.getMarque()+";"+cat.getModele()+";"+cat.getDateLancementBuff()+";"+cat.getSousCategorieString();
+		}
+		if (this.categorie instanceof EquipementBureau){
+			EquipementBureau cat=(EquipementBureau) this.categorie;
+			return "EquipementBureau"+";"+cat.getMarque()+";"+cat.getModele()+";"+cat.getSousCategorieString();
+		}
+		else{
+			throw new Exception("pas de catégorie");
+		}
+	}
+
 	public String getCategorieString(){
 		if (this.categorie instanceof Papeterie){
 			return "Papeterie";
@@ -137,6 +166,7 @@ public class Produit {
 			return "Pas de catégorie";
 		}
 	}
+	
 	public void setNombreLike(int aNombreLike) {
 		this.nombreLike = aNombreLike;
 	}
@@ -171,6 +201,26 @@ public class Produit {
 			return this.pointBonus;
 		}
 	}
+	public String getPrixPromobuff(){
+		if (this.isPromotionValide()) {
+			return ""+this.prixPromotionnel;}
+		else{return "null";}	
+	}
+
+	public int getPointsBonusNormal(){
+		return this.pointBonus;
+	}
+	public String getPointsBonusPromoBuff(){
+		if (this.isPromotionValide()) {
+			return ""+this.pointBonusPromotionnel;}
+		else{return "null";}	
+	}
+	public String getDateFinPromotionBuff(){
+		if (this.isPromotionValide()) {
+			return this.dateFinPromotion.getYear()+";"+this.dateFinPromotion.getMonth()+";"+this.dateFinPromotion.getDayOfMonth();}
+		else{return "null";}
+	}
+	
 	public String getLien() {
 		return this.lienImageOuVideo;
 	}

@@ -9,17 +9,17 @@ public class Papeterie extends Categorie {
 		this._marque = marque;
 		this._modele = modele;
 
-		if (sousCategorie == "stylo") {
+		if (sousCategorie.equals("stylo")) {
 			this._sousCategorie = PapeterieCategorie.Stylo;
-		} else if (sousCategorie == "Cahier") {
+		} else if (sousCategorie.equals("Cahier")) {
 			this._sousCategorie = PapeterieCategorie.Cahier;
-		} else if (sousCategorie == "Classeur") {
+		} else if (sousCategorie.equals("Classeur")) {
 			this._sousCategorie = PapeterieCategorie.Classeur;
-		} else if (sousCategorie == "FeuillePapier") {
+		} else if (sousCategorie.equals("FeuillePapier")) {
 			this._sousCategorie = PapeterieCategorie.FeuillePapier;
-		} else if (sousCategorie == "Calculatrice") {
+		} else if (sousCategorie.equals("Calculatrice")) {
 			this._sousCategorie = PapeterieCategorie.Calculatrice;
-		} else if (sousCategorie == "Surligneur") {
+		} else if (sousCategorie.equals("Surligneur")) {
 			this._sousCategorie = PapeterieCategorie.Surligneur;
 		} else {
 			this._sousCategorie = PapeterieCategorie.Autre;}

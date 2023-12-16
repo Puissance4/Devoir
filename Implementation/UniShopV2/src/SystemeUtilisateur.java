@@ -8,14 +8,14 @@ public class SystemeUtilisateur extends Systeme {
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
     
-	public SystemeUtilisateur(ArrayList<Produit> catalogue){
+	public SystemeUtilisateur(ArrayList<Produit> catalogue,ArrayList<Commande> listeCommandes){
 	
 		try {
 			BufferedReader readerAcheteur=new BufferedReader(new FileReader(fichierAcheteurs));
 			String line=readerAcheteur.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerAcheteur.readLine())!=null) {
 				String[] donnee=line.split(",");
-				listeAcheteurs.add(new Acheteur(donnee,catalogue));
+				listeAcheteurs.add(new Acheteur(donnee,catalogue,listeCommandes));
 			
 				
 			}
