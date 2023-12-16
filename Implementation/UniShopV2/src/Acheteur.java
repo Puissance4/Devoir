@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
 
-	public Acheteur(String[] donnee,ArrayList<Produit> catalogue) {
+	public Acheteur(String[] donnee,ArrayList<Produit> catalogue,ArrayList<Commande> listeCommandes) {
 		super(donnee[1], donnee[3], donnee[6], donnee[5], donnee[4]);
 		this.pseudo = donnee[0];
 		this.prenom = donnee[2];
@@ -31,7 +31,7 @@ public class Acheteur extends Utilisateur {
 			String line=readerPanier.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerPanier.readLine())!=null) {
 				String[] panier=line.split(",");
-				if (panier[0]==donnee[0]){
+				if (panier[0].equals(donnee[0])){
 					this.panier=new Panier(panier,catalogue);
 					panierInit=true;
 				}
@@ -55,21 +55,10 @@ public class Acheteur extends Utilisateur {
 			}}
 		this.nombrePoints=Integer.parseInt(donnee[11]);
 
-		try {
-			BufferedReader readerCommandes=new BufferedReader(new FileReader("../Commandes.csv"));
-			String line=readerCommandes.readLine();//ignore la ligne des noms de colonnes
-			while ((line=readerCommandes.readLine())!=null) {
-				String[] commande=line.split(",");
-				System.out.println("commande"+commande[0]);
-				if (commande[1]==donnee[0]){
-					this.commandes.add(new Commande(commande,catalogue,this));
-				}
-				
+		for (Commande commande : listeCommandes){
+			if (commande.getAcheteur().equals(donnee[0])){
+				this.commandes.add(commande);
 			}
-			readerCommandes.close();
-		} catch (Exception e) {
-	
-			e.printStackTrace();
 		}
 
 	}

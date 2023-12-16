@@ -10,7 +10,7 @@ public class Menu {
 	private int indexPage = 0;
 	public App app;
 	public SystemeCatalogue systemeCatalogue=new SystemeCatalogue();
-	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur(systemeCatalogue.catalogue);
+	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur(systemeCatalogue.catalogue,systemeCatalogue.listeCommandes);
 	public SystemeGeneral systemeGeneral=new SystemeGeneral();
 
 	private static Scanner scanner = new Scanner(System.in);
@@ -283,6 +283,15 @@ public class Menu {
 			break;
 		case 4:
 			//recherche revendeur;
+			System.out.println("Entrez le nom a rechercher");
+			String nom=promptS();
+			try {
+				systemeUtilisateur.rechercherRevendeur(nom);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			retourAuMenu(1, "d'acheteur");
+			afficherPageAcheteur();
 			break;
 		case 5:
 			//recherche acheteur;
@@ -450,6 +459,8 @@ public class Menu {
 			
 			break;
 		case 10:
+			systemeCatalogue.deconnexion();
+			//systemeUtilisateur.deconnexion();
 			System.out.println("Merci d'avoir magasine sur UniShop");
 			System.exit(0);
 			break;

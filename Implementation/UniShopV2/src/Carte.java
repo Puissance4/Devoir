@@ -4,9 +4,9 @@ public class Carte {
 	private String expDate;
 	private String numero;
 	private String pin;
-	public Acheteur acheteur;
+	public String acheteur;
 
-	public Carte(String date, String numero,String pin,Acheteur acheteur){
+	public Carte(String date, String numero,String pin,String acheteur){
 		this.acheteur=acheteur;
 		this.expDate=date;
 		this.numero=numero;
@@ -22,5 +22,8 @@ public class Carte {
 
 	public String getPin() {
 		return this.pin;
+	}
+	public String getAcheteur() {
+		return this.acheteur;
 	}
 }

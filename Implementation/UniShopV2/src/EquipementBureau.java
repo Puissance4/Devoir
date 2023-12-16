@@ -8,11 +8,11 @@ public class EquipementBureau extends Categorie {
 	public EquipementBureau(String marque, String modele, String sousCategorie) {
 		this._marque = marque;
 		this._modele = modele;
-		if (sousCategorie == "ChaiseDeBureau") {
+		if (sousCategorie.equals("ChaiseDeBureau")) {
 			this._sousCategorie = BureauCategorie.ChaiseDeBureau;
-		} else if (sousCategorie == "LampeDeBureau") {
+		} else if (sousCategorie.equals("LampeDeBureau")) {
 			this._sousCategorie = BureauCategorie.LampeDeBureau;
-		} else if (sousCategorie == "SupportOrdinateurPortable") {
+		} else if (sousCategorie.equals("SupportOrdinateurPortable")) {
 			this._sousCategorie = BureauCategorie.SupportOrdinateurPortable;
 		} else {
 			this._sousCategorie = BureauCategorie.Autre;}

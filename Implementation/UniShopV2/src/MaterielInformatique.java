@@ -14,15 +14,15 @@ public class MaterielInformatique extends Categorie {
 		this._modele = modele;
 		this._dateLancement = dateLancement;
 
-		if (sousCategorie == "OrdinateurPortable") {
+		if (sousCategorie.equals("OrdinateurPortable")) {
 			this._sousCategorie = InfoCategorie.OrdinateurPortable;
-		} else if (sousCategorie == "Souris") {
+		} else if (sousCategorie.equals("Souris")) {
 			this._sousCategorie = InfoCategorie.Souris;
-		} else if (sousCategorie == "Clavier") {
+		} else if (sousCategorie.equals("Clavier")) {
 			this._sousCategorie = InfoCategorie.Clavier;
-		} else if (sousCategorie == "DisqueDurExterne") {
+		} else if (sousCategorie.equals("DisqueDurExterne")) {
 			this._sousCategorie = InfoCategorie.DisqueDurExterne;
-		} else if (sousCategorie == "Ecouteurs") {
+		} else if (sousCategorie.equals("Ecouteurs")) {
 			this._sousCategorie = InfoCategorie.Ecouteurs;
 		} else {
 			this._sousCategorie = InfoCategorie.Autre;}
@@ -48,5 +48,8 @@ public class MaterielInformatique extends Categorie {
 	}
 	public String getSousCategorieString() {
 		return _sousCategorie.toString();
+	}
+	public String getDateLancementBuff(){
+		return _dateLancement.getYear()+";"+_dateLancement.getMonthValue()+";"+_dateLancement.getDayOfMonth();
 	}
 }

@@ -18,7 +18,7 @@ public class Commande {
 	private String infoLivraison;
 	private String numSuivi;
 	private String compagnieExp;
-	public Acheteur acheteur;
+	public String acheteur;
 	public Vector<BilletSignalement> peut_avoir = new Vector<BilletSignalement>();
 
 	public Commande (ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
@@ -30,14 +30,14 @@ public class Commande {
 		this.telephone=telephone;
 		this.adresse=adresse;
 		this.produits=produits;
-		this.acheteur=acheteur;
+		this.acheteur=acheteur.getPseudo();
 		this.carte=carte;
 		this.id=id;
 		this.infoLivraison=infoLivraison;
 		this.etat= EtatsCommande.EnProduction;
 	}
 
-	public Commande(String [] donnee,ArrayList<Produit> catalogue,Acheteur acheteur){
+	public Commande(String [] donnee,ArrayList<Produit> catalogue){
 		this.produits=new ArrayList<Produit>();
 		String[] prod=donnee[0].split(";");
 		for (Produit produit : catalogue) {
@@ -46,16 +46,17 @@ public class Commande {
 					this.produits.add(produit);}
 				}
 			}
-		this.acheteur=acheteur;
+		this.acheteur=donnee[1];
 		this.adresse=donnee[2];
 		this.telephone=donnee[3];
-		//instancier la carte
+		String [] donneecarte= donnee[4].split(";");
+		this.carte=new Carte(donneecarte[0],donneecarte[1],donneecarte[2],donneecarte[3]);
 		
 		this.id=donnee[5];
 		this.infoLivraison=donnee[5];
-		if(donnee[6]=="EnProduction"){this.etat= EtatsCommande.EnProduction;}
-		else if(donnee[6]=="EnLivraison"){this.etat= EtatsCommande.EnLivraison;}
-		else if(donnee[6]=="Livre"){this.etat= EtatsCommande.Livre;}
+		if(donnee[6].equals("EnProduction")){this.etat= EtatsCommande.EnProduction;}
+		else if(donnee[6].equals("EnLivraison")){this.etat= EtatsCommande.EnLivraison;}
+		else if(donnee[6].equals("Livre")){this.etat= EtatsCommande.Livre;}
 		String [] date= donnee[7].split(";");
 		this.dateArrivee= new GregorianCalendar(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2])).getTime();
 		this.numSuivi=donnee[8];
@@ -136,6 +137,28 @@ public class Commande {
 	public ArrayList<Produit> getProduits() {
 		return this.produits;
 	}
+	public String getProduitsBuff(){
+		String prod=produits.get(1).getIdentifiant();
+		for (int i=1;i<produits.size();i++){
+			prod=prod+";"+produits.get(i).getIdentifiant();
+		}
+		return prod;
+	}
+	public String getDateBuff(){
+		Calendar calendar = new GregorianCalendar();
+		calendar.setTime(dateArrivee);
+		int annee = calendar.get(Calendar.YEAR);
+		int mois = calendar.get(Calendar.MONTH);
+		int jour = calendar.get(Calendar.DAY_OF_MONTH);
+
+		String date= annee+";"+mois+";"+jour;
+		return date;
+	}
+
+	public String getCarteBuff(){
+		return carte.getExpDate()+";"+carte.getNumero()+";"+carte.getPin()+";"+carte.getAcheteur();
+
+	}
 	
 	public String getInfoLivraison() {
 		return this.infoLivraison;
@@ -156,7 +179,11 @@ public class Commande {
 		return this.dateArrivee;
 	}
 
+	public String getAcheteur() {
+		return this.acheteur;
+	}
 	public void setDateArrivee(Date dateArrivee) {
 		this.dateArrivee = dateArrivee;
 	}
+	
 }

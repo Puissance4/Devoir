@@ -332,4 +332,21 @@ public class Revendeur extends Utilisateur {
 			System.out.println("Choix invalide veuillez choisir une option entre 1 et " + _produits.size());
 		}	
 	}
+	public void afficherProfil(){
+		System.out.println("--------------------------");
+		System.out.println("Nom: " + super.getNom());
+		System.out.println("Nombre de likes: " + _likes);
+		System.out.println("Adresse: " + super.getAdresse());
+		System.out.println("Email: " + super.getCourriel());
+		System.out.println("------Articles Offerts---------- " );
+		for (int i=0;i<_produits.size();i++){
+			System.out.println(_produits.get(i).get_titre()+"  "+_produits.get(i).get_prix()+"$");
+		}
+		System.out.println("------Acheteurs Suivis---------- " );
+		for (int i=0;i<acheteurSuivi.size();i++){
+			System.out.println(acheteurSuivi.get(i));
+		}
+		System.out.println("--------------------------");
+
+	}
 }
