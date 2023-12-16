@@ -4,20 +4,23 @@ public class Panier {
 	private float cout;
 	private int nombreDePoints;
 	private ArrayList<Produit> produits;
-	public Panier() {
+	private String acheteur;
+	public Panier(String acheteur) {
 		this.cout=0f;
 		this.nombreDePoints=0;
 		this.produits=new ArrayList<Produit>();
+		this.acheteur=acheteur;
 	}
 	public Panier(String [] donnee,ArrayList<Produit> catalogue){
-		this.produits=new ArrayList<Produit>();
+		this.acheteur=donnee[0];
 		String[] prod=donnee[1].split(";");
+		if (!(prod[0].equals("null"))){
 		for (Produit produit : catalogue) {
 			for (int i=0;i<prod.length;i++){
 				if (produit.getIdentifiant().equals(prod[i])) {
 					this.produits.add(produit);}
 				}
-			}
+			}}
 		this.nombreDePoints=Integer.parseInt(donnee[2]);
 		this.cout=Float.parseFloat(donnee[3]);		
 				
@@ -99,4 +102,15 @@ public class Panier {
 		this.cout=cout+produit.get_prix();
 		this.nombreDePoints=nombreDePoints+produit.getPointsBonus();
 	}
-}
+
+	public String getPanierBuff(){
+		//pseudo,produits,nbPoints,prix
+		String liste="null";
+		if (produits.size()!=0){
+			liste=produits.get(0).getIdentifiant();
+			for (int i=1;i<produits.size();i++) {
+				liste=liste+";"+produits.get(i).getIdentifiant();
+				}
+			}
+		return (acheteur+","+liste+","+nombreDePoints+","+cout);
+}}

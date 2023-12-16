@@ -268,6 +268,28 @@ public class Revendeur extends Utilisateur {
 	public int getLikes() {
 		return this._likes;
 	}
+	public String getProduitsBuff(){
+		if (_produits.size()==0){return "null";}
+		else{
+			String liste=_produits.get(0).getIdentifiant();
+			for(int i=1;i<_produits.size();i++){
+				liste=liste+";"+_produits.get(i).getIdentifiant();
+			}
+			return liste;
+		}
+	}
+	public String getacheteurSuiviBuff(){
+		if (acheteurSuivi.size()==0){return "null";}
+		else{
+			String liste=acheteurSuivi.get(0);
+			for(int i=1;i<acheteurSuivi.size();i++){
+				liste=liste+";"+acheteurSuivi.get(i);
+			}
+			return liste;
+		}
+	}
+
+
 
 	public void setLikes(int aLikes) {
 		this._likes = aLikes;
