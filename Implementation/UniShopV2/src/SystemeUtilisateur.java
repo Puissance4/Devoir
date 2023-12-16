@@ -150,9 +150,18 @@ public class SystemeUtilisateur extends Systeme {
 		listeRevendeurs.add(revendeurnew);
 		return revendeurnew;}
 
-	public Revendeur[] rechercherRevendeur(String aMotcle, FiltresRevendeur[] aFiltres) {
-		throw new UnsupportedOperationException();
+ //ajouter les filtres
+	public Revendeur rechercherRevendeur(String nom) throws Exception {
+		for (Revendeur revendeur : listeRevendeurs) {
+			if (revendeur.getNom().equals(nom)){
+				revendeur.afficherProfil();
+
+				return revendeur;
+			}
 	}
+	throw new Exception("Il n'existe pas de revendeur avec le nom "+ nom);
+}
+	
 	public Acheteur rechercherAcheteur(String pseudo) throws Exception {
 		for (Acheteur acheteur : listeAcheteurs) {
 			if (acheteur.getPseudo().equals(pseudo)){
@@ -161,7 +170,7 @@ public class SystemeUtilisateur extends Systeme {
 				return acheteur;
 			}
 	}
-	throw new Exception("Il n'existe pas d'acheteur avec le pseudo"+ pseudo);
+	throw new Exception("Il n'existe pas d'acheteur avec le pseudo "+ pseudo);
 }
 	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();

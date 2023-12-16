@@ -283,6 +283,15 @@ public class Menu {
 			break;
 		case 4:
 			//recherche revendeur;
+			System.out.println("Entrez le nom a rechercher");
+			String nom=promptS();
+			try {
+				systemeUtilisateur.rechercherRevendeur(nom);
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+			retourAuMenu(1, "d'acheteur");
+			afficherPageAcheteur();
 			break;
 		case 5:
 			//recherche acheteur;
