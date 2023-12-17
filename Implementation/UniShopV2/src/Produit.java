@@ -49,11 +49,11 @@ public class Produit {
 		this.identifiant =donnee[6];
 		this.lienImageOuVideo =donnee[7];
 		this.nombreLike=Integer.parseInt(donnee[8]);
-		if (not(donnee[9].equals("null"))){
+		if (!(donnee[9].equals("null"))){
 			System.out.println(donnee[9]);
 			this.prixPromotionnel=Float.parseFloat(donnee[9]);}
-		if (not(donnee[10].equals("null"))){this.pointBonusPromotionnel=Integer.parseInt(donnee[10]);}
-		if (not(donnee[11].equals("null"))){
+		if (!(donnee[10].equals("null"))){this.pointBonusPromotionnel=Integer.parseInt(donnee[10]);}
+		if (!(donnee[11].equals("null"))){
 			String[] date=donnee[1].split(";");	
 			this.dateFinPromotion=LocalDate.of(Integer.parseInt(date[0]), Integer.parseInt(date[1]), Integer.parseInt(date[2]));
 
@@ -61,14 +61,6 @@ public class Produit {
 		// a faire evaluation
 	}
 	
-
-
-
-	
-
-    private boolean not(boolean equals) {
-		return false;
-	}
 
 
 

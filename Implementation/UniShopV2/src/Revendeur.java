@@ -13,7 +13,7 @@ public class Revendeur extends Utilisateur {
 		this._likes=Integer.parseInt(donnee[5]);
 
 		String[] produitsofferts=donnee[6].split(";");
-		if(not(produitsofferts[0].equals("null"))){
+		if(!(produitsofferts[0].equals("null"))){
 		for (Produit produit : catalogue) {
 			for (int i=0;i<produitsofferts.length;i++){
 				if (produit.getIdentifiant().equals(produitsofferts[i])) {
@@ -21,15 +21,13 @@ public class Revendeur extends Utilisateur {
 				}
 			}}
 		String [] acheteurs=donnee[7].split(";");
-			if(not(acheteurs[0].equals("null"))){
+			if(!(acheteurs[0].equals("null"))){
 			for (int i=0;i<acheteurs.length;i++){
 				this.acheteurSuivi.add(acheteurs[i]) ;
 			}}
 
 	}
-	private boolean not(boolean equals) {
-		return false;
-	}
+	
 	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);}
 
@@ -371,4 +369,12 @@ public class Revendeur extends Utilisateur {
 		System.out.println("--------------------------");
 
 	}
-}
+	public void setAcheteurSuivi(Acheteur acheteur) {
+		if(!acheteurSuivi.isEmpty() && acheteurSuivi.contains(acheteur.getPseudo())){
+			acheteurSuivi.remove(acheteur.getPseudo());
+			
+		}
+		else{
+			acheteurSuivi.add(acheteur.getPseudo());
+		}
+}}
