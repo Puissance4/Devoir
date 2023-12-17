@@ -95,18 +95,6 @@ public class Acheteur extends Utilisateur {
 		return this.panier;
 	}
 
-	public void modifRevendeursLike(Revendeur aRevendeur) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void modifProduitsLike(Produit aProduitsLike) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void modifAcheteurLike(Acheteur aAcheteurLike) {
-		throw new UnsupportedOperationException();
-	}
-
 	public String getRevendeurslikeBuff(){
 		if (revendeursLike.size()==0){return "null";}
 		else{
@@ -208,11 +196,33 @@ public class Acheteur extends Utilisateur {
 		return this.acheteurLike;
 	}
 	public void setAcheteurLike(Acheteur acheteur) {
-		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur.pseudo)){
-			acheteurLike.remove(acheteur.pseudo);
+		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur.getPseudo())){
+			acheteurLike.remove(acheteur.getPseudo());
+			acheteur.retirerDesPoints(5);
+			this.retirerDesPoints(5);
+			
 		}
 		else{
-			acheteurLike.add(acheteur.pseudo);
+			acheteurLike.add(acheteur.getPseudo());
+			acheteur.ajouterDesPoints(5);
+			this.ajouterDesPoints(5);
+		}
+	}
+	public void setProduitLike(Produit produit) {
+		if(!produitsLike.isEmpty() && produitsLike.contains(produit)){
+			produitsLike.remove(produit);
+		}
+		else{
+			produitsLike.add(produit);
+		}
+	}
+
+	public void setRevendeurLike(Revendeur revendeur) {
+		if(!revendeursLike.isEmpty() && revendeursLike.contains(revendeur.getNom())){
+			revendeursLike.remove(revendeur.getNom());
+		}
+		else{
+			revendeursLike.add(revendeur.getNom());
 		}
 	}
 
@@ -223,6 +233,13 @@ public class Acheteur extends Utilisateur {
 	//setters
 	public void setNombrePoints(int aNombrePoints) {
 		this.nombrePoints = aNombrePoints;
+	}
+	public void retirerDesPoints(int points){
+		nombrePoints=nombrePoints-points;
+		if (nombrePoints<0){nombrePoints=0;}
+	}
+	public void ajouterDesPoints(int points){
+		nombrePoints=nombrePoints+points;
 	}
 	public void setNotification(ArrayList<String> aNotification) {
 		this.notifications = aNotification;
