@@ -236,6 +236,14 @@ public class SystemeUtilisateur extends Systeme {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+	}
+
+	public ArrayList<Acheteur> getListeAcheteurs(){
+		return listeAcheteurs;
+	}
+	public ArrayList<Revendeur> getListeRevendeurs(){
+		return listeRevendeurs;
 	}
 
 

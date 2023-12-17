@@ -11,17 +11,18 @@ public class Acheteur extends Utilisateur {
 		this.pseudo = donnee[0];
 		this.prenom = donnee[2];
 		String [] liste=donnee[7].split(";");
-		if(not(liste[0].equals("null"))){
+		if(!(liste[0].equals("null"))){
 		for (int i=0;i<liste.length;i++){
 			this.revendeursLike.add(liste[i]) ;
 		}}
 		String [] liste2=donnee[8].split(";");
-		if(not(liste2[0].equals("null"))){
+		if(!(liste2[0].equals("null"))){
 		for (int i=0;i<liste2.length;i++){
 			this.acheteurLike.add(liste2[i]) ;
+			
 		}}
 		String [] liste3=donnee[9].split(";");
-		if(not(liste3[0].equals("null"))){
+		if(!(liste3[0].equals("null"))){
 		for (int i=0;i<liste3.length;i++){
 			this.notifications.add(liste3[i]) ;
 		}}
@@ -46,7 +47,7 @@ public class Acheteur extends Utilisateur {
 		if (panierInit==false){this.panier=new Panier(donnee[0]);}
 
 		String[] prod=donnee[10].split(";");
-		if(not(prod[0].equals("null"))){
+		if(!(prod[0].equals("null"))){
 		for (Produit produit : catalogue) {
 			for (int i=0;i<prod.length;i++){
 				if (produit.getIdentifiant().equals(prod[i])) {
@@ -63,9 +64,7 @@ public class Acheteur extends Utilisateur {
 
 	}
 	
-	private boolean not(boolean equals) {
-		return false;
-	}
+	
 
 	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);

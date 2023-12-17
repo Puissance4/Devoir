@@ -68,6 +68,8 @@ public class Menu {
         System.out.println("1. S'inscrire");
         System.out.println("2. Se connecter");
         System.out.println("3. Afficher le catalogue");
+		System.out.println("4. Afficher les acheteurs");
+		System.out.println("5. Afficher les revendeurs");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=0;
 		selectOption(prompt());
@@ -100,7 +102,7 @@ public class Menu {
 				break;
 			case 3:
 				if(systemeCatalogue.getCatalogue().size()==0){
-					System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
+					System.out.println("Desole nous n'avons pas d'articles disponibles à la vente en ce moment");
 				}
 				else{
 					for(int i=0;i<systemeCatalogue.getCatalogue().size();i++){
@@ -113,6 +115,67 @@ public class Menu {
 				choix = prompt();}
 				afficherMenuPrincipal();
 				break;
+
+			case 4:
+				//afficher les acheteurs
+				if(systemeUtilisateur.getListeAcheteurs().isEmpty()){
+				System.out.println("Desole nous n'avons pas d'acheteurs inscrits en ce moment");
+				retourAuMenu(1, "principal");
+				}
+				else{
+					System.out.println("--------------------------");
+					for(int i=0;i<systemeUtilisateur.getListeAcheteurs().size();i++){
+						Acheteur acheteur=systemeUtilisateur.getListeAcheteurs().get(i);
+						System.out.println("["+i+"]   "+acheteur.getPseudo()+"..... Nombre de points: "+acheteur.getNombrePoints());
+					}
+				int taille=systemeUtilisateur.getListeAcheteurs().size();
+				System.out.println("--------------------------");
+				System.out.println("Entrez l'index d'un acheteur pour voir son profil");
+				System.out.println("Entrez ["+(taille)+"] pour retourner au menu principal");
+				choix=prompt();
+				if(choix<taille){
+					systemeUtilisateur.getListeAcheteurs().get(choix).afficherProfil();
+					System.out.println("Connectez-vous pour pouvoir suivre cet acheteur ou rechercher des acheteurs");
+					retourAuMenu(1, "principal");
+				}
+				else if(choix>taille){
+					System.out.println("Choix invalide");
+					retourAuMenu(1, "principal");
+				}
+				}
+				afficherMenuPrincipal();
+				break;
+
+			case 5:
+				//afficher les revendeurs
+				if(systemeUtilisateur.getListeRevendeurs().isEmpty()){
+				System.out.println("Desole nous n'avons pas de revendeurs inscrits en ce moment");
+				retourAuMenu(1, "principal");
+				}
+				else{
+					System.out.println("--------------------------");
+					for(int i=0;i<systemeUtilisateur.getListeRevendeurs().size();i++){
+						Revendeur revendeur=systemeUtilisateur.getListeRevendeurs().get(i);
+						System.out.println("["+i+"]   "+revendeur.getNom()+"..... Nombre de likes: "+revendeur.getLikes());
+					}
+				int taille=systemeUtilisateur.getListeRevendeurs().size();
+				System.out.println("--------------------------");
+				System.out.println("Entrez l'index d'un revendeur pour voir son profil");
+				System.out.println("Entrez ["+(taille)+"] pour retourner au menu principal");
+				choix=prompt();
+				if(choix<taille){
+					systemeUtilisateur.getListeRevendeurs().get(choix).afficherProfil();
+					System.out.println("Connectez-vous pour pouvoir suivre ce revendeur ou rechercher des revendeurs");
+					retourAuMenu(1, "principal");
+				}
+				else if(choix>taille){
+					System.out.println("Choix invalide");
+					retourAuMenu(1, "principal");
+				}
+				}
+				afficherMenuPrincipal();
+				break;
+
 			default:
 				System.out.println("Choix invalide, veuillez réessayer.");
 				afficherMenuPrincipal();
