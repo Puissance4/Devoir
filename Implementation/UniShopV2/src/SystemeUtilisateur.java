@@ -96,8 +96,8 @@ public class SystemeUtilisateur extends Systeme {
 	public void inscription(Menu menu) {
 		System.out.println("1. Inscription en tant qu'acheteur");
 		System.out.println("2. Inscription en tant que revendeur");
-		int choix = menu.prompt();
-		switch (choix) {
+		int selection1 = menu.prompt();
+		switch (selection1) {
 		case 1:
 			Acheteur acheteur = inscrireAcheteur(menu);
 			menu.systemeUtilisateur.listeAcheteurs.add(acheteur);

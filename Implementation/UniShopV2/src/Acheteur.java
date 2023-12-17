@@ -219,9 +219,11 @@ public class Acheteur extends Utilisateur {
 	public void setRevendeurLike(Revendeur revendeur) {
 		if(!revendeursLike.isEmpty() && revendeursLike.contains(revendeur.getNom())){
 			revendeursLike.remove(revendeur.getNom());
+			revendeur.retirerDesLikes(1);
 		}
 		else{
 			revendeursLike.add(revendeur.getNom());
+			revendeur.ajouterDesLikes(1);
 		}
 	}
 

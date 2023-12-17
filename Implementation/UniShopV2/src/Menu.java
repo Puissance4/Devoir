@@ -243,7 +243,10 @@ public class Menu {
 				
 			break;
 		case 9:
+			systemeCatalogue.deconnexion();
+			systemeUtilisateur.deconnexion();
 			System.out.println("Merci d'avoir magasine sur UniShop");
+			System.exit(0);
 			break;
 		default:
 			System.out.println("Choix invalide, veuillez réessayer.");
