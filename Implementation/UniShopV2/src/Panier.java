@@ -1,14 +1,11 @@
 import java.util.ArrayList;
 
 public class Panier {
-	private float cout;
-	private int nombreDePoints;
-	private ArrayList<Produit> produits;
+	private float cout=0f;
+	private int nombreDePoints=0;
+	private ArrayList<Produit> produits=new ArrayList<Produit>();
 	private String acheteur;
 	public Panier(String acheteur) {
-		this.cout=0f;
-		this.nombreDePoints=0;
-		this.produits=new ArrayList<Produit>();
 		this.acheteur=acheteur;
 	}
 	public Panier(String [] donnee,ArrayList<Produit> catalogue){

@@ -212,7 +212,8 @@ public class Menu {
 				try{
 				Commande nouvCommande=panier.commander(util,this);
 				System.out.println("--------------------------");
-				System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());}
+				System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());
+				systemeCatalogue.listeCommandes.add(nouvCommande);}
 				catch(IllegalStateException e){System.out.println(e);}
 				finally{
 					int choix2=0;
@@ -298,12 +299,33 @@ public class Menu {
 			System.out.println("Entrez le pseudo a rechercher");
 			String pseudo=promptS();
 			try {
-				systemeUtilisateur.rechercherAcheteur(pseudo);
+				Acheteur acheteurRech=systemeUtilisateur.rechercherAcheteur(pseudo);
+				if(!(util.getAcheteurLike().isEmpty()) && (util.getAcheteurLike().contains(acheteurRech.getPseudo()))){
+					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs like");
+				}
+				else{System.out.println("Entrez [1] pour liker cet acheteur");}
+			
+			System.out.println("Entrez [2] pour retourner au menu d'acheteur");
+			int select=prompt();
+			if(select==1){
+				util.setAcheteurLike(acheteurRech);
+				System.out.println("modification effectue avec succes!");
+				retourAuMenu(1, "d'acheteur");
+				
+			}
+			else if (select==2){
+				
+			}
+			else{
+				System.out.println("Choix invalide");
+				retourAuMenu(1, "d'acheteur");
+			}
 			} catch (Exception e) {
 				System.out.println(e);
+				retourAuMenu(1, "d'acheteur");
 			}
-			retourAuMenu(1, "d'acheteur");
 			afficherPageAcheteur();
+			
 			break;
 
 		case 6:
