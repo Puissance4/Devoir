@@ -377,4 +377,12 @@ public class Revendeur extends Utilisateur {
 		else{
 			acheteurSuivi.add(acheteur.getPseudo());
 		}
-}}
+	}
+	public void retirerDesLikes(int likes){
+		_likes=_likes-likes;
+		if (_likes<0){_likes=0;}
+	}
+	public void ajouterDesLikes(int likes){
+		_likes=_likes+likes;}
+
+}
