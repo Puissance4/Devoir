@@ -184,7 +184,7 @@ public class Menu {
 				afficherMenuPrincipal();
 				break;
 	}}
-	else if (indexPage==1){
+	else if (indexPage==1){ // REVENDEUR
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		
 	switch (option) {
@@ -492,13 +492,12 @@ public class Menu {
 								System.out.println("Entrez [1] pour revenir au menu principal");
 								choix2=prompt();}
 						}}
-
-								
-							
-						
-			
 					else if(choix7==2){}
-					else if(choix7==3){}
+					else if(choix7==3){
+						afficherRetourEchange(choix7, commandeChoisie);
+						retournerMenuAcheteur();
+
+					}
 					else if(choix7==4){
 						System.out.println("--------------------------");
 						for(int i = 0; i < prodAcht.size(); i++){
