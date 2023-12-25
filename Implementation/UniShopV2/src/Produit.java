@@ -1,3 +1,5 @@
+import com.sun.source.tree.BreakTree;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
@@ -79,8 +81,10 @@ public class Produit {
 	private Float prixPromotionnel;
 	private int pointBonusPromotionnel;
 	private LocalDate dateFinPromotion;
+	private Revendeur revendeur;
 	//public MetriquesProduit unnamedMetriquesProduit;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
+	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
 
 	public boolean isPromotionValide() {
 		if (this.dateFinPromotion == null) {
@@ -235,6 +239,7 @@ public class Produit {
     public String get_lienImageOuVideo() {
         return lienImageOuVideo;
     }
+	public Revendeur getRevendeur(){return revendeur;};
 
 	public void setFinPromotion(LocalDate dateFin) {
 		this.dateFinPromotion = dateFin;

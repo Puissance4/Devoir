@@ -1,9 +1,7 @@
 
 import javax.xml.transform.Source;
 import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Menu {
 	private Utilisateur utilisateurConnecte;
@@ -214,10 +212,30 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 5:
-			//notifications;
+			ArrayList<Notification> notifications = util.notifications;
+			for (Notification notification : notifications){
+				System.out.println(notification.getCategorie() + ":     " + notification.getDesc());
+			}
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageRevendeur();
 			break;
 		case 6:
-			//metriques	;
+			MetriquesRevendeurs metriques = util.getMetriques();
+			System.out.println("1. Revenus: " + metriques.getRevenu());
+			System.out.println("2. Nombre d'article mis en vente: " + metriques.getNombreArticles());
+			System.out.println("3. Nombre de produits vendus: " + metriques.getNombreProduitsVendus());
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageRevendeur();
 			break;
 		case 7:
 			//confirmer retour;
@@ -277,6 +295,13 @@ public class Menu {
 			else if(choix1==panier.getProduits().size()){
 				try{
 				Commande nouvCommande=panier.commander(util,this);
+
+				// Notify the resellers that a new command is incoming
+				Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
+				for (Produit produit : panier.getProduits()){
+					produit.getRevendeur().notifications.add(notification);
+				}
+
 				System.out.println("--------------------------");
 				System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());
 				systemeCatalogue.listeCommandes.add(nouvCommande);}
@@ -353,7 +378,8 @@ public class Menu {
 			System.out.println("Entrez le nom a rechercher");
 			String nom=promptS();
 			try {
-				systemeUtilisateur.rechercherRevendeur(nom);
+				Revendeur revendeurRech = systemeUtilisateur.rechercherRevendeur(nom);
+
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -366,21 +392,21 @@ public class Menu {
 			String pseudo=promptS();
 			try {
 				Acheteur acheteurRech=systemeUtilisateur.rechercherAcheteur(pseudo);
-				if(!(util.getAcheteurLike().isEmpty()) && (util.getAcheteurLike().contains(acheteurRech.getPseudo()))){
-					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs like");
+				if(!(util.acheteursSuivis.isEmpty()) && (util.acheteursSuivis.contains(acheteurRech))){
+					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs suivis");
 				}
-				else{System.out.println("Entrez [1] pour liker cet acheteur");}
+				else{System.out.println("Entrez [1] pour suivre cet acheteur");}
 			
 			System.out.println("Entrez [2] pour retourner au menu d'acheteur");
 			int select=prompt();
 			if(select==1){
-				util.setAcheteurLike(acheteurRech);
+				util.setAcheteursSuivis(acheteurRech);
 				System.out.println("modification effectue avec succes!");
 				retourAuMenu(1, "d'acheteur");
 				
 			}
 			else if (select==2){
-				
+
 			}
 			else{
 				System.out.println("Choix invalide");
@@ -404,10 +430,32 @@ public class Menu {
 			afficherPageAcheteur();
 			break;
 		case 7:
-			//notifications;
+			ArrayList<Notification> notifications = util.notifications;
+			for (Notification notification : notifications){
+				System.out.println(notification.getCategorie() + ":     " + notification.getDesc());
+			}
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageAcheteur();
 			break;
 		case 8:
-			//metriques;
+			MetriquesAcheteur metriques = util.getMetriques();
+			System.out.println("1. Nombre de commande: " + metriques.getNombreCommandes());
+			System.out.println("2. Nombre d'articles: " + metriques.getNombreArticles());
+			System.out.println("3. Acheteurs suivis: ");
+			for (String acheteur : util.getMetriques()._classementAcheteurSuivis){
+				System.out.println("    " + acheteur);
+			}
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageAcheteur();
 			break;
 		case 9:
 			ArrayList<Commande> listeCommandes=util.getCommande();
@@ -475,7 +523,17 @@ public class Menu {
 							System.out.println("Entrez [0] pour confirmer l'arrivee de la commande");
 							System.out.println("Entrez [1] pour revenir au menu principal");
 							choix2=prompt();
-							if(choix2==1){commandeChoisie.setEtatsCommande(EtatsCommande.Livre);
+							if(choix2==0){
+								commandeChoisie.setEtatsCommande(EtatsCommande.Livre);
+
+								// Notify buyer that order state has been modified
+								Notification notification = new Notification(CategorieNotif.CHANGEMENT_ETAT_COMMANDE);
+								util.notifications.add(notification);
+
+								// Update buyer's order count in metrics
+								int nombreDeCommande = util.getMetriques().getNombreCommandes();
+								util.getMetriques().setNombreCommandes(nombreDeCommande - 1);
+
 								System.out.println("Livraison confirme!");
 							}
 							while (choix2!=1) {
@@ -527,11 +585,20 @@ public class Menu {
 							while(ajouterCom>2){
 							ajouterCom = prompt();
 							// Ne pas ajouter de commentaire
-							if(ajouterCom == 2) produit.evaluer(note, "", util);
+							if(ajouterCom == 2){
+								produit.evaluer(note, "", util);
+								// Notify the reseller that there is a new evaluation on his product
+								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
+								produit.getRevendeur().notifications.add(notification);
+							}
 							// Ajouter un commentaire
 							else if (ajouterCom == 1){
 								System.out.println("Veuillez ecrire votre commentaire ci-dessous");
-								produit.evaluer(note, promptS(), util);}
+								produit.evaluer(note, promptS(), util);
+								// Notify the reseller that there is a new evaluation on his product
+								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
+								produit.getRevendeur().notifications.add(notification);
+							}
 							else{System.out.println("Choix invalide veuillez choisir 1 ou 2");}}
 							System.out.println("Votre evaluation a etee ajoutee!");}
 

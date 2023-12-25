@@ -36,7 +36,10 @@ public class Revendeur extends Utilisateur {
 	//private Scanner sc = new Scanner(System.in);
 	private ArrayList<Produit> _produits = new ArrayList<Produit>();
 	private int _likes = 0;
-	public ArrayList<String> acheteurSuivi = new ArrayList<String>();
+	private MetriquesRevendeurs metriques = new MetriquesRevendeurs(this);
+	public ArrayList<String> acheteurSuivi = new ArrayList<String>(); // Subscribers name
+	public ArrayList<Acheteur> acheteursAbonnes = new ArrayList<>(); // Subscribers profile
+	public ArrayList<Notification> notifications = new ArrayList<>();
 
 	public void ajouterProduit(Menu menu) {
 		System.out.println("\n");
@@ -260,6 +263,9 @@ public class Revendeur extends Utilisateur {
 		String identifiant = menu.systemeGeneral.creerID();
 		Produit produit = new Produit(titre, categorie, description, quantite, prix, pointBonus, identifiant, lienImageOuVideo);
 		_produits.add(produit);
+
+		// Update number of articles proposed by the reseller
+		this.metriques.setNombreArticles(metriques.getNombreArticles() + 1);
 		menu.systemeCatalogue.catalogue.add(produit);
 	}
 
@@ -334,6 +340,24 @@ public class Revendeur extends Utilisateur {
 				System.out.print("\nVeuillez entrer un nombre de jours : ");
 				int duree = menu.prompt();
 				ajouterPromotionPrix(_produits.get(choix-1), prix, duree);
+				// Create and send a notification
+				ArrayList<Acheteur> utilisateursLikes =  _produits.get(choix -1).utilisateursLikes;
+				Notification notification1 = new Notification(CategorieNotif.PROMOTION_PRODUIT_LIKE);
+				Notification notification2 = new Notification(CategorieNotif.PROMOTION_REVENDEUR_LIKE);
+				Notification notification3 = new Notification(CategorieNotif.PROMOTION_PRODUIT_SUIVI);
+
+				for (Acheteur acheteur : utilisateursLikes){
+					// Send to buyers who liked the product
+					acheteur.notifications.add(notification1);
+					for (Acheteur utilSuivis : acheteur.acheteursSuivis){
+						// Send to buys who subscribed to him
+						utilSuivis.notifications.add(notification3);
+					}
+				}
+				for (Utilisateur utilisateur : this.acheteursAbonnes){
+					utilisateur.notifications.add(notification2);
+				}
+
 				cat=true;
 			} else if (choix2 == 2) {
 				System.out.println("\nCombien de points voulez-vous que le produit rapporte?");
@@ -385,4 +409,7 @@ public class Revendeur extends Utilisateur {
 	public void ajouterDesLikes(int likes){
 		_likes=_likes+likes;}
 
+	public MetriquesRevendeurs getMetriques() {
+		return metriques;
+	}
 }

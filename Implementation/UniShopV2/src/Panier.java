@@ -24,7 +24,7 @@ public class Panier {
 		}
 
 	public Commande commander(Acheteur acheteur,Menu menu) throws IllegalStateException {
-		if (produits.size()==0){
+		if (produits.isEmpty()){
 			throw new IllegalStateException("il faut que le panier contienne au moins 1 produit pour commander");
 		}
 		else{
@@ -57,16 +57,38 @@ public class Panier {
 					throw new IllegalArgumentException("retour au panier");
 				}
 				else if (choix==1){
-					Boolean verif=menu.systemeGeneral.verifierCarte(carte);
-					if (verif==false){}
+					boolean verif=menu.systemeGeneral.verifierCarte(carte);
+					if (!verif){}
 					else{
 						String identifiant=menu.systemeGeneral.creerID();
 						Commande commande= new Commande (produits,acheteur,adresse,telephone, carte, identifiant,infoSupp);
-						if(menu.systemeGeneral.verifierCommande(commande)==false){
+						if(!menu.systemeGeneral.verifierCommande(commande)){
 							throw new IllegalStateException("quantite insuffisante");
 						}
 						else{
 							acheteur.addCommande(commande);
+							// Update buyer's metrics
+							// Update order number
+							int nombreDeCommande = acheteur.getMetriques().getNombreCommandes();
+							acheteur.getMetriques().setNombreCommandes(nombreDeCommande + produits.size());
+							// Update purchased products number
+							int nombreProduitAchete = acheteur.getMetriques().getNombreArticles();
+							acheteur.getMetriques().setNombreArticles(nombreProduitAchete + produits.size());
+
+							// Update sellers metrics
+							for (Produit produit : produits){
+								// Update number of products sold
+								int nombreAricleVendu = produit.getRevendeur().getMetriques().getNombreProduitsVendus();
+								produit.getRevendeur().getMetriques().setNombreProduitsVendus(nombreAricleVendu + 1);
+								// Update number of products offered
+								int nombreArticleOffert = produit.getRevendeur().getMetriques().getNombreArticles();
+								produit.getRevendeur().getMetriques().setNombreArticles(nombreArticleOffert - 1);
+								// Update reseller's revenue
+								float prixProduit = produit.get_prix();
+								float revenuRevendeur = produit.getRevendeur().getMetriques().getRevenu();
+								produit.getRevendeur().getMetriques().setRevenu(revenuRevendeur + prixProduit);
+							}
+
 							return commande;}
 						
 					}

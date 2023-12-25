@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Utilisateur {
@@ -15,7 +16,7 @@ public class Utilisateur {
 	private String telephone;
 	private String adresse;
 	private String motDePasse;
-	public Vector<Notification> _unnamed_Notification_ = new Vector<Notification>();
+	public ArrayList<Notification> notifications = new ArrayList<>();
 
 	public String getNom() {
         return this.nom;

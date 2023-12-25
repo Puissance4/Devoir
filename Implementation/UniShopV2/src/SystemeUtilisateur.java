@@ -201,7 +201,7 @@ public class SystemeUtilisateur extends Systeme {
 				String Notifications=acheteur.getNotificationBuff();
 				String ProduitsLike=acheteur.getProduitsLikeBuff();
 				int NombreDepoints=acheteur.getNombrePoints();
-				String panier=acheteur.panier.getPanierBuff();
+				String panier= acheteur.getPanier().getPanierBuff();
 
 				writterPanier.write(panier);
 				writterAcheteurs.write(pseudo+","+nom+","+prenom+","+email+","+motDePasse+","+adresse+","+telephone+","+Revendeurslike+","+Acheteurslike+","+Notifications+","+ProduitsLike+","+NombreDepoints);

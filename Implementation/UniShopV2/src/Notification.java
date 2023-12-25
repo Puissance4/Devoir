@@ -1,10 +1,12 @@
 public class Notification {
-	private CategorieNotif _categorie;
-	private String _desc;
-	public Utilisateur _unnamed_Utilisateur_;
-
+	private String description;
+	private CategorieNotif categorie;
+	public Notification(CategorieNotif categorie){
+		this.description = categorie.getDescription();
+		this.categorie = categorie;
+	}
 	public CategorieNotif getCategorie() {
-		return this._categorie;
+		return this.categorie;
 	}
 
 	public void setCategorie(CategorieNotif aCategorie) {
@@ -12,10 +14,10 @@ public class Notification {
 	}
 
 	public String getDesc() {
-		return this._desc;
+		return this.description;
 	}
 
 	public void setDesc(String aDesc) {
-		this._desc = aDesc;
+		this.description = aDesc;
 	}
 }
