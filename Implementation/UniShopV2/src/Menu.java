@@ -1,5 +1,7 @@
 
 import javax.xml.transform.Source;
+import java.io.*;
+import java.lang.reflect.Array;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,12 +14,33 @@ public class Menu {
 	private int indexPage = 0;
 	public App app;
 	public SystemeCatalogue systemeCatalogue=new SystemeCatalogue();
+
+	public ArrayList<String[]> listeAcheteur = new ArrayList();
+
+	public ArrayList<String[]> listeCommandes = new ArrayList();
+
+	public ArrayList<String[]> listeRevendeur = new ArrayList();
+
+	public ArrayList<String[]> listeProduits= new ArrayList();
+
+	public ArrayList<String[]> listePanier= new ArrayList();
+
 	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur(systemeCatalogue.catalogue,systemeCatalogue.listeCommandes);
 	public SystemeGeneral systemeGeneral=new SystemeGeneral();
 
+
+
 	private static Scanner scanner = new Scanner(System.in);
 
+	public Menu(){
+		this.listeAcheteur = deserialization("Acheteur.csv", listeAcheteur);
+		this.listeRevendeur = deserialization("Revendeur.csv", listeRevendeur);
+		this.listeCommandes = deserialization("Commandes.csv", listeCommandes);
+		this.listeProduits = deserialization("Produits.csv", listeProduits);
+		this.listePanier = deserialization("Paniers.csv", listePanier);
 
+
+	}
 	public void afficherMessage(String message) {
 		System.out.println(message);
 	}
@@ -816,6 +839,45 @@ public class Menu {
 				retournerMenuAcheteur();
 				break;
 		}
+	}
+
+	public void serialization (String filename,Object object){
+		try
+		{
+			//Saving of object in a file
+			FileOutputStream file = new FileOutputStream(filename);
+			ObjectOutputStream out = new ObjectOutputStream(file);
+
+			// Method for serialization of object
+			out.writeObject(object);
+			out.close();
+			file.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Erreur serialization");
+		}
+	}
+	public ArrayList deserialization (String filename, ArrayList<String[]> list){
+		String line = "";
+		String objet[] = null ;
+		try
+		{
+			//parsing a CSV file into BufferedReader class constructor
+			BufferedReader br = new BufferedReader(new FileReader(filename));
+			while ((line = br.readLine()) != null)   //returns a Boolean value
+			{
+				 objet = line.split(",");    // use comma as separator
+				 list.add(objet);
+
+			}
+			return list;
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		return  list;
 	}
 
 }

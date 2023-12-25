@@ -43,6 +43,8 @@ public class SystemeCatalogue extends Systeme {
 		return this.catalogue;
 	}
 
+
+
 	public Produit[] recherche(String aMotcle, Filtre[] aFiltres) {
 		throw new UnsupportedOperationException();
 	}
@@ -119,5 +121,12 @@ public class SystemeCatalogue extends Systeme {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void setCatalogue(ArrayList<Produit> catalogue) {
+		this.catalogue = catalogue;
+	}
+
+	public void setListeCommandes(ArrayList<Commande> listeCommandes) {
+		this.listeCommandes = listeCommandes;
 	}
 }
