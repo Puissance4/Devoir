@@ -869,7 +869,6 @@ public class Menu {
 			{
 				 objet = line.split(",");    // use comma as separator
 				 list.add(objet);
-
 			}
 			return list;
 		}
