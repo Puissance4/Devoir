@@ -385,4 +385,12 @@ public class Revendeur extends Utilisateur {
 	public void ajouterDesLikes(int likes){
 		_likes=_likes+likes;}
 
+
+	public ArrayList<Produit> get_produits() {
+		return _produits;
+	}
+
+	public void set_produits(ArrayList<Produit> _produits) {
+		this._produits = _produits;
+	}
 }

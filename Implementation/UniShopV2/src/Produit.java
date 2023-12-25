@@ -60,12 +60,12 @@ public class Produit {
 		}
 		// a faire evaluation
 	}
-	
 
 
 
 
 
+	private Revendeur revendeur;
 
 	private String titre;
 	public Categorie categorie;
@@ -81,6 +81,13 @@ public class Produit {
 	private LocalDate dateFinPromotion;
 	//public MetriquesProduit unnamedMetriquesProduit;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
+
+
+
+	public ArrayList<Commande> listeCommande = new ArrayList<Commande>();
+
+
+
 
 	public boolean isPromotionValide() {
 		if (this.dateFinPromotion == null) {
@@ -246,5 +253,21 @@ public class Produit {
 
 	public void setPointBonusPromotionnel(int pointBonus) {
 		this.pointBonusPromotionnel = pointBonus;
+	}
+
+	public ArrayList<Commande> getListeCommande() {
+		return listeCommande;
+	}
+
+	public void setListeCommande(ArrayList<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
+	}
+
+	public Revendeur getRevendeur() {
+		return revendeur;
+	}
+
+	public void setRevendeur(Revendeur revendeur) {
+		this.revendeur = revendeur;
 	}
 }

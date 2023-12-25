@@ -73,7 +73,8 @@ public class Acheteur extends Utilisateur {
 		this.nombrePoints = 0;
 		this.panier=new Panier(pseudo);
 	}
-	
+
+	private ArrayList<RetourEchange> listRetourEchange = new ArrayList<>();
 	private String prenom;
 	private String pseudo;
 	private int nombrePoints = 0;
@@ -246,5 +247,11 @@ public class Acheteur extends Utilisateur {
 		this.notifications = aNotification;
 	}
 
+	public ArrayList<RetourEchange> getListRetourEchange() {
+		return listRetourEchange;
+	}
 
+	public void setListRetourEchange(ArrayList<RetourEchange> listRetourEchange) {
+		this.listRetourEchange = listRetourEchange;
+	}
 }
