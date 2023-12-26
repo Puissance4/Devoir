@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
-
 import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
@@ -31,7 +29,6 @@ public class Acheteur extends Utilisateur {
 					this.panier=new Panier(panier,catalogue);
 					panierInit=true;
 				}
-				
 			}
 			readerPanier.close();
 		} catch (Exception e) {
@@ -172,6 +169,10 @@ public class Acheteur extends Utilisateur {
 
 	}
 
+	public void notifier(Notification notification) {
+		this.notifications.add(notification);
+	}
+
 	//getters
 	public String getPseudo() {
 		return pseudo;
@@ -190,7 +191,7 @@ public class Acheteur extends Utilisateur {
 	}
 
 	// Setters
-	public void setAcheteursSuivis(Acheteur acheteur) {
+	public void setAcheteursSuivis(Acheteur acheteur) throws IOException {
 			if(!acheteursSuivis.isEmpty() && acheteursSuivis.contains(acheteur)){
 			acheteursSuivis.remove(acheteur);
 			acheteur.retirerDesPoints(5);
@@ -203,7 +204,7 @@ public class Acheteur extends Utilisateur {
 			this.ajouterDesPoints(5);
 			// Send a notification to the followed user
 			Notification notification = new Notification(CategorieNotif.NOUVEL_ACHETEUR_SUIVI);
-			acheteur.notifications.add(notification);
+			acheteur.notifier(notification);
 			// Update buyer's list of followed users
 			this.metriques._classementAcheteurSuivis.add(acheteur.getPseudo());
 		}

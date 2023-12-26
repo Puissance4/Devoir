@@ -1,5 +1,6 @@
 
 import javax.xml.transform.Source;
+import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.*;
 
@@ -299,7 +300,7 @@ public class Menu {
 				// Notify the resellers that a new command is incoming
 				Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
 				for (Produit produit : panier.getProduits()){
-					produit.getRevendeur().notifications.add(notification);
+					produit.getRevendeur().notifier(notification);
 				}
 
 				System.out.println("--------------------------");
@@ -528,7 +529,7 @@ public class Menu {
 
 								// Notify buyer that order state has been modified
 								Notification notification = new Notification(CategorieNotif.CHANGEMENT_ETAT_COMMANDE);
-								util.notifications.add(notification);
+								util.notifier(notification);
 
 								// Update buyer's order count in metrics
 								int nombreDeCommande = util.getMetriques().getNombreCommandes();
@@ -589,7 +590,7 @@ public class Menu {
 								produit.evaluer(note, "", util);
 								// Notify the reseller that there is a new evaluation on his product
 								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
-								produit.getRevendeur().notifications.add(notification);
+								produit.getRevendeur().notifier(notification);
 							}
 							// Ajouter un commentaire
 							else if (ajouterCom == 1){
@@ -597,7 +598,7 @@ public class Menu {
 								produit.evaluer(note, promptS(), util);
 								// Notify the reseller that there is a new evaluation on his product
 								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
-								produit.getRevendeur().notifications.add(notification);
+								produit.getRevendeur().notifier(notification);
 							}
 							else{System.out.println("Choix invalide veuillez choisir 1 ou 2");}}
 							System.out.println("Votre evaluation a etee ajoutee!");}

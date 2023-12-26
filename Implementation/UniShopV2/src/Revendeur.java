@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Vector;
 
 import javax.sound.midi.MidiDevice.Info;
@@ -293,7 +294,16 @@ public class Revendeur extends Utilisateur {
 		}
 	}
 
-
+	public String getRevendeurNotificationBuff(){
+		if (notifications.isEmpty()){return "null";}
+		else{
+			StringBuilder liste= new StringBuilder(notifications.get(0).getDesc());
+			for(int i=1;i<notifications.size();i++){
+				liste.append(";").append(notifications.get(i).getDesc());
+			}
+			return liste.toString();
+		}
+	}
 
 	public void setLikes(int aLikes) {
 		this._likes = aLikes;
@@ -348,14 +358,14 @@ public class Revendeur extends Utilisateur {
 
 				for (Acheteur acheteur : utilisateursLikes){
 					// Send to buyers who liked the product
-					acheteur.notifications.add(notification1);
+					acheteur.notifier(notification1);
 					for (Acheteur utilSuivis : acheteur.acheteursSuivis){
 						// Send to buys who subscribed to him
-						utilSuivis.notifications.add(notification3);
+						utilSuivis.notifier(notification3);
 					}
 				}
-				for (Utilisateur utilisateur : this.acheteursAbonnes){
-					utilisateur.notifications.add(notification2);
+				for (Acheteur acheteur : this.acheteursAbonnes){
+					acheteur.notifier(notification2);
 				}
 
 				cat=true;
@@ -392,6 +402,10 @@ public class Revendeur extends Utilisateur {
 		}
 		System.out.println("--------------------------");
 
+	}
+
+	public void notifier(Notification notification) {
+		this.notifications.add(notification);
 	}
 	public void setAcheteurSuivi(Acheteur acheteur) {
 		if(!acheteurSuivi.isEmpty() && acheteurSuivi.contains(acheteur.getPseudo())){

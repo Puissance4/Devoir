@@ -21,7 +21,7 @@ public class Utilisateur {
 	public String getNom() {
         return this.nom;
     }
-	 public String getMotDePasse() {
+	public String getMotDePasse() {
 		return this.motDePasse;
 	}
 	public String getAdresse() {
@@ -33,6 +33,7 @@ public class Utilisateur {
 	public String getCourriel() {
         return this.courriel;
     }
+
 	public void modifierProfil(Menu menu){
 		System.out.println("Souhaitez vous conserver le nom: "+this.nom);
 		String nouveau=modif("nom",menu);

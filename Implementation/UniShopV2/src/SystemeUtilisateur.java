@@ -216,7 +216,7 @@ public class SystemeUtilisateur extends Systeme {
 
 		try {
 			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("../Revendeurs.csv"));
-			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike");
+			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike,Notification");
 			for (Revendeur revendeur: listeRevendeurs){
 				writterRevendeurs.newLine();
 				String nom=revendeur.getNom();
@@ -227,8 +227,9 @@ public class SystemeUtilisateur extends Systeme {
 				int likes= revendeur.getLikes();
 				String ProduitsOfferts=revendeur.getProduitsBuff();
 				String Acheteurslike=revendeur.getacheteurSuiviBuff();
+				String Notifications=revendeur.getRevendeurNotificationBuff();
 
-				writterRevendeurs.write(nom+","+email+","+motDePasse+","+adresse+","+telephone+","+likes+","+ProduitsOfferts+","+Acheteurslike);
+				writterRevendeurs.write(nom+","+email+","+motDePasse+","+adresse+","+telephone+","+likes+","+ProduitsOfferts+","+Acheteurslike+","+Notifications);
 			}
 			writterRevendeurs.close();
 
