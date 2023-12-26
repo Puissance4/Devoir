@@ -182,8 +182,8 @@ public class SystemeUtilisateur extends Systeme {
 
 	public void deconnexion(){
 		try {
-			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("../Acheteurs.csv"));
-			BufferedWriter writterPanier=new BufferedWriter(new FileWriter("../Paniers.csv"));
+			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Acheteurs.csv"));
+			BufferedWriter writterPanier=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Paniers.csv"));
 			writterPanier.write("pseudo,produits,nbPoints,prix");
 			writterAcheteurs.write("pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints");
 			for (Acheteur acheteur: listeAcheteurs){
@@ -215,7 +215,7 @@ public class SystemeUtilisateur extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("../Revendeurs.csv"));
+			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Revendeurs.csv"));
 			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike");
 			for (Revendeur revendeur: listeRevendeurs){
 				writterRevendeurs.newLine();

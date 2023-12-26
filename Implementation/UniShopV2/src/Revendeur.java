@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.Vector;
 
 import javax.sound.midi.MidiDevice.Info;
@@ -245,6 +246,7 @@ public class Revendeur extends Utilisateur {
 			cat=true;
 		} else {
 			System.out.println("Choix invalide veuillez choisir une categorie");
+			System.out.println(("choix "+choix));
 
 		}}
 		System.out.println("\nDescription du produit : ");
@@ -265,6 +267,10 @@ public class Revendeur extends Utilisateur {
 
 	public int getLikes() {
 		return this._likes;
+	}
+
+	public ArrayList<Produit> get_produits(){
+		return this._produits;
 	}
 	public String getProduitsBuff(){
 		if (_produits.size()==0){return "null";}
@@ -381,6 +387,13 @@ public class Revendeur extends Utilisateur {
 	public void retirerDesLikes(int likes){
 		_likes=_likes-likes;
 		if (_likes<0){_likes=0;}
+	}
+	public int test(Menu menu){
+		System.out.println("test");
+		int premier=menu.prompt();
+		int deuxieme=menu.prompt();
+		return premier+deuxieme;
+
 	}
 	public void ajouterDesLikes(int likes){
 		_likes=_likes+likes;}
