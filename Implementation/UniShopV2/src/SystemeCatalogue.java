@@ -11,7 +11,7 @@ public class SystemeCatalogue extends Systeme {
 
 	public SystemeCatalogue (){
 		try {
-			BufferedReader readerProduits=new BufferedReader(new FileReader("../Produits.csv"));
+			BufferedReader readerProduits=new BufferedReader(new FileReader("Implementation/UniShopV2/Produits.csv"));
 			String line=readerProduits.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerProduits.readLine())!=null) {
 				String[] donnee=line.split(",");
@@ -23,7 +23,7 @@ public class SystemeCatalogue extends Systeme {
 			e.printStackTrace();
 		}
 		try {
-			BufferedReader readerCommandes=new BufferedReader(new FileReader("../Commandes.csv"));
+			BufferedReader readerCommandes=new BufferedReader(new FileReader("Implementation/UniShopV2/Commandes.csv"));
 			String line=readerCommandes.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerCommandes.readLine())!=null) {
 				String[] donnee=line.split(",");
@@ -66,7 +66,7 @@ public class SystemeCatalogue extends Systeme {
 
 	public void deconnexion(){
 		try {
-			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("../Commandes.csv"));
+			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("Implementation/Commandes.csv"));
 			writterCommandes.write("produit,acheteur,adresse,tel,carte,id,infoLivraison,dateArrivee(annee,mois,jour),numSuivi,compagnieExp,billetSignalement");
 			for (Commande commande: listeCommandes){
 				writterCommandes.newLine();
@@ -91,7 +91,7 @@ public class SystemeCatalogue extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("../Produits.csv"));
+			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("Implementation/Produits.csv"));
 			writterProduits.write("titre,categorie,description,quantite,prix,pointBonus,identifiant,lienImageOuVideo,nombreDeLike,PrixPromotionnel,PointsBonusPromotion,dateFinPromotion");
 			for (Produit produit: catalogue){
 				try {

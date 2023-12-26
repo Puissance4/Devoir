@@ -6,8 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class SystemeUtilisateur extends Systeme {
-	public String fichierAcheteurs="../Acheteurs.csv";
-	public String fichierRevendeurs="../Revendeurs.csv";
+	public String fichierAcheteurs="Implementation/UniShopV2/Acheteurs.csv";
+	public String fichierRevendeurs="Implementation/UniShopV2/Revendeurs.csv";
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
     
