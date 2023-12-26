@@ -245,8 +245,10 @@ public class Menu {
 			break;
 		case 5:
 			ArrayList<Notification> notifications = util.notifications;
+			int indexNotif = 0;
 			for (Notification notification : notifications){
-				System.out.println(notification.getCategorie() + ":     " + notification.getDesc());
+				System.out.println(indexNotif + ": " + notification.getDesc());
+				indexNotif++;
 			}
 			// Return to menu
 			choix=0;
@@ -438,7 +440,7 @@ public class Menu {
 				
 			}
 			else if (select==2){
-
+				afficherPageAcheteur();
 			}
 			else{
 				System.out.println("Choix invalide");
@@ -463,8 +465,10 @@ public class Menu {
 			break;
 		case 7:
 			ArrayList<Notification> notifications = util.notifications;
+			int indexNotif = 0;
 			for (Notification notification : notifications){
-				System.out.println(notification.getCategorie() + ":     " + notification.getDesc());
+				System.out.println(indexNotif + ": " + notification.getDesc());
+				indexNotif++;
 			}
 			choix=0;
 			while (choix!=1){
@@ -618,7 +622,7 @@ public class Menu {
 									afficherPageAcheteur();
 								}
 								if (choix2 > listeProd.size()){
-									System.out.println("choix invalide, veillez selectionner une produit");
+									System.out.println("choix invalide, veillez selectionner un produit present dans la commande");
 								}
 							}
 							Produit produitSignale = listeProd.get(choix2);

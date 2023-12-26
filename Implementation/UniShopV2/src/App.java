@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class App {
 	private static Menu menu1;
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws FileNotFoundException {
 		
 		menu1=new Menu();
 		/*Acheteur acheteur1= new Acheteur("carlthecat","Cat", "Carl", "carl@cat.org", "poisson", "rue 14", "234564357");
