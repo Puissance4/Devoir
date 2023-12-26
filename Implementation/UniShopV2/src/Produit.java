@@ -72,7 +72,6 @@ public class Produit {
 	private Float prixPromotionnel;
 	private int pointBonusPromotionnel;
 	private LocalDate dateFinPromotion;
-	private Revendeur revendeur;
 	//public MetriquesProduit unnamedMetriquesProduit;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
@@ -85,6 +84,7 @@ public class Produit {
 		} else {
 			return date.isBefore(this.dateFinPromotion);
 		}
+	}
 	
 
 	public void modifier() {
@@ -240,7 +240,6 @@ public class Produit {
     public String get_lienImageOuVideo() {
         return lienImageOuVideo;
     }
-	public Revendeur getRevendeur(){return revendeur;};
 
 	public void setFinPromotion(LocalDate dateFin) {
 		this.dateFinPromotion = dateFin;

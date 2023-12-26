@@ -269,10 +269,6 @@ public class Revendeur extends Utilisateur {
 	public int getLikes() {
 		return this._likes;
 	}
-
-	public ArrayList<Produit> get_produits(){
-		return this._produits;
-	}
 	public String getProduitsBuff(){
 		if (_produits.size()==0){return "null";}
 		else{
