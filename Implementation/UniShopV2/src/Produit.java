@@ -1,8 +1,5 @@
-import com.sun.source.tree.BreakTree;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class Produit {
 

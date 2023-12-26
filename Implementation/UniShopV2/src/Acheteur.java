@@ -37,7 +37,7 @@ public class Acheteur extends Utilisateur {
 
 		if (panierInit==false){this.panier=new Panier(donnee[0]);}
 
-		String[] prod=donnee[9].split(";");
+		String[] prod=donnee[10].split(";");
 		if(!(prod[0].equals("null"))){
 		for (Produit produit : catalogue) {
 			for (int i=0;i<prod.length;i++){
