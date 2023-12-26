@@ -558,8 +558,9 @@ public class Menu {
 			break;}}}
 
 	// public methods
-	public int prompt() {
-		try{int choix = scanner.nextInt();
+	public static int prompt() {
+		try{
+			 int choix = scanner.nextInt();
 			if (choix<0){throw new InputMismatchException();}
 			scanner.nextLine();
 			return choix;}
@@ -570,6 +571,8 @@ public class Menu {
 			return prompt();
 		}
 	}
+
+
 
 	public float promptF() {
 		try{float choix = scanner.nextFloat();
