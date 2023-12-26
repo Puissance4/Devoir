@@ -76,11 +76,11 @@ public class Produit {
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
 
-	public boolean isPromotionValide() {
+	public boolean isPromotionValide(LocalDate date) {
 		if (this.dateFinPromotion == null) {
 			return false;
 		} else {
-			return LocalDate.now().isBefore(this.dateFinPromotion);
+			return date.isBefore(this.dateFinPromotion);
 		}
 	}
 
@@ -96,7 +96,11 @@ public class Produit {
 		return this.titre;
 	}
 	public float get_prix() {
-		if (this.isPromotionValide()) {
+		return get_prix(LocalDate.now());}
+
+
+	public float get_prix(LocalDate date) {
+		if (this.isPromotionValide(date)) {
 			return this.prixPromotionnel;
 		} else {
 			return this.prix;
@@ -180,14 +184,18 @@ public class Produit {
 		 this.quantite=q;
 	}
 	public int getPointsBonus() {
-		if (this.isPromotionValide()) {
+		return getPointsBonus(LocalDate.now());
+	}
+
+	public int getPointsBonus(LocalDate date) {
+		if (this.isPromotionValide(date)) {
 			return this.pointBonusPromotionnel;
 		} else {
 			return this.pointBonus;
 		}
 	}
 	public String getPrixPromobuff(){
-		if (this.isPromotionValide()) {
+		if (this.isPromotionValide(LocalDate.now())) {
 			return ""+this.prixPromotionnel;}
 		else{return "null";}	
 	}
@@ -196,12 +204,12 @@ public class Produit {
 		return this.pointBonus;
 	}
 	public String getPointsBonusPromoBuff(){
-		if (this.isPromotionValide()) {
+		if (this.isPromotionValide(LocalDate.now())) {
 			return ""+this.pointBonusPromotionnel;}
 		else{return "null";}	
 	}
 	public String getDateFinPromotionBuff(){
-		if (this.isPromotionValide()) {
+		if (this.isPromotionValide(LocalDate.now())) {
 			return this.dateFinPromotion.getYear()+";"+this.dateFinPromotion.getMonth()+";"+this.dateFinPromotion.getDayOfMonth();}
 		else{return "null";}
 	}

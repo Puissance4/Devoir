@@ -11,7 +11,7 @@ public class SystemeCatalogue extends Systeme {
 
 	public SystemeCatalogue (){
 		try {
-			BufferedReader readerProduits=new BufferedReader(new FileReader("../Produits.csv"));
+			BufferedReader readerProduits=new BufferedReader(new FileReader("Implementation/UniShopV2/Produits.csv"));
 			String line=readerProduits.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerProduits.readLine())!=null) {
 				String[] donnee=line.split(",");
@@ -23,7 +23,7 @@ public class SystemeCatalogue extends Systeme {
 			e.printStackTrace();
 		}
 		try {
-			BufferedReader readerCommandes=new BufferedReader(new FileReader("../Commandes.csv"));
+			BufferedReader readerCommandes=new BufferedReader(new FileReader("Implementation/UniShopV2/Commandes.csv"));
 			String line=readerCommandes.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerCommandes.readLine())!=null) {
 				String[] donnee=line.split(",");
