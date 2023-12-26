@@ -43,6 +43,8 @@ public class SystemeCatalogue extends Systeme {
 		return this.catalogue;
 	}
 
+
+
 	public Produit[] recherche(String aMotcle, Filtre[] aFiltres) {
 		throw new UnsupportedOperationException();
 	}
@@ -64,7 +66,7 @@ public class SystemeCatalogue extends Systeme {
 
 	public void deconnexion(){
 		try {
-			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("../Commandes.csv"));
+			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("Implementation/Commandes.csv"));
 			writterCommandes.write("produit,acheteur,adresse,tel,carte,id,infoLivraison,dateArrivee(annee,mois,jour),numSuivi,compagnieExp,billetSignalement");
 			for (Commande commande: listeCommandes){
 				writterCommandes.newLine();
@@ -89,7 +91,7 @@ public class SystemeCatalogue extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("../Produits.csv"));
+			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("Implementation/Produits.csv"));
 			writterProduits.write("titre,categorie,description,quantite,prix,pointBonus,identifiant,lienImageOuVideo,nombreDeLike,PrixPromotionnel,PointsBonusPromotion,dateFinPromotion");
 			for (Produit produit: catalogue){
 				try {
@@ -119,5 +121,12 @@ public class SystemeCatalogue extends Systeme {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	public void setCatalogue(ArrayList<Produit> catalogue) {
+		this.catalogue = catalogue;
+	}
+
+	public void setListeCommandes(ArrayList<Commande> listeCommandes) {
+		this.listeCommandes = listeCommandes;
 	}
 }

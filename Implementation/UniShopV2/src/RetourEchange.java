@@ -1,12 +1,70 @@
 import java.util.Date;
+import java.util.Scanner;
 
 public class RetourEchange {
+	protected String type ;
+	protected Scanner scanner = new Scanner(System.in);
 	private Date _dateDemande;
-	private Produit[] _produits;
+	protected Produit[] listeProduits;
+	private int[] nbProduit;
 	private String _raison;
-	private EtatsCommande _etat;
+	protected EtatsCommande _etat = EtatsCommande.EnProduction;
 	private int _prix;
-	public Commande _peut_avoir;
+	private Commande commande;
+
+	protected float sommeRetour = 0;
+
+
+
+	public RetourEchange (Commande commande, int [] nbProduit){
+		this.commande = commande;
+		this.nbProduit =nbProduit;
+		listeProduitRetour();
+
+	}
+
+	public void instruction(){
+		System.out.println("Veuillez retourner le(s) produits par la poste a l'address suivant :" );
+		System.out.println("  12345 rue de Charlevoix , Montreal , Qc , ASD QWE ");
+	}
+
+	public void listeProduitRetour(){
+		listeProduits = new Produit[nbProduit.length];
+		for (int i = 0; i < nbProduit.length; i++) {
+			sommeRetour =  sommeRetour + commande.getProduits().get(nbProduit[i]).get_prix();
+			listeProduits[i] = commande.getProduits().get(nbProduit[i]);
+		}
+	}
+	public void raison(){
+		System.out.println("Veuillez specifier la raison pour " + type);
+		Scanner scanner = new Scanner(System.in);
+		_raison = scanner.nextLine();
+
+
+	}
+
+
+	public void afficherEtat(){
+
+		System.out.println("votre " + type + "  de la commande " + commande.getID() + " est " + _etat);
+		System.out.println(" pour les produits suivants : ");
+		for ( Produit produit: listeProduits) {
+			System.out.println(produit.get_titre());
+		}
+	}
+
+	public int prompt() {
+
+		int choix = 0;
+		try {
+			choix = scanner.nextInt();
+			scanner.nextLine();
+		} catch (Exception e) {
+			System.out.println("Veuillez saisir un numero valide ");
+		}
+
+		return choix;
+	}
 
 	public Date getDateDemande() {
 		return this._dateDemande;
@@ -16,13 +74,6 @@ public class RetourEchange {
 		this._dateDemande = aDateDemande;
 	}
 
-	public Produit[] getProduits() {
-		return this._produits;
-	}
-
-	public void setProduits(Produit[] aProduits) {
-		this._produits = aProduits;
-	}
 
 	public String getRaison() {
 		return this._raison;
@@ -37,7 +88,15 @@ public class RetourEchange {
 	}
 
 	public void setEtat(EtatsCommande aEtat) {
-		throw new UnsupportedOperationException();
+
+	}
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+	public void set_etat(EtatsCommande _etat) {
+		this._etat = _etat;
 	}
 
 	public int getPrix() {
