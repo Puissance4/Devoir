@@ -1,30 +1,21 @@
 public class MetriquesRevendeurs extends Metriques {
-	private float _revenu;
-	private int _nombreArticles;
-	private int _nombreProduitsVendus;
-	public Revendeur _unnamed_Revendeur_;
+	private float _revenu; // Reseller's revenue
+	private int _nombreArticles; // Number of articles reseller has put up for sale
+	private int _nombreProduitsVendus; // Number of articles sold
+	public Revendeur revendeur;
 
-	public float getRevenu() {
-		return this._revenu;
+	// Constructor
+	public MetriquesRevendeurs(Revendeur revendeur){
+		this.revendeur = revendeur;
 	}
 
-	public void setRevenu(float aRevenu) {
-		this._revenu = aRevenu;
-	}
+	// Getters
+	public float getRevenu() {return this._revenu;}
+	public int getNombreArticles() {return this._nombreArticles;}
+	public int getNombreProduitsVendus() {return this._nombreProduitsVendus;}
 
-	public int getNombreArticles() {
-		return this._nombreArticles;
-	}
-
-	public void setNombreArticles(int aNombreArticles) {
-		this._nombreArticles = aNombreArticles;
-	}
-
-	public int getNombreProduitsVendus() {
-		return this._nombreProduitsVendus;
-	}
-
-	public void setNombreProduitsVendus(int aNombreProduitsVendus) {
-		this._nombreProduitsVendus = aNombreProduitsVendus;
-	}
+	// Setters
+	public void setNombreProduitsVendus(int aNombreProduitsVendus) {this._nombreProduitsVendus = aNombreProduitsVendus;}
+	public void setRevenu(float aRevenu) {this._revenu = aRevenu;}
+	public void setNombreArticles(int aNombreArticles) {this._nombreArticles = aNombreArticles;}
 }

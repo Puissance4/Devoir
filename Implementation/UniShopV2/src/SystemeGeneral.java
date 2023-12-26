@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class SystemeGeneral extends Systeme {
 	private Carte[] _cartes;

@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 public class Produit {
 
@@ -40,7 +39,6 @@ public class Produit {
 			LocalDate datelancement= LocalDate.of(Integer.parseInt(cate[3]), Integer.parseInt(cate[4]), Integer.parseInt(cate[5]));
 			this.categorie=new MaterielInformatique(cate[1], cate[2],datelancement, cate[6]);}
 		
-		
 
 		this.description =donnee[2];
 		this.quantite =Integer.parseInt(donnee[3]);
@@ -61,12 +59,7 @@ public class Produit {
 		// a faire evaluation
 	}
 
-
-
-
-
 	private Revendeur revendeur;
-
 	private String titre;
 	public Categorie categorie;
 	private String description;
@@ -79,8 +72,10 @@ public class Produit {
 	private Float prixPromotionnel;
 	private int pointBonusPromotionnel;
 	private LocalDate dateFinPromotion;
+	private Revendeur revendeur;
 	//public MetriquesProduit unnamedMetriquesProduit;
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
+	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
 
 
 	public boolean isPromotionValide(LocalDate date) {
@@ -245,6 +240,7 @@ public class Produit {
     public String get_lienImageOuVideo() {
         return lienImageOuVideo;
     }
+	public Revendeur getRevendeur(){return revendeur;};
 
 	public void setFinPromotion(LocalDate dateFin) {
 		this.dateFinPromotion = dateFin;

@@ -1,12 +1,7 @@
-
+import java.util.*;
 import javax.xml.transform.Source;
 import java.io.*;
 import java.lang.reflect.Array;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Menu {
 	private Utilisateur utilisateurConnecte;
@@ -211,7 +206,41 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 3:
-			//gerer signalement;
+			System.out.println("Veillez selectionner le produit dont vous voulez gerer le signalement");
+			// Display all the tickets
+			int index = 0;
+			for (BilletSignalement billet : util.billets){
+				System.out.println(index + "." + billet.getProduit());
+				index++;
+			}
+			System.out.println("ou selectionnez " + util.billets.size() + "pour retourner au menu");
+			// Select a ticket to process
+			int choix2 = util.billets.size() + 1;
+			while (choix2 > util.billets.size()){
+				choix2 = prompt();
+				if (choix2 == util.billets.size()){
+					afficherPageRevendeur();
+				}
+				if (choix2 > util.billets.size()){
+					System.out.println("choix ivalide, veillez selectionner un billet");
+				}
+			}
+
+			BilletSignalement billet = util.billets.get(choix2);
+			// Process the reported product
+			System.out.println("Entrez la solution du probleme");
+			String solution = promptS();
+			System.out.println("Entrez le numero de suivi pour une reexpedition a l'entrepot");
+			int numSuivi = prompt();
+			System.out.println("Entrez le numero de suivi de remplacement du produit");
+			int numSuiviRem = prompt();
+			util.gererSignalement(billet, solution, numSuivi, numSuiviRem);
+
+			System.out.println("Le problème signalé a été résolu et corrigé");
+			// Send the product directly back to the buyer
+			billet.getAcheteur().produitsAchetes.add(billet.getProduit());
+			// Back to the menu
+			afficherPageRevendeur();
 			break;
 		case 4:
 			util.modifierProfil(this);
@@ -223,10 +252,32 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 5:
-			//notifications;
+			ArrayList<Notification> notifications = util.notifications;
+			int indexNotif = 0;
+			for (Notification notification : notifications){
+				System.out.println(indexNotif + ": " + notification.getDesc());
+				indexNotif++;
+			}
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageRevendeur();
 			break;
 		case 6:
-			//metriques	;
+			MetriquesRevendeurs metriques = util.getMetriques();
+			System.out.println("1. Revenus: " + metriques.getRevenu());
+			System.out.println("2. Nombre d'article mis en vente: " + metriques.getNombreArticles());
+			System.out.println("3. Nombre de produits vendus: " + metriques.getNombreProduitsVendus());
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageRevendeur();
 			break;
 		case 7:
 			//confirmer retour;
@@ -286,6 +337,13 @@ public class Menu {
 			else if(choix1==panier.getProduits().size()){
 				try{
 				Commande nouvCommande=panier.commander(util,this);
+
+				// Notify the resellers that a new command is incoming
+				Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
+				for (Produit produit : panier.getProduits()){
+					produit.getRevendeur().notifier(notification);
+				}
+
 				System.out.println("--------------------------");
 				System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());
 				systemeCatalogue.listeCommandes.add(nouvCommande);}
@@ -362,7 +420,8 @@ public class Menu {
 			System.out.println("Entrez le nom a rechercher");
 			String nom=promptS();
 			try {
-				systemeUtilisateur.rechercherRevendeur(nom);
+				Revendeur revendeurRech = systemeUtilisateur.rechercherRevendeur(nom);
+
 			} catch (Exception e) {
 				System.out.println(e);
 			}
@@ -375,21 +434,21 @@ public class Menu {
 			String pseudo=promptS();
 			try {
 				Acheteur acheteurRech=systemeUtilisateur.rechercherAcheteur(pseudo);
-				if(!(util.getAcheteurLike().isEmpty()) && (util.getAcheteurLike().contains(acheteurRech.getPseudo()))){
-					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs like");
+				if(!(util.acheteursSuivis.isEmpty()) && (util.acheteursSuivis.contains(acheteurRech))){
+					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs suivis");
 				}
-				else{System.out.println("Entrez [1] pour liker cet acheteur");}
+				else{System.out.println("Entrez [1] pour suivre cet acheteur");}
 			
 			System.out.println("Entrez [2] pour retourner au menu d'acheteur");
 			int select=prompt();
 			if(select==1){
-				util.setAcheteurLike(acheteurRech);
+				util.setAcheteursSuivis(acheteurRech);
 				System.out.println("modification effectue avec succes!");
 				retourAuMenu(1, "d'acheteur");
 				
 			}
 			else if (select==2){
-				
+				afficherPageAcheteur();
 			}
 			else{
 				System.out.println("Choix invalide");
@@ -413,10 +472,34 @@ public class Menu {
 			afficherPageAcheteur();
 			break;
 		case 7:
-			//notifications;
+			ArrayList<Notification> notifications = util.notifications;
+			int indexNotif = 0;
+			for (Notification notification : notifications){
+				System.out.println(indexNotif + ": " + notification.getDesc());
+				indexNotif++;
+			}
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageAcheteur();
 			break;
 		case 8:
-			//metriques;
+			MetriquesAcheteur metriques = util.getMetriques();
+			System.out.println("1. Nombre de commande: " + metriques.getNombreCommandes());
+			System.out.println("2. Nombre d'articles: " + metriques.getNombreArticles());
+			System.out.println("3. Acheteurs suivis: ");
+			for (String acheteur : util.getMetriques()._classementAcheteurSuivis){
+				System.out.println("    " + acheteur);
+			}
+			// Return to menu
+			choix=0;
+			while (choix!=1){
+				System.out.println("Entrez [1] pour revenir au menu principal");
+				choix=prompt();
+			}
+			afficherPageAcheteur();
 			break;
 		case 9:
 			ArrayList<Commande> listeCommandes=util.getCommande();
@@ -484,7 +567,17 @@ public class Menu {
 							System.out.println("Entrez [0] pour confirmer l'arrivee de la commande");
 							System.out.println("Entrez [1] pour revenir au menu principal");
 							choix2=prompt();
-							if(choix2==1){commandeChoisie.setEtatsCommande(EtatsCommande.Livre);
+							if(choix2==0){
+								commandeChoisie.setEtatsCommande(EtatsCommande.Livre);
+
+								// Notify buyer that order state has been modified
+								Notification notification = new Notification(CategorieNotif.CHANGEMENT_ETAT_COMMANDE);
+								util.notifier(notification);
+
+								// Update buyer's order count in metrics
+								int nombreDeCommande = util.getMetriques().getNombreCommandes();
+								util.getMetriques().setNombreCommandes(nombreDeCommande - 1);
+
 								System.out.println("Livraison confirme!");
 							}
 							while (choix2!=1) {
@@ -498,7 +591,66 @@ public class Menu {
 								System.out.println("Entrez [1] pour revenir au menu principal");
 								choix2=prompt();}
 						}}
-					else if(choix7==2){}
+					else if(choix7==2){
+						boolean signaler = true;
+						BilletSignalement billet = new BilletSignalement();
+						billet.setAcheteur(util);
+
+						System.out.println("Veillez selectionner la commande a signaler:");
+						// Display all orders
+						for (int i = 0; i < listeCommandes.size(); i++) {
+							System.out.println(i + "." + listeCommandes.get(i));
+						}
+						System.out.println("ou entrez " + listeCommandes.size() + "pour revenir au menu");
+						// Choose an order to report or comeback to menu
+						int choix2 = listeCommandes.size() + 1;
+						while (choix2 > listeCommandes.size()) {
+							choix2 = prompt();
+							if (choix2 == listeCommandes.size()) {
+								afficherPageAcheteur();
+							}
+							if (choix2 > listeCommandes.size()){
+								System.out.println("choix invalide, veillez selectionner une commande");
+							}
+						}
+						// Select the order
+						Commande commandeSignale = listeCommandes.get(choix2);
+						while(signaler) {
+							System.out.println("Choisissez le produit que vous voulez signaler: ");
+							ArrayList<Produit> listeProd = commandeSignale.getProduits();
+							for (int j = 0; j < listeProd.size(); j++){
+								System.out.println(j + "." + listeProd.get(j));
+							}
+							System.out.println("ou entrez" + listeProd.size() + "pour revenir au menu");
+							// Choose a product to report or comeback to menu
+							choix2 = listeProd.size() + 1;
+							while (choix2 > listeProd.size()){
+								choix2 = prompt();
+								if (choix2 == listeProd.size()){
+									afficherPageAcheteur();
+								}
+								if (choix2 > listeProd.size()){
+									System.out.println("choix invalide, veillez selectionner un produit present dans la commande");
+								}
+							}
+							Produit produitSignale = listeProd.get(choix2);
+							// Create the report ticket
+							billet.setProduit(produitSignale);
+							System.out.println("Veillez decrire le motif de votre sigalement:");
+							String description = promptS();
+							billet.setDescProbleme(description);
+
+							// Send the report to the reseller
+							produitSignale.getRevendeur().billets.add(billet);
+							System.out.println("voulez-vous siganler un autre produit de votre commande?");
+							System.out.println("1.OUI");
+							System.out.println("2.NON");
+							choix2 = prompt();
+							if (choix2 == 2) signaler = false;
+						}
+						System.out.println("Votre signalement a ete envoye");
+						afficherPageAcheteur();
+					}
 					else if(choix7==3){
 						afficherRetourEchange(choix7, commandeChoisie);
 						retournerMenuAcheteur();
@@ -535,11 +687,20 @@ public class Menu {
 							while(ajouterCom>2){
 							ajouterCom = prompt();
 							// Ne pas ajouter de commentaire
-							if(ajouterCom == 2) produit.evaluer(note, "", util);
+							if(ajouterCom == 2){
+								produit.evaluer(note, "", util);
+								// Notify the reseller that there is a new evaluation on his product
+								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
+								produit.getRevendeur().notifier(notification);
+							}
 							// Ajouter un commentaire
 							else if (ajouterCom == 1){
 								System.out.println("Veuillez ecrire votre commentaire ci-dessous");
-								produit.evaluer(note, promptS(), util);}
+								produit.evaluer(note, promptS(), util);
+								// Notify the reseller that there is a new evaluation on his product
+								Notification notification = new Notification(CategorieNotif.EVALUATION_PRODUIT);
+								produit.getRevendeur().notifier(notification);
+							}
 							else{System.out.println("Choix invalide veuillez choisir 1 ou 2");}}
 							System.out.println("Votre evaluation a etee ajoutee!");}
 
