@@ -84,8 +84,6 @@ public class Produit {
 
 
 
-	public ArrayList<Commande> listeCommande = new ArrayList<Commande>();
-
 
 
 
@@ -253,14 +251,6 @@ public class Produit {
 
 	public void setPointBonusPromotionnel(int pointBonus) {
 		this.pointBonusPromotionnel = pointBonus;
-	}
-
-	public ArrayList<Commande> getListeCommande() {
-		return listeCommande;
-	}
-
-	public void setListeCommande(ArrayList<Commande> listeCommande) {
-		this.listeCommande = listeCommande;
 	}
 
 	public Revendeur getRevendeur() {
