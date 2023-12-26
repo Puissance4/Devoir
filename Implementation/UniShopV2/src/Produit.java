@@ -42,7 +42,6 @@ public class Produit {
 			LocalDate datelancement= LocalDate.of(Integer.parseInt(cate[3]), Integer.parseInt(cate[4]), Integer.parseInt(cate[5]));
 			this.categorie=new MaterielInformatique(cate[1], cate[2],datelancement, cate[6]);}
 		
-		
 
 		this.description =donnee[2];
 		this.quantite =Integer.parseInt(donnee[3]);
@@ -62,12 +61,6 @@ public class Produit {
 		}
 		// a faire evaluation
 	}
-	
-
-
-
-
-
 
 	private String titre;
 	public Categorie categorie;

@@ -1,11 +1,6 @@
-import java.io.*;
-import java.util.Vector;
-
-import javax.sound.midi.MidiDevice.Info;
-
+import javax.crypto.spec.PSource;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Revendeur extends Utilisateur {
 	
@@ -40,7 +35,8 @@ public class Revendeur extends Utilisateur {
 	private MetriquesRevendeurs metriques = new MetriquesRevendeurs(this);
 	public ArrayList<String> acheteurSuivi = new ArrayList<String>(); // Subscribers name
 	public ArrayList<Acheteur> acheteursAbonnes = new ArrayList<>(); // Subscribers profile
-	public ArrayList<Notification> notifications = new ArrayList<>();
+	public ArrayList<Notification> notifications = new ArrayList<>(); // List of notifications
+	public ArrayList<BilletSignalement> billets = new ArrayList<>();
 
 	public void ajouterProduit(Menu menu) {
 		System.out.println("\n");
@@ -425,5 +421,11 @@ public class Revendeur extends Utilisateur {
 
 	public MetriquesRevendeurs getMetriques() {
 		return metriques;
+	}
+
+	public void gererSignalement(BilletSignalement billet, String solution, int numSuivi, int numSuiviRem){
+		billet.setDescSolution(solution);
+		billet.setNumSuiviProdRem(numSuivi);
+		billet.setNumSuiviProdRem(numSuiviRem);
 	}
 }

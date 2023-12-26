@@ -2,9 +2,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Vector;
-
-
 
 public class Commande {
 	private float cout;
@@ -19,7 +16,7 @@ public class Commande {
 	private String numSuivi;
 	private String compagnieExp;
 	public String acheteur;
-	public Vector<BilletSignalement> peut_avoir = new Vector<BilletSignalement>();
+	public ArrayList<BilletSignalement> signalements = new ArrayList<>();
 
 	public Commande (ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
 		float prix=0;
