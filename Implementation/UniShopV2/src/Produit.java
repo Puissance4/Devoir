@@ -59,6 +59,7 @@ public class Produit {
 		// a faire evaluation
 	}
 
+	private Revendeur revendeur;
 	private String titre;
 	public Categorie categorie;
 	private String description;
@@ -76,13 +77,15 @@ public class Produit {
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
 
+
 	public boolean isPromotionValide(LocalDate date) {
+
 		if (this.dateFinPromotion == null) {
 			return false;
 		} else {
 			return date.isBefore(this.dateFinPromotion);
 		}
-	}
+	
 
 	public void modifier() {
 		throw new UnsupportedOperationException();
@@ -249,5 +252,13 @@ public class Produit {
 
 	public void setPointBonusPromotionnel(int pointBonus) {
 		this.pointBonusPromotionnel = pointBonus;
+	}
+
+	public Revendeur getRevendeur() {
+		return revendeur;
+	}
+
+	public void setRevendeur(Revendeur revendeur) {
+		this.revendeur = revendeur;
 	}
 }

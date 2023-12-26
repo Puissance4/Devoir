@@ -1,17 +1,24 @@
-
 import java.util.*;
+import javax.xml.transform.Source;
+import java.io.*;
+import java.lang.reflect.Array;
 
 public class Menu {
 	private Utilisateur utilisateurConnecte;
+	private HashMap <String,RetourEchange> listeRetour= new HashMap<>();
 	private int indexPage = 0;
 	public App app;
 	public SystemeCatalogue systemeCatalogue=new SystemeCatalogue();
+
 	public SystemeUtilisateur systemeUtilisateur=new SystemeUtilisateur(systemeCatalogue.catalogue,systemeCatalogue.listeCommandes);
 	public SystemeGeneral systemeGeneral=new SystemeGeneral();
 
+
+
 	private static Scanner scanner = new Scanner(System.in);
 
-
+	public Menu(){
+	}
 	public void afficherMessage(String message) {
 		System.out.println(message);
 	}
@@ -31,7 +38,8 @@ public class Menu {
 		System.out.println("7. Voir mes notifications");
 		System.out.println("8. Voir mes métriques");
 		System.out.println("9. Voir mes commandes");
-        System.out.println("10. Deconnexion");
+		System.out.println("10. Voir mes retour/echange");
+		System.out.println("11. Deconnexion");
         System.out.print("\nVeuillez choisir une option : ");
 		this.indexPage=2;
 		selectOption(prompt());
@@ -177,7 +185,7 @@ public class Menu {
 				afficherMenuPrincipal();
 				break;
 	}}
-	else if (indexPage==1){
+	else if (indexPage==1){ // REVENDEUR
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		
 	switch (option) {
@@ -643,7 +651,11 @@ public class Menu {
 						System.out.println("Votre signalement a ete envoye");
 						afficherPageAcheteur();
 					}
-					else if(choix7==3){}
+					else if(choix7==3){
+						afficherRetourEchange(choix7, commandeChoisie);
+						retournerMenuAcheteur();
+
+					}
 					else if(choix7==4){
 						System.out.println("--------------------------");
 						for(int i = 0; i < prodAcht.size(); i++){
@@ -703,7 +715,17 @@ public class Menu {
 				else{System.out.println("Choix invalide veuillez reessayer");}}}
 			
 			break;
+
 		case 10:
+			if (((Acheteur) utilisateurConnecte).getListRetourEchange().isEmpty()) {
+				System.out.println(" vous n'avez aucun retour ou echange en cours");
+			}
+			for (RetourEchange retourEchange: ((Acheteur) utilisateurConnecte).getListRetourEchange()) {
+				retourEchange.afficherEtat();
+				retournerMenuAcheteur();
+			}
+			break;
+		case 11:
 			systemeCatalogue.deconnexion();
 			systemeUtilisateur.deconnexion();
 			System.out.println("Merci d'avoir magasine sur UniShop");
@@ -775,6 +797,194 @@ public class Menu {
 		catch(InputMismatchException e){
 			System.out.println("Choix invalide, veuillez réessayer.");
 			retourAuMenu(index, menu);
+		}
+	}
+	public void afficherRetourEchange(int choix, Commande commande) {
+		System.out.println(" veuillez choisir les choix suivants: ");
+		System.out.println("Entrez [1] pour faire un retour ");
+		System.out.println("Entrez [2] pour faire une echange ");
+		System.out.println("Entrez [3] pour revenir au menu principal ");
+		choix = prompt();
+		switch (choix) {
+			case 1:
+				retour(commande);
+				break;
+			case 2:
+
+				echange(commande);
+				break;
+			case 3:
+				afficherPageAcheteur();
+				break;
+			default:
+				System.out.println("veuillez saisir un nombre valide : numero 1 ou 2");
+				afficherRetourEchange(choix, commande);
+		}
+	}
+	public int[] choisirProduitRetour(Commande commande) {
+		System.out.println("     Produits:        ");
+		for (int i = 0; i < commande.getProduits().size(); i++) {
+			System.out.println(commande.getProduits().get(i).get_titre() + "-------" + i);
+		}
+		String choix = promptS();
+		int[] choixMultiple = new int[0];
+		try {
+			String temp [] = (choix.split(" "));
+			choixMultiple = new int[temp.length];
+			for (int i = 0; i < temp.length; i++) {
+				if (Integer.parseInt(temp[i]) > commande.getProduits().size() || Integer.parseInt(temp[i]) < 0) {
+					System.out.println(" Veuillez choisir un numero valide entre 0 et "+ (commande.getProduits().size() - 1) );
+					choisirProduitRetour(commande);
+				}else {
+					choixMultiple[i] = Integer.parseInt(temp[i]);
+				}
+			}
+		} catch (Exception e) {
+			System.out.println("Veuillez saisir un numero valide ");
+		}
+		return choixMultiple;
+
+	}
+	public Produit [] choisirProduitEchange(Commande commande){
+
+		int choix =0;
+		Produit [] produits = new Produit[0];
+		if (systemeCatalogue.getCatalogue().isEmpty()) {
+			System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
+			System.out.println("Entrez [1] pour faire un retour seulement au lieu ");
+			System.out.println("Entrez [2] revenir a la page principal  ");
+			choix = prompt();
+			switch (choix) {
+				case 1:
+					retour(commande);
+					break;
+				case 2:
+					afficherPageAcheteur();
+					break;
+				default:
+					System.out.println(" Veuillez saisir une nombre valide ");
+					choisirProduitEchange(commande);
+					break;
+			}
+		} else {
+
+			// affichage catalogue
+			System.out.println("--------------------------");
+			System.out.println("Veuillez choisir le(s) produits pour qu'on vous retourne, un espace entre chaque nombre pour prendre plusieurs ");
+			for (int i = 0; i < systemeCatalogue.getCatalogue().size(); i++) {
+				Produit produit = systemeCatalogue.getCatalogue().get(i);
+				System.out.println(produit.get_titre() + "..... " + produit.get_prix() + "$        [" + i + "]");
+			}
+			System.out.println("--------------------------");
+
+
+			String choixS = promptS();
+			int[] choixMultiple = new int[0];
+			try {
+				String temp [] = (choixS.split(" "));
+				choixMultiple = new int[temp.length];
+				for (int i = 0; i < temp.length; i++) {
+					if (Integer.parseInt(temp[i]) > systemeCatalogue.getCatalogue().size() || Integer.parseInt(temp[i]) < 0) {
+						System.out.println(" Veuillez choisir un numero valide entre 0 et "+ (systemeCatalogue.getCatalogue().size() - 1) );
+						choisirProduitRetour(commande);
+					}else {
+						choixMultiple[i] = Integer.parseInt(temp[i]);
+					}
+				}
+				produits = new Produit[choixMultiple.length];
+
+				for (int i = 0; i < choixMultiple.length ; i++) {
+					produits[i] =  systemeCatalogue.getCatalogue().get(choixMultiple[i]);
+				}
+			} catch (Exception e) {
+				System.out.println("Veuillez saisir un numero valide ");
+			}
+		}
+		return produits ;
+	}
+	public void retour(Commande commande){
+		System.out.println(" Choisir un produit pour le retour , pour le retour de plusieurs produits, mettre une espace entre chaque nombre");
+		Retour retour = new Retour(commande, choisirProduitRetour(commande));
+		retour.effectuerRetour();
+		listeRetour.put(retour.getCommande().getID(), retour);
+		((Acheteur) utilisateurConnecte).getListRetourEchange().add(retour);
+	}
+	public void echange(Commande commande){
+		System.out.println(" Choisir un produit pour le echange, , pour l'echange de plusieurs produits, mettre une espace entre chaque nombre");
+		Echange echange = new Echange(commande,choisirProduitRetour(commande ), choisirProduitEchange(commande));
+		echange.effectuerEchange();
+		listeRetour.put(echange.getCommande().getID(), echange);
+		((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
+	}
+	public RetourEchange saisirIDCommande(){
+		System.out.println(" Veuillez saisir ID de la commande : ");
+		String ID = promptS();
+		try{
+			if ( listeRetour.get(ID) == null) {
+				System.out.println("ID non valide ");
+				System.out.println("Entrez [1] pour reessayer ");
+				System.out.println("Entrez [2] pour retourner au menu principal");
+				int choix = prompt();
+				switch(choix) {
+					case 1:
+						saisirIDCommande();
+						break;
+					case 2:
+						afficherPageRevendeur();
+						break;
+					default:
+						System.out.println("choix invalide , veuillez reesayer");
+						break;
+				}
+				saisirIDCommande();
+			} else if (listeRetour.isEmpty()) {
+				System.out.println(" il y a aucune retour ou echange");
+			}
+
+		}catch (Exception e) {
+			System.out.println(" Erreur input , veuillez reessayer" );
+		}
+
+		return listeRetour.get(ID);
+	}
+
+	public void retournerMenuAcheteur(){
+		System.out.println(" voulez vous retourner au menu principal ou quitter ");
+		System.out.println("Entrez [1] pour retourner au menu principal ");
+		System.out.println("Entrez [2] pour quitter ");
+		int choix = prompt();
+		switch (choix) {
+			case 1:
+				afficherPageRevendeur();
+				break;
+			case 2:
+				System.out.println("Merci d'avoir magasine sur UniShop");
+				System.exit(0);
+				break;
+			default:
+				System.out.println(" Veuillez saisir une nombre valide ");
+				retournerMenuAcheteur();
+				break;
+		}
+	}
+
+	public void retournerMenuRevendeur(){
+		System.out.println(" voulez vous retourner au menu principal ou quitter ");
+		System.out.println("Entrez [1] pour retourner au menu principal ");
+		System.out.println("Entrez [2] pour quitter ");
+		int choix = prompt();
+		switch (choix) {
+			case 1:
+				afficherPageRevendeur();
+				break;
+			case 2:
+				System.out.println("Merci d'avoir magasine sur UniShop");
+				System.exit(0);
+				break;
+			default:
+				System.out.println(" Veuillez saisir une nombre valide ");
+				retournerMenuAcheteur();
+				break;
 		}
 	}
 }

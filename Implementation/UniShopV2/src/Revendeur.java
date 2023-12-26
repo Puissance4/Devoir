@@ -438,5 +438,13 @@ public class Revendeur extends Utilisateur {
 		billet.setDescSolution(solution);
 		billet.setNumSuiviProdRem(numSuivi);
 		billet.setNumSuiviProdRem(numSuiviRem);
+  }
+
+	public ArrayList<Produit> get_produits() {
+		return _produits;
+	}
+
+	public void set_produits(ArrayList<Produit> _produits) {
+		this._produits = _produits;
 	}
 }
