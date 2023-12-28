@@ -337,7 +337,9 @@ public class Menu {
 			else if(choix1==panier.getProduits().size()){
 				try{
 					Commande nouvCommande=panier.commander(util,this);
-
+					if (nouvCommande == null){
+						afficherPageAcheteur();
+					}
 					// Notify the resellers that a new command is incoming
 					Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
 					for (Produit produit : panier.getProduits()){
@@ -383,7 +385,7 @@ public class Menu {
 			else{
 				System.out.println("Choix invalide veuillez reessayer");
 			}}
-			
+
 			break;
 			
 		case 2:

@@ -59,7 +59,7 @@ public class Panier {
 				int choix1=nextChoixI(menu);
 
 				if (choix1==2){
-					menu.afficherPageAcheteur();
+					return null;
 				}
 				else if (choix1==1){
 					boolean verif=menu.systemeGeneral.verifierCarte(carte);
