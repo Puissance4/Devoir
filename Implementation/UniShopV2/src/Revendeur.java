@@ -9,12 +9,15 @@ public class Revendeur extends Utilisateur {
 
 		String[] produitsofferts=donnee[6].split(";");
 		if(!(produitsofferts[0].equals("null"))){
-		for (Produit produit : catalogue) {
-			for (int i=0;i<produitsofferts.length;i++){
-				if (produit.getIdentifiant().equals(produitsofferts[i])) {
-					this._produits.add(produit);}
+			for (Produit produit : catalogue) {
+				for (int i=0;i<produitsofferts.length;i++){
+					if (produit.getIdentifiant().equals(produitsofferts[i])) {
+						this._produits.add(produit);
+						produit.setRevendeur(this);
+					}
 				}
-			}}
+			}
+		}
 		String [] acheteurs=donnee[7].split(";");
 			if(!(acheteurs[0].equals("null"))){
 			for (int i=0;i<acheteurs.length;i++){

@@ -336,18 +336,23 @@ public class Menu {
 			}
 			else if(choix1==panier.getProduits().size()){
 				try{
-				Commande nouvCommande=panier.commander(util,this);
+					Commande nouvCommande=panier.commander(util,this);
 
-				// Notify the resellers that a new command is incoming
-				Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
-				for (Produit produit : panier.getProduits()){
-					produit.getRevendeur().notifier(notification);
+					// Notify the resellers that a new command is incoming
+					Notification notification = new Notification(CategorieNotif.NOUVELLE_COMMANDE);
+					for (Produit produit : panier.getProduits()){
+						produit.getRevendeur().notifier(notification);
+					}
+
+					System.out.println("--------------------------");
+					System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());
+					systemeCatalogue.listeCommandes.add(nouvCommande);
 				}
 
-				System.out.println("--------------------------");
-				System.out.println("Votre Commande a bien été passée voici son identifiant : "+nouvCommande.getID());
-				systemeCatalogue.listeCommandes.add(nouvCommande);}
-				catch(IllegalStateException e){System.out.println(e);}
+				catch(IllegalStateException e){
+					System.out.println(e);
+				}
+
 				finally{
 					int choix2=0;
 					while(choix2!=1){
@@ -355,7 +360,8 @@ public class Menu {
 						choix2=prompt();
 						if(choix2==1){
 							afficherPageAcheteur();}}
-						}}
+						}
+			}
 			else if(choix1<=panier.getProduits().size()){
 				Produit produitChoisi=panier.getProduits().get(choix1);
 				systemeCatalogue.afficherProduit(produitChoisi);
@@ -737,7 +743,7 @@ public class Menu {
 			break;}}}
 
 	// public methods
-	public static int prompt() {
+	public int prompt() {
 		try{
 			 int choix = scanner.nextInt();
 			if (choix<0){throw new InputMismatchException();}
@@ -754,7 +760,8 @@ public class Menu {
 
 
 	public float promptF() {
-		try{float choix = scanner.nextFloat();
+		try{
+			float choix = scanner.nextFloat();
 			if (choix<0){throw new InputMismatchException();}
 			scanner.nextLine();
 			return choix;}

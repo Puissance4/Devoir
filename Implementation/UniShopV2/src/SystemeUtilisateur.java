@@ -133,7 +133,6 @@ public class SystemeUtilisateur extends Systeme {
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
 		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
-		listeAcheteurs.add(acheteurnew);
 		return acheteurnew;
 
 	}
@@ -150,7 +149,6 @@ public class SystemeUtilisateur extends Systeme {
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
 		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
-		listeRevendeurs.add(revendeurnew);
 		return revendeurnew;}
 
  //ajouter les filtres
