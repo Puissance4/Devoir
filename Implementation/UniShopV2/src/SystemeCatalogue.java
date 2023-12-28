@@ -43,15 +43,43 @@ public class SystemeCatalogue extends Systeme {
 		return this.catalogue;
 	}
 
+	public Produit[] recherche(String aMotcle) {
+		ArrayList<Produit> resultat=new ArrayList<Produit>();
+		for (Produit produit : catalogue) {
+			if (produit.get_titre().contains(aMotcle)) {
+				resultat.add(produit);
+			}
+			else if (produit.getDesc().contains(aMotcle)) {
+				resultat.add(produit);
+			}
+			else if (produit.getCategorieString().contains(aMotcle)) {
+				resultat.add(produit);
+			}
+			else if (Float.toString(produit.get_prix()).contains(aMotcle)){
+				resultat.add(produit);
+			}
+		}
 
-
-	public Produit[] recherche(String aMotcle, Filtre[] aFiltres) {
-		throw new UnsupportedOperationException();
+		Produit[] resultat2=new Produit[resultat.size()];
+		for (int i=0;i<resultat.size();i++){
+			resultat2[i]=resultat.get(i);
+		}
+		if (resultat2.length==0){
+			System.out.println("\nAucun produit ne correspond a votre recherche");
+		}
+		else {
+			System.out.println("\nVoici les produits correspondant a votre recherche:");
+			for (Produit produit : resultat2) {
+				afficherProduit(produit);
+			}
+		}
+		return resultat2;
 	}
 
 	public boolean verifierTitre(String aTitre) {
 		throw new UnsupportedOperationException();
 	}
+
 	public void afficherProduit(Produit produit){
 		System.out.println("--------------------------");
 		System.out.println("Titre: " + produit.get_titre());
