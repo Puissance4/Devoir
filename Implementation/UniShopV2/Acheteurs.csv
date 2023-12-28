@@ -1,5 +1,5 @@
 pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints
-carlthecat,Cat,Carl,carl@cat.org,poisson,rue 14,234564357,null,null,null,null,5
+carlthecat,Cat,Carl,carl@cat.org,poisson,rue 14,234564357,null,Lucie45,null,null,5
 lapinmalin,Champ,George,jadorelescarottes@gmail.com,carotte,boulevard Laitue,121212121,null,null,null,null,0
 Lucie45,Desjardin,Clara,clara@outlook.fr,carambar32,rue des lauriers,2387436467,null,null,null,null,5
 cathlafofolle,Sainte,Catherine,caths@gmail.com,qwerty,rue sainte-Catherine,45089736846,null,null,null,null,0
