@@ -1,8 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 import java.util.ArrayList;
-
-import java.util.Vector;
 
 public class Acheteur extends Utilisateur {
 
@@ -13,18 +10,13 @@ public class Acheteur extends Utilisateur {
 		String [] liste=donnee[7].split(";");
 		if(!(liste[0].equals("null"))){
 		for (int i=0;i<liste.length;i++){
-			this.revendeursLike.add(liste[i]) ;
+			this.revendeursLike.add(liste[i]);
 		}}
 		String [] liste2=donnee[8].split(";");
 		if(!(liste2[0].equals("null"))){
 		for (int i=0;i<liste2.length;i++){
-			this.acheteurLike.add(liste2[i]) ;
-			
-		}}
-		String [] liste3=donnee[9].split(";");
-		if(!(liste3[0].equals("null"))){
-		for (int i=0;i<liste3.length;i++){
-			this.notifications.add(liste3[i]) ;
+			this.metriques._classementAcheteurSuivis.add(liste2[i]) ;
+
 		}}
 		Boolean panierInit=false;
 		try {
@@ -36,7 +28,6 @@ public class Acheteur extends Utilisateur {
 					this.panier=new Panier(panier,catalogue);
 					panierInit=true;
 				}
-				
 			}
 			readerPanier.close();
 		} catch (Exception e) {
@@ -63,8 +54,8 @@ public class Acheteur extends Utilisateur {
 		}
 
 	}
-	
-	
+
+
 
 	public Acheteur(String pseudo, String nom, String prenom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);
@@ -78,16 +69,15 @@ public class Acheteur extends Utilisateur {
 	private String prenom;
 	private String pseudo;
 	private int nombrePoints = 0;
-	private ArrayList <String> revendeursLike=new ArrayList<String>();
-	private ArrayList <Produit> produitsLike=new ArrayList<Produit>();
-	private ArrayList<String> acheteurLike=new ArrayList<String>();
-	private ArrayList <String> notifications=new ArrayList<String>();
-	private ArrayList<Produit>produitsAchetes= new ArrayList<>();
-	public Vector<Revendeur> _est_suivi_par = new Vector<Revendeur>();
-	public Panier panier;
+	public ArrayList <String> revendeursLike=new ArrayList<String>();
+	public ArrayList <Produit> produitsLike=new ArrayList<Produit>();
+	public ArrayList <Notification> notifications=new ArrayList<>();
+	public ArrayList<Produit> produitsAchetes= new ArrayList<>();
+	public ArrayList<Acheteur> acheteursSuivis = new ArrayList<>();
+	private Panier panier;
 	private ArrayList<Commande> commandes = new ArrayList<Commande>();
+	private MetriquesAcheteur metriques = new MetriquesAcheteur(this);
 	//public Vector<Carte> _unnamed_Carte_ = new Vector<Carte>();
-	//public MetriquesAcheteur _unnamed_MetriquesAcheteur_;
 	//public Vector<Evaluation> _est__laisse_par_acheteur = new Vector<Evaluation>();
 
 
@@ -107,24 +97,24 @@ public class Acheteur extends Utilisateur {
 	}
 		
 	public String getAcheteurlikeBuff(){
-		if (acheteurLike.size()==0){return "null";}
+		if (acheteursSuivis.isEmpty()){return "null";}
 		else{
-			String liste=acheteurLike.get(0);
-			for(int i=1;i<acheteurLike.size();i++){
-				liste=liste+";"+acheteurLike.get(i);
+			String liste=acheteursSuivis.get(0).getPseudo();
+			for(int i=1;i<acheteursSuivis.size();i++){
+				liste=liste+";"+acheteursSuivis.get(i).getPseudo();
 			}
 			return liste;
 		}
 	}
 
 	public String getNotificationBuff(){
-		if (notifications.size()==0){return "null";}
+		if (notifications.isEmpty()){return "null";}
 		else{
-			String liste=notifications.get(0);
+			StringBuilder liste= new StringBuilder(notifications.get(0).getDesc());
 			for(int i=1;i<notifications.size();i++){
-				liste=liste+";"+notifications.get(i);
+				liste.append(";").append(notifications.get(i).getDesc());
 			}
-			return liste;
+			return liste.toString();
 		}
 	}
 	public String getProduitsLikeBuff(){
@@ -168,8 +158,8 @@ public class Acheteur extends Utilisateur {
 			System.out.println(produitsLike.get(i).get_titre());
 		}
 		System.out.println("------Acheteurs Like---------- " );
-		for (int i=0;i<acheteurLike.size();i++){
-			System.out.println(acheteurLike.get(i));
+		for (int i=0;i<acheteursSuivis.size();i++){
+			System.out.println(acheteursSuivis.get(i).getPseudo());
 		}
 		System.out.println("------Revendeurs Like---------- " );
 		for (int i=0;i<revendeursLike.size();i++){
@@ -177,6 +167,10 @@ public class Acheteur extends Utilisateur {
 		}
 		System.out.println("--------------------------");
 
+	}
+
+	public void notifier(Notification notification) {
+		this.notifications.add(notification);
 	}
 
 	//getters
@@ -192,20 +186,27 @@ public class Acheteur extends Utilisateur {
 	public ArrayList<Produit> getProduitsLike() {
 		return this.produitsLike;
 	}
-	public ArrayList<String> getAcheteurLike() {
-		return this.acheteurLike;
+	public MetriquesAcheteur getMetriques(){
+		return this.metriques;
 	}
-	public void setAcheteurLike(Acheteur acheteur) {
-		if(!acheteurLike.isEmpty() && acheteurLike.contains(acheteur.getPseudo())){
-			acheteurLike.remove(acheteur.getPseudo());
+
+	// Setters
+	public void setAcheteursSuivis(Acheteur acheteur) throws IOException {
+			if(!acheteursSuivis.isEmpty() && acheteursSuivis.contains(acheteur)){
+			acheteursSuivis.remove(acheteur);
 			acheteur.retirerDesPoints(5);
 			this.retirerDesPoints(5);
 			
 		}
 		else{
-			acheteurLike.add(acheteur.getPseudo());
+			acheteursSuivis.add(acheteur);
 			acheteur.ajouterDesPoints(5);
 			this.ajouterDesPoints(5);
+			// Send a notification to the followed user
+			Notification notification = new Notification(CategorieNotif.NOUVEL_ACHETEUR_SUIVI);
+			acheteur.notifier(notification);
+			// Update buyer's list of followed users
+			this.metriques._classementAcheteurSuivis.add(acheteur.getPseudo());
 		}
 	}
 	public void setProduitLike(Produit produit) {
@@ -243,10 +244,6 @@ public class Acheteur extends Utilisateur {
 	public void ajouterDesPoints(int points){
 		nombrePoints=nombrePoints+points;
 	}
-	public void setNotification(ArrayList<String> aNotification) {
-		this.notifications = aNotification;
-	}
-
 	public ArrayList<RetourEchange> getListRetourEchange() {
 		return listRetourEchange;
 	}

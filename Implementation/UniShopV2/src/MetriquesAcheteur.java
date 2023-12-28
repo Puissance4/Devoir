@@ -1,30 +1,22 @@
+import java.util.ArrayList;
+
 public class MetriquesAcheteur extends Metriques {
-	private int _nombreCommandes;
-	private int _nombreArticles;
-	private Acheteur[] _classementAcheteurSuivis;
-	public Acheteur _unnamed_Acheteur_;
+	private int _nombreCommandes; // Number of ongoing orders
+	private int _nombreArticles; // Number of bought articles
+	public ArrayList<String> _classementAcheteurSuivis = new ArrayList<>(); // List of followed buyers names
 
-	public int getNombreCommandes() {
-		return this._nombreCommandes;
+	public Acheteur acheteur;
+
+	// Constructor
+	public MetriquesAcheteur(Acheteur acheteur){
+		this.acheteur = acheteur;
 	}
 
-	public void setNombreCommandes(int aNombreCommandes) {
-		this._nombreCommandes = aNombreCommandes;
-	}
+	// Getters
+	public int getNombreCommandes() {return this._nombreCommandes;}
+	public int getNombreArticles() {return this._nombreArticles;}
 
-	public int getNombreArticles() {
-		return this._nombreArticles;
-	}
-
-	public void setNombreArticles(int aNombreArticles) {
-		this._nombreArticles = aNombreArticles;
-	}
-
-	public Acheteur[] getClassementAcheteurSuivis() {
-		return this._classementAcheteurSuivis;
-	}
-
-	public void setClassementAcheteurSuivis(Acheteur[] aClassementAcheteurSuivis) {
-		this._classementAcheteurSuivis = aClassementAcheteurSuivis;
-	}
+	// Setters
+	public void setNombreCommandes(int aNombreCommandes) {this._nombreCommandes = aNombreCommandes;}
+	public void setNombreArticles(int aNombreArticles) {this._nombreArticles = aNombreArticles;}
 }

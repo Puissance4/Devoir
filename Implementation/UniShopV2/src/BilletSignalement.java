@@ -6,7 +6,8 @@ public class BilletSignalement {
 	private String _descProdRem;
 	private int _numSuiviProdRem;
 	private String _confirmationLivraisonProdRem;
-	public Commande _unnamed_Commande_;
+	private Produit produit;
+	private Acheteur acheteur;
 
 	public void setDescProbleme(String aDescriptionProbleme) {
 		this._descProbleme = aDescriptionProbleme;
@@ -35,4 +36,8 @@ public class BilletSignalement {
 	public void setConfirmationLivraisonProdRem(String aConfirmation) {
 		this._confirmationLivraisonProdRem = aConfirmation;
 	}
+	public void setProduit(Produit produit){this.produit = produit;}
+	public void setAcheteur(Acheteur acheteur){this.acheteur = acheteur;}
+	public Produit getProduit(){ return this.produit; }
+	public Acheteur getAcheteur(){ return this.acheteur; }
 }

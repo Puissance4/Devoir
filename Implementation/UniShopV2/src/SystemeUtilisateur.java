@@ -133,7 +133,6 @@ public class SystemeUtilisateur extends Systeme {
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
 		Acheteur acheteurnew=new Acheteur(pseudo, nom, prenom, email, mdp, adresse, telephone);
-		listeAcheteurs.add(acheteurnew);
 		return acheteurnew;
 
 	}
@@ -150,7 +149,6 @@ public class SystemeUtilisateur extends Systeme {
 		System.out.println("Telephone : ");
 		String telephone = menu.promptS();
 		Revendeur revendeurnew=new Revendeur(nom, email, mdp, adresse, telephone);
-		listeRevendeurs.add(revendeurnew);
 		return revendeurnew;}
 
  //ajouter les filtres
@@ -205,7 +203,7 @@ public class SystemeUtilisateur extends Systeme {
 				String Notifications=acheteur.getNotificationBuff();
 				String ProduitsLike=acheteur.getProduitsLikeBuff();
 				int NombreDepoints=acheteur.getNombrePoints();
-				String panier=acheteur.panier.getPanierBuff();
+				String panier= acheteur.getPanier().getPanierBuff();
 
 				writterPanier.write(panier);
 				writterAcheteurs.write(pseudo+","+nom+","+prenom+","+email+","+motDePasse+","+adresse+","+telephone+","+Revendeurslike+","+Acheteurslike+","+Notifications+","+ProduitsLike+","+NombreDepoints);
@@ -219,8 +217,9 @@ public class SystemeUtilisateur extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Revendeurs.csv"));
-			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike");
+			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("../Revendeurs.csv"));
+			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike,Notification");
+      
 			for (Revendeur revendeur: listeRevendeurs){
 				writterRevendeurs.newLine();
 				String nom=revendeur.getNom();
@@ -231,8 +230,9 @@ public class SystemeUtilisateur extends Systeme {
 				int likes= revendeur.getLikes();
 				String ProduitsOfferts=revendeur.getProduitsBuff();
 				String Acheteurslike=revendeur.getacheteurSuiviBuff();
+				String Notifications=revendeur.getRevendeurNotificationBuff();
 
-				writterRevendeurs.write(nom+","+email+","+motDePasse+","+adresse+","+telephone+","+likes+","+ProduitsOfferts+","+Acheteurslike);
+				writterRevendeurs.write(nom+","+email+","+motDePasse+","+adresse+","+telephone+","+likes+","+ProduitsOfferts+","+Acheteurslike+","+Notifications);
 			}
 			writterRevendeurs.close();
 

@@ -1,4 +1,8 @@
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.EmptyStackException;
+import java.util.InputMismatchException;
 
 public class Panier {
 	private float cout=0f;
@@ -19,12 +23,12 @@ public class Panier {
 				}
 			}}
 		this.nombreDePoints=Integer.parseInt(donnee[2]);
-		this.cout=Float.parseFloat(donnee[3]);		
+		this.cout=Float.parseFloat(donnee[3]);
 				
 		}
 
-	public Commande commander(Acheteur acheteur,Menu menu) throws IllegalStateException {
-		if (produits.size()==0){
+	public Commande commander(Acheteur acheteur,Menu menu){
+		if (produits.isEmpty()){
 			throw new IllegalStateException("il faut que le panier contienne au moins 1 produit pour commander");
 		}
 		else{
@@ -33,49 +37,94 @@ public class Panier {
 			System.out.println("Souhaitez vous commander avec cette adresse: "+ adresse);
 			System.out.println("Et ce numéro de téléphone: "+ telephone);
 			System.out.println("Entrez [1] si oui et [2] si non : ");
-			int choix = menu.prompt();
+			int choix = nextChoixI(menu);
 			if (choix==2){
 				System.out.println("Entrez l'adresse pour la commande: ");
-				adresse=menu.promptS();
+				adresse=nextChoixS(menu);
 				System.out.println("Entrez le numéro de téléphone pour la commande: ");
-				telephone=menu.promptS();
+				telephone=nextChoixS(menu);
 			}
-			if (choix==1 ||choix==2){
-				menu.promptS();
+			if (choix==1 || choix==2){
 				System.out.println("Entrez le numéro de carte pour la commande: ");
-				String numCarte=menu.promptS();
+				String numCarte=nextChoixS(menu);
 				System.out.println("Entrez la date d'expiration de la carte: ");
-				String dateExp=menu.promptS();
+				String dateExp=nextChoixS(menu);
 				System.out.println("Entrez le numéro de confirmation de la carte: ");
-				String numConf=menu.promptS();
+				String numConf=nextChoixS(menu);
 				System.out.println("Avez vous des informations supplémentaires pour la livraison? (Entrez non si ce n'est pas le cas): ");
-				String infoSupp=menu.promptS();
+				String infoSupp=nextChoixS(menu);
 				Carte carte=new Carte(dateExp, numCarte, numConf, acheteur.getPseudo());
+
 				System.out.println("Entrez [1] pour confirmer la commande ou [2] pour annuler et revenir au panier");
-				choix=menu.prompt();
-				if (choix==2){
-					throw new IllegalArgumentException("retour au panier");
+				int choix1=nextChoixI(menu);
+
+				if (choix1==2){
+					menu.afficherPageAcheteur();
 				}
-				else if (choix==1){
-					Boolean verif=menu.systemeGeneral.verifierCarte(carte);
-					if (verif==false){}
-					else{
-						String identifiant=menu.systemeGeneral.creerID();
-						Commande commande= new Commande (produits,acheteur,adresse,telephone, carte, identifiant,infoSupp);
-						if(menu.systemeGeneral.verifierCommande(commande)==false){
-							throw new IllegalStateException("quantite insuffisante");
+				else if (choix1==1){
+					boolean verif=menu.systemeGeneral.verifierCarte(carte);
+					while (verif){
+						if (!verif){
+							System.out.println("Carte invalide, veillez ressayer");
+							System.out.println("Entrez le numéro de carte pour la commande: ");
+							numCarte=nextChoixS(menu);
+							System.out.println("Entrez la date d'expiration de la carte: ");
+							dateExp=nextChoixS(menu);
+							System.out.println("Entrez le numéro de confirmation de la carte: ");
+							numConf=nextChoixS(menu);
+							// Create new card
+							carte = new Carte(dateExp, numCarte, numConf, acheteur.getPseudo());
+							// Verify the card
+							verif = menu.systemeGeneral.verifierCarte(carte);
 						}
 						else{
-							acheteur.addCommande(commande);
-							return commande;}
-						
+							String identifiant = menu.systemeGeneral.creerID();
+							Commande commande = new Commande(produits, acheteur, adresse, telephone, carte, identifiant, infoSupp);
+							if (!menu.systemeGeneral.verifierCommande(commande)) {
+								System.out.println("Aucun produit dans la commande");
+							}
+							else{
+								acheteur.addCommande(commande);
+								// Update buyer's metrics
+								// Update order number
+								int nombreDeCommande = acheteur.getMetriques().getNombreCommandes();
+								acheteur.getMetriques().setNombreCommandes(nombreDeCommande + 1);
+								// Update purchased products number
+								int nombreProduitAchete = acheteur.getMetriques().getNombreArticles();
+								acheteur.getMetriques().setNombreArticles(nombreProduitAchete + produits.size());
+
+								// Update sellers metrics
+								for (Produit produit : produits) {
+									// Update number of products sold
+									int nombreAricleVendu = produit.getRevendeur().getMetriques().getNombreProduitsVendus();
+									produit.getRevendeur().getMetriques().setNombreProduitsVendus(nombreAricleVendu + 1);
+									// Update number of products offered
+									int nombreArticleOffert = produit.getRevendeur().getMetriques().getNombreArticles();
+									produit.getRevendeur().getMetriques().setNombreArticles(nombreArticleOffert - 1);
+									// Update reseller's revenue
+									float prixProduit = produit.get_prix();
+									float revenuRevendeur = produit.getRevendeur().getMetriques().getRevenu();
+									produit.getRevendeur().getMetriques().setRevenu(revenuRevendeur + prixProduit);
+								}
+
+								// Remove all the products from the list after they have been ordered
+								// starting from the last element to prevent indexing errors
+								for (int i = acheteur.getPanier().getProduits().size() - 1; i >= 0; i--){
+									acheteur.getPanier().retirerDuPanier(acheteur.getPanier().getProduits().get(i));
+								}
+								verif = false;
+								return commande;
+							}
+						}
 					}
 				}
-
+				else System.out.println("Choix invalide");
+				return null;
 			}
 		}
-		throw new IllegalArgumentException("test");
-	}
+		System.out.println("test");
+        return null;
+    }
 
 	public ArrayList<Produit> getProduits() {
 		return this.produits;
@@ -110,4 +159,11 @@ public class Panier {
 				}
 			}
 		return (acheteur+","+liste+","+nombreDePoints+","+cout);
-}}
+	}
+	protected String nextChoixS(Menu menu){
+        return menu.promptS();
+	}
+	protected int nextChoixI(Menu menu){
+		return menu.prompt();
+	}
+}
