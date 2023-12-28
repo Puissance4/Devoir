@@ -152,16 +152,20 @@ public class SystemeUtilisateur extends Systeme {
 		return revendeurnew;}
 
  //ajouter les filtres
-	public Revendeur rechercherRevendeur(String nom) throws Exception {
+	public Revendeur rechercherRevendeur(String motcle) {
 		for (Revendeur revendeur : listeRevendeurs) {
-			if (revendeur.getNom().equals(nom)){
+			if (revendeur.getNom().equals(motcle)){
 				revendeur.afficherProfil();
-
 				return revendeur;
 			}
+			else if (revendeur.getAdresse().contains(motcle)){
+				revendeur.afficherProfil();
+				return revendeur;
+			}
+			
+		}
+		return null;
 	}
-	throw new Exception("Il n'existe pas de revendeur avec le nom "+ nom);
-}
 	
 	public Acheteur rechercherAcheteur(String pseudo) throws Exception {
 		for (Acheteur acheteur : listeAcheteurs) {
