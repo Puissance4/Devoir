@@ -1,8 +1,26 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * La classe Produit représente un article disponible à la vente sur la plateforme.
+ * Elle contient des informations sur le titre, la catégorie, la description, la quantité, le prix,
+ * les points bonus associés, l'identifiant unique, et le lien vers une image ou vidéo représentative.
+ * La classe gère également les promotions et les évaluations liées au produit.
+ */
 public class Produit {
 
+	/**
+	 * Constructeur complet pour créer un produit avec toutes les informations spécifiées.
+	 *
+	 * @param titre Le titre du produit.
+	 * @param categorie La catégorie du produit.
+	 * @param description La description du produit.
+	 * @param quantite La quantité disponible du produit.
+	 * @param prix Le prix du produit.
+	 * @param pointBonus Les points bonus associés à l'achat du produit.
+	 * @param identifiant L'identifiant unique du produit.
+	 * @param lienImageOuVideo Le lien vers l'image ou la vidéo du produit.
+	 */
 	public Produit(String titre, Categorie categorie, String description, int quantite, float prix, int pointBonus, String identifiant, String lienImageOuVideo) {
 		this.titre = titre;
 		this.categorie = categorie;
@@ -13,6 +31,12 @@ public class Produit {
 		this.identifiant = identifiant;
 		this.lienImageOuVideo = lienImageOuVideo;
 	}
+
+	/**
+	 * Constructeur pour créer un produit à partir d'un tableau de chaînes représentant ses attributs.
+	 *
+	 * @param donnee Le tableau de chaînes contenant les informations du produit.
+	 */
 	public Produit (String [] donnee){
 
 		this.titre=donnee[0];
@@ -76,7 +100,12 @@ public class Produit {
 	public ArrayList<Evaluation> listeEvaluation = new ArrayList<>();
 	public ArrayList<Acheteur> utilisateursLikes = new ArrayList<>();
 
-
+	/**
+	 * Vérifie si la promotion associée au produit est toujours valide à la date spécifiée.
+	 *
+	 * @param date La date à laquelle la validité de la promotion doit être vérifiée.
+	 * @return true si la promotion est valide (c'est-à-dire, la date actuelle est antérieure à la date de fin de promotion); sinon, false.
+	 */
 	public boolean isPromotionValide(LocalDate date) {
 
 		if (this.dateFinPromotion == null) {
@@ -85,7 +114,6 @@ public class Produit {
 			return date.isBefore(this.dateFinPromotion);
 		}
 	}
-	
 
 	public void modifier() {
 		throw new UnsupportedOperationException();

@@ -5,12 +5,22 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * La classe SystemeUtilisateur gère les fonctionnalités liées aux utilisateurs, y compris les acheteurs et les revendeurs.
+ * Elle permet de charger les données utilisateurs à partir de fichiers, de gérer les connexions et les inscriptions, et de sauvegarder les données lors de la déconnexion.
+ */
 public class SystemeUtilisateur extends Systeme {
 	public String fichierAcheteurs="Implementation/UniShopV2/Acheteurs.csv";
 	public String fichierRevendeurs="Implementation/UniShopV2/Revendeurs.csv";
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
-    
+
+	/**
+	 * Constructeur pour initialiser le système utilisateur avec les données des acheteurs et des revendeurs à partir de fichiers.
+	 *
+	 * @param catalogue Liste des produits disponibles.
+	 * @param listeCommandes Liste des commandes effectuées.
+	 */
 	public SystemeUtilisateur(ArrayList<Produit> catalogue,ArrayList<Commande> listeCommandes){
 	
 		try {
@@ -40,6 +50,11 @@ public class SystemeUtilisateur extends Systeme {
 			e.printStackTrace();}
 	}
 
+	/**
+	 * Gère le processus de connexion pour un utilisateur, offrant des options pour se connecter en tant qu'acheteur ou revendeur.
+	 *
+	 * @param menu Instance du menu pour interagir avec l'utilisateur.
+	 */
 	public void connexion(Menu menu) {
 		System.out.println("\n");
 		System.out.println("-----------------------------------------------");
@@ -60,6 +75,11 @@ public class SystemeUtilisateur extends Systeme {
 		}
 	}
 
+	/**
+	 * Gère le processus de connexion pour un acheteur.
+	 *
+	 * @param menu Instance du menu pour interagir avec l'utilisateur.
+	 */
 	public void connexionAcheteur(Menu menu) {
 		System.out.println("Pseudo : ");
 		String pseudo = menu.promptS();
@@ -77,6 +97,11 @@ public class SystemeUtilisateur extends Systeme {
 		
 	}
 
+	/**
+	 * Gère le processus de connexion pour un revendeur.
+	 *
+	 * @param menu Instance du menu pour interagir avec l'utilisateur.
+	 */
 	public void connexionRevendeur(Menu menu) {
 		System.out.println("Nom : ");
 		String nom = menu.promptS();
@@ -93,6 +118,11 @@ public class SystemeUtilisateur extends Systeme {
 		connexion(menu);
 	}
 
+	/**
+	 * Gère le processus d'inscription pour un nouvel utilisateur, offrant des options pour s'inscrire en tant qu'acheteur ou revendeur.
+	 *
+	 * @param menu Instance du menu pour interagir avec l'utilisateur.
+	 */
 	public void inscription(Menu menu) {
 		System.out.println("1. Inscription en tant qu'acheteur");
 		System.out.println("2. Inscription en tant que revendeur");
@@ -117,6 +147,12 @@ public class SystemeUtilisateur extends Systeme {
 		}
 	}
 
+	/**
+	 * Inscription d'un nouvel acheteur dans le système.
+	 *
+	 * @param menu Instance du menu pour recueillir les informations de l'utilisateur.
+	 * @return L'acheteur nouvellement inscrit.
+	 */
 	public Acheteur inscrireAcheteur(Menu menu) {
 		System.out.println("Pseudo : ");
 		String pseudo = menu.promptS();
@@ -137,6 +173,12 @@ public class SystemeUtilisateur extends Systeme {
 
 	}
 
+	/**
+	 * Inscription d'un nouveau revendeur dans le système.
+	 *
+	 * @param menu Instance du menu pour recueillir les informations de l'utilisateur.
+	 * @return Le revendeur nouvellement inscrit.
+	 */
 	public Revendeur inscrireRevendeur(Menu menu) {
 		System.out.println("Nom : ");
 		String nom = menu.promptS();
@@ -152,6 +194,13 @@ public class SystemeUtilisateur extends Systeme {
 		return revendeurnew;}
 
  //ajouter les filtres
+
+	/**
+	 * Recherche un revendeur dans le système en utilisant un mot-clé.
+	 *
+	 * @param motcle Le mot-clé pour la recherche.
+	 * @return Le revendeur trouvé ou null si aucun n'est trouvé.
+	 */
 	public Revendeur rechercherRevendeur(String motcle) {
 		for (Revendeur revendeur : listeRevendeurs) {
 			if (revendeur.getNom().equals(motcle)){
@@ -166,7 +215,14 @@ public class SystemeUtilisateur extends Systeme {
 		}
 		return null;
 	}
-	
+
+	/**
+	 * Recherche un acheteur dans le système en utilisant son pseudo.
+	 *
+	 * @param pseudo Le pseudo de l'acheteur à rechercher.
+	 * @return L'acheteur trouvé ou lève une exception si aucun n'est trouvé.
+	 * @throws Exception Si aucun acheteur avec le pseudo spécifié n'est trouvé.
+	 */
 	public Acheteur rechercherAcheteur(String pseudo) throws Exception {
 		for (Acheteur acheteur : listeAcheteurs) {
 			if (acheteur.getPseudo().equals(pseudo)){
@@ -174,14 +230,22 @@ public class SystemeUtilisateur extends Systeme {
 
 				return acheteur;
 			}
-	}
+		}
 	throw new Exception("Il n'existe pas d'acheteur avec le pseudo "+ pseudo);
-}
+	}
+
+	/**
+	 * Méthode non supportée pour mettre à jour les quantités.
+	 *
+	 * @param aCom La commande à traiter.
+	 */
 	public void mettreJourQuantitees(Commande aCom) {
 		throw new UnsupportedOperationException();
 	}
 
-
+	/**
+	 * Déconnecte l'utilisateur actuel et enregistre les données des acheteurs et des revendeurs dans les fichiers.
+	 */
 	public void deconnexion(){
 		try {
 			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Acheteurs.csv"));
@@ -243,9 +307,20 @@ public class SystemeUtilisateur extends Systeme {
 
 	}
 
+	/**
+	 * Renvoie la liste des acheteurs inscrits dans le système.
+	 *
+	 * @return Liste des acheteurs.
+	 */
 	public ArrayList<Acheteur> getListeAcheteurs(){
 		return listeAcheteurs;
 	}
+
+	/**
+	 * Renvoie la liste des revendeurs inscrits dans le système.
+	 *
+	 * @return Liste des revendeurs.
+	 */
 	public ArrayList<Revendeur> getListeRevendeurs(){
 		return listeRevendeurs;
 	}

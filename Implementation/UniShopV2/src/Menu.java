@@ -3,6 +3,11 @@ import javax.xml.transform.Source;
 import java.io.*;
 import java.lang.reflect.Array;
 
+/**
+ * Représente l'interface utilisateur de l'application UniShop.
+ * Elle permet à l'utilisateur de s'inscrire, de se connecter en tant qu'acheteur ou revendeur,
+ * et d'accéder aux fonctionnalités principales de l'application.
+ */
 public class Menu {
 	private Utilisateur utilisateurConnecte;
 	private HashMap <String,RetourEchange> listeRetour= new HashMap<>();
@@ -17,12 +22,24 @@ public class Menu {
 
 	private static Scanner scanner = new Scanner(System.in);
 
+	/**
+	 * Constructeur par défaut pour créer une instance de Menu.
+	 */
 	public Menu(){
 	}
+
+	/**
+	 * Affiche un message donné à l'utilisateur.
+	 *
+	 * @param message Le message à afficher.
+	 */
 	public void afficherMessage(String message) {
 		System.out.println(message);
 	}
 
+	/**
+	 * Affiche la page principale pour un utilisateur acheteur, présentant diverses options telles que consulter le panier, afficher le catalogue, et modifier le profil.
+	 */
 	public void afficherPageAcheteur() {
 		Acheteur util=(Acheteur)utilisateurConnecte;
 		String prenom=util.getPrenom();
@@ -45,6 +62,9 @@ public class Menu {
 		selectOption(prompt());
 	}
 
+	/**
+	 * Affiche la page principale pour un utilisateur revendeur, offrant des options telles qu'ajouter un nouveau produit, offrir une promotion, et gérer les signalements.
+	 */
 	public void afficherPageRevendeur() {
 		Revendeur util=(Revendeur)utilisateurConnecte;
 		String nom=util.getNom();
@@ -65,6 +85,9 @@ public class Menu {
 		selectOption(prompt());
 	}
 
+	/**
+	 * Affiche le menu principal de l'application, offrant des options comme s'inscrire, se connecter, et afficher le catalogue.
+	 */
 	public void afficherMenuPrincipal() {
 		System.out.println("\n");
 		System.out.println("\n---------------------------------------------");
@@ -79,6 +102,9 @@ public class Menu {
 		selectOption(prompt());
     }
 
+	/**
+	 * Affiche les produits disponibles dans le catalogue. Si aucun produit n'est disponible, un message en informe l'utilisateur.
+	 */
 	public void afficherCatalogue() {
 		if(systemeCatalogue.getCatalogue().isEmpty()){
 			System.out.println("Désolé nous n'avons pas d'articles disponibles à la vente en ce moment");
@@ -94,6 +120,12 @@ public class Menu {
 			System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");}
 	}
 
+	/**
+	 * Traite la sélection de l'utilisateur en fonction de la page actuellement affichée (menu principal, acheteur ou revendeur)
+	 * et exécute l'action correspondante à l'option choisie.
+	 *
+	 * @param option Le choix de l'utilisateur sous forme d'un entier, correspondant à une option du menu.
+	 */
 	public void selectOption(int option) {
 		int choix;
 		if (indexPage==0){
@@ -113,7 +145,7 @@ public class Menu {
 					Produit produit=systemeCatalogue.getCatalogue().get(i);
 					System.out.println(produit.get_titre()+"..... "+produit.get_prix()+"$");}}
 
-				choix = 0;	
+				choix = 0;
 				while(choix!=1){
 				System.out.println("Entrez 1 pour revenir au menu principal");
 				choix = prompt();}
@@ -187,7 +219,7 @@ public class Menu {
 	}}
 	else if (indexPage==1){ // REVENDEUR
 		Revendeur util=(Revendeur)utilisateurConnecte;
-		
+
 	switch (option) {
 		case 1:
 			util.ajouterProduit(this);
@@ -245,7 +277,7 @@ public class Menu {
 		case 4:
 			util.modifierProfil(this);
 			System.out.println("Votre profil a bien ete modifie!");
-			choix = 0;	
+			choix = 0;
 				while(choix!=1){
 				System.out.println("Entrez [1] pour revenir au menu principal");
 				choix = prompt();}
@@ -300,7 +332,7 @@ public class Menu {
 			else if(choix==2){
 				afficherPageRevendeur();
 			}
-				
+
 			break;
 		case 9:
 			systemeCatalogue.deconnexion();
@@ -375,21 +407,21 @@ public class Menu {
 				if(choix2==1){
 					panier.retirerDuPanier(produitChoisi);
 					System.out.println("l'article a été supprimé de votre panier!");}
-			
+
 				while(choix2!=2){
 						System.out.println("Entrez [2] pour revenir au menu principal");
 						choix2=prompt();}
 				afficherPageAcheteur();
-					
+
 				}
 			else{
 				System.out.println("Choix invalide veuillez reessayer");
 			}}
 
 			break;
-			
+
 		case 2:
-			
+
 			int choix4=systemeCatalogue.getCatalogue().size()+1;
 
 			while(choix4>systemeCatalogue.getCatalogue().size()){
@@ -417,8 +449,8 @@ public class Menu {
 					afficherPageAcheteur();}
 				else{
 				System.out.println("Choix invalide veuillez reessayer");
-			}}		
-			
+			}}
+
 			break;
 		case 3:
 			//recherche produit;
@@ -456,14 +488,14 @@ public class Menu {
 					System.out.println("Entrez [1] pour supprimer cet acheteur de vos acheteurs suivis");
 				}
 				else{System.out.println("Entrez [1] pour suivre cet acheteur");}
-			
+
 			System.out.println("Entrez [2] pour retourner au menu d'acheteur");
 			int select=prompt();
 			if(select==1){
 				util.setAcheteursSuivis(acheteurRech);
 				System.out.println("modification effectue avec succes!");
 				retourAuMenu(1, "d'acheteur");
-				
+
 			}
 			else if (select==2){
 				afficherPageAcheteur();
@@ -477,7 +509,7 @@ public class Menu {
 				retourAuMenu(1, "d'acheteur");
 			}
 			afficherPageAcheteur();
-			
+
 			break;
 
 		case 6:
@@ -679,7 +711,7 @@ public class Menu {
 						for(int i = 0; i < prodAcht.size(); i++){
 							System.out.println(i + ". " + prodAcht.get(i).get_titre()+"..... "+prodAcht.get(i).get_prix()+"$");}
 				 		System.out.println("--------------------------");
-						
+
 						int choix8=prodAcht.size()+1;
 						while(choix8>prodAcht.size()){
 							System.out.println("Entrez l'index d'un produit pour obtenir plus d'informations");
@@ -726,12 +758,12 @@ public class Menu {
 							System.out.println("Entrez [2] pour revenir au menu principal");
 							choix5=prompt();}
 						afficherPageAcheteur();}
-					
+
 						else{System.out.println("Choix invalide veuillez reessayer");}
 						}}
 					else{System.out.println("Choix invalide choisir une option entre 1 et 5");}}}
 				else{System.out.println("Choix invalide veuillez reessayer");}}}
-			
+
 			break;
 
 		case 10:
@@ -755,6 +787,12 @@ public class Menu {
 			break;}}}
 
 	// public methods
+
+	/**
+	 * Invite l'utilisateur à entrer un choix numérique et valide l'entrée.
+	 *
+	 * @return Le choix numérique validé de l'utilisateur.
+	 */
 	public int prompt() {
 		try{
 			 int choix = scanner.nextInt();
@@ -769,8 +807,11 @@ public class Menu {
 		}
 	}
 
-
-
+	/**
+	 * Invite l'utilisateur à entrer un choix numérique de type float et valide l'entrée.
+	 *
+	 * @return Le choix numérique validé de l'utilisateur de type float.
+	 */
 	public float promptF() {
 		try{
 			float choix = scanner.nextFloat();
@@ -785,6 +826,11 @@ public class Menu {
 		}
 	}
 
+	/**
+	 * Invite l'utilisateur à entrer une chaîne de caractères et valide l'entrée.
+	 *
+	 * @return La chaîne de caractères saisie par l'utilisateur.
+	 */
 	public String promptS() {
 		try{
 			String texte = scanner.nextLine();
@@ -798,15 +844,30 @@ public class Menu {
 		}
 	}
 
-
-
+	/**
+	 * Affecte un nouvel utilisateur connecté au menu.
+	 *
+	 * @param aNouveau L'utilisateur à définir comme connecté.
+	 */
 	public void setUtilisateurConnecte(Utilisateur aNouveau) {
 		this.utilisateurConnecte = aNouveau;
 	}
 
+	/**
+	 * Méthode non supportée pour entrer des informations.
+	 *
+	 * @param aTexteEntre Le texte à entrer.
+	 */
 	public void entrerInfo(String aTexteEntre) {
 		throw new UnsupportedOperationException();
 	}
+
+	/**
+	 * Invite l'utilisateur à retourner au menu spécifié.
+	 *
+	 * @param index L'index pour le retour au menu.
+	 * @param menu Le nom du menu à retourner.
+	 */
 	public void retourAuMenu(int index,String menu){
 		try{
 		System.out.println("Entrez ["+ index+"] pour revenir au menu "+ menu);
@@ -818,6 +879,13 @@ public class Menu {
 			retourAuMenu(index, menu);
 		}
 	}
+
+	/**
+	 * Affiche les options pour retourner ou échanger une commande et traite le choix de l'utilisateur.
+	 *
+	 * @param choix Le choix initial de l'utilisateur.
+	 * @param commande La commande concernée par le retour ou l'échange.
+	 */
 	public void afficherRetourEchange(int choix, Commande commande) {
 		System.out.println(" veuillez choisir les choix suivants: ");
 		System.out.println("Entrez [1] pour faire un retour ");
@@ -840,6 +908,13 @@ public class Menu {
 				afficherRetourEchange(choix, commande);
 		}
 	}
+
+	/**
+	 * Invite l'utilisateur à choisir un ou plusieurs produits pour retourner d'une commande.
+	 *
+	 * @param commande La commande contenant les produits à retourner.
+	 * @return Un tableau d'indices des produits choisis pour le retour.
+	 */
 	public int[] choisirProduitRetour(Commande commande) {
 		System.out.println("     Produits:        ");
 		for (int i = 0; i < commande.getProduits().size(); i++) {
@@ -864,6 +939,13 @@ public class Menu {
 		return choixMultiple;
 
 	}
+
+	/**
+	 * Invite l'utilisateur à choisir un ou plusieurs produits pour échange d'une commande.
+	 *
+	 * @param commande La commande contenant les produits à échanger.
+	 * @return Un tableau de produits choisis pour l'échange.
+	 */
 	public Produit [] choisirProduitEchange(Commande commande){
 
 		int choix =0;
@@ -921,6 +1003,12 @@ public class Menu {
 		}
 		return produits ;
 	}
+
+	/**
+	 * Traite le retour d'un ou plusieurs produits d'une commande.
+	 *
+	 * @param commande La commande contenant les produits à retourner.
+	 */
 	public void retour(Commande commande){
 		System.out.println(" Choisir un produit pour le retour , pour le retour de plusieurs produits, mettre une espace entre chaque nombre");
 		Retour retour = new Retour(commande, choisirProduitRetour(commande));
@@ -928,6 +1016,12 @@ public class Menu {
 		listeRetour.put(retour.getCommande().getID(), retour);
 		((Acheteur) utilisateurConnecte).getListRetourEchange().add(retour);
 	}
+
+	/**
+	 * Traite l'échange d'un ou plusieurs produits d'une commande.
+	 *
+	 * @param commande La commande contenant les produits à échanger.
+	 */
 	public void echange(Commande commande){
 		System.out.println(" Choisir un produit pour le echange, , pour l'echange de plusieurs produits, mettre une espace entre chaque nombre");
 		Echange echange = new Echange(commande,choisirProduitRetour(commande ), choisirProduitEchange(commande));
@@ -935,6 +1029,12 @@ public class Menu {
 		listeRetour.put(echange.getCommande().getID(), echange);
 		((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
 	}
+
+	/**
+	 * Invite l'utilisateur à saisir l'ID d'une commande pour traiter son retour ou son échange.
+	 *
+	 * @return L'objet RetourEchange associé à l'ID de la commande, si valide.
+	 */
 	public RetourEchange saisirIDCommande(){
 		System.out.println(" Veuillez saisir ID de la commande : ");
 		String ID = promptS();
@@ -967,6 +1067,9 @@ public class Menu {
 		return listeRetour.get(ID);
 	}
 
+	/**
+	 * Invite l'utilisateur à retourner au menu principal ou à quitter l'application en tant qu'acheteur.
+	 */
 	public void retournerMenuAcheteur(){
 		System.out.println(" voulez vous retourner au menu principal ou quitter ");
 		System.out.println("Entrez [1] pour retourner au menu principal ");
@@ -987,6 +1090,9 @@ public class Menu {
 		}
 	}
 
+	/**
+	 * Invite l'utilisateur à retourner au menu principal ou à quitter l'application en tant que revendeur.
+	 */
 	public void retournerMenuRevendeur(){
 		System.out.println(" voulez vous retourner au menu principal ou quitter ");
 		System.out.println("Entrez [1] pour retourner au menu principal ");

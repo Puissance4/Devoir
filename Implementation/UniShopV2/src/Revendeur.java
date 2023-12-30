@@ -1,8 +1,18 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * La classe Revendeur étend la classe Utilisateur pour fournir des fonctionnalités spécifiques aux revendeurs,
+ * notamment la gestion des produits, la promotion de produits, la gestion des likes, et la gestion des notifications et des signalements.
+ */
 public class Revendeur extends Utilisateur {
-	
+
+	/**
+	 * Constructeur pour initialiser un revendeur avec les informations spécifiées et le catalogue de produits.
+	 *
+	 * @param donnee Les informations du revendeur.
+	 * @param catalogue Le catalogue de produits.
+	 */
 	public Revendeur(String[] donnee,ArrayList<Produit> catalogue) {
 		super(donnee[0], donnee[1], donnee[4], donnee[3], donnee[2]);
 		this._likes=Integer.parseInt(donnee[5]);
@@ -25,7 +35,16 @@ public class Revendeur extends Utilisateur {
 			}}
 
 	}
-	
+
+	/**
+	 * Constructeur surchargé pour créer un revendeur avec des détails spécifiques.
+	 *
+	 * @param nom Le nom du revendeur.
+	 * @param email L'email du revendeur.
+	 * @param motDePasse Le mot de passe du revendeur.
+	 * @param adresse L'adresse du revendeur.
+	 * @param telephone Le téléphone du revendeur.
+	 */
 	public Revendeur(String nom, String email, String motDePasse, String adresse, String telephone) {
 		super(nom, email, telephone, adresse, motDePasse);}
 
@@ -40,6 +59,12 @@ public class Revendeur extends Utilisateur {
 	public ArrayList<Notification> notifications = new ArrayList<>(); // List of notifications
 	public ArrayList<BilletSignalement> billets = new ArrayList<>();
 
+	/**
+	 * Permet au revendeur d'ajouter un nouveau produit à son catalogue.
+	 * L'utilisateur est guidé à travers une série de prompts pour entrer les détails du produit, y compris la catégorie, les caractéristiques spécifiques et les informations de prix.
+	 *
+	 * @param menu Le menu interactif à utiliser pour la saisie des données utilisateur.
+	 */
 	public void ajouterProduit(Menu menu) {
 		System.out.println("\n");
 		System.out.println("-----------------------------------------------");
@@ -308,21 +333,45 @@ public class Revendeur extends Utilisateur {
 		this._likes = aLikes;
 	}
 
-
+	/**
+	 * Change l'état d'une commande spécifique en y associant une compagnie d'expédition et un numéro de suivi.
+	 * @param aCommande La commande dont l'état doit être changé.
+	 * @param aCompagnieExp La compagnie d'expédition à associer à la commande.
+	 * @param aNumSuivi Le numéro de suivi de la commande.
+	 * @throws UnsupportedOperationException Si cette opération n'est pas supportée.
+	 */
 	public void changerEtat(Commande aCommande, String aCompagnieExp, int aNumSuivi) {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Ajoute une promotion de prix à un produit spécifique pour une durée donnée.
+	 * @param produit Le produit à promouvoir.
+	 * @param prix Le nouveau prix promotionnel du produit.
+	 * @param duree La durée de la promotion en jours.
+	 */
 	public void ajouterPromotionPrix(Produit produit, float prix, int duree) {
 		produit.setPrixPromotionnel(prix);
 		produit.setFinPromotion(LocalDate.now().plusDays(duree));
 	}
 
+	/**
+	 * Ajoute une promotion de points bonus à un produit spécifique pour une durée donnée.
+	 * @param produit Le produit à promouvoir.
+	 * @param points Le nombre de points bonus promotionnels à attribuer.
+	 * @param duree La durée de la promotion en jours.
+	 */
 	public void ajouterPromotionPoints(Produit produit, int points, int duree) {
 		produit.setPointBonusPromotionnel(points);
 		produit.setFinPromotion(LocalDate.now().plusDays(duree));
 	}
 
+	/**
+	 * Affiche un menu interactif permettant au revendeur d'ajouter une promotion à l'un de ses produits.
+	 * L'utilisateur peut choisir entre une promotion de prix ou de points et doit spécifier la durée de la promotion.
+	 * Des notifications sont envoyées aux acheteurs intéressés une fois la promotion appliquée.
+	 * @param menu Le menu interactif à utiliser pour la saisie des données utilisateur.
+	 */
     public void menuPromotion(Menu menu) {
 		System.out.println("\n---------------------------------------------");
 		System.out.println("Sur quel produit voulez-vous ajouter une promotion?");
@@ -385,6 +434,10 @@ public class Revendeur extends Utilisateur {
 			System.out.println("Choix invalide veuillez choisir une option entre 1 et " + _produits.size());
 		}	
 	}
+
+	/**
+	 * Affiche le profil du revendeur, y compris son nom, le nombre de likes, l'adresse, l'email, les articles offerts et les acheteurs suivis.
+	 */
 	public void afficherProfil(){
 		System.out.println("--------------------------");
 		System.out.println("Nom: " + super.getNom());
@@ -403,6 +456,10 @@ public class Revendeur extends Utilisateur {
 
 	}
 
+	/**
+	 * Ajoute une notification à la liste des notifications du revendeur.
+	 * @param notification La notification à ajouter.
+	 */
 	public void notifier(Notification notification) {
 		this.notifications.add(notification);
 	}
@@ -415,6 +472,11 @@ public class Revendeur extends Utilisateur {
 			acheteurSuivi.add(acheteur.getPseudo());
 		}
 	}
+
+	/**
+	 * Gère le nombre de likes du revendeur. Cette méthode est utilisée pour décrémenter le nombre de likes.
+	 * @param likes Le nombre de likes à retirer.
+	 */
 	public void retirerDesLikes(int likes){
 		_likes=_likes-likes;
 		if (_likes<0){_likes=0;}
@@ -426,6 +488,11 @@ public class Revendeur extends Utilisateur {
 		return premier+deuxieme;
 
 	}
+
+	/**
+	 * Gère le nombre de likes du revendeur. Cette méthode est utilisée pour incrémenter le nombre de likes.
+	 * @param likes Le nombre de likes à ajouter.
+	 */
 	public void ajouterDesLikes(int likes){
 		_likes=_likes+likes;}
 
@@ -433,6 +500,13 @@ public class Revendeur extends Utilisateur {
 		return metriques;
 	}
 
+	/**
+	 * Gère un signalement pour un produit spécifique. Le revendeur doit fournir une solution, un numéro de suivi pour le produit retourné et un numéro de suivi pour le produit de remplacement.
+	 * @param billet Le billet de signalement concernant le produit.
+	 * @param solution La solution fournie pour résoudre le problème signalé.
+	 * @param numSuivi Le numéro de suivi du produit retourné.
+	 * @param numSuiviRem Le numéro de suivi du produit de remplacement.
+	 */
 	public void gererSignalement(BilletSignalement billet, String solution, int numSuivi, int numSuiviRem){
 		billet.setDescSolution(solution);
 		billet.setNumSuiviProdRem(numSuivi);

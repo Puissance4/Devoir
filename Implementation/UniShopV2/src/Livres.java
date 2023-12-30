@@ -1,6 +1,22 @@
 import java.time.LocalDate;
 
+/**
+ * Représente un livre avec des détails spécifiés et une sous-catégorie de genre typée.
+ * Cette classe étend la classe `Categorie`, ce qui signifie que `Livres` est une sous-classe de `Categorie`.
+ */
 public class Livres extends Categorie {
+
+	/**
+	 * Constructeur pour créer un livre avec les détails spécifiés et une sous-catégorie de genre typée.
+	 *
+	 * @param isbn Numéro ISBN unique du livre.
+	 * @param auteur Nom de l'auteur du livre.
+	 * @param maisonEdition Maison d'édition du livre.
+	 * @param genre Genre littéraire du livre.
+	 * @param dateParution Date de parution du livre.
+	 * @param numeroEdition Numéro d'édition du livre.
+	 * @param numeroVolume Numéro de volume du livre.
+	 */
 	public Livres(String isbn, String auteur, String maisonEdition, Genre genre, LocalDate dateParution,
             String numeroEdition, String numeroVolume) {
 				this._isbn = isbn;
@@ -12,7 +28,17 @@ public class Livres extends Categorie {
 				this._numVolume = Integer.parseInt(numeroVolume);
     }
 
-
+	/**
+	 * Constructeur surchargé pour créer un livre avec une sous-catégorie de genre spécifiée en tant que chaîne de caractères.
+	 *
+	 * @param isbn Numéro ISBN unique du livre.
+	 * @param auteur Nom de l'auteur du livre.
+	 * @param maisonEdition Maison d'édition du livre.
+	 * @param genre Genre littéraire du livre, fourni en tant que chaîne de caractères.
+	 * @param dateParution Date de parution du livre.
+	 * @param numeroEdition Numéro d'édition du livre.
+	 * @param numeroVolume Numéro de volume du livre.
+	 */
 	public Livres(String isbn, String auteur, String maisonEdition, String genre, LocalDate dateParution,
             String numeroEdition, String numeroVolume) {
 				this._isbn = isbn;

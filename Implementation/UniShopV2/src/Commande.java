@@ -3,6 +3,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * Représente une commande dans un système de commerce électronique, contenant des détails sur les produits commandés, l'acheteur, et les informations d'expédition et de paiement.
+ */
 public class Commande {
 	private float cout;
 	private String adresse;
@@ -18,6 +21,17 @@ public class Commande {
 	public String acheteur;
 	public ArrayList<BilletSignalement> signalements = new ArrayList<>();
 
+	/**
+	 * Constructeur pour créer une commande à partir d'une liste de produits, d'informations d'acheteur et de paiement.
+	 *
+	 * @param produits Liste des produits commandés.
+	 * @param acheteur L'acheteur qui passe la commande.
+	 * @param adresse Adresse de livraison.
+	 * @param telephone Numéro de téléphone pour la livraison.
+	 * @param carte Détails de la carte de paiement.
+	 * @param id Identifiant unique de la commande.
+	 * @param infoLivraison Informations supplémentaires pour la livraison.
+	 */
 	public Commande (ArrayList<Produit> produits,Acheteur acheteur, String adresse,String telephone, Carte carte, String id,String infoLivraison){
 		float prix=0;
 		for(int i=0;i<produits.size();i++){
@@ -34,6 +48,12 @@ public class Commande {
 		this.etat= EtatsCommande.EnProduction;
 	}
 
+	/**
+	 * Constructeur pour créer une commande à partir de données fournies sous forme de chaîne de caractères et d'un catalogue de produits.
+	 *
+	 * @param donnee Tableau de chaînes contenant les données de la commande.
+	 * @param catalogue Liste des produits disponibles pour référence.
+	 */
 	public Commande(String [] donnee,ArrayList<Produit> catalogue){
 		this.produits=new ArrayList<Produit>();
 		String[] prod=donnee[0].split(";");
@@ -61,6 +81,7 @@ public class Commande {
 		//instancier les billets de signalement
 
 	}
+
 	public Retour retour() {
 		throw new UnsupportedOperationException();
 	}

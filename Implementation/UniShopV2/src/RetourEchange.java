@@ -1,6 +1,10 @@
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * La classe RetourEchange sert de base pour gérer les retours et les échanges de produits dans le cadre d'une commande.
+ * Elle encapsule les informations et les actions communes liées au processus de retour ou d'échange d'articles.
+ */
 public class RetourEchange {
 	protected String type ;
 	protected Scanner scanner = new Scanner(System.in);
@@ -15,7 +19,12 @@ public class RetourEchange {
 	protected float sommeRetour = 0;
 
 
-
+	/**
+	 * Constructeur pour initialiser un retour ou un échange avec une commande et une liste d'indices des produits concernés.
+	 *
+	 * @param commande La commande concernée par le retour ou l'échange.
+	 * @param nbProduit Les indices des produits à retourner ou à échanger.
+	 */
 	public RetourEchange (Commande commande, int [] nbProduit){
 		this.commande = commande;
 		this.nbProduit =nbProduit;
@@ -23,11 +32,18 @@ public class RetourEchange {
 
 	}
 
+
+	/**
+	 * Affiche les instructions pour retourner les produits concernés par le retour ou l'échange.
+	 */
 	public void instruction(){
 		System.out.println("Veuillez retourner le(s) produits par la poste a l'address suivant :" );
 		System.out.println("  12345 rue de Charlevoix , Montreal , Qc , ASD QWE ");
 	}
 
+	/**
+	 * Crée la liste des produits à retourner ou à échanger et calcule la somme totale à rembourser.
+	 */
 	public void listeProduitRetour(){
 		listeProduits = new Produit[nbProduit.length];
 		for (int i = 0; i < nbProduit.length; i++) {
@@ -35,6 +51,10 @@ public class RetourEchange {
 			listeProduits[i] = commande.getProduits().get(nbProduit[i]);
 		}
 	}
+
+	/**
+	 * Invite l'utilisateur à spécifier la raison pour le retour ou l'échange.
+	 */
 	public void raison(){
 		System.out.println("Veuillez specifier la raison pour " + type);
 		Scanner scanner = new Scanner(System.in);
@@ -43,7 +63,9 @@ public class RetourEchange {
 
 	}
 
-
+	/**
+	 * Affiche l'état actuel du retour ou de l'échange, y compris les produits concernés.
+	 */
 	public void afficherEtat(){
 
 		System.out.println("votre " + type + "  de la commande " + commande.getID() + " est " + _etat);
@@ -53,6 +75,11 @@ public class RetourEchange {
 		}
 	}
 
+	/**
+	 * Invite l'utilisateur à entrer un choix numérique et valide l'entrée.
+	 *
+	 * @return Le choix numérique validé de l'utilisateur.
+	 */
 	public int prompt() {
 
 		int choix = 0;

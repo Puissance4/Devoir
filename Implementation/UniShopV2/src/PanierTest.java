@@ -10,7 +10,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PanierTest {
 
-    Menu menu;
     Acheteur acheteur;
     Produit produit;
     Papeterie papeterie;
@@ -45,7 +44,7 @@ class PanierTest {
     void testCommander() {
         InputStream in = new ByteArrayInputStream(inputCommander1.getBytes());
         System.setIn(in);
-        menu = new Menu();
+        Menu menu = new Menu();
         acheteur.getPanier().commander(acheteur,menu);
         assertEquals(acheteur.getPanier().getProduits().size(), 0);
     }
@@ -53,7 +52,7 @@ class PanierTest {
     void testCommandeAnnuler() throws IOException {
         InputStream in = new ByteArrayInputStream(inputCommander2.getBytes());
         System.setIn(in);
-        menu = new Menu();
+        Menu menu = new Menu();
         acheteur.getPanier().commander(acheteur,menu);
         assertEquals(acheteur.getPanier().getProduits().size(), 1);
     }

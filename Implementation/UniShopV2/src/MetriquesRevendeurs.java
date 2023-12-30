@@ -1,3 +1,8 @@
+/**
+ * Représente les métriques spécifiques à un revendeur dans le système UniShop.
+ * Elle stocke des informations telles que le revenu du revendeur, le nombre d'articles mis en vente par le revendeur,
+ * et le nombre d'articles vendus par le revendeur.
+ */
 public class MetriquesRevendeurs extends Metriques {
 	private float _revenu; // Reseller's revenue
 	private int _nombreArticles; // Number of articles reseller has put up for sale
@@ -5,6 +10,12 @@ public class MetriquesRevendeurs extends Metriques {
 	public Revendeur revendeur;
 
 	// Constructor
+
+	/**
+	 * Constructeur pour créer des métriques pour un revendeur spécifique.
+	 *
+	 * @param revendeur Le revendeur pour lequel les métriques sont créées et associées.
+	 */
 	public MetriquesRevendeurs(Revendeur revendeur){
 		this.revendeur = revendeur;
 	}

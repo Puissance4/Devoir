@@ -4,14 +4,31 @@ import java.util.ArrayList;
 import java.util.EmptyStackException;
 import java.util.InputMismatchException;
 
+/**
+ * La classe Panier représente le panier d'achat d'un acheteur dans le système.
+ * Elle contient une liste de produits, le coût total, le nombre de points et le pseudo de l'acheteur associé.
+ */
 public class Panier {
 	private float cout=0f;
 	private int nombreDePoints=0;
 	private ArrayList<Produit> produits=new ArrayList<Produit>();
 	private String acheteur;
+
+	/**
+	 * Construit un panier vide pour un acheteur donné.
+	 *
+	 * @param acheteur Le pseudo de l'acheteur auquel le panier est associé.
+	 */
 	public Panier(String acheteur) {
 		this.acheteur=acheteur;
 	}
+
+	/**
+	 * Construit un panier à partir d'une liste de données spécifiées et d'un catalogue de produits.
+	 *
+	 * @param donnee Un tableau de chaînes contenant l'identifiant de l'acheteur, les identifiants des produits, les points et le coût.
+	 * @param catalogue Une liste de tous les produits disponibles pour vérifier et ajouter les produits spécifiés dans le panier.
+	 */
 	public Panier(String [] donnee,ArrayList<Produit> catalogue){
 		this.acheteur=donnee[0];
 		String[] prod=donnee[1].split(";");
@@ -24,9 +41,19 @@ public class Panier {
 			}}
 		this.nombreDePoints=Integer.parseInt(donnee[2]);
 		this.cout=Float.parseFloat(donnee[3]);
-				
-		}
 
+	}
+
+	/**
+	 * Permet à l'acheteur de passer une commande à partir des produits dans le panier.
+	 * <p>
+	 * Cette méthode vérifie d'abord si le panier contient des produits. Ensuite, elle gère le processus de commande,
+	 * y compris la collecte des informations d'expédition et de paiement, et la validation de la commande.
+	 *
+	 * @param acheteur L'acheteur qui passe la commande.
+	 * @param menu Le menu interactif utilisé pour recueillir les entrées de l'utilisateur.
+	 * @return Une nouvelle commande si la commande est réussie, sinon null.
+	 */
 	public Commande commander(Acheteur acheteur,Menu menu){
 		if (produits.isEmpty()){
 			throw new IllegalStateException("il faut que le panier contienne au moins 1 produit pour commander");
@@ -126,29 +153,62 @@ public class Panier {
         return null;
     }
 
+	/**
+	 * Renvoie la liste des produits dans le panier.
+	 *
+	 * @return Une liste des produits.
+	 */
 	public ArrayList<Produit> getProduits() {
 		return this.produits;
 	}
+
+	/**
+	 * Renvoie le coût total des produits dans le panier.
+	 *
+	 * @return Le coût total.
+	 */
 	public float getCout(){
 		return this.cout;
 	}
+
+	/**
+	 * Renvoie le nombre total de points accumulés à partir des produits dans le panier.
+	 *
+	 * @return Le nombre total de points.
+	 */
 	public int getNombrePoints(){
 		return this.nombreDePoints;
 	}
 
 
+	/**
+	 * Retire un produit du panier et ajuste le coût total et les points en conséquence.
+	 *
+	 * @param produit Le produit à retirer du panier.
+	 */
 	public void retirerDuPanier(Produit produit) {
 		this.produits.remove(produit);
 		cout=cout-produit.get_prix();
 		nombreDePoints=nombreDePoints-produit.getPointsBonus();
 		
 	}
+
+	/**
+	 * Ajoute un produit au panier et ajuste le coût total et les points en conséquence.
+	 *
+	 * @param produit Le produit à ajouter au panier.
+	 */
 	public void ajouter(Produit produit){
 		this.produits.add(produit);
 		this.cout=cout+produit.get_prix();
 		this.nombreDePoints=nombreDePoints+produit.getPointsBonus();
 	}
 
+	/**
+	 * Compile les informations du panier en une chaîne de caractères pour faciliter la sauvegarde ou l'affichage.
+	 *
+	 * @return Une représentation textuelle du panier incluant le pseudo de l'acheteur, les identifiants des produits, le nombre de points et le coût.
+	 */
 	public String getPanierBuff(){
 		//pseudo,produits,nbPoints,prix
 		String liste="null";
@@ -160,9 +220,23 @@ public class Panier {
 			}
 		return (acheteur+","+liste+","+nombreDePoints+","+cout);
 	}
+
+	/**
+	 * Fournit une interface pour lire une entrée de type chaîne de caractères de l'utilisateur via le menu.
+	 *
+	 * @param menu Le menu interactif utilisé pour recueillir l'entrée de l'utilisateur.
+	 * @return La chaîne de caractères saisie par l'utilisateur.
+	 */
 	protected String nextChoixS(Menu menu){
         return menu.promptS();
 	}
+
+	/**
+	 * Fournit une interface pour lire une entrée numérique de l'utilisateur via le menu.
+	 *
+	 * @param menu Le menu interactif utilisé pour recueillir l'entrée de l'utilisateur.
+	 * @return Le nombre saisi par l'utilisateur.
+	 */
 	protected int nextChoixI(Menu menu){
 		return menu.prompt();
 	}

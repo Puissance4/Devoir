@@ -5,10 +5,18 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * La classe SystemeCatalogue gère le catalogue des produits et les commandes dans le système.
+ * Elle permet de charger les données à partir de fichiers CSV, de rechercher des produits,
+ * d'afficher les détails des produits, et de sauvegarder l'état actuel du système lors de la déconnexion.
+ */
 public class SystemeCatalogue extends Systeme {
 	public ArrayList<Produit> catalogue=new ArrayList<Produit>();
 	public ArrayList<Commande> listeCommandes=new ArrayList<Commande>();
 
+	/**
+	 * Constructeur de SystemeCatalogue qui initialise le catalogue et la liste des commandes en les chargeant à partir des fichiers CSV.
+	 */
 	public SystemeCatalogue (){
 		try {
 			BufferedReader readerProduits=new BufferedReader(new FileReader("Implementation/UniShopV2/Produits.csv"));
@@ -35,14 +43,21 @@ public class SystemeCatalogue extends Systeme {
 			e.printStackTrace();
 		}
 
-
-
 	}
 
+	/**
+	 * Retourne la liste actuelle des produits dans le catalogue.
+	 * @return ArrayList de produits dans le catalogue.
+	 */
 	public ArrayList<Produit> getCatalogue() {
 		return this.catalogue;
 	}
 
+	/**
+	 * Recherche des produits dans le catalogue basée sur un mot clé fourni.
+	 * @param aMotcle Le mot clé utilisé pour la recherche.
+	 * @return Un tableau de produits correspondant au mot clé.
+	 */
 	public Produit[] recherche(String aMotcle) {
 		ArrayList<Produit> resultat=new ArrayList<Produit>();
 		for (Produit produit : catalogue) {
@@ -80,6 +95,10 @@ public class SystemeCatalogue extends Systeme {
 		throw new UnsupportedOperationException();
 	}
 
+	/**
+	 * Affiche les détails d'un produit spécifique.
+	 * @param produit Le produit à afficher.
+	 */
 	public void afficherProduit(Produit produit){
 		System.out.println("--------------------------");
 		System.out.println("Titre: " + produit.get_titre());
@@ -92,6 +111,10 @@ public class SystemeCatalogue extends Systeme {
 		System.out.println("--------------------------");
 	}
 
+	/**
+	 * Sauvegarde l'état actuel du catalogue et de la liste des commandes dans des fichiers CSV.
+	 * Cette méthode est appelée avant la déconnexion du système pour s'assurer que toutes les données sont à jour.
+	 */
 	public void deconnexion(){
 		try {
 			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("Implementation/Commandes.csv"));

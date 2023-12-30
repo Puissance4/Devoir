@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * Représente les métriques spécifiques à un acheteur dans le système UniShop.
+ * Elle stocke des informations telles que le nombre de commandes en cours, le nombre d'articles achetés,
+ * et la liste des acheteurs suivis par cet acheteur.
+ */
 public class MetriquesAcheteur extends Metriques {
 	private int _nombreCommandes; // Number of ongoing orders
 	private int _nombreArticles; // Number of bought articles
@@ -8,6 +13,12 @@ public class MetriquesAcheteur extends Metriques {
 	public Acheteur acheteur;
 
 	// Constructor
+
+	/**
+	 * Constructeur pour créer des métriques pour un acheteur spécifique.
+	 *
+	 * @param acheteur L'acheteur pour lequel les métriques sont créées et associées.
+	 */
 	public MetriquesAcheteur(Acheteur acheteur){
 		this.acheteur = acheteur;
 	}
