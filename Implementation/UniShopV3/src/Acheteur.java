@@ -42,7 +42,7 @@ public class Acheteur extends Utilisateur {
 		}}
 		Boolean panierInit=false;
 		try {
-			BufferedReader readerPanier=new BufferedReader(new FileReader("Implementation/UniShopV2/Paniers.csv"));
+			BufferedReader readerPanier=new BufferedReader(new FileReader("Implementation/UniShopV3/Paniers.csv"));
 			String line=readerPanier.readLine();//ignore la ligne des noms de colonnes
 			while ((line=readerPanier.readLine())!=null) {
 				String[] panier=line.split(",");
