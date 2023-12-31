@@ -33,3 +33,4 @@ version Java 19.0.1
 
 Comment exécuter votre projet (indiquez le fichier contenant le point d'entrée (méthode main)) :
 Point d'entrée dans App.java
+executer le fichier UniShopV2.jar dans le terminal

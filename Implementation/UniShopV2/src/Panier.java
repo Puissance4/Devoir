@@ -107,7 +107,7 @@ public class Panier {
 						else{
 							String identifiant = menu.systemeGeneral.creerID();
 							Commande commande = new Commande(produits, acheteur, adresse, telephone, carte, identifiant, infoSupp);
-							if (!menu.systemeGeneral.verifierCommande(commande)) {
+							if (false) { //!menu.systemeGeneral.verifierCommande(commande)
 								System.out.println("Aucun produit dans la commande");
 							}
 							else{
@@ -140,6 +140,9 @@ public class Panier {
 									acheteur.getPanier().retirerDuPanier(acheteur.getPanier().getProduits().get(i));
 								}
 								verif = false;
+								// ajouter la commande à la liste des commandes du système
+								menu.systemeGeneral.addCommande(commande);
+
 								return commande;
 							}
 						}

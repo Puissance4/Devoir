@@ -32,8 +32,10 @@ public class SystemeGeneral extends Systeme {
 			}
 			else{
 				produitTemp.setQuantite(quantite-1);
-			}}
-		return true;}
+			}
+		}
+		return true;
+	}
 
 	/**
 	 * Crée un identifiant unique pour une commande, un produit ou un utilisateur.
@@ -46,6 +48,10 @@ public class SystemeGeneral extends Systeme {
 		}
 		IDs.add(id);
 		return Integer.toString(id);
+	}
+
+	public void addCommande(Commande commande) {
+
 	}
 		
 }

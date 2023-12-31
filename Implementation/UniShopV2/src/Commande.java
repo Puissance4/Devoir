@@ -79,6 +79,7 @@ public class Commande {
 		this.numSuivi=donnee[8];
 		this.compagnieExp=donnee[9];
 		//instancier les billets de signalement
+		
 
 	}
 

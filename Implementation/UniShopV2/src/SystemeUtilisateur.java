@@ -281,7 +281,7 @@ public class SystemeUtilisateur extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("../Revendeurs.csv"));
+			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Revendeurs.csv"));
 			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike,Notification");
       
 			for (Revendeur revendeur: listeRevendeurs){

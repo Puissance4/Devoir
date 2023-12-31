@@ -117,10 +117,11 @@ public class SystemeCatalogue extends Systeme {
 	 */
 	public void deconnexion(){
 		try {
-			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("Implementation/Commandes.csv"));
-			writterCommandes.write("produit,acheteur,adresse,tel,carte,id,infoLivraison,dateArrivee(annee,mois,jour),numSuivi,compagnieExp,billetSignalement");
+			BufferedWriter writterCommandes=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Commandes.csv"));
+			writterCommandes.write("produit,acheteur,adresse,tel,carte,id,infoLivraison,dateArrivee(annee;mois;jour),numSuivi,compagnieExp,billetSignalement");
 			for (Commande commande: listeCommandes){
 				writterCommandes.newLine();
+				System.out.println("oui");
 				String produits=commande.getProduitsBuff();
 				String acheteur=commande.getAcheteur();
 				String adresse=commande.getAdresse();
@@ -138,11 +139,12 @@ public class SystemeCatalogue extends Systeme {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			System.out.println("wtf");
 			e.printStackTrace();
 		}
 
 		try {
-			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("Implementation/Produits.csv"));
+			BufferedWriter writterProduits=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Produits.csv"));
 			writterProduits.write("titre,categorie,description,quantite,prix,pointBonus,identifiant,lienImageOuVideo,nombreDeLike,PrixPromotionnel,PointsBonusPromotion,dateFinPromotion");
 			for (Produit produit: catalogue){
 				try {
