@@ -436,4 +436,7 @@ public class Acheteur extends Utilisateur {
 		nombrePoints=nombrePoints+points;
 	}
 
+	public ArrayList<String> getRevendeursLike() {
+		return revendeursLike;
+	}
 }

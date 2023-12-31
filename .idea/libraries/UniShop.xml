@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="UniShop">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Implementation/UniShopV1/UniShop.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

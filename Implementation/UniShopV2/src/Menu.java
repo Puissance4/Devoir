@@ -1112,4 +1112,8 @@ public class Menu {
 				break;
 		}
 	}
+
+	public Utilisateur getUtilisateurConnecte() {
+		return utilisateurConnecte;
+	}
 }

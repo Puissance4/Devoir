@@ -76,7 +76,6 @@ public class Echange extends RetourEchange {
 			System.out.println("Veuillez saisir un PIN valide");
 		}
 
-
 	}
 
 	/**
