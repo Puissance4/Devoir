@@ -10,8 +10,8 @@ import java.util.ArrayList;
  * Elle permet de charger les données utilisateurs à partir de fichiers, de gérer les connexions et les inscriptions, et de sauvegarder les données lors de la déconnexion.
  */
 public class SystemeUtilisateur extends Systeme {
-	public String fichierAcheteurs="Implementation/UniShopV3/Acheteurs.csv";
-	public String fichierRevendeurs="Implementation/UniShopV3/Revendeurs.csv";
+	public String fichierAcheteurs="Implementation/UniShopV2/Acheteurs.csv";
+	public String fichierRevendeurs="Implementation/UniShopV2/Revendeurs.csv";
 	private ArrayList <Acheteur> listeAcheteurs= new ArrayList<Acheteur>();
 	private ArrayList <Revendeur> listeRevendeurs= new ArrayList<Revendeur>();
 
@@ -248,8 +248,8 @@ public class SystemeUtilisateur extends Systeme {
 	 */
 	public void deconnexion(){
 		try {
-			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("Implementation/UniShopV3/Acheteurs.csv"));
-			BufferedWriter writterPanier=new BufferedWriter(new FileWriter("Implementation/UniShopV3/Paniers.csv"));
+			BufferedWriter writterAcheteurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Acheteurs.csv"));
+			BufferedWriter writterPanier=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Paniers.csv"));
 			writterPanier.write("pseudo,produits,nbPoints,prix");
 			writterAcheteurs.write("pseudo,nom,prenom,email,motDePasse,adresse,telephone,Revendeurslike,Acheteurslike,Notifications,ProduitsLike,NombreDepoints");
 			for (Acheteur acheteur: listeAcheteurs){
@@ -281,7 +281,7 @@ public class SystemeUtilisateur extends Systeme {
 		}
 
 		try {
-			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("Implementation/UniShopV3/Revendeurs.csv"));
+			BufferedWriter writterRevendeurs=new BufferedWriter(new FileWriter("Implementation/UniShopV2/Revendeurs.csv"));
 			writterRevendeurs.write("nom,email,motDePasse,adresse,telephone,likes,ProduitsOfferts,AcheteurLike,Notification");
       
 			for (Revendeur revendeur: listeRevendeurs){
