@@ -312,7 +312,9 @@ public class Menu {
 			afficherPageRevendeur();
 			break;
 		case 7:
-			//confirmer retour;
+			((Revendeur)utilisateurConnecte).confirmerReceptionRetour(saisirIDCommande());
+			retournerMenuRevendeur();
+
 			break;
 		case 8:
 			afficherCatalogue();
@@ -1016,25 +1018,25 @@ public class Menu {
 		listeRetour.put(retour.getCommande().getID(), retour);
 		((Acheteur) utilisateurConnecte).getListRetourEchange().add(retour);
 	}
-
-	/**
-	 * Traite l'échange d'un ou plusieurs produits d'une commande.
-	 *
-	 * @param commande La commande contenant les produits à échanger.
-	 */
-	public void echange(Commande commande){
-		System.out.println(" Choisir un produit pour le echange, , pour l'echange de plusieurs produits, mettre une espace entre chaque nombre");
-		Echange echange = new Echange(commande,choisirProduitRetour(commande ), choisirProduitEchange(commande));
-		echange.effectuerEchange();
-		listeRetour.put(echange.getCommande().getID(), echange);
-		((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
+	public void retournerMenuRevendeur(){
+		System.out.println(" voulez vous retourner au menu principal ou quitter ");
+		System.out.println("Entrez [1] pour retourner au menu principal ");
+		System.out.println("Entrez [2] pour quitter ");
+		int choix = prompt();
+		switch (choix) {
+			case 1:
+				afficherPageRevendeur();
+				break;
+			case 2:
+				System.out.println("Merci d'avoir magasine sur UniShop");
+				System.exit(0);
+				break;
+			default:
+				System.out.println(" Veuillez saisir une nombre valide ");
+				retournerMenuAcheteur();
+				break;
+		}
 	}
-
-	/**
-	 * Invite l'utilisateur à saisir l'ID d'une commande pour traiter son retour ou son échange.
-	 *
-	 * @return L'objet RetourEchange associé à l'ID de la commande, si valide.
-	 */
 	public RetourEchange saisirIDCommande(){
 		System.out.println(" Veuillez saisir ID de la commande : ");
 		String ID = promptS();
@@ -1068,6 +1070,25 @@ public class Menu {
 	}
 
 	/**
+	 * Traite l'échange d'un ou plusieurs produits d'une commande.
+	 *
+	 * @param commande La commande contenant les produits à échanger.
+	 */
+	public void echange(Commande commande){
+		System.out.println(" Choisir un produit pour le echange, , pour l'echange de plusieurs produits, mettre une espace entre chaque nombre");
+		Echange echange = new Echange(commande,choisirProduitRetour(commande ), choisirProduitEchange(commande));
+		echange.effectuerEchange();
+		listeRetour.put(echange.getCommande().getID(), echange);
+		((Acheteur) utilisateurConnecte).getListRetourEchange().add(echange);
+	}
+
+	/**
+	 * Invite l'utilisateur à saisir l'ID d'une commande pour traiter son retour ou son échange.
+	 *
+	 * @return L'objet RetourEchange associé à l'ID de la commande, si valide.
+	 */
+
+	/**
 	 * Invite l'utilisateur à retourner au menu principal ou à quitter l'application en tant qu'acheteur.
 	 */
 	public void retournerMenuAcheteur(){
@@ -1090,30 +1111,4 @@ public class Menu {
 		}
 	}
 
-	/**
-	 * Invite l'utilisateur à retourner au menu principal ou à quitter l'application en tant que revendeur.
-	 */
-	public void retournerMenuRevendeur(){
-		System.out.println(" voulez vous retourner au menu principal ou quitter ");
-		System.out.println("Entrez [1] pour retourner au menu principal ");
-		System.out.println("Entrez [2] pour quitter ");
-		int choix = prompt();
-		switch (choix) {
-			case 1:
-				afficherPageRevendeur();
-				break;
-			case 2:
-				System.out.println("Merci d'avoir magasine sur UniShop");
-				System.exit(0);
-				break;
-			default:
-				System.out.println(" Veuillez saisir une nombre valide ");
-				retournerMenuAcheteur();
-				break;
-		}
-	}
-
-	public Utilisateur getUtilisateurConnecte() {
-		return utilisateurConnecte;
-	}
 }

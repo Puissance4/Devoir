@@ -495,6 +495,10 @@ public class Revendeur extends Utilisateur {
 	 */
 	public void ajouterDesLikes(int likes){
 		_likes=_likes+likes;}
+	public void confirmerReceptionRetour(RetourEchange retour ){
+		retour.setEtat(EtatsCommande.Livre);
+		System.out.println(" Etat de la commande "+ retour.getCommande().getID() + " est change a livre ");
+	}
 
 	public MetriquesRevendeurs getMetriques() {
 		return metriques;

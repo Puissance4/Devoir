@@ -17,7 +17,6 @@ class AcheteurTest {
 
     @Test
     void testLikeRevendeur() {
-
         acheteur.setRevendeurLike(revendeur);
         assertEquals(1,acheteur.getRevendeursLike().size());
     }
